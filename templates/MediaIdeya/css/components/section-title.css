@@ -1,25 +1,35 @@
-/* Section title row — Figma "заголовок" pattern */
+/* Section title row — Figma «заголовок» */
 
 .mi-section-title {
   display: flex;
-  align-items: flex-end;
+  align-items: baseline;
   justify-content: space-between;
   gap: 24px;
   width: 100%;
-  max-width: var(--mi-page-width);
-  margin-inline: auto;
-  padding-inline: var(--mi-gutter);
 }
 
 .mi-section-title__heading {
+  margin: 0;
+  font-family: var(--mi-font);
   font-size: var(--mi-fs-96);
-  line-height: 106px;
   font-weight: 500;
+  line-height: 1.1;
 }
 
 .mi-section-title__label {
+  font-family: var(--mi-font);
   font-size: var(--mi-fs-40);
-  line-height: 52px;
-  color: var(--mi-color-muted);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--mi-color-blue);
   white-space: nowrap;
+  transition: opacity var(--mi-duration) var(--mi-ease);
+}
+
+.mi-section-title__label:hover {
+  opacity: 0.85;
+}
+
+.mi-section-title--dark .mi-section-title__heading {
+  color: var(--mi-color-inverse);
 }

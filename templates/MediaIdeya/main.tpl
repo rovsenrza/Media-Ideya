@@ -7,7 +7,7 @@
 	<link rel="shortcut icon" href="{THEME}/images/favicon.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,500&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,500&display=swap">
 
 	{* Shared CSS — bütün səhifələr *}
 	<link rel="stylesheet" href="{THEME}/css/base/tokens.css">
@@ -24,6 +24,7 @@
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
 	<link rel="stylesheet" href="{THEME}/css/components/hero.css">
+	<link rel="stylesheet" href="{THEME}/css/components/services.css">
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
 	[available=cat|showfull]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/available]
@@ -38,6 +39,7 @@
 		<main class="mi-main" id="content">
 			[available=main]
 			{include file="modules/hero.tpl"}
+			{include file="modules/services.tpl"}
 			[/available]
 
 			{info}

@@ -24,8 +24,10 @@
   --mi-color-muted: #6b6b6b;
   --mi-color-brand: #264a65;
   --mi-color-accent: #264a65;
+  --mi-color-blue: #4385bb;
   --mi-color-inverse: #ffffff;
   --mi-color-surface-dark: #112331;
+  --mi-color-surface-soft: #edf5fd;
   --mi-color-hero-sky-from: #8db5d5;
   --mi-color-hero-sky-to: #6398c3;
   --mi-color-hero-fade-top: #4a7ca3;
@@ -33,6 +35,7 @@
   /* Radii */
   --mi-radius-btn: 100px;
   --mi-radius-pill: 100px;
+  --mi-radius-card: 60px;
 
   /* Spacing */
   --mi-space-section: 120px;

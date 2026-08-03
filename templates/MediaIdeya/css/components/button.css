@@ -1,18 +1,18 @@
-/* Button — Figma component; header variant node 1:310 */
+/* Button — Figma component */
 
 .mi-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   min-height: 78px;
-  padding: 18px 32px;
+  padding: 24px 48px;
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
   font-weight: 500;
-  line-height: 1.4;
-  border-radius: var(--mi-radius-btn);
-  background: var(--mi-color-accent);
+  line-height: 1.5;
+  border-radius: var(--mi-radius-pill);
+  background: var(--mi-color-blue);
   color: var(--mi-color-inverse);
   white-space: nowrap;
   transition: opacity var(--mi-duration) var(--mi-ease);
@@ -22,15 +22,21 @@
   opacity: 0.88;
 }
 
+.mi-btn__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 /* Header CTA — 204×61, white pill, text #264A65 */
 .mi-btn--header {
   min-height: 61px;
   padding: 18px 32px;
+  gap: 0;
   font-size: 18px;
   line-height: 1.4;
   background: var(--mi-color-inverse);
   color: var(--mi-color-brand);
-  border-radius: var(--mi-radius-pill);
 }
 
 .mi-btn--ghost {
