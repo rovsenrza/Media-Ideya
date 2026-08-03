@@ -1,0 +1,87 @@
+/* Articles — Figma node 1:61 «6 статьи» */
+
+.mi-articles {
+  width: 100%;
+  background: var(--mi-color-surface-dark);
+  color: var(--mi-color-inverse);
+  padding: 120px var(--mi-gutter);
+}
+
+.mi-articles__inner {
+  width: 100%;
+  max-width: var(--mi-content-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.mi-articles__grid {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+}
+
+.mi-article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 547px;
+}
+
+.mi-article-card__media {
+  display: block;
+  overflow: hidden;
+  border-radius: 40px;
+  aspect-ratio: 547 / 329;
+  background: var(--mi-color-surface-soft);
+}
+
+.mi-article-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+.mi-article-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-inline: 24px;
+}
+
+.mi-article-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: var(--mi-fs-16);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.mi-article-card__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border: 1px solid var(--mi-color-blue);
+  border-radius: var(--mi-radius-pill);
+  color: var(--mi-color-blue);
+  white-space: nowrap;
+}
+
+.mi-article-card__title {
+  margin: 0;
+  font-family: var(--mi-font);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.mi-article-card__title a {
+  color: inherit;
+}

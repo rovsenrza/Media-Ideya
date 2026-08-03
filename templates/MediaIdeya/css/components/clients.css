@@ -1,0 +1,103 @@
+/* Clients — Figma node 1:77 «4 нам доверяют» */
+
+.mi-clients {
+  position: relative;
+  width: 100%;
+  background: var(--mi-color-surface-dark);
+  color: var(--mi-color-inverse);
+  padding: 100px var(--mi-gutter) 120px;
+  overflow: hidden;
+}
+
+.mi-clients__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1482px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+
+.mi-clients__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.mi-clients__title {
+  margin: 0;
+  font-family: var(--mi-font);
+  font-size: var(--mi-fs-96);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.mi-clients__sub {
+  margin: 0;
+  font-size: var(--mi-fs-20);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-clients__logos {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.mi-clients__row {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+}
+
+.mi-clients__row--offset {
+  padding-inline: 140px;
+  gap: 120px;
+}
+
+.mi-clients__row--fade {
+  opacity: 0.28;
+}
+
+.mi-clients__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 279px;
+  height: 128px;
+  padding: 24px;
+  border-radius: 32px;
+}
+
+.mi-clients__logo img {
+  width: 231px;
+  height: 80px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.mi-clients__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 263px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mi-clients__fade--top {
+  top: 0;
+  background: linear-gradient(180deg, #112331 0%, rgba(17, 35, 49, 0) 100%);
+}
+
+.mi-clients__fade--bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, #112331 0%, rgba(17, 35, 49, 0) 100%);
+}

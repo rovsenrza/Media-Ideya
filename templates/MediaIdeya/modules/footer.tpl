@@ -1,6 +1,5 @@
 <footer class="mi-footer" id="footer">
 	<div class="mi-footer__cta">
-		{* CTA block — Figma: форма *}
 		<div class="mi-footer__cta-inner">
 			<h2 class="mi-footer__cta-title">Обсудим ваш проект</h2>
 			<p class="mi-footer__cta-text">Оставьте заявку — перезвоним и разберём, что сработает именно для вас</p>
@@ -28,7 +27,9 @@
 			<div class="mi-footer__social">
 				<span class="mi-footer__label">Следите за нами</span>
 				<div class="mi-footer__social-list">
-					{* Social icons — Figma assets later *}
+					<a class="mi-footer__social-link" href="/" aria-label="VK"></a>
+					<a class="mi-footer__social-link" href="/" aria-label="Telegram"></a>
+					<a class="mi-footer__social-link" href="/" aria-label="YouTube"></a>
 				</div>
 			</div>
 		</div>

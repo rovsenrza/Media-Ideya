@@ -1,19 +1,37 @@
-/* Footer shell — structure ready for Figma pixel pass */
+/* Footer — Figma node 1:31 «футер» */
+
+.mi-footer {
+  background: var(--mi-color-surface-dark);
+  color: var(--mi-color-inverse);
+}
 
 .mi-footer__cta {
-  padding: 120px var(--mi-gutter);
+  position: relative;
+  overflow: hidden;
+  padding: 120px var(--mi-gutter) 80px;
   text-align: center;
 }
 
+.mi-footer__cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
 .mi-footer__cta-title {
+  margin: 0;
+  font-family: var(--mi-font);
   font-size: var(--mi-fs-96);
-  line-height: 106px;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .mi-footer__cta-text {
-  margin-top: 24px;
+  margin: 24px 0 0;
   font-size: var(--mi-fs-20);
-  line-height: 30px;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .mi-footer__cta .mi-btn {
@@ -22,7 +40,18 @@
 
 .mi-footer__bar {
   position: relative;
-  padding: 40px 0 24px;
+  padding: 40px var(--mi-gutter) 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mi-footer__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: var(--mi-content-width);
+  margin-inline: auto;
 }
 
 .mi-footer__contacts {
@@ -30,34 +59,73 @@
   gap: 120px;
 }
 
+.mi-footer__col p,
+.mi-footer__col a {
+  margin: 0;
+  font-size: var(--mi-fs-20);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
 .mi-footer__label {
   display: block;
   margin-bottom: 16px;
   font-size: var(--mi-fs-16);
-  line-height: 24px;
-  color: var(--mi-color-muted);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.mi-footer__social {
+  text-align: right;
+}
+
+.mi-footer__social .mi-footer__label {
+  margin-bottom: 16px;
+}
+
+.mi-footer__social-list {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.mi-footer__social-link {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background var(--mi-duration) var(--mi-ease);
+}
+
+.mi-footer__social-link:hover {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .mi-footer__legal {
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
+  align-items: center;
+  width: 100%;
+  max-width: var(--mi-content-width);
+  margin: 80px auto 0;
   font-size: var(--mi-fs-16);
-  line-height: 24px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .mi-footer__brand {
   margin-top: 40px;
-  font-size: clamp(48px, 9vw, 160px);
-  line-height: 1;
+  font-family: var(--mi-font);
+  font-size: clamp(64px, 12vw, 280px);
+  font-weight: 500;
+  line-height: 0.9;
   text-align: center;
-  opacity: 0.12;
+  letter-spacing: -0.02em;
+  opacity: 0.18;
   pointer-events: none;
   user-select: none;
-}
-
-.mi-footer__social-list {
-  display: flex;
-  gap: 16px;
-  margin-top: 16px;
+  white-space: nowrap;
+  overflow: hidden;
 }

@@ -1,15 +1,5 @@
-/* Home page (available=main) — sections from Figma node 1:30 */
+/* Home page glue — section CSS lives in components/ */
 
 .mi-home {
   width: 100%;
-}
-
-/* Section stubs — next prompts */
-.mi-home__about,
-.mi-home__clients,
-.mi-home__faq,
-.mi-home__articles {
-  width: 100%;
-  max-width: var(--mi-page-width);
-  margin-inline: auto;
 }

@@ -25,6 +25,10 @@
 	[available=main]
 	<link rel="stylesheet" href="{THEME}/css/components/hero.css">
 	<link rel="stylesheet" href="{THEME}/css/components/services.css">
+	<link rel="stylesheet" href="{THEME}/css/components/about.css">
+	<link rel="stylesheet" href="{THEME}/css/components/clients.css">
+	<link rel="stylesheet" href="{THEME}/css/components/faq.css">
+	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
 	[available=cat|showfull]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/available]
@@ -40,6 +44,10 @@
 			[available=main]
 			{include file="modules/hero.tpl"}
 			{include file="modules/services.tpl"}
+			{include file="modules/about.tpl"}
+			{include file="modules/clients.tpl"}
+			{include file="modules/faq.tpl"}
+			{include file="modules/articles.tpl"}
 			[/available]
 
 			{info}

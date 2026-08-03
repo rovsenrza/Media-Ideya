@@ -128,8 +128,13 @@ js/
 - Ana frame (1920): `Медиа идея` → node `1:30`
 - Header / шапка → node `1:302`
 - Hero / banner → node `1:285`
-- Services home «Что мы создаем» → node `1:266`
+- Services home «Что мы создаем» → node `1:266` (stack; swiper YOX)
 - Services page → node `1:311`
+- About «о нас» → node `1:115`
+- Clients «нам доверяют» → node `1:77`
+- FAQ «вопросы» → node `1:97`
+- Articles «статьи» → node `1:61`
+- Footer → node `1:31`
 - Services: `услуги` → node `1:311`
 - Typography scale (dizayn sistemi): 96 / 64 / 40 / 32 / 20 / 16
 - Font: Roboto Flex Medium (header/nav/button)
