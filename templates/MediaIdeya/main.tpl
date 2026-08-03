@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="shortcut icon" href="{THEME}/images/favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,500&display=swap">
 
 	{* Shared CSS — bütün səhifələr *}
 	<link rel="stylesheet" href="{THEME}/css/base/tokens.css">
@@ -12,6 +15,7 @@
 	<link rel="stylesheet" href="{THEME}/css/base/typography.css">
 	<link rel="stylesheet" href="{THEME}/css/layout/shell.css">
 	<link rel="stylesheet" href="{THEME}/css/components/button.css">
+	<link rel="stylesheet" href="{THEME}/css/components/header.css">
 	<link rel="stylesheet" href="{THEME}/css/components/section-title.css">
 	<link rel="stylesheet" href="{THEME}/css/components/card.css">
 	<link rel="stylesheet" href="{THEME}/css/components/footer.css">

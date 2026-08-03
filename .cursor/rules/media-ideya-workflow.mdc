@@ -7,6 +7,14 @@ alwaysApply: true
 
 Hər yeni user promptundan sonra bu checklist-i **tam** icra et. Skip etmə.
 
+## Ünsiyyət — CAVEMAN (MƏCBURİ)
+
+- Qısa cavab. Az danış, çox işlə.
+- Uzun izahat, essay, filler YOX.
+- Status: 1–2 cümlə max. Sonra iş.
+- Bitəndə: nə etdin + fayl yolları — qısa.
+- User "niyə / detallı" deməyənə qədər genişlənmə.
+
 ## Layihə konteksti
 
 - CMS: **DataLife Engine 20.0**
@@ -16,11 +24,35 @@ Hər yeni user promptundan sonra bu checklist-i **tam** icra et. Skip etmə.
 - Codebase Memory project: `Media-Ideya`
 - Figma MCP: `user-Figma`
 
+## Modul arxitekturası (MƏCBURİ)
+
+Hər UI hissəsi **ayrı modul** — monolit template/CSS yox.
+
+```
+templates/MediaIdeya/
+  modules/           # header, footer, topmenu, card, …
+  css/
+    base/            # reset, tokens, typography
+    layout/          # shell, container, grid
+    components/      # header, footer, button, card, …
+    pages/           # yalnız səhifəyə aid
+  js/
+    components/      # accordion, slider, header, …
+    pages/
+    main.js
+```
+
+- Header → `modules/header.tpl` + `css/components/header.css` (+ lazımsa `js/components/header.js`)
+- Footer → `modules/footer.tpl` + `css/components/footer.css`
+- Məhsul/xidmət kartı, section-title, button — hər biri öz komponenti
+- `main.tpl` yalnız shell: include modul + shared CSS/JS
+- Yeni blok = yeni modul. Mövcud modula yapışdırma / god-file YOX
+
 ## Hər prompt — məcburi sıra
 
 ### 1. Anla
-- Scope: hansı səhifə / section / komponent?
-- Hansı `.tpl` / CSS / JS faylları toxunulacaq?
+- Scope: hansı modul / səhifə / section?
+- Hansı `.tpl` / CSS / JS faylları?
 
 ### 2. Codebase Memory (MƏCBURİ — hər prompt)
 1. `search_graph` və ya `search_code` / `get_architecture` (`project: "Media-Ideya"`)
@@ -38,34 +70,35 @@ Hər yeni user promptundan sonra bu checklist-i **tam** icra et. Skip etmə.
 - Əsas iş: `templates/MediaIdeya/` — `engine/` core-a toxunma
 - Core template-lər: `main.tpl`, `shortstory.tpl`, `fullstory.tpl`, `static.tpl`
 - DLE tag-lərini qoru: `{headers}`, `{content}`, `{AJAX}`, `{THEME}`, və s.
+- Modul: `{include file="modules/<name>.tpl"}`
 
 ### 5. CSS arxitekturası (MƏCBURİ)
 
 ```
 css/
   base/          # reset, tokens, typography, utilities
-  layout/        # grid, container, header/footer shell
-  components/    # reusable: button, section-title, card, …
+  layout/        # grid, container, page shell
+  components/    # modul stilləri: header, footer, button, card, …
   pages/         # yalnız həmin səhifəyə aid stillər
   engine.css     # DLE sistem stilləri (minimal)
 ```
 
-- **Reusable komponent** → `css/components/`
+- **Modul/reusable** → `css/components/<modul>.css`
 - **Səhifəyə xüsusi** → `css/pages/<page>.css`
 - Global/shared → `css/base/` + `css/layout/`
-- Səhifədə lazımsız CSS çağırma: `main.tpl`-də yalnız shared; page CSS-i `[available=…]` və ya include ilə şərtli yüklə
+- Səhifədə lazımsız CSS çağırma: `main.tpl`-də shared + komponent CSS; page CSS `[available=…]` ilə
 - Token-lər: CSS variables (`--mi-*`) — Figma rəng/spacing/radius buradan
 
 ### 6. JS arxitekturası (MƏCBURİ)
 
 ```
 js/
-  components/    # reusable: accordion, slider, …
+  components/    # reusable: header, accordion, slider, …
   pages/         # yalnız səhifə script-ləri
   main.js        # shared init
 ```
 
-- Eyni prinsip: shared vs page-specific; lazımsız JS yükləmə
+- Eyni prinsip: modul vs page-specific; lazımsız JS yükləmə
 
 ### 7. Image / PageSpeed
 - Format: mümkün olduqda WebP (+ fallback)
@@ -82,21 +115,27 @@ js/
 
 ### 9. Yoxla
 - Figma ölçüləri uyğundur?
+- Modul ayrılığı düzgündür? (tpl + css + js)
 - CSS/JS separation düzgündür?
 - Template tag-ləri qapalıdır?
 - Codebase Memory istifadə olunub?
 - Commit + push olub?
+- Cavab caveman-dir?
 
 ## Figma qeydləri
 
 - Ana frame (1920): `Медиа идея` → node `1:30`
+- Header / шапка → node `1:302`
 - Services: `услуги` → node `1:311`
 - Typography scale (dizayn sistemi): 96 / 64 / 40 / 32 / 20 / 16
+- Font: Roboto Flex Medium (header/nav/button)
 
 ## Etmə
 
 - Default/Red/Green skin stillərini kopyalama
 - Figma-sız UI uydurma
 - Bütün CSS-i bir fayla yığma
+- God-template / monolit komponent
 - `engine/` core patch
 - Commit-siz implementasiya bitirmə
+- Uzun söhbət / lazımsız izahat

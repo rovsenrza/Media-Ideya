@@ -1,6 +1,5 @@
 /* Media Ideya — design tokens (Figma 1920)
    Source: https://www.figma.com/design/Bt4qOjgEAEywy7uJCnEQsP
-   Values filled/updated per get_design_context during implementation.
 */
 
 :root {
@@ -10,7 +9,8 @@
   --mi-gutter: 100px;
   --mi-header-height: 101px;
 
-  /* Type scale (Figma) */
+  /* Type */
+  --mi-font: "Roboto Flex", "Segoe UI", sans-serif;
   --mi-fs-96: 96px;
   --mi-fs-64: 64px;
   --mi-fs-40: 40px;
@@ -18,15 +18,20 @@
   --mi-fs-20: 20px;
   --mi-fs-16: 16px;
 
-  /* Colors — placeholders; replace with exact Figma fills */
+  /* Colors — Figma */
   --mi-color-bg: #ffffff;
   --mi-color-text: #0a0a0a;
   --mi-color-muted: #6b6b6b;
-  --mi-color-accent: #000000;
+  --mi-color-brand: #264a65; /* #104775 style */
+  --mi-color-accent: #264a65;
   --mi-color-inverse: #ffffff;
+  --mi-color-surface-dark: #0b1520;
 
-  /* Radii / spacing — exact Figma values during build */
-  --mi-radius-btn: 0px;
+  /* Radii */
+  --mi-radius-btn: 100px;
+  --mi-radius-pill: 100px;
+
+  /* Spacing */
   --mi-space-section: 120px;
 
   /* Motion */

@@ -1,4 +1,4 @@
-/* Reusable button — sizes from Figma component set */
+/* Button — Figma component; header variant node 1:310 */
 
 .mi-btn {
   display: inline-flex;
@@ -6,13 +6,15 @@
   justify-content: center;
   gap: 12px;
   min-height: 78px;
-  padding: 0 40px;
+  padding: 18px 32px;
+  font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
-  line-height: 1;
   font-weight: 500;
+  line-height: 1.4;
   border-radius: var(--mi-radius-btn);
   background: var(--mi-color-accent);
   color: var(--mi-color-inverse);
+  white-space: nowrap;
   transition: opacity var(--mi-duration) var(--mi-ease);
 }
 
@@ -20,9 +22,15 @@
   opacity: 0.88;
 }
 
+/* Header CTA — 204×61, white pill, text #264A65 */
 .mi-btn--header {
   min-height: 61px;
-  padding: 0 28px;
+  padding: 18px 32px;
+  font-size: 18px;
+  line-height: 1.4;
+  background: var(--mi-color-inverse);
+  color: var(--mi-color-brand);
+  border-radius: var(--mi-radius-pill);
 }
 
 .mi-btn--ghost {

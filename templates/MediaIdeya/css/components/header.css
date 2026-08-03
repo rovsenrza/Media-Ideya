@@ -1,0 +1,58 @@
+/* Header module — Figma node 1:302 (шапка) */
+
+.mi-header {
+  position: relative;
+  z-index: 50;
+  height: var(--mi-header-height);
+  color: var(--mi-color-inverse);
+}
+
+.mi-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--mi-page-width);
+  height: 100%;
+  margin-inline: auto;
+  padding: 20px var(--mi-gutter);
+}
+
+.mi-logo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 217px;
+  width: 217px;
+  height: 61px;
+}
+
+.mi-logo img {
+  width: 89px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.mi-nav {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  font-family: var(--mi-font);
+  font-size: var(--mi-fs-20);
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.mi-nav a {
+  color: inherit;
+  transition: opacity var(--mi-duration) var(--mi-ease);
+}
+
+.mi-nav a:hover {
+  opacity: 0.8;
+}
+
+/* Non-home: solid bar so white nav stays readable */
+body:not(.is-home) .mi-header {
+  background: var(--mi-color-surface-dark);
+}

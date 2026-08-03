@@ -1,5 +1,5 @@
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--mi-font);
   font-size: var(--mi-fs-16);
   line-height: 1.5;
   font-weight: 400;
@@ -11,5 +11,3 @@ body {
 .mi-text-32 { font-size: var(--mi-fs-32); line-height: 1.25; }
 .mi-text-20 { font-size: var(--mi-fs-20); line-height: 1.4; }
 .mi-text-16 { font-size: var(--mi-fs-16); line-height: 1.5; }
-
-/* Fonts will be replaced with Figma-matched faces during implementation */
