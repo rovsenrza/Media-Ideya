@@ -1,0 +1,25 @@
+/* Section title row — Figma "заголовок" pattern */
+
+.mi-section-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: var(--mi-page-width);
+  margin-inline: auto;
+  padding-inline: var(--mi-gutter);
+}
+
+.mi-section-title__heading {
+  font-size: var(--mi-fs-96);
+  line-height: 106px;
+  font-weight: 500;
+}
+
+.mi-section-title__label {
+  font-size: var(--mi-fs-40);
+  line-height: 52px;
+  color: var(--mi-color-muted);
+  white-space: nowrap;
+}

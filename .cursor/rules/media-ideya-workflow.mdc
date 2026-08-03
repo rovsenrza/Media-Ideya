@@ -1,0 +1,102 @@
+---
+description: Media-Ideya DLE + Figma iş axını — hər taskda məcburi
+alwaysApply: true
+---
+
+# Media-Ideya — Agent Workflow
+
+Hər yeni user promptundan sonra bu checklist-i **tam** icra et. Skip etmə.
+
+## Layihə konteksti
+
+- CMS: **DataLife Engine 20.0**
+- Aktiv skin: `templates/MediaIdeya/`
+- Dizayn: Figma `Bt4qOjgEAEywy7uJCnEQsP` ([Медиа идея](https://www.figma.com/design/Bt4qOjgEAEywy7uJCnEQsP))
+- İlkin breakpoint: **1920px** (sonra digər adaptasiyalar)
+- Codebase Memory project: `Media-Ideya`
+- Figma MCP: `user-Figma`
+
+## Hər prompt — məcburi sıra
+
+### 1. Anla
+- Scope: hansı səhifə / section / komponent?
+- Hansı `.tpl` / CSS / JS faylları toxunulacaq?
+
+### 2. Codebase Memory (MƏCBURİ — hər prompt)
+1. `search_graph` və ya `search_code` / `get_architecture` (`project: "Media-Ideya"`)
+2. Mövcud komponent / token / template tap, təkrar yaratma
+3. İcra bitəndən sonra dəyişiklik böyükdürsə `index_repository` (fast/moderate)
+
+### 3. Figma (UI taskı varsa — MƏCBURİ)
+1. URL → `fileKey` + `nodeId` (`node-id=1-2` → `1:2`)
+2. Skill: `figma-design-to-code` → `get_design_context`
+3. Ölçüləri **1:1** götür: padding, margin, gap, width/height, border-radius, font-size/line-height, rənglər, shadow
+4. Şəkilləri Figma asset-dən yüklə → `templates/MediaIdeya/images/` (commit et; MCP URL expire olur)
+5. Təxmin / “yaxın” dəyər yazma — Figma dəyəri mütləqdir
+
+### 4. İcra — DLE + asset qaydaları
+- Əsas iş: `templates/MediaIdeya/` — `engine/` core-a toxunma
+- Core template-lər: `main.tpl`, `shortstory.tpl`, `fullstory.tpl`, `static.tpl`
+- DLE tag-lərini qoru: `{headers}`, `{content}`, `{AJAX}`, `{THEME}`, və s.
+
+### 5. CSS arxitekturası (MƏCBURİ)
+
+```
+css/
+  base/          # reset, tokens, typography, utilities
+  layout/        # grid, container, header/footer shell
+  components/    # reusable: button, section-title, card, …
+  pages/         # yalnız həmin səhifəyə aid stillər
+  engine.css     # DLE sistem stilləri (minimal)
+```
+
+- **Reusable komponent** → `css/components/`
+- **Səhifəyə xüsusi** → `css/pages/<page>.css`
+- Global/shared → `css/base/` + `css/layout/`
+- Səhifədə lazımsız CSS çağırma: `main.tpl`-də yalnız shared; page CSS-i `[available=…]` və ya include ilə şərtli yüklə
+- Token-lər: CSS variables (`--mi-*`) — Figma rəng/spacing/radius buradan
+
+### 6. JS arxitekturası (MƏCBURİ)
+
+```
+js/
+  components/    # reusable: accordion, slider, …
+  pages/         # yalnız səhifə script-ləri
+  main.js        # shared init
+```
+
+- Eyni prinsip: shared vs page-specific; lazımsız JS yükləmə
+
+### 7. Image / PageSpeed
+- Format: mümkün olduqda WebP (+ fallback)
+- `width`/`height` və ya aspect-ratio — CLS olmasın
+- `loading="lazy"` below-fold; LCP/hero üçün `fetchpriority="high"` + lazy yox
+- Responsive `srcset`/`sizes` lazım gələndə
+- Compress / doğru ölçüdə export (Figma ölçüsündən böyük raster yükləmə)
+
+### 8. GitHub commit (MƏCBURİ — hər implementasiyadan sonra)
+1. `git status` + `git diff` + `git log` (parallel)
+2. Secrets yoxla (`engine/data/`, `.env` — commit etmə)
+3. Commit (HEREDOC mesaj) — secure restore üçün
+4. `git push -u origin HEAD` (user bu rule-da commit+push tələb edib)
+
+### 9. Yoxla
+- Figma ölçüləri uyğundur?
+- CSS/JS separation düzgündür?
+- Template tag-ləri qapalıdır?
+- Codebase Memory istifadə olunub?
+- Commit + push olub?
+
+## Figma qeydləri
+
+- Ana frame (1920): `Медиа идея` → node `1:30`
+- Services: `услуги` → node `1:311`
+- Typography scale (dizayn sistemi): 96 / 64 / 40 / 32 / 20 / 16
+
+## Etmə
+
+- Default/Red/Green skin stillərini kopyalama
+- Figma-sız UI uydurma
+- Bütün CSS-i bir fayla yığma
+- `engine/` core patch
+- Commit-siz implementasiya bitirmə

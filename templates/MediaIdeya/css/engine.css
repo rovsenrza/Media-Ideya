@@ -1,0 +1,11 @@
+/* Minimal DLE system UI — keep lean; do not dump Default styles.css here */
+
+.dle-popup,
+.ui-dialog {
+  font-family: inherit;
+}
+
+#dle-content .bbcodes,
+#dle-content .editor {
+  max-width: 100%;
+}

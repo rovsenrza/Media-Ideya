@@ -1,0 +1,61 @@
+# macOS / IDE
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# DLE runtime config (created by installer — contains DB credentials)
+engine/data/*
+!engine/data/.gitkeep
+
+# DLE cache
+engine/cache/*
+!engine/cache/.htaccess
+!engine/cache/.gitkeep
+
+# User uploads (keep structure, ignore content)
+uploads/**
+!uploads/.htaccess
+!uploads/.gitkeep
+
+# Backups
+backup/**
+!backup/.htaccess
+!backup/index.html
+!backup/.gitkeep
+
+# Logs & temp
+*.log
+*.tmp
+*.temp
+error_log
+
+# Composer / Node (if added later)
+/vendor/
+/node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Local tooling
+.cursor/*.local.*
+*.local.md
+
+# Codebase Memory — keep shared graph artifact, ignore temp
+.codebase-memory/*
+!.codebase-memory/graph.db.zst
+!.codebase-memory/artifact.json
+
+# Temp extract of stock DLE skins
+templates/_extract/

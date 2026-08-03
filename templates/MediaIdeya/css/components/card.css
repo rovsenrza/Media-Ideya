@@ -1,0 +1,53 @@
+/* Article card — shortstory / listing */
+
+.mi-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 547px;
+}
+
+.mi-card__media {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 547 / 308;
+  background: #f2f2f2;
+}
+
+.mi-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mi-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+}
+
+.mi-card__title {
+  font-size: var(--mi-fs-32);
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.mi-card__excerpt {
+  font-size: var(--mi-fs-16);
+  color: var(--mi-color-muted);
+}
+
+.mi-card__meta {
+  display: flex;
+  gap: 16px;
+  font-size: var(--mi-fs-16);
+  color: var(--mi-color-muted);
+}
+
+.mi-card__admin {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}

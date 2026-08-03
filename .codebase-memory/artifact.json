@@ -1,0 +1,11 @@
+{
+    "schema_version": 2,
+    "commit": "HEAD",
+    "indexed_at": "2026-08-03T13:59:26Z",
+    "project": "Media-Ideya",
+    "nodes": 6491,
+    "edges": 15833,
+    "original_size": 12124160,
+    "compressed_size": 1591835,
+    "compression_level": 3
+}

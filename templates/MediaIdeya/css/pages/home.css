@@ -1,0 +1,24 @@
+/* Home page (available=main) — sections filled from Figma node 1:30 */
+
+.mi-home {
+  width: 100%;
+}
+
+.mi-home__hero {
+  position: relative;
+  width: 100%;
+  max-width: var(--mi-page-width);
+  margin-inline: auto;
+  min-height: 1561px;
+}
+
+/* Section stubs — implement in following prompts */
+.mi-home__services,
+.mi-home__about,
+.mi-home__clients,
+.mi-home__faq,
+.mi-home__articles {
+  width: 100%;
+  max-width: var(--mi-page-width);
+  margin-inline: auto;
+}

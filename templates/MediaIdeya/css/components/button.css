@@ -1,0 +1,36 @@
+/* Reusable button — sizes from Figma component set */
+
+.mi-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 78px;
+  padding: 0 40px;
+  font-size: var(--mi-fs-20);
+  line-height: 1;
+  font-weight: 500;
+  border-radius: var(--mi-radius-btn);
+  background: var(--mi-color-accent);
+  color: var(--mi-color-inverse);
+  transition: opacity var(--mi-duration) var(--mi-ease);
+}
+
+.mi-btn:hover {
+  opacity: 0.88;
+}
+
+.mi-btn--header {
+  min-height: 61px;
+  padding: 0 28px;
+}
+
+.mi-btn--ghost {
+  background: transparent;
+  color: var(--mi-color-text);
+  border: 1px solid currentColor;
+}
+
+.mi-btn--icon {
+  min-width: 299px;
+}

@@ -1,0 +1,19 @@
+/* Static pages */
+
+.mi-static {
+  width: 100%;
+  max-width: var(--mi-page-width);
+  margin: 0 auto;
+  padding: 80px var(--mi-gutter) 120px;
+}
+
+.mi-static__title {
+  font-size: var(--mi-fs-64);
+  line-height: 1.1;
+}
+
+.mi-static__content {
+  margin-top: 48px;
+  font-size: var(--mi-fs-20);
+  line-height: 1.6;
+}

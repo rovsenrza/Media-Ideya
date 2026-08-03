@@ -1,0 +1,63 @@
+/* Footer shell — structure ready for Figma pixel pass */
+
+.mi-footer__cta {
+  padding: 120px var(--mi-gutter);
+  text-align: center;
+}
+
+.mi-footer__cta-title {
+  font-size: var(--mi-fs-96);
+  line-height: 106px;
+}
+
+.mi-footer__cta-text {
+  margin-top: 24px;
+  font-size: var(--mi-fs-20);
+  line-height: 30px;
+}
+
+.mi-footer__cta .mi-btn {
+  margin-top: 40px;
+}
+
+.mi-footer__bar {
+  position: relative;
+  padding: 40px 0 24px;
+}
+
+.mi-footer__contacts {
+  display: flex;
+  gap: 120px;
+}
+
+.mi-footer__label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: var(--mi-fs-16);
+  line-height: 24px;
+  color: var(--mi-color-muted);
+}
+
+.mi-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  font-size: var(--mi-fs-16);
+  line-height: 24px;
+}
+
+.mi-footer__brand {
+  margin-top: 40px;
+  font-size: clamp(48px, 9vw, 160px);
+  line-height: 1;
+  text-align: center;
+  opacity: 0.12;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mi-footer__social-list {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
