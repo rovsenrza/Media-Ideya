@@ -1,4 +1,6 @@
-/* Services section — Figma node 1:266 «2 услуги» */
+/* Services section — Figma 1:266 / stack layout 1:311
+   Cards alt-alta; swiper YOX. Animasiya sonra.
+*/
 
 .mi-services {
   width: 100%;
@@ -16,12 +18,10 @@
   gap: 60px;
 }
 
-.mi-services__slider {
-  position: relative;
-}
-
-.mi-services__track {
-  position: relative;
+.mi-services__list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
 /* Service card — Figma «услуга» 1720×740 */
@@ -34,13 +34,9 @@
   min-height: 740px;
   padding: 80px;
   background: var(--mi-color-surface-soft);
-  border-radius: 60px;
+  border-radius: var(--mi-radius-card);
   color: var(--mi-color-surface-dark);
   overflow: hidden;
-}
-
-.mi-service-card[hidden] {
-  display: none;
 }
 
 .mi-service-card__body {
@@ -94,10 +90,6 @@
   margin-top: -20px; /* content gap 40 → visual gap 20 (Figma) */
 }
 
-.mi-service-card__list li + li {
-  margin-top: 0;
-}
-
 .mi-service-card__count {
   position: absolute;
   top: 80px;
@@ -118,7 +110,7 @@
   width: 860px;
   max-width: 50%;
   height: 100%;
-  border-radius: 60px;
+  border-radius: var(--mi-radius-card);
   overflow: hidden;
   z-index: 1;
 }
@@ -129,35 +121,4 @@
   height: 100%;
   object-fit: cover;
   object-position: center right;
-}
-
-/* Hit areas only over media — text/CTA stay clickable */
-.mi-services__nav {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  z-index: 4;
-  pointer-events: none;
-}
-
-.mi-services__btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  pointer-events: auto;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-
-.mi-services__btn--prev {
-  left: 0;
-}
-
-.mi-services__btn--next {
-  right: 0;
 }
