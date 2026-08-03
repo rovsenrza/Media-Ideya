@@ -61,11 +61,47 @@ templates/MediaIdeya/
 3. İcra bitəndən sonra dəyişiklik böyükdürsə `index_repository` (fast/moderate)
 
 ### 3. Figma (UI taskı varsa — MƏCBURİ)
+
+**Cache əvvəl — MCP sonra (rate limit qoru)**
+
+```
+.figma-cache/
+  INDEX.md                 # node → fayl xəritəsi
+  <nodeId>_<slug>.md       # get_design_context dump (1-302_header.md)
+  <nodeId>_<slug>.meta.xml # get_metadata dump (opsional)
+```
+
 1. URL → `fileKey` + `nodeId` (`node-id=1-2` → `1:2`)
-2. Skill: `figma-design-to-code` → `get_design_context`
-3. Ölçüləri **1:1** götür: padding, margin, gap, width/height, border-radius, font-size/line-height, rənglər, shadow
-4. Şəkilləri Figma asset-dən yüklə → `templates/MediaIdeya/images/` (commit et; MCP URL expire olur)
-5. Təxmin / “yaxın” dəyər yazma — Figma dəyəri mütləqdir
+2. **Əvvəl** `.figma-cache/` yoxla — uyğun fayl varsa **ondan oxu**, MCP çağırma
+3. Cache yoxdursa / köhnədirsə (dizayn dəyişibsə):
+   - Skill: `figma-design-to-code` → `get_design_context` (+ lazımsa `get_metadata`)
+   - Cavabı **dərhal** `.figma-cache/<nodeId-with-dash>_<slug>.md` faylına yaz
+   - `INDEX.md`-ə sətir əlavə et
+   - Commit et (ölçü/token/struktur qalır; MCP asset URL ~7 gün expire olur)
+4. Ölçüləri **1:1** götür: padding, margin, gap, width/height, border-radius, font-size/line-height, rənglər, shadow
+5. Şəkilləri Figma asset-dən yüklə → `templates/MediaIdeya/images/` (commit et; MCP URL expire olur)
+6. Təxmin / “yaxın” dəyər yazma — Figma dəyəri mütləqdir
+7. MCP rate-limit / xəta → cache + lokal images ilə davam; userə 1 cümlə bildir
+
+**Cache fayl formatı (minimum):**
+```md
+# Figma cache — <section name>
+- fileKey: Bt4qOjgEAEywy7uJCnEQsP
+- nodeId: 1:302
+- fetched: YYYY-MM-DD
+- url: https://www.figma.com/design/...?node-id=...
+
+## Specs
+(padding, size, colors, typography, layout notes)
+
+## Reference code
+(MCP-dən gələn React/Tailwind — yalnız referans)
+
+## Assets
+- local: templates/MediaIdeya/images/...
+- mcp_urls: (expire ~7d — yalnız download üçün)
+```
+
 
 ### 4. İcra — DLE + asset qaydaları
 - Əsas iş: `templates/MediaIdeya/` — `engine/` core-a toxunma
