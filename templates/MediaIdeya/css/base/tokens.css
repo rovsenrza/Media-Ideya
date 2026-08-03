@@ -22,10 +22,13 @@
   --mi-color-bg: #ffffff;
   --mi-color-text: #0a0a0a;
   --mi-color-muted: #6b6b6b;
-  --mi-color-brand: #264a65; /* #104775 style */
+  --mi-color-brand: #264a65;
   --mi-color-accent: #264a65;
   --mi-color-inverse: #ffffff;
-  --mi-color-surface-dark: #0b1520;
+  --mi-color-surface-dark: #112331;
+  --mi-color-hero-sky-from: #8db5d5;
+  --mi-color-hero-sky-to: #6398c3;
+  --mi-color-hero-fade-top: #4a7ca3;
 
   /* Radii */
   --mi-radius-btn: 100px;

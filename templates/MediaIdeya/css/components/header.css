@@ -52,6 +52,15 @@
   opacity: 0.8;
 }
 
+/* Home: overlay hero (Figma шапка inside banner) */
+.is-home .mi-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+
 /* Non-home: solid bar so white nav stays readable */
 body:not(.is-home) .mi-header {
   background: var(--mi-color-surface-dark);

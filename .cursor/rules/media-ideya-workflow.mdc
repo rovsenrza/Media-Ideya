@@ -126,6 +126,7 @@ js/
 
 - Ana frame (1920): `Медиа идея` → node `1:30`
 - Header / шапка → node `1:302`
+- Hero / banner → node `1:285`
 - Services: `услуги` → node `1:311`
 - Typography scale (dizayn sistemi): 96 / 64 / 40 / 32 / 20 / 16
 - Font: Roboto Flex Medium (header/nav/button)

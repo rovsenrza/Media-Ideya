@@ -22,7 +22,10 @@
 	<link rel="stylesheet" href="{THEME}/css/engine.css">
 
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
-	[available=main]<link rel="stylesheet" href="{THEME}/css/pages/home.css">[/available]
+	[available=main]
+	<link rel="stylesheet" href="{THEME}/css/components/hero.css">
+	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
+	[/available]
 	[available=cat|showfull]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/available]
 	[available=static]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/available]
 </head>
@@ -33,14 +36,23 @@
 		{include file="modules/header.tpl"}
 
 		<main class="mi-main" id="content">
+			[available=main]
+			{include file="modules/hero.tpl"}
+			[/available]
+
 			{info}
+			[not-available=main]
 			[page-title]
 			<div class="mi-page-head">
 				<h1 class="mi-page-head__title">{page-title}</h1>
 				{page-description}
 			</div>
 			[/page-title]
-			{content}
+			[/not-available]
+
+			<div id="content-below">
+				{content}
+			</div>
 		</main>
 
 		{include file="modules/footer.tpl"}

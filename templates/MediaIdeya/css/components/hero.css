@@ -1,0 +1,168 @@
+/* Hero / banner — Figma node 1:285 */
+
+.mi-hero {
+  position: relative;
+  width: 100%;
+  height: 1561px;
+  overflow: hidden;
+  color: var(--mi-color-inverse);
+}
+
+.mi-hero__stage {
+  position: relative;
+  width: 100%;
+  max-width: var(--mi-page-width);
+  height: 100%;
+  margin-inline: auto;
+}
+
+.mi-hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mi-hero__sky {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1493px;
+  background: linear-gradient(180deg, var(--mi-color-hero-sky-from) 0%, var(--mi-color-hero-sky-to) 100%);
+}
+
+.mi-hero__cloud {
+  position: absolute;
+  display: block;
+  width: 2270px;
+  height: 924px;
+  opacity: 0.3;
+}
+
+.mi-hero__cloud img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mi-hero__cloud--l {
+  left: -573px;
+  top: 18px;
+}
+
+.mi-hero__cloud--r {
+  left: 209px;
+  top: 404px;
+}
+
+.mi-hero__col {
+  position: absolute;
+  display: block;
+}
+
+.mi-hero__col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.mi-hero__col--l {
+  left: -189px;
+  top: -110px;
+  width: 617px;
+  height: 1603px;
+}
+
+.mi-hero__col--r {
+  left: 1486px;
+  top: -110px;
+  width: 623px;
+  height: 1603px;
+}
+
+.mi-hero__col--r2 {
+  left: 1445px;
+  top: -55px;
+  width: 623px;
+  height: 1603px;
+}
+
+.mi-hero__statue {
+  position: absolute;
+  left: 50%;
+  top: 554px;
+  width: 888px;
+  height: 1092px;
+  transform: translateX(-50%);
+  display: block;
+}
+
+.mi-hero__statue img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+/* Figma: flipped to-t gradient → visual bottom fade to #112331 */
+.mi-hero__fade-bottom {
+  position: absolute;
+  left: 0;
+  top: 900px;
+  width: 1920px;
+  height: 661px;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 35, 49, 0) 0%,
+    rgba(17, 35, 49, 0.7) 44.96%,
+    #112331 74.933%
+  );
+}
+
+.mi-hero__fade-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 213px;
+  background: linear-gradient(180deg, var(--mi-color-hero-fade-top) 0%, rgba(150, 187, 217, 0) 100%);
+}
+
+.mi-hero__title {
+  position: absolute;
+  left: 50%;
+  top: 195px;
+  width: 1065px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--mi-font);
+  font-size: var(--mi-fs-96);
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--mi-color-inverse);
+  z-index: 2;
+}
+
+.mi-hero__scroll {
+  position: absolute;
+  left: 50%;
+  top: 878px;
+  width: 86px;
+  height: 86px;
+  transform: translateX(-50%);
+  z-index: 3;
+  transition: opacity var(--mi-duration) var(--mi-ease), transform var(--mi-duration) var(--mi-ease);
+}
+
+.mi-hero__scroll:hover {
+  opacity: 0.85;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.mi-hero__scroll img {
+  width: 86px;
+  height: 86px;
+}
