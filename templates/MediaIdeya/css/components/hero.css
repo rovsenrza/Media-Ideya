@@ -1,4 +1,6 @@
-/* Hero / banner — Figma node 1:285 */
+/* Hero / banner — Figma node 1:285
+   Design canvas 1920 centered; bg full-bleed on >1920.
+*/
 
 .mi-hero {
   position: relative;
@@ -6,14 +8,13 @@
   height: 1561px;
   overflow: hidden;
   color: var(--mi-color-inverse);
+  background: var(--mi-color-surface-dark);
 }
 
 .mi-hero__stage {
   position: relative;
   width: 100%;
-  max-width: var(--mi-page-width);
   height: 100%;
-  margin-inline: auto;
 }
 
 .mi-hero__bg {
@@ -25,13 +26,12 @@
 
 .mi-hero__sky {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 1920px;
+  inset: 0 0 auto 0;
   height: 1493px;
   background: linear-gradient(180deg, var(--mi-color-hero-sky-from) 0%, var(--mi-color-hero-sky-to) 100%);
 }
 
+/* Positions from Figma, anchored to 1920 center: calc(50% - 960px + x) */
 .mi-hero__cloud {
   position: absolute;
   display: block;
@@ -47,12 +47,12 @@
 }
 
 .mi-hero__cloud--l {
-  left: -573px;
+  left: calc(50% - 960px - 573px);
   top: 18px;
 }
 
 .mi-hero__cloud--r {
-  left: 209px;
+  left: calc(50% - 960px + 209px);
   top: 404px;
 }
 
@@ -69,21 +69,21 @@
 }
 
 .mi-hero__col--l {
-  left: -189px;
+  left: calc(50% - 960px - 189px);
   top: -110px;
   width: 617px;
   height: 1603px;
 }
 
 .mi-hero__col--r {
-  left: 1486px;
+  left: calc(50% - 960px + 1486px);
   top: -110px;
   width: 623px;
   height: 1603px;
 }
 
 .mi-hero__col--r2 {
-  left: 1445px;
+  left: calc(50% - 960px + 1445px);
   top: -55px;
   width: 623px;
   height: 1603px;
@@ -106,12 +106,11 @@
   object-position: bottom;
 }
 
-/* Figma: flipped to-t gradient → visual bottom fade to #112331 */
 .mi-hero__fade-bottom {
   position: absolute;
   left: 0;
+  right: 0;
   top: 900px;
-  width: 1920px;
   height: 661px;
   background: linear-gradient(
     180deg,
@@ -124,8 +123,8 @@
 .mi-hero__fade-top {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
-  width: 1920px;
   height: 213px;
   background: linear-gradient(180deg, var(--mi-color-hero-fade-top) 0%, rgba(150, 187, 217, 0) 100%);
 }
@@ -134,7 +133,7 @@
   position: absolute;
   left: 50%;
   top: 195px;
-  width: 1065px;
+  width: min(1065px, calc(100% - 80px));
   transform: translateX(-50%);
   margin: 0;
   font-family: var(--mi-font);

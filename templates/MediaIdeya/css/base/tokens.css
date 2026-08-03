@@ -3,7 +3,7 @@
 */
 
 :root {
-  /* Layout */
+  /* Layout — 1920 design guide; full-bleed sections ignore hard cap */
   --mi-page-width: 1920px;
   --mi-content-width: 1720px;
   --mi-gutter: 100px;

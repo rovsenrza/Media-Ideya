@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: var(--mi-page-width);
   height: 100%;
   margin-inline: auto;
   padding: 20px var(--mi-gutter);
