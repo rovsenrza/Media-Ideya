@@ -59,13 +59,14 @@
 .mi-hero__col {
   position: absolute;
   display: block;
+  z-index: 1;
 }
 
 .mi-hero__col img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: bottom;
+  object-fit: fill; /* Figma box 617×1603 — full capital+shaft, no side crop */
+  object-position: center bottom;
 }
 
 .mi-hero__col--l {
@@ -75,11 +76,13 @@
   height: 1603px;
 }
 
+/* Figma: right cols flipped (rotate-180 + scaleY-1 ≈ scaleX-1) */
 .mi-hero__col--r {
   left: calc(50% - 960px + 1486px);
   top: -110px;
   width: 623px;
   height: 1603px;
+  transform: scaleX(-1);
 }
 
 .mi-hero__col--r2 {
@@ -87,6 +90,8 @@
   top: -55px;
   width: 623px;
   height: 1603px;
+  transform: scaleX(-1);
+  opacity: 0.95;
 }
 
 .mi-hero__statue {
@@ -102,8 +107,8 @@
 .mi-hero__statue img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: bottom;
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 .mi-hero__fade-bottom {
