@@ -4,7 +4,7 @@
   --mi-hero-p: 0;
   position: relative;
   width: 100%;
-  /* sticky pin (100vh) + short travel — swipe snaps start↔end */
+  /* sticky pin + scroll travel for banner motion */
   height: 160vh;
   color: var(--mi-color-inverse);
   background: var(--mi-color-surface-dark);

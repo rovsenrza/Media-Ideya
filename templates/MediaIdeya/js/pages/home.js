@@ -15,7 +15,7 @@
     }
   }
 
-  /* Hero title — word by word (banner art stays static) */
+  /* Hero title — word by word */
   var title = document.querySelector('.mi-hero__title');
   if (title) {
     var words = title.querySelectorAll('.mi-hero__word');
@@ -31,22 +31,19 @@
     }
   }
 
-  /* Hero sticky — snap assist, free pass on continuous scroll (no freeze) */
+  /*
+   * Hero scroll — simple:
+   * 1) --mi-hero-p follows real scroll
+   * 2) From section start, first down-wheel goes to section end
+   * 3) Everything else = normal (site-wide slow scroll in main.js)
+   */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
     var lines = hero.querySelectorAll('.mi-hero__title-line');
-    var ticking = false;
-    var snapping = false;
-    var snapRaf = 0;
-    var snapTarget = null;
-    var burst = 0;
-    var burstDir = 0;
-    var burstTimer = 0;
-    var passThrough = false;
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
-    var SNAP_MS = 1200;
-    var BURST_EXIT = 4;
+    var TO_END_MS = 1100;
+    var raf = 0;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -60,16 +57,11 @@
       return clamp(-hero.getBoundingClientRect().top / range(), 0, 1);
     }
 
-    function heroDocTop() {
+    function docTop() {
       return hero.getBoundingClientRect().top + window.pageYOffset;
     }
 
-    function isPinned() {
-      var r = hero.getBoundingClientRect();
-      return r.top <= 1 && r.bottom > window.innerHeight + 1;
-    }
-
-    function applyProgress(p) {
+    function apply(p) {
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
       for (var i = 0; i < lines.length; i++) {
         var t = clamp((p - i * LINE_STAGGER) / LINE_SPAN, 0, 1);
@@ -77,148 +69,60 @@
       }
     }
 
-    function easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
+    function sync() {
+      apply(progress());
     }
 
-    function cancelSnap() {
-      if (snapRaf) cancelAnimationFrame(snapRaf);
-      snapRaf = 0;
-      snapping = false;
-      snapTarget = null;
-    }
+    function scrollToY(y, ms) {
+      if (raf) cancelAnimationFrame(raf);
+      window.MI._scrollLock = true;
 
-    function snapTo(target) {
-      target = target >= 0.5 ? 1 : 0;
-      if (passThrough) return;
-      if (snapping && snapTarget === target) return;
-
-      var endY = Math.round(heroDocTop() + target * range());
-      if (!snapping && Math.abs(progress() - target) < 0.02) {
-        applyProgress(target);
-        return;
-      }
-
-      var startP = progress();
-      var startY = window.pageYOffset;
-      if (snapRaf) cancelAnimationFrame(snapRaf);
-      snapping = true;
-      snapTarget = target;
-
+      var y0 = window.pageYOffset;
       var t0 = performance.now();
 
       function step(now) {
-        if (!snapping) return;
-        var t = clamp((now - t0) / SNAP_MS, 0, 1);
-        var e = easeOutCubic(t);
-        var p = startP + (target - startP) * e;
-        window.scrollTo(0, startY + (endY - startY) * e);
-        applyProgress(p);
+        var t = clamp((now - t0) / ms, 0, 1);
+        var e = 1 - Math.pow(1 - t, 3);
+        window.scrollTo(0, y0 + (y - y0) * e);
+        sync();
 
         if (t < 1) {
-          snapRaf = requestAnimationFrame(step);
+          raf = requestAnimationFrame(step);
           return;
         }
 
-        window.scrollTo(0, endY);
-        applyProgress(target);
-        snapping = false;
-        snapRaf = 0;
-        snapTarget = null;
+        window.scrollTo(0, y);
+        sync();
+        raf = 0;
+        window.MI._scrollLock = false;
       }
 
-      snapRaf = requestAnimationFrame(step);
+      raf = requestAnimationFrame(step);
     }
 
-    function onScroll() {
-      if (snapping) return;
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(function () {
-          ticking = false;
-          if (snapping) return;
-          applyProgress(progress());
-        });
-      }
-    }
-
-    function noteBurst(dir) {
-      window.clearTimeout(burstTimer);
-      if (dir !== burstDir) {
-        burst = 0;
-        burstDir = dir;
-        passThrough = false;
-      }
-      burst += 1;
-      if (burst >= BURST_EXIT) passThrough = true;
-      burstTimer = window.setTimeout(function () {
-        burst = 0;
-        burstDir = 0;
-        passThrough = false;
-      }, 180);
-    }
-
-    function onWheel(e) {
-      var dir = e.deltaY > 4 ? 1 : e.deltaY < -4 ? -1 : 0;
-      if (!dir) return;
-
-      noteBurst(dir);
-
-      /* continuous scroll → free exit / free travel, no pause */
-      if (passThrough) {
-        if (snapping) {
-          cancelSnap();
-          applyProgress(progress());
-        }
-        return;
-      }
-
-      var p = progress();
-
-      /* already at sticky end/start → never trap, keep going */
-      if (dir > 0 && p >= 0.97) return;
-      if (dir < 0 && p <= 0.03) return;
-
-      if (snapping) {
-        /* extra flicks during snap also count toward free exit */
-        if (passThrough) {
-          cancelSnap();
+    window.addEventListener(
+      'wheel',
+      function (e) {
+        if (e.ctrlKey || e.deltaY <= 0) return;
+        if (window.MI._scrollLock) {
+          e.preventDefault();
           return;
         }
+
+        /* only from the very start of the sticky section */
+        if (progress() > 0.05) return;
+        if (hero.getBoundingClientRect().top > 2) return;
+
         e.preventDefault();
-        return;
-      }
+        e.stopImmediatePropagation();
+        scrollToY(Math.round(docTop() + range()), TO_END_MS);
+      },
+      { passive: false, capture: true }
+    );
 
-      if (isPinned() || (p > 0.02 && p < 0.98)) {
-        e.preventDefault();
-        snapTo(dir > 0 ? 1 : 0);
-      }
-    }
-
-    var touchY = null;
-    function onTouchStart(e) {
-      if (e.touches && e.touches.length) touchY = e.touches[0].clientY;
-    }
-    function onTouchEnd(e) {
-      if (touchY == null || !e.changedTouches || !e.changedTouches.length) {
-        touchY = null;
-        return;
-      }
-      var dy = touchY - e.changedTouches[0].clientY;
-      touchY = null;
-      if (passThrough || snapping) return;
-      if (!isPinned() && progress() < 0.98) return;
-      var p = progress();
-      if (dy > 28 && p < 0.97) snapTo(1);
-      else if (dy < -28 && p > 0.03) snapTo(0);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    window.addEventListener('wheel', onWheel, { passive: false, capture: true });
-    window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
-    applyProgress(progress());
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync, { passive: true });
+    sync();
   }
 
   var scrollBtn = document.querySelector('.mi-hero__scroll');
