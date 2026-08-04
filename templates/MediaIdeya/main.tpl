@@ -82,7 +82,11 @@
 	{AJAX}
 
 	<script src="{THEME}/js/main.js" defer></script>
-	[available=main]<script src="{THEME}/js/pages/home.js" defer></script>[/available]
+	[available=main]
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js" defer></script>
+	<script src="{THEME}/js/pages/home.js" defer></script>
+	[/available]
 	[available=showfull]<script src="{THEME}/js/pages/article.js" defer></script>[/available]
 	[available=static]<script src="{THEME}/js/pages/static.js" defer></script>[/available]
 </body>
