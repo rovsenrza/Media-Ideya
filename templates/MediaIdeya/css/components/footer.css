@@ -107,7 +107,7 @@
   margin: 0;
 }
 
-/* Brand watermark — bottom flush with footer; rises with hands 2nd phase */
+/* Brand watermark — anchored to .mi-footer__bar; bottom anim only */
 .mi-footer__brand {
   position: absolute;
   left: 50%;
@@ -117,7 +117,6 @@
   font-family: var(--mi-font);
   font-size: calc(325.262px * var(--mi-s));
   font-weight: 600;
-  /* cap-height flush to footer bottom edge */
   line-height: 0.72;
   height: 0.72em;
   text-align: center;
@@ -142,6 +141,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: calc(64px * var(--mi-s));
+  overflow: hidden;
 }
 
 .mi-footer__inner {
@@ -272,25 +272,22 @@
   }
 }
 
-/* Parallel with hands 2nd phase (55%→100%): rise until bottom == footer bottom */
+/* Parallel with hands 2nd phase (55%→100%): bottom -100% → 0 (bar bottom) */
 @keyframes mi-footer-brand {
   0%,
   55% {
     opacity: 0;
-    bottom: 0;
-    transform: translate(-50%, 100%);
+    bottom: -100%;
   }
   100% {
     opacity: 0.5;
     bottom: 0;
-    transform: translate(-50%, 0);
   }
 }
 
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
   opacity: 0;
-  bottom: 0;
-  transform: translate(-50%, 100%);
+  bottom: -100%;
   visibility: hidden;
 }
 
