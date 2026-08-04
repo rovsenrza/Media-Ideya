@@ -203,9 +203,9 @@
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.45s var(--mi-ease),
-    transform 0.45s var(--mi-ease);
-  transition-delay: calc(0.55s + var(--mi-word-i, 0) * 0.14s);
+    opacity 0.95s var(--mi-ease),
+    transform 0.95s var(--mi-ease);
+  transition-delay: calc(0.7s + var(--mi-word-i, 0) * 0.32s);
 }
 
 @media (prefers-reduced-motion: reduce) {
