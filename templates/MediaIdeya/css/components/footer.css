@@ -23,13 +23,12 @@
 
 .mi-footer__hand {
   position: absolute;
-  top: -142px;
+  top: 0;
   display: block;
   pointer-events: none;
   z-index: 0;
   max-width: none;
   line-height: 0;
-  overflow: hidden;
 }
 
 .mi-footer__hand img {
@@ -38,30 +37,22 @@
   height: 100%;
   max-width: none;
   object-fit: contain;
-  object-position: center center;
+  object-position: top center;
   mix-blend-mode: screen;
 }
 
-/* руки 5 — left -143, 630×768; full hand visible in frame */
+/* left-hand.png — 487×626, left edge */
 .mi-footer__hand--l {
-  left: calc(50% - 960px - 143px);
-  width: 630px;
-  height: 768px;
+  left: calc(50% - 960px);
+  width: 487px;
+  height: 626px;
 }
 
-.mi-footer__hand--l img {
-  object-position: center center;
-}
-
-/* руки 3 — left 1431, 710×768 */
+/* right-hand.png — 489×626, right edge */
 .mi-footer__hand--r {
   left: calc(50% - 960px + 1431px);
-  width: 710px;
-  height: 768px;
-}
-
-.mi-footer__hand--r img {
-  object-position: center center;
+  width: 489px;
+  height: 626px;
 }
 
 .mi-footer__cta-inner {
