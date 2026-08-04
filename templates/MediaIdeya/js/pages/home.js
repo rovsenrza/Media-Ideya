@@ -31,10 +31,13 @@
     }
   }
 
-  /* Hero sticky scroll — all lines slide up together (no fade), reverse on scroll up */
+  /* Hero sticky scroll — per-line crop exit + columns/statue (Jitter 360) */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
+    var lines = hero.querySelectorAll('.mi-hero__title-line');
     var ticking = false;
+    var LINE_STAGGER = 0.16;
+    var LINE_SPAN = 0.28;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -45,6 +48,11 @@
       var max = hero.offsetHeight - window.innerHeight;
       var p = max > 0 ? clamp(-hero.getBoundingClientRect().top / max, 0, 1) : 0;
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
+
+      for (var i = 0; i < lines.length; i++) {
+        var t = clamp((p - i * LINE_STAGGER) / LINE_SPAN, 0, 1);
+        lines[i].style.setProperty('--mi-line-t', t.toFixed(4));
+      }
     }
 
     function onScroll() {

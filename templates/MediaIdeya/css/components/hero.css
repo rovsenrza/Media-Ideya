@@ -69,6 +69,7 @@
   z-index: 1;
   max-width: none;
   line-height: 0;
+  will-change: transform;
 }
 
 .mi-hero__col img {
@@ -79,20 +80,30 @@
   object-position: bottom center;
 }
 
-/* sutun-sol.png — 428×1493 */
+/* sutun-sol.png — 428×1493 — scroll: out left + down */
 .mi-hero__col--l {
   left: calc(50% - 960px - 40px);
   top: -40px;
   width: 428px;
   height: 1493px;
+  transform: translate3d(
+    calc(var(--mi-hero-p, 0) * -460px),
+    calc(var(--mi-hero-p, 0) * 140px),
+    0
+  );
 }
 
-/* sutun-sag.png — 475×1548 */
+/* sutun-sag.png — 475×1548 — scroll: out right + down */
 .mi-hero__col--r {
   left: calc(50% - 960px + 1485px);
   top: -60px;
   width: 475px;
   height: 1548px;
+  transform: translate3d(
+    calc(var(--mi-hero-p, 0) * 460px),
+    calc(var(--mi-hero-p, 0) * 140px),
+    0
+  );
 }
 
 .mi-hero__col--r2 {
@@ -100,20 +111,26 @@
   top: -20px;
   width: 475px;
   height: 1548px;
+  transform: translate3d(
+    calc(var(--mi-hero-p, 0) * 520px),
+    calc(var(--mi-hero-p, 0) * 160px),
+    0
+  );
 }
 
-/* statuya.png — 888×1007 */
+/* statuya.png — 888×1007 — scroll: up */
 .mi-hero__statue {
   position: absolute;
   left: 50%;
   top: 554px;
   width: 888px;
   height: 1007px;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -420px), 0);
   display: block;
   z-index: 1;
   max-width: none;
   line-height: 0;
+  will-change: transform;
 }
 
 .mi-hero__statue img {
@@ -164,24 +181,22 @@
   text-align: center;
   color: #fff;
   z-index: 3;
-}
-
-/* Fixed crop box — text slides inside and clips via overflow */
-.mi-hero__title-crop {
-  display: block;
-  overflow: hidden;
-}
-
-.mi-hero__title-track {
   display: flex;
   flex-direction: column;
   align-items: center;
-  will-change: transform;
-  transform: translate3d(0, calc(var(--mi-hero-p, 0) * -110%), 0);
 }
 
+/* Each line has its own crop — text slides up and clips inside that line only */
 .mi-hero__title-line {
   display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.mi-hero__title-line-inner {
+  display: block;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--mi-line-t, 0) * -110%), 0);
 }
 
 .mi-hero__word {
@@ -240,7 +255,14 @@
     transition: none !important;
   }
 
-  .mi-hero__title-track {
+  .mi-hero__title-line-inner,
+  .mi-hero__col--l,
+  .mi-hero__col--r,
+  .mi-hero__col--r2 {
     transform: none !important;
+  }
+
+  .mi-hero__statue {
+    transform: translateX(-50%) !important;
   }
 }
