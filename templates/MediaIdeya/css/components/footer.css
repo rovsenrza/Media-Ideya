@@ -2,7 +2,6 @@
 
 .mi-footer {
   --mi-footer-hand-nudge: 1.75vw;
-  --mi-footer-brand-p: 0;
   position: relative;
   background: linear-gradient(180deg, #0d2f4c 0%, #112331 45.269%);
   color: var(--mi-color-inverse);
@@ -108,19 +107,19 @@
   margin: 0;
 }
 
-/* Brand watermark — Figma 1:32 inside подвал (y572 − bar y518 = top 54) */
+/* Brand watermark — bottom flush with footer; rises with hands 2nd phase */
 .mi-footer__brand {
   position: absolute;
   left: 50%;
-  top: calc(54px * var(--mi-s));
-  bottom: auto;
+  bottom: 0;
   transform: translateX(-50%);
   margin: 0;
   font-family: var(--mi-font);
   font-size: calc(325.262px * var(--mi-s));
   font-weight: 600;
-  line-height: 1.1;
-  height: auto;
+  /* cap-height flush to footer bottom edge */
+  line-height: 0.72;
+  height: 0.72em;
   text-align: center;
   text-transform: uppercase;
   color: #0d304c;
@@ -143,7 +142,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: calc(64px * var(--mi-s));
-  overflow: hidden;
 }
 
 .mi-footer__inner {
@@ -274,14 +272,26 @@
   }
 }
 
-/* Watermark: scroll-scrubbed — rises into bar (behind contacts) */
+/* Parallel with hands 2nd phase (55%→100%): rise until bottom == footer bottom */
+@keyframes mi-footer-brand {
+  0%,
+  55% {
+    opacity: 0;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    opacity: 0.5;
+    bottom: 0;
+    transform: translate(-50%, 0);
+  }
+}
+
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
-  opacity: calc(0.5 * var(--mi-footer-brand-p, 0));
-  top: calc(54px * var(--mi-s));
-  bottom: auto;
-  transform: translate(-50%, calc((1 - var(--mi-footer-brand-p, 0)) * 70%));
-  visibility: visible;
-  will-change: transform, opacity;
+  opacity: 0;
+  bottom: 0;
+  transform: translate(-50%, 100%);
+  visibility: hidden;
 }
 
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__word,
@@ -304,6 +314,11 @@
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__hand--r {
   animation: mi-footer-hand-r 2s var(--mi-ease) 40ms forwards;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__brand {
+  visibility: visible;
+  animation: mi-footer-brand 2s var(--mi-ease) forwards;
 }
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__word {
@@ -409,8 +424,7 @@
 
   .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
     opacity: 0.5 !important;
-    top: calc(54px * var(--mi-s)) !important;
-    bottom: auto !important;
+    bottom: 0 !important;
     transform: translateX(-50%) !important;
     animation: none !important;
     visibility: visible !important;
