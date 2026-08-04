@@ -52,14 +52,15 @@
   height: 666px;
 }
 
-/* колоннада 1:121 — left -211, top 276, 2342×1654 */
+/* колоннада 1:121 — 2342×1654, centered on viewport */
 .mi-about__colonnade {
   position: absolute;
-  left: calc(50% - 960px - 211px);
+  left: 50%;
   top: 276px;
   width: 2342px;
   height: 1654px;
   display: block;
+  transform: translateX(-50%);
   z-index: 2;
 }
 
@@ -67,7 +68,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
 }
 
 .mi-about__inner {
