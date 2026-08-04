@@ -10,7 +10,7 @@
 /* —— onfooter / форма 1:33 —— */
 .mi-footer__cta {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,8 +28,8 @@
   pointer-events: none;
   z-index: 0;
   max-width: none;
-  height: auto;
   line-height: 0;
+  overflow: hidden;
 }
 
 .mi-footer__hand img {
@@ -37,16 +37,20 @@
   width: 100%;
   height: 100%;
   max-width: none;
-  object-fit: cover;
-  object-position: bottom;
+  object-fit: contain;
+  object-position: center center;
   mix-blend-mode: screen;
 }
 
-/* руки 5 — left -143, 630×768 (artboard-centered) */
+/* руки 5 — left -143, 630×768; full hand visible in frame */
 .mi-footer__hand--l {
   left: calc(50% - 960px - 143px);
   width: 630px;
   height: 768px;
+}
+
+.mi-footer__hand--l img {
+  object-position: center center;
 }
 
 /* руки 3 — left 1431, 710×768 */
@@ -54,6 +58,10 @@
   left: calc(50% - 960px + 1431px);
   width: 710px;
   height: 768px;
+}
+
+.mi-footer__hand--r img {
+  object-position: center center;
 }
 
 .mi-footer__cta-inner {
@@ -64,6 +72,21 @@
   align-items: center;
   gap: 40px;
   width: 100%;
+}
+
+/* soft glow behind CTA button (Figma form ambience) */
+.mi-footer__cta-inner::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -40px;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(237, 245, 253, 0.28) 0%, rgba(237, 245, 253, 0) 70%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .mi-footer__cta-copy {

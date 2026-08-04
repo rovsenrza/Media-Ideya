@@ -4,11 +4,11 @@
 	<div class="mi-footer__cta">
 		<picture class="mi-footer__hand mi-footer__hand--l">
 			<source srcset="{THEME}/images/footer/hand-left.webp" type="image/webp">
-			<img src="{THEME}/images/footer/hand-left.png" alt="" width="630" height="768" loading="lazy" decoding="async">
+			<img src="{THEME}/images/footer/hand-left.png" alt="" width="1024" height="559" loading="lazy" decoding="async">
 		</picture>
 		<picture class="mi-footer__hand mi-footer__hand--r">
 			<source srcset="{THEME}/images/footer/hand-right.webp" type="image/webp">
-			<img src="{THEME}/images/footer/hand-right.png" alt="" width="710" height="768" loading="lazy" decoding="async">
+			<img src="{THEME}/images/footer/hand-right.png" alt="" width="1024" height="559" loading="lazy" decoding="async">
 		</picture>
 
 		<div class="mi-footer__cta-inner">
