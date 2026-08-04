@@ -1,5 +1,25 @@
-/* Home page glue — section CSS lives in components/ */
+/* Home page glue — Figma 1:30 section stack + spacing
+   hero 0–1561 | services 1561–2587 | about 2587–3638
+   clients 3690–4575 (52px after about) | faq 4575–5751
+   articles 5751–6628 | footer 6628+
+*/
 
 .mi-home {
   width: 100%;
+}
+
+/* Dark canvas so abutting dark sections never flash white gaps */
+.is-home .mi-main {
+  background: var(--mi-color-surface-dark);
+}
+
+/* about → clients: Figma Δ52px (wave already dark; keep continuous navy) */
+.is-home .mi-about + .mi-clients {
+  margin-top: 0;
+}
+
+/* clients → faq / faq → articles: Figma abut (0) */
+.is-home .mi-clients + .mi-faq,
+.is-home .mi-faq + .mi-articles {
+  margin-top: 0;
 }

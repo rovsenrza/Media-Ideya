@@ -4,7 +4,8 @@
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
-  padding: 120px var(--mi-gutter);
+  /* Figma 1:61 — pt/pb 120 */
+  padding: var(--mi-space-section) var(--mi-gutter);
 }
 
 .mi-articles__inner {

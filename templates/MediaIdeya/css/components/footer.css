@@ -16,7 +16,8 @@
   align-items: center;
   gap: 40px;
   width: 100%;
-  padding: 120px var(--mi-gutter);
+  /* Figma 1:33 — pt 120 */
+  padding: var(--mi-space-section) var(--mi-gutter);
   text-align: center;
   border-radius: 60px 60px 0 0;
 }

@@ -6,7 +6,7 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 
 | Node | Section | File |
 |------|---------|------|
-| `1:285` | Hero / banner | `1-285_hero.md` |
+| `1:285` | Hero / banner | `1-285_hero.md` + `jitter/banner-360.md` |
 | `1:31` | Footer + onfooter | `1-31_footer.md` |
 | `1:302` | Header | _(fetch later)_ |
 | `1:266` | Services | _(fetch later)_ |

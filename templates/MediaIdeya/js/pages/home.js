@@ -31,16 +31,25 @@
     }
   }
 
-  /* Hero sticky — progress follows normal native scroll only */
+  /* Hero sticky — scrub maps to video exit (~2.9–5.8s of 360.mp4)
+     p 0–0.35 title lines crop (staggered)
+     p 0–1    columns drift out, statue rises, bottom fade lifts
+  */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
     var lines = hero.querySelectorAll('.mi-hero__title-line');
-    var LINE_STAGGER = 0.1;
-    var LINE_SPAN = 0.22;
+    /* 3 lines exit in ~first 35% — matches text% drop 2900→3400ms */
+    var LINE_STAGGER = 0.08;
+    var LINE_SPAN = 0.16;
     var ticking = false;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
+    }
+
+    function easeOut(t) {
+      t = clamp(t, 0, 1);
+      return 1 - Math.pow(1 - t, 2);
     }
 
     function range() {
@@ -54,7 +63,7 @@
     function apply(p) {
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
       for (var i = 0; i < lines.length; i++) {
-        var t = clamp((p - i * LINE_STAGGER) / LINE_SPAN, 0, 1);
+        var t = easeOut(clamp((p - i * LINE_STAGGER) / LINE_SPAN, 0, 1));
         lines[i].style.setProperty('--mi-line-t', t.toFixed(4));
       }
     }

@@ -5,7 +5,8 @@
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
-  padding: 120px var(--mi-gutter) 80px;
+  /* Figma 1:97 — pt 120 / pb 80 */
+  padding: var(--mi-space-section) var(--mi-gutter) 80px;
   overflow: hidden;
 }
 
