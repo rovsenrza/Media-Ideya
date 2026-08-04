@@ -15,6 +15,13 @@
 ### колоннада (1:121)
 - left -211, top 276, 2342×1654
 - object-fit cover; mask alpha from Figma
+- centered on viewport (`left: 50%; translateX(-50%)`)
+
+### Ellipse 10 (1:124) — glow before button
+- box 1142×359 @ left 389, top 467 (centered)
+- img inset -41.78% / -13.13% → asset 1442×659
+- fill #EDF5FD opacity 0.8 + blur
+- asset: `images/about/glow.svg`
 
 ### плашк (1:263)
 - left 0, top 861, 1920×229.15

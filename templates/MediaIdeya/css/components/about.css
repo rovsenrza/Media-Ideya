@@ -71,6 +71,30 @@
   object-position: center center;
 }
 
+/* Ellipse 10 (1:124) — soft glow behind button; box 1142×359 @ 389,467 */
+.mi-about__glow {
+  position: absolute;
+  left: 50%;
+  top: 467px;
+  width: 1142px;
+  height: 359px;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mi-about__glow img {
+  position: absolute;
+  top: -41.78%;
+  right: -13.13%;
+  bottom: -41.78%;
+  left: -13.13%;
+  width: calc(100% + 26.26%);
+  height: calc(100% + 83.56%);
+  max-width: none;
+  display: block;
+}
+
 .mi-about__inner {
   position: relative;
   z-index: 3;

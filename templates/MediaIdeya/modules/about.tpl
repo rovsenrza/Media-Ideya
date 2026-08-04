@@ -16,6 +16,9 @@
 			<source srcset="{THEME}/images/about/colonnade.webp" type="image/webp">
 			<img src="{THEME}/images/about/colonnade.png" alt="" width="2342" height="1654" loading="lazy" decoding="async">
 		</picture>
+		<div class="mi-about__glow" aria-hidden="true">
+			<img src="{THEME}/images/about/glow.svg" alt="" width="1442" height="659" decoding="async">
+		</div>
 	</div>
 
 	<div class="mi-about__inner">
