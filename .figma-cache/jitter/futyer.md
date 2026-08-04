@@ -8,13 +8,9 @@
 | ms | What |
 |----|------|
 | 0–80 | Dark; legal starts |
-| 0–1100 | Hands slide in from L/R |
-| 150–900 | Brand watermark fade/scale |
-| 320–700 | Title words: Обсудим → ваш → проект |
-| 520–900 | Sub + CTA button fade-up |
-| 280–600 | Contact cols + social L→R |
-| 1100–2000 | Hands nudge ~1.5–2vw toward center |
-| 1500–2000 | Settle |
+| 0–1100 | Hands enter to parked outside pos |
+| 0–2000 | Watermark rises from below → `bottom: 0` (parallel) |
+| 1100–2000 | Hands nudge inward by same park distance (no clip) |
 
 ## Implementation
 
