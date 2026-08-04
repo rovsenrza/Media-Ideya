@@ -164,11 +164,20 @@
   text-align: center;
   color: #fff;
   z-index: 3;
+}
+
+/* Fixed crop box — text slides inside and clips via overflow */
+.mi-hero__title-crop {
+  display: block;
+  overflow: hidden;
+}
+
+.mi-hero__title-track {
   display: flex;
   flex-direction: column;
   align-items: center;
   will-change: transform;
-  transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -110%), 0);
+  transform: translate3d(0, calc(var(--mi-hero-p, 0) * -110%), 0);
 }
 
 .mi-hero__title-line {
@@ -231,7 +240,7 @@
     transition: none !important;
   }
 
-  .mi-hero__title {
-    transform: translateX(-50%) !important;
+  .mi-hero__title-track {
+    transform: none !important;
   }
 }
