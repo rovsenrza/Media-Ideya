@@ -38,16 +38,14 @@
 			</div>
 
 			<h1 class="mi-hero__title">
-				<span class="mi-hero__title-reveal mi-reveal">
-					<span class="mi-hero__title-line">
-						<span class="mi-hero__title-line-inner">Рекламное агентство</span>
-					</span>
-					<span class="mi-hero__title-line">
-						<span class="mi-hero__title-line-inner">с экспертизой рынка</span>
-					</span>
-					<span class="mi-hero__title-line">
-						<span class="mi-hero__title-line-inner">Cross-marketing</span>
-					</span>
+				<span class="mi-hero__title-line">
+					<span class="mi-hero__title-line-inner mi-reveal">Рекламное агентство</span>
+				</span>
+				<span class="mi-hero__title-line">
+					<span class="mi-hero__title-line-inner mi-reveal">с экспертизой рынка</span>
+				</span>
+				<span class="mi-hero__title-line">
+					<span class="mi-hero__title-line-inner mi-reveal">Cross-marketing</span>
 				</span>
 			</h1>
 
