@@ -266,6 +266,48 @@
     });
   }
 
+  /* FAQ — letter-by-letter headline (parallel) + items L→R fade */
+  var faqSection = document.querySelector('.mi-faq[data-aos="faq"]');
+  if (faqSection) {
+    function splitFaqChars(el) {
+      if (!el || el.dataset.split === '1') return;
+      var text = el.textContent;
+      el.setAttribute('aria-label', text);
+      el.textContent = '';
+      for (var i = 0; i < text.length; i++) {
+        var span = document.createElement('span');
+        span.className = 'mi-faq__char';
+        span.style.setProperty('--mi-char-i', String(i));
+        span.setAttribute('aria-hidden', 'true');
+        span.textContent = text.charAt(i) === ' ' ? '\u00A0' : text.charAt(i);
+        el.appendChild(span);
+      }
+      el.dataset.split = '1';
+    }
+
+    splitFaqChars(faqSection.querySelector('.mi-faq__heading'));
+    splitFaqChars(faqSection.querySelector('.mi-faq__label'));
+
+    if (reduce) {
+      faqSection.classList.add('aos-animate');
+    } else if ('IntersectionObserver' in window) {
+      var faqObs = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (!entries[i].isIntersecting) continue;
+            faqSection.classList.add('aos-animate');
+            faqObs.disconnect();
+            break;
+          }
+        },
+        { root: null, rootMargin: '0px 0px -12% 0px', threshold: 0.2 }
+      );
+      faqObs.observe(faqSection);
+    } else {
+      faqSection.classList.add('aos-animate');
+    }
+  }
+
   var faq = document.querySelector('[data-faq]');
   if (faq) {
     faq.addEventListener(

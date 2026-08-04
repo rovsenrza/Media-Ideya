@@ -1,8 +1,10 @@
-<section class="mi-faq" id="faq" aria-label="Вопрос-ответ">
+<section class="mi-faq" id="faq" aria-label="Вопрос-ответ" data-aos="faq">
+	<div class="mi-faq__glow" aria-hidden="true"></div>
+
 	<div class="mi-faq__inner">
-		<header class="mi-section-title mi-section-title--dark">
-			<h2 class="mi-section-title__heading">Отвечаем заранее</h2>
-			<span class="mi-section-title__label">Вопрос-ответ</span>
+		<header class="mi-section-title mi-section-title--dark mi-faq__head">
+			<h2 class="mi-section-title__heading mi-faq__heading">Отвечаем заранее</h2>
+			<span class="mi-section-title__label mi-faq__label">Вопрос-ответ</span>
 		</header>
 
 		<div class="mi-faq__list" data-faq>

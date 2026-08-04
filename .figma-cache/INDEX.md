@@ -12,7 +12,7 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 | `1:266` | Services | _(fetch later)_ |
 | `1:115` | About | `1-115_about.md` + `jitter/o-nas.md` |
 | `1:77` | Clients / partners | _(Figma)_ + `jitter/partnery.md` |
-| `1:97` | FAQ | _(fetch later)_ |
+| `1:97` | FAQ | _(Figma)_ + `jitter/vopros-otvet.md` |
 | `1:61` | Articles | _(fetch later)_ |
 | `1:311` | Services page | _(fetch later)_ |
 

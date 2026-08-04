@@ -1,4 +1,6 @@
-/* FAQ — Figma node 1:97 «5 вопросы» */
+/* FAQ — Figma 1:97 + Jitter «вопрос ответ.mp4»
+   AOS: headline chars parallel (~0.3–1.5s), then items L→R fade (~2.0s+)
+*/
 
 .mi-faq {
   position: relative;
@@ -8,6 +10,24 @@
   /* Figma 1:97 — pt 120 / pb 80 */
   padding: var(--mi-space-section) var(--mi-gutter) 80px;
   overflow: hidden;
+}
+
+/* Ellipse 9 — soft radial glow */
+.mi-faq__glow {
+  position: absolute;
+  left: 50%;
+  top: -272px;
+  width: 876px;
+  height: 876px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(67, 133, 187, 0.28) 0%,
+    rgba(17, 35, 49, 0) 68%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .mi-faq__inner {
@@ -84,4 +104,65 @@
 .mi-faq__item[open] .mi-faq__q {
   padding-bottom: 24px;
   min-height: 0;
+}
+
+/* Letter spans — parallel char reveal */
+.mi-faq__char {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* ——— AOS timeline (вопрос ответ.mp4) ——— */
+.mi-js .mi-faq[data-aos="faq"] .mi-faq__char {
+  opacity: 0;
+  transform: translate3d(0, 0.2em, 0);
+}
+
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__char {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.35s var(--mi-ease),
+    transform 0.35s var(--mi-ease);
+  /* parallel: same index on heading + label share delay (~75ms step, start 300ms) */
+  transition-delay: calc(300ms + var(--mi-char-i, 0) * 75ms);
+}
+
+.mi-js .mi-faq[data-aos="faq"] .mi-faq__item {
+  opacity: 0;
+  transform: translate3d(-48px, 0, 0);
+}
+
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+}
+
+/* items after title (~1.55s), stagger top→bottom with L→R slide */
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__item:nth-child(1) {
+  transition-delay: 1550ms;
+}
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__item:nth-child(2) {
+  transition-delay: 1690ms;
+}
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__item:nth-child(3) {
+  transition-delay: 1830ms;
+}
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__item:nth-child(4) {
+  transition-delay: 1970ms;
+}
+.mi-js .mi-faq[data-aos="faq"].aos-animate .mi-faq__item:nth-child(5) {
+  transition-delay: 2110ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-js .mi-faq[data-aos="faq"] .mi-faq__char,
+  .mi-js .mi-faq[data-aos="faq"] .mi-faq__item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
