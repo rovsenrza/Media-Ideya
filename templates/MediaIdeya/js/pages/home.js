@@ -76,16 +76,21 @@
     sync();
   }
 
-  /* Services z-stack — phase 1 shrink, phase 2 next card covers */
+  /* Services z-stack — section scroll split equally per card;
+     within each step: 50% shrink, 50% cover */
   var stack = document.querySelector('[data-services-stack]');
   if (stack && !reduce) {
     var cards = stack.querySelectorAll('.mi-service-card');
     var stackTick = false;
-    /* first half of approach = shrink; second half = cover only */
-    var SHRINK_SHARE = 0.45;
+    var SHRINK_SHARE = 0.5;
 
     function clampStack(n, a, b) {
       return Math.min(b, Math.max(a, n));
+    }
+
+    function stepPx(card) {
+      var mb = parseFloat(window.getComputedStyle(card).marginBottom);
+      return Math.max(mb || 0, window.innerHeight * 0.5, 1);
     }
 
     function syncStack() {
@@ -95,9 +100,8 @@
         if (i < cards.length - 1) {
           var curTop = cards[i].getBoundingClientRect().top;
           var nextTop = cards[i + 1].getBoundingClientRect().top;
-          var travel = Math.max(cards[i].offsetHeight * 0.55 + window.innerHeight * 0.35, 1);
+          var travel = stepPx(cards[i]);
           var raw = clampStack(1 - (nextTop - curTop) / travel, 0, 1);
-          /* finish scale/opacity before cover finishes */
           if (raw <= SHRINK_SHARE) {
             var t = raw / SHRINK_SHARE;
             p = t * t * (3 - 2 * t);

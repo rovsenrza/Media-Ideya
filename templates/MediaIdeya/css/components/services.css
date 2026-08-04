@@ -6,6 +6,8 @@
   --mi-services-title-h: 120px;
   --mi-services-stick-top: calc(var(--mi-header-height) + 24px);
   --mi-services-card-top: calc(var(--mi-services-stick-top) + var(--mi-services-title-h));
+  /* equal scroll budget per card → next card (section split evenly) */
+  --mi-stack-step: 100vh;
 
   width: 100%;
   background: var(--mi-color-surface-dark);
@@ -69,7 +71,7 @@
 }
 
 .mi-service-card:not(:last-child) {
-  margin-bottom: 50vh;
+  margin-bottom: var(--mi-stack-step);
 }
 
 .mi-service-card:nth-child(1) { --mi-stack-i: 1; }
