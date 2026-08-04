@@ -162,8 +162,10 @@
     syncStack();
   }
 
-  /* Services — soft L→R title when pin enters */
+  /* Services — soft L→R title when sticky pin enters (not tall track) */
   if (services) {
+    var servicesRevealTarget =
+      services.querySelector('.mi-services__pin') || services;
     if (reduce) {
       services.classList.add('aos-animate');
     } else if ('IntersectionObserver' in window) {
@@ -176,9 +178,9 @@
             break;
           }
         },
-        { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+        { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0 }
       );
-      servicesObs.observe(services);
+      servicesObs.observe(servicesRevealTarget);
     } else {
       services.classList.add('aos-animate');
     }
