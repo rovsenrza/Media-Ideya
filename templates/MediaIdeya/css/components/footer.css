@@ -226,6 +226,7 @@
    0–1100 hands L/R in | brand fade
    300–1100 title words | sub+btn
    200–900 contacts L→R | legal early
+   ~1100–2000 hands nudge ~1.5–2% toward center
 */
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__hand--l {
   opacity: 0;
@@ -235,6 +236,37 @@
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__hand--r {
   opacity: 0;
   transform: translate3d(120px, 24px, 0);
+}
+
+@keyframes mi-footer-hand-l {
+  0% {
+    opacity: 0;
+    transform: translate3d(-120px, 24px, 0);
+  }
+  55% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    /* ~1.5–2% viewport toward center after settle */
+    transform: translate3d(1.75vw, 0, 0);
+  }
+}
+
+@keyframes mi-footer-hand-r {
+  0% {
+    opacity: 0;
+    transform: translate3d(120px, 24px, 0);
+  }
+  55% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-1.75vw, 0, 0);
+  }
 }
 
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
@@ -257,21 +289,11 @@
 }
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__hand--l {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 1s var(--mi-ease),
-    transform 1s var(--mi-ease);
-  transition-delay: 0ms;
+  animation: mi-footer-hand-l 2s var(--mi-ease) forwards;
 }
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__hand--r {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 1s var(--mi-ease),
-    transform 1s var(--mi-ease);
-  transition-delay: 40ms;
+  animation: mi-footer-hand-r 2s var(--mi-ease) 40ms forwards;
 }
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__brand {
@@ -381,6 +403,7 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    animation: none !important;
   }
 
   .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {

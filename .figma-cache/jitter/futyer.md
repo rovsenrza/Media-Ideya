@@ -13,6 +13,7 @@
 | 320–700 | Title words: Обсудим → ваш → проект |
 | 520–900 | Sub + CTA button fade-up |
 | 280–600 | Contact cols + social L→R |
+| 1100–2000 | Hands nudge ~1.5–2vw toward center |
 | 1500–2000 | Settle |
 
 ## Implementation
