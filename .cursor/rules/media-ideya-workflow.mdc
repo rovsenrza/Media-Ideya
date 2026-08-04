@@ -19,7 +19,8 @@ Hər yeni user promptundan sonra bu checklist-i **tam** icra et. Skip etmə.
 
 - CMS: **DataLife Engine 20.0**
 - Aktiv skin: `templates/MediaIdeya/`
-- Dizayn: Figma `Bt4qOjgEAEywy7uJCnEQsP` ([Медиа идея](https://www.figma.com/design/Bt4qOjgEAEywy7uJCnEQsP))
+- Dizayn: Figma `kjgO8zApNk7weuAFgIdCPb` ([Медиа идея — Copy](https://www.figma.com/design/kjgO8zApNk7weuAFgIdCPb))
+  - Köhnə (Starter team, limit): `Bt4qOjgEAEywy7uJCnEQsP` — istifadə etmə
 - İlkin breakpoint: **1920px** (dizayn guide; full-bleed bg >1920 kəsilmir)
 - Content max: `--mi-page-width` yalnız daxili kontent/container üçün — hero/fon full-bleed
 - Codebase Memory project: `Media-Ideya`

@@ -17,6 +17,8 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 | `1:31` | Footer | _(fetch later)_ |
 | `1:311` | Services page | _(fetch later)_ |
 
-fileKey: `Bt4qOjgEAEywy7uJCnEQsP`
+fileKey: `kjgO8zApNk7weuAFgIdCPb` (Pro team — aktiv)
+Köhnə: `Bt4qOjgEAEywy7uJCnEQsP` (Starter — istifadə etmə)
 
-Limit reset olanda agent hər section üçün MCP oxuyub bu cədvələ uyğun `.md` yazır.
+URL: https://www.figma.com/design/kjgO8zApNk7weuAFgIdCPb
+
