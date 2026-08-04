@@ -270,16 +270,14 @@
 }
 
 @keyframes mi-footer-brand {
-  0% {
+  /* stay below layout & invisible while hands enter (0–55%) */
+  0%,
+  55% {
     opacity: 0;
     bottom: 0;
     transform: translate(-50%, 100%);
   }
-  55% {
-    opacity: 0.45;
-    bottom: 0;
-    transform: translate(-50%, 35%);
-  }
+  /* rise with hands inward nudge → stuck to footer bottom */
   100% {
     opacity: 0.5;
     bottom: 0;
@@ -291,6 +289,7 @@
   opacity: 0;
   bottom: 0;
   transform: translate(-50%, 100%);
+  visibility: hidden;
 }
 
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__word,
@@ -316,6 +315,7 @@
 }
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__brand {
+  visibility: visible;
   animation: mi-footer-brand 2s var(--mi-ease) forwards;
 }
 

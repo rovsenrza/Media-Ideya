@@ -8,9 +8,8 @@
 | ms | What |
 |----|------|
 | 0–80 | Dark; legal starts |
-| 0–1100 | Hands enter to parked outside pos |
-| 0–2000 | Watermark rises from below → `bottom: 0` (parallel) |
-| 1100–2000 | Hands nudge inward by same park distance (no clip) |
+| 0–1100 | Hands enter to parked outside; watermark hidden below |
+| 1100–2000 | Hands nudge inward + watermark rises → `bottom: 0` |
 
 ## Implementation
 
