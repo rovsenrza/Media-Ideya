@@ -76,6 +76,42 @@
     sync();
   }
 
+  /* Services z-stack — under card scales to 0.7 + opacity 0.7 as next covers it */
+  var stack = document.querySelector('[data-services-stack]');
+  if (stack && !reduce) {
+    var cards = stack.querySelectorAll('.mi-service-card');
+    var stackTick = false;
+
+    function clampStack(n, a, b) {
+      return Math.min(b, Math.max(a, n));
+    }
+
+    function syncStack() {
+      stackTick = false;
+      for (var i = 0; i < cards.length; i++) {
+        var p = 0;
+        if (i < cards.length - 1) {
+          var curTop = cards[i].getBoundingClientRect().top;
+          var nextTop = cards[i + 1].getBoundingClientRect().top;
+          var travel = Math.max(cards[i].offsetHeight * 0.85, 1);
+          p = clampStack(1 - (nextTop - curTop) / travel, 0, 1);
+        }
+        cards[i].style.setProperty('--mi-stack-p', p.toFixed(4));
+      }
+    }
+
+    function onStackScroll() {
+      if (!stackTick) {
+        stackTick = true;
+        requestAnimationFrame(syncStack);
+      }
+    }
+
+    window.addEventListener('scroll', onStackScroll, { passive: true });
+    window.addEventListener('resize', onStackScroll, { passive: true });
+    syncStack();
+  }
+
   var scrollBtn = document.querySelector('.mi-hero__scroll');
   if (scrollBtn) {
     scrollBtn.addEventListener('click', function (e) {
