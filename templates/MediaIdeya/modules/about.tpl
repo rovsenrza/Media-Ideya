@@ -14,7 +14,7 @@
 		</picture>
 		<picture class="mi-about__colonnade">
 			<source srcset="{THEME}/images/about/colonnade.webp" type="image/webp">
-			<img src="{THEME}/images/about/colonnade.png" alt="" width="2342" height="1654" decoding="async">
+			<img src="{THEME}/images/about/colonnade.png" alt="" width="2342" height="1654" loading="lazy" decoding="async">
 		</picture>
 	</div>
 

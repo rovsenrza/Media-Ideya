@@ -13,8 +13,10 @@
 - Title: 96 Medium white, center
 - Sub: 20 Light white, gap 24 from title
 - Button: #4385bb, px 48 py 24, radius 100, 20 Medium
-- Hand R: 710×768, left 1431, top -142
-- Hand L: 630×768, left -143, top -142
+- Hand R: 710×768, left 1431, top -142; object-bottom; mix-blend screen
+- Hand L: 630×768, left -143, top -142; object-bottom; mix-blend screen
+- Brand watermark 1:32: top 572 within footer, ~325px, #0d304c opacity 0.5
+- overflow:visible on footer/cta (hands extend into bar)
 
 ### подвал (1:40)
 - border-top: rgba(67,133,187,0.5)

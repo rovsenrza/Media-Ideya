@@ -3,17 +3,19 @@
 .mi-about {
   position: relative;
   width: 100%;
+  min-height: 1051px;
   overflow: hidden;
-  background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 100%);
+  background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 117.08%);
   color: var(--mi-color-surface-dark);
-  padding: 140px var(--mi-gutter) 0;
+  padding: 140px var(--mi-gutter) 331px;
 }
 
 .mi-about__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 0;
 }
 
 .mi-about__cloud {
@@ -28,46 +30,49 @@
   object-fit: cover;
 }
 
+/* облака — metadata coords relative to 1:115 */
 .mi-about__cloud--a {
-  left: calc(50% - 960px);
+  left: calc(50% - 960px - 247px);
   top: 124px;
   width: 1635px;
   height: 666px;
 }
 
 .mi-about__cloud--b {
-  left: calc(50% - 960px + 59px);
+  left: calc(50% - 960px - 188px);
   top: 252px;
   width: 2296px;
   height: 936px;
 }
 
 .mi-about__cloud--c {
-  left: calc(50% - 960px + 807px);
+  left: calc(50% - 960px + 560px);
   top: 21px;
   width: 1635px;
   height: 666px;
 }
 
+/* колоннада 1:121 — left -211, top 276, 2342×1654 */
 .mi-about__colonnade {
   position: absolute;
-  left: 50%;
-  bottom: -80px;
-  width: min(2342px, 140%);
-  transform: translateX(-50%);
+  left: calc(50% - 960px - 211px);
+  top: 276px;
+  width: 2342px;
+  height: 1654px;
   display: block;
+  z-index: 2;
 }
 
 .mi-about__colonnade img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: bottom center;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .mi-about__inner {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +80,6 @@
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
-  padding-bottom: 120px;
 }
 
 .mi-about__text {
@@ -94,6 +98,7 @@
   font-size: var(--mi-fs-96);
   font-weight: 500;
   line-height: 1.1;
+  color: var(--mi-color-surface-dark);
 }
 
 .mi-about__desc {
@@ -102,6 +107,7 @@
   font-size: var(--mi-fs-20);
   font-weight: 300;
   line-height: 1.5;
+  color: var(--mi-color-surface-dark);
 }
 
 .mi-about__stats {
@@ -145,17 +151,23 @@
   line-height: 1.5;
 }
 
+/* плашк 1:263 — top 861, h 229.15; колоннада overlays it */
 .mi-about__wave {
-  position: relative;
-  z-index: 3;
-  display: block;
+  position: absolute;
+  left: 50%;
+  top: 861px;
+  transform: translateX(-50%);
+  z-index: 1;
   width: 100%;
-  margin-top: -40px;
+  min-width: 1920px;
+  height: 229px;
   line-height: 0;
+  pointer-events: none;
 }
 
 .mi-about__wave img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: fill;
 }

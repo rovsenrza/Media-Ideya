@@ -4,13 +4,13 @@
   position: relative;
   background: linear-gradient(180deg, #0d2f4c 0%, #112331 45.269%);
   color: var(--mi-color-inverse);
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* —— onfooter / форма —— */
+/* —— onfooter / форма 1:33 —— */
 .mi-footer__cta {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,6 +18,7 @@
   padding: 120px var(--mi-gutter);
   text-align: center;
   border-radius: 60px 60px 0 0;
+  isolation: isolate;
 }
 
 .mi-footer__hand {
@@ -33,14 +34,17 @@
   height: 100%;
   object-fit: cover;
   object-position: bottom;
+  mix-blend-mode: screen;
 }
 
+/* руки 5 — left -143, 630×768 */
 .mi-footer__hand--l {
   left: calc(50% - 960px - 143px);
   width: 630px;
   height: 768px;
 }
 
+/* руки 3 — left 1431, 710×768 */
 .mi-footer__hand--r {
   left: calc(50% - 960px + 1431px);
   width: 710px;
@@ -86,21 +90,12 @@
   margin: 0;
 }
 
-/* —— подвал —— */
-.mi-footer__bar {
-  position: relative;
-  padding: 40px var(--mi-gutter);
-  border-top: 1px solid rgba(67, 133, 187, 0.5);
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-}
-
+/* Brand watermark — footer 1:32 @ y=572, 1739×358 */
 .mi-footer__brand {
   position: absolute;
   left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 35%);
+  top: 572px;
+  transform: translateX(-50%);
   margin: 0;
   font-family: var(--mi-font);
   font-size: 325px;
@@ -114,6 +109,18 @@
   pointer-events: none;
   user-select: none;
   z-index: 0;
+}
+
+/* —— подвал 1:40 —— */
+.mi-footer__bar {
+  position: relative;
+  z-index: 1;
+  padding: 40px var(--mi-gutter);
+  border-top: 1px solid rgba(67, 133, 187, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  overflow: hidden;
 }
 
 .mi-footer__inner {

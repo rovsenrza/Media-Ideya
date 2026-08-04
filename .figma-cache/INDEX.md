@@ -10,7 +10,7 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 | `1:31` | Footer + onfooter | `1-31_footer.md` |
 | `1:302` | Header | _(fetch later)_ |
 | `1:266` | Services | _(fetch later)_ |
-| `1:115` | About | _(fetch later)_ |
+| `1:115` | About | `1-115_about.md` |
 | `1:77` | Clients | _(fetch later)_ |
 | `1:97` | FAQ | _(fetch later)_ |
 | `1:61` | Articles | _(fetch later)_ |

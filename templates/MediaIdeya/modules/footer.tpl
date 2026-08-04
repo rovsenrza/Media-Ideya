@@ -1,4 +1,6 @@
 <footer class="mi-footer" id="footer">
+	<div class="mi-footer__brand" aria-hidden="true">MEDIA IDEYA</div>
+
 	<div class="mi-footer__cta">
 		<picture class="mi-footer__hand mi-footer__hand--l">
 			<source srcset="{THEME}/images/footer/hand-left.webp" type="image/webp">
@@ -19,8 +21,6 @@
 	</div>
 
 	<div class="mi-footer__bar">
-		<div class="mi-footer__brand" aria-hidden="true">MEDIA IDEYA</div>
-
 		<div class="mi-footer__inner">
 			<div class="mi-footer__contacts">
 				<div class="mi-footer__col">
