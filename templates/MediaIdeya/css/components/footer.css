@@ -84,6 +84,15 @@
   white-space: nowrap;
 }
 
+.mi-footer__word {
+  display: inline-block;
+  margin-right: 0.33em;
+}
+
+.mi-footer__word:last-child {
+  margin-right: 0;
+}
+
 .mi-footer__cta-text {
   margin: 0;
   font-size: var(--mi-fs-20);
@@ -211,4 +220,176 @@
 .mi-footer__legal a {
   opacity: 0.5;
   color: #fff;
+}
+
+/* ——— AOS (футер.mp4 ~2.03s) ———
+   0–1100 hands L/R in | brand fade
+   300–1100 title words | sub+btn
+   200–900 contacts L→R | legal early
+*/
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__hand--l {
+  opacity: 0;
+  transform: translate3d(-120px, 24px, 0);
+}
+
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__hand--r {
+  opacity: 0;
+  transform: translate3d(120px, 24px, 0);
+}
+
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
+  opacity: 0;
+  transform: translate(-50%, 100%) scale(0.96);
+}
+
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__word,
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__cta-text,
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__cta-btn {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+}
+
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__col,
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__social,
+.mi-js .mi-footer[data-aos="footer"] .mi-footer__legal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__hand--l {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 1s var(--mi-ease),
+    transform 1s var(--mi-ease);
+  transition-delay: 0ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__hand--r {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 1s var(--mi-ease),
+    transform 1s var(--mi-ease);
+  transition-delay: 40ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__brand {
+  opacity: 0.5;
+  transform: translate(-50%, 100%) scale(1);
+  transition:
+    opacity 0.9s var(--mi-ease),
+    transform 0.9s var(--mi-ease);
+  transition-delay: 150ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__word {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__word:nth-child(1) {
+  transition-delay: 320ms;
+}
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__word:nth-child(2) {
+  transition-delay: 480ms;
+}
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__word:nth-child(3) {
+  transition-delay: 640ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__cta-text {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s var(--mi-ease),
+    transform 0.6s var(--mi-ease);
+  transition-delay: 520ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__cta-btn {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+  transition-delay: 650ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__col:nth-child(1) {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+  transition-delay: 280ms;
+}
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__col:nth-child(2) {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+  transition-delay: 380ms;
+}
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__col:nth-child(3) {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+  transition-delay: 480ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__social {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+  transition-delay: 580ms;
+}
+
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__legal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s var(--mi-ease),
+    transform 0.5s var(--mi-ease);
+  transition-delay: 80ms;
+}
+
+/* legal children keep 0.5 label opacity via span/a rules after parent animates */
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__legal span,
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__legal a {
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__hand--l,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__hand--r,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__word,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__cta-text,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__cta-btn,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__col,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__social,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__legal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
+    opacity: 0.5 !important;
+    transform: translate(-50%, 100%) !important;
+  }
+
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__legal span,
+  .mi-js .mi-footer[data-aos="footer"] .mi-footer__legal a {
+    opacity: 0.5 !important;
+  }
 }

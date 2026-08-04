@@ -1,4 +1,4 @@
-<footer class="mi-footer" id="footer">
+<footer class="mi-footer" id="footer" data-aos="footer">
 	<div class="mi-footer__brand" aria-hidden="true">MEDIA IDEYA</div>
 
 	<div class="mi-footer__cta">
@@ -13,10 +13,14 @@
 
 		<div class="mi-footer__cta-inner">
 			<div class="mi-footer__cta-copy">
-				<h2 class="mi-footer__cta-title">Обсудим ваш проект</h2>
+				<h2 class="mi-footer__cta-title">
+					<span class="mi-footer__word">Обсудим</span>
+					<span class="mi-footer__word">ваш</span>
+					<span class="mi-footer__word">проект</span>
+				</h2>
 				<p class="mi-footer__cta-text">Оставьте заявку — перезвоним и разберём, что сработает именно для вас</p>
 			</div>
-			<a class="mi-btn" href="/index.php?do=feedback">Оставить заявку</a>
+			<a class="mi-btn mi-footer__cta-btn" href="/index.php?do=feedback">Оставить заявку</a>
 		</div>
 	</div>
 
