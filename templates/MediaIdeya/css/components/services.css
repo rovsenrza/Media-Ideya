@@ -38,8 +38,8 @@
 .mi-services__list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  /* last card can fully clear before next section */
+  gap: 0;
+  /* room: 1) shrink under-card  2) next card covers */
   padding-bottom: 20vh;
 }
 
@@ -55,16 +55,21 @@
   justify-content: space-between;
   width: 100%;
   min-height: 740px;
+  margin-bottom: 0;
   padding: 80px;
   background: var(--mi-color-surface-soft);
   border-radius: var(--mi-radius-card);
   color: var(--mi-color-surface-dark);
   overflow: hidden;
   transform-origin: center center;
-  /* covered card: -30% scale, -30% opacity */
+  /* covered card: -30% scale, -30% opacity (p finishes before cover phase) */
   transform: scale(calc(1 - var(--mi-stack-p) * 0.3));
   opacity: calc(1 - var(--mi-stack-p) * 0.3);
   will-change: transform, opacity;
+}
+
+.mi-service-card:not(:last-child) {
+  margin-bottom: 50vh;
 }
 
 .mi-service-card:nth-child(1) { --mi-stack-i: 1; }

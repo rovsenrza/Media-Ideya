@@ -76,11 +76,13 @@
     sync();
   }
 
-  /* Services z-stack — under card scales to 0.7 + opacity 0.7 as next covers it */
+  /* Services z-stack — phase 1 shrink, phase 2 next card covers */
   var stack = document.querySelector('[data-services-stack]');
   if (stack && !reduce) {
     var cards = stack.querySelectorAll('.mi-service-card');
     var stackTick = false;
+    /* first half of approach = shrink; second half = cover only */
+    var SHRINK_SHARE = 0.45;
 
     function clampStack(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -93,8 +95,15 @@
         if (i < cards.length - 1) {
           var curTop = cards[i].getBoundingClientRect().top;
           var nextTop = cards[i + 1].getBoundingClientRect().top;
-          var travel = Math.max(cards[i].offsetHeight * 0.85, 1);
-          p = clampStack(1 - (nextTop - curTop) / travel, 0, 1);
+          var travel = Math.max(cards[i].offsetHeight * 0.55 + window.innerHeight * 0.35, 1);
+          var raw = clampStack(1 - (nextTop - curTop) / travel, 0, 1);
+          /* finish scale/opacity before cover finishes */
+          if (raw <= SHRINK_SHARE) {
+            var t = raw / SHRINK_SHARE;
+            p = t * t * (3 - 2 * t);
+          } else {
+            p = 1;
+          }
         }
         cards[i].style.setProperty('--mi-stack-p', p.toFixed(4));
       }
