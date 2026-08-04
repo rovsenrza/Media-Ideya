@@ -74,21 +74,6 @@
   width: 100%;
 }
 
-/* soft glow behind CTA button (Figma form ambience) */
-.mi-footer__cta-inner::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -40px;
-  transform: translateX(-50%);
-  width: 720px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(237, 245, 253, 0.28) 0%, rgba(237, 245, 253, 0) 70%);
-  pointer-events: none;
-  z-index: -1;
-}
-
 .mi-footer__cta-copy {
   display: flex;
   flex-direction: column;
