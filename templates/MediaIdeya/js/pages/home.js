@@ -31,7 +31,7 @@
     }
   }
 
-  /* Hero sticky — swipe snap start↔end (no mid sticky rest) */
+  /* Hero sticky — snap assist, free pass on continuous scroll (no freeze) */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
     var lines = hero.querySelectorAll('.mi-hero__title-line');
@@ -39,13 +39,14 @@
     var snapping = false;
     var snapRaf = 0;
     var snapTarget = null;
-    /* hard lock scroll Y after snap — kills trackpad momentum 2nd scroll */
-    var freezeY = null;
-    var freezeTimer = 0;
+    var burst = 0;
+    var burstDir = 0;
+    var burstTimer = 0;
+    var passThrough = false;
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
     var SNAP_MS = 1200;
-    var FREEZE_IDLE_MS = 550;
+    var BURST_EXIT = 4;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -76,51 +77,38 @@
       }
     }
 
-    function clearFreezeLater() {
-      window.clearTimeout(freezeTimer);
-      freezeTimer = window.setTimeout(function () {
-        freezeY = null;
-        snapTarget = null;
-      }, FREEZE_IDLE_MS);
-    }
-
-    function armFreeze(y) {
-      freezeY = y;
-      clearFreezeLater();
-    }
-
     function easeOutCubic(t) {
       return 1 - Math.pow(1 - t, 3);
     }
 
+    function cancelSnap() {
+      if (snapRaf) cancelAnimationFrame(snapRaf);
+      snapRaf = 0;
+      snapping = false;
+      snapTarget = null;
+    }
+
     function snapTo(target) {
       target = target >= 0.5 ? 1 : 0;
-
+      if (passThrough) return;
       if (snapping && snapTarget === target) return;
 
-      var top = heroDocTop();
-      var endY = Math.round(top + target * range());
-
+      var endY = Math.round(heroDocTop() + target * range());
       if (!snapping && Math.abs(progress() - target) < 0.02) {
-        window.scrollTo(0, endY);
         applyProgress(target);
-        snapTarget = target;
-        armFreeze(endY);
         return;
       }
 
       var startP = progress();
       var startY = window.pageYOffset;
-
       if (snapRaf) cancelAnimationFrame(snapRaf);
       snapping = true;
       snapTarget = target;
-      freezeY = null;
-      window.clearTimeout(freezeTimer);
 
       var t0 = performance.now();
 
       function step(now) {
+        if (!snapping) return;
         var t = clamp((now - t0) / SNAP_MS, 0, 1);
         var e = easeOutCubic(t);
         var p = startP + (target - startP) * e;
@@ -136,64 +124,74 @@
         applyProgress(target);
         snapping = false;
         snapRaf = 0;
-        armFreeze(endY);
+        snapTarget = null;
       }
 
       snapRaf = requestAnimationFrame(step);
     }
 
     function onScroll() {
-      /* momentum after snap → pin back to freezeY (no 2nd scroll) */
-      if (freezeY != null && !snapping) {
-        if (Math.abs(window.pageYOffset - freezeY) > 0.5) {
-          window.scrollTo(0, freezeY);
-        }
-        clearFreezeLater();
-        return;
-      }
-
       if (snapping) return;
-
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(function () {
           ticking = false;
-          if (snapping || freezeY != null) return;
+          if (snapping) return;
           applyProgress(progress());
         });
       }
     }
 
+    function noteBurst(dir) {
+      window.clearTimeout(burstTimer);
+      if (dir !== burstDir) {
+        burst = 0;
+        burstDir = dir;
+        passThrough = false;
+      }
+      burst += 1;
+      if (burst >= BURST_EXIT) passThrough = true;
+      burstTimer = window.setTimeout(function () {
+        burst = 0;
+        burstDir = 0;
+        passThrough = false;
+      }, 180);
+    }
+
     function onWheel(e) {
-      if (snapping || freezeY != null) {
-        e.preventDefault();
-        if (freezeY != null) {
-          window.scrollTo(0, freezeY);
-          clearFreezeLater();
+      var dir = e.deltaY > 4 ? 1 : e.deltaY < -4 ? -1 : 0;
+      if (!dir) return;
+
+      noteBurst(dir);
+
+      /* continuous scroll → free exit / free travel, no pause */
+      if (passThrough) {
+        if (snapping) {
+          cancelSnap();
+          applyProgress(progress());
         }
         return;
       }
 
       var p = progress();
-      var pinned = isPinned();
 
-      if (pinned || (p > 0.02 && p < 0.98)) {
-        if (e.deltaY > 4) {
-          e.preventDefault();
-          snapTo(1);
-        } else if (e.deltaY < -4) {
-          e.preventDefault();
-          snapTo(0);
+      /* already at sticky end/start → never trap, keep going */
+      if (dir > 0 && p >= 0.97) return;
+      if (dir < 0 && p <= 0.03) return;
+
+      if (snapping) {
+        /* extra flicks during snap also count toward free exit */
+        if (passThrough) {
+          cancelSnap();
+          return;
         }
+        e.preventDefault();
         return;
       }
 
-      if (p >= 0.98 && e.deltaY < -4) {
-        var bottom = hero.getBoundingClientRect().bottom;
-        if (bottom > window.innerHeight * 0.4) {
-          e.preventDefault();
-          snapTo(0);
-        }
+      if (isPinned() || (p > 0.02 && p < 0.98)) {
+        e.preventDefault();
+        snapTo(dir > 0 ? 1 : 0);
       }
     }
 
@@ -208,14 +206,14 @@
       }
       var dy = touchY - e.changedTouches[0].clientY;
       touchY = null;
-      if (snapping || freezeY != null) return;
+      if (passThrough || snapping) return;
       if (!isPinned() && progress() < 0.98) return;
       var p = progress();
-      if (dy > 28 && p < 0.99) snapTo(1);
-      else if (dy < -28 && p > 0.01) snapTo(0);
+      if (dy > 28 && p < 0.97) snapTo(1);
+      else if (dy < -28 && p > 0.03) snapTo(0);
     }
 
-    window.addEventListener('scroll', onScroll, { passive: false });
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     window.addEventListener('wheel', onWheel, { passive: false, capture: true });
     window.addEventListener('touchstart', onTouchStart, { passive: true });
