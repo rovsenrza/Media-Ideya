@@ -60,24 +60,24 @@
   }
 
   /* Hero sticky — scrub maps to video exit (~2.9–5.8s of 360.mp4)
-     p 0–0.35 title lines crop (staggered)
-     p 0–1    columns drift out, statue rises
-     First wheel/touch from top → GSAP snap to banner end, then free scroll.
-     Scroll up stays native (no lock).
+     First scroll from top → GSAP Observer + progress tween (no ScrollTo lag).
+     Later scrolls + scroll up stay native.
   */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
     var lines = hero.querySelectorAll('.mi-hero__title-line');
-    /* 3 lines exit in ~first 35% — matches text% drop 2900→3400ms */
     var LINE_STAGGER = 0.08;
     var LINE_SPAN = 0.16;
     var ticking = false;
+    var snapping = false;
     var snapTween = null;
-    var TOP_EPS = 12;
-    var hasGsap = typeof window.gsap !== 'undefined' && window.gsap.registerPlugin;
+    var heroSnap = { p: 0 };
+    var TOP_EPS = 4;
+    var hasGsap = typeof window.gsap !== 'undefined';
+    var gsap = hasGsap ? window.gsap : null;
 
-    if (hasGsap && window.ScrollToPlugin) {
-      window.gsap.registerPlugin(window.ScrollToPlugin);
+    if (gsap && window.Observer) {
+      gsap.registerPlugin(window.Observer);
     }
 
     function clamp(n, a, b) {
@@ -93,11 +93,12 @@
       return Math.max(hero.offsetHeight - window.innerHeight, 1);
     }
 
-    function progress() {
+    function readProgress() {
       return clamp(-hero.getBoundingClientRect().top / range(), 0, 1);
     }
 
-    function apply(p) {
+    function applyProgress(p) {
+      heroSnap.p = p;
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
       for (var i = 0; i < lines.length; i++) {
         var t = easeOut(clamp((p - i * LINE_STAGGER) / LINE_SPAN, 0, 1));
@@ -107,7 +108,8 @@
 
     function sync() {
       ticking = false;
-      apply(progress());
+      if (snapping) return;
+      applyProgress(readProgress());
     }
 
     function onScroll() {
@@ -122,101 +124,114 @@
       return Math.max(0, Math.round(docTop + hero.offsetHeight - window.innerHeight));
     }
 
-    function atPageTop() {
-      return window.pageYOffset <= TOP_EPS;
+    function atHeroStart() {
+      return window.pageYOffset <= TOP_EPS && heroSnap.p < 0.02;
     }
 
-    function isSnapping() {
-      return !!(snapTween && snapTween.isActive());
+    function finishSnap() {
+      var endY = heroEndY();
+      window.scrollTo(0, endY);
+      applyProgress(1);
+      snapping = false;
+      snapTween = null;
+      document.documentElement.classList.remove('is-hero-snapping');
+    }
+
+    function cancelSnap() {
+      if (!snapTween) return;
+      snapTween.kill();
+      snapTween = null;
+      snapping = false;
+      document.documentElement.classList.remove('is-hero-snapping');
+      applyProgress(readProgress());
     }
 
     function snapToHeroEnd() {
-      if (!hasGsap || !window.ScrollToPlugin) {
-        window.scrollTo(0, heroEndY());
-        apply(1);
+      if (!gsap || snapping || heroSnap.p >= 0.995) return;
+
+      var endY = heroEndY();
+      var startP = heroSnap.p;
+      var startY = window.pageYOffset;
+
+      if (startP >= 0.995) {
+        finishSnap();
         return;
       }
-      if (isSnapping()) return;
 
-      snapTween = window.gsap.to(window, {
-        duration: 1.15,
-        ease: 'power3.inOut',
-        scrollTo: { y: heroEndY(), autoKill: false },
+      snapping = true;
+      document.documentElement.classList.add('is-hero-snapping');
+
+      if (snapTween) snapTween.kill();
+
+      snapTween = gsap.to(heroSnap, {
+        p: 1,
+        duration: 0.58,
+        ease: 'power2.inOut',
+        overwrite: true,
         onUpdate: function () {
-          apply(progress());
+          var p = heroSnap.p;
+          var t = startP >= 1 ? 1 : (p - startP) / (1 - startP);
+          applyProgress(p);
+          window.scrollTo(0, Math.round(startY + t * (endY - startY)));
         },
-        onComplete: function () {
-          apply(1);
-          snapTween = null;
-        },
+        onComplete: finishSnap,
       });
-    }
-
-    function shouldCaptureDown() {
-      return atPageTop() && !isSnapping();
-    }
-
-    function onWheel(e) {
-      if (e.deltaY <= 0) {
-        if (isSnapping()) {
-          snapTween.kill();
-          snapTween = null;
-        }
-        return;
-      }
-      if (isSnapping()) {
-        e.preventDefault();
-        return;
-      }
-      if (!shouldCaptureDown()) return;
-      e.preventDefault();
-      snapToHeroEnd();
-    }
-
-    var touchStartY = null;
-    function onTouchStart(e) {
-      if (!e.touches || !e.touches.length) return;
-      touchStartY = e.touches[0].clientY;
-    }
-
-    function onTouchMove(e) {
-      if (touchStartY == null || !e.touches || !e.touches.length) return;
-      var dy = touchStartY - e.touches[0].clientY;
-      if (dy < 14) return;
-      if (!shouldCaptureDown()) {
-        touchStartY = null;
-        return;
-      }
-      e.preventDefault();
-      touchStartY = null;
-      snapToHeroEnd();
     }
 
     function onKeyDown(e) {
       if (e.defaultPrevented) return;
-      var key = e.key;
       var down =
-        key === 'ArrowDown' ||
-        key === 'PageDown' ||
-        key === ' ' ||
-        key === 'Spacebar';
+        e.key === 'ArrowDown' ||
+        e.key === 'PageDown' ||
+        e.key === ' ' ||
+        e.key === 'Spacebar';
       if (!down) return;
-      if (!shouldCaptureDown()) return;
+      if (!atHeroStart() && !snapping) return;
       e.preventDefault();
       snapToHeroEnd();
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
-    window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
     window.addEventListener('keydown', onKeyDown);
     sync();
 
-    /* Scroll cue — smooth GSAP jump toward services / hero end */
+    if (gsap && window.Observer) {
+      window.Observer.create({
+        target: window,
+        type: 'wheel,touch,pointer',
+        tolerance: 8,
+        preventDefault: function () {
+          return snapping || atHeroStart();
+        },
+        onDown: function () {
+          if (snapping) return;
+          if (atHeroStart()) snapToHeroEnd();
+        },
+        onUp: function () {
+          if (snapping) cancelSnap();
+        },
+      });
+    } else {
+      function onWheel(e) {
+        if (e.deltaY <= 0) {
+          if (snapping) cancelSnap();
+          return;
+        }
+        if (snapping) {
+          e.preventDefault();
+          return;
+        }
+        if (!atHeroStart()) return;
+        e.preventDefault();
+        snapToHeroEnd();
+      }
+
+      window.addEventListener('wheel', onWheel, { passive: false, capture: true });
+    }
+
     var scrollCue = hero.querySelector('.mi-hero__scroll');
-    if (scrollCue && hasGsap && window.ScrollToPlugin) {
+    if (scrollCue) {
       scrollCue.addEventListener('click', function (e) {
         e.preventDefault();
         snapToHeroEnd();
