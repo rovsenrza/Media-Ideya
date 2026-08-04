@@ -31,18 +31,13 @@
     }
   }
 
-  /*
-   * Hero scroll — simple:
-   * Inside first section: down → end, up → top
-   * Outside: site-wide slow scroll (main.js)
-   */
+  /* Hero sticky — progress follows normal native scroll only */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
     var lines = hero.querySelectorAll('.mi-hero__title-line');
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
-    var MOVE_MS = 1100;
-    var raf = 0;
+    var ticking = false;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -56,15 +51,6 @@
       return clamp(-hero.getBoundingClientRect().top / range(), 0, 1);
     }
 
-    function docTop() {
-      return hero.getBoundingClientRect().top + window.pageYOffset;
-    }
-
-    function inSection() {
-      var r = hero.getBoundingClientRect();
-      return r.top <= 1 && r.bottom > window.innerHeight + 1;
-    }
-
     function apply(p) {
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
       for (var i = 0; i < lines.length; i++) {
@@ -74,75 +60,19 @@
     }
 
     function sync() {
+      ticking = false;
       apply(progress());
     }
 
-    function scrollToY(y, ms) {
-      if (raf) cancelAnimationFrame(raf);
-      window.MI._scrollLock = true;
-
-      var y0 = window.pageYOffset;
-      var t0 = performance.now();
-
-      function step(now) {
-        var t = clamp((now - t0) / ms, 0, 1);
-        var e = 1 - Math.pow(1 - t, 3);
-        window.scrollTo(0, y0 + (y - y0) * e);
-        sync();
-
-        if (t < 1) {
-          raf = requestAnimationFrame(step);
-          return;
-        }
-
-        window.scrollTo(0, y);
-        sync();
-        raf = 0;
-        window.MI._scrollLock = false;
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(sync);
       }
-
-      raf = requestAnimationFrame(step);
     }
 
-    window.addEventListener(
-      'wheel',
-      function (e) {
-        if (e.ctrlKey) return;
-
-        /* interrupt current move, then apply new direction */
-        if (window.MI._scrollLock) {
-          if (raf) cancelAnimationFrame(raf);
-          raf = 0;
-          window.MI._scrollLock = false;
-          sync();
-        }
-
-        if (!inSection()) return;
-
-        var p = progress();
-        var top = Math.round(docTop());
-        var end = Math.round(top + range());
-
-        if (e.deltaY > 0) {
-          if (p >= 0.98) return;
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          scrollToY(end, MOVE_MS);
-          return;
-        }
-
-        if (e.deltaY < 0) {
-          if (p <= 0.02) return;
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          scrollToY(top, MOVE_MS);
-        }
-      },
-      { passive: false, capture: true }
-    );
-
-    window.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
     sync();
   }
 
