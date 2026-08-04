@@ -23,3 +23,16 @@
 .is-home .mi-faq + .mi-articles {
   margin-top: 0;
 }
+
+/* Lenis + GSAP — native smooth scroll off */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-smooth body {
+  overscroll-behavior: none;
+}
+
+html.lenis.lenis-stopped body {
+  overflow: hidden;
+}
