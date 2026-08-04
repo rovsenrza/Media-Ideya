@@ -3,12 +3,14 @@
 */
 
 .mi-services {
-  --mi-services-title-h: 120px;
+  --mi-services-title-h: 160px;
   --mi-services-stick-top: calc(var(--mi-header-height) + 24px);
   --mi-services-card-top: calc(var(--mi-services-stick-top) + var(--mi-services-title-h));
   /* equal scroll budget per card → next card (section split evenly) */
   --mi-stack-step: 100vh;
 
+  position: relative;
+  isolation: isolate;
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
@@ -24,25 +26,25 @@
   gap: 40px;
 }
 
-/* Title stays pinned while cards stack underneath */
+/* Title stays pinned above the card stack — never under a card */
 .mi-services .mi-section-title {
   position: sticky;
   top: var(--mi-services-stick-top);
-  z-index: 30;
-  padding-bottom: 20px;
-  background: linear-gradient(
-    180deg,
-    var(--mi-color-surface-dark) 70%,
-    rgba(17, 35, 49, 0) 100%
-  );
+  z-index: 50;
+  box-sizing: border-box;
+  min-height: var(--mi-services-title-h);
+  padding-bottom: 24px;
+  background: var(--mi-color-surface-dark);
 }
 
 .mi-services__list {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 0;
-  /* room: 1) shrink under-card  2) next card covers */
-  padding-bottom: 20vh;
+  /* last card also needs a step so it can stick in the stack */
+  padding-bottom: 10vh;
 }
 
 /* Service card — Figma «услуга» 1720×740 — sticky stack */
@@ -57,7 +59,7 @@
   justify-content: space-between;
   width: 100%;
   min-height: 740px;
-  margin-bottom: 0;
+  margin-bottom: var(--mi-stack-step);
   padding: 80px;
   background: var(--mi-color-surface-soft);
   border-radius: var(--mi-radius-card);
@@ -70,7 +72,8 @@
   will-change: transform, opacity;
 }
 
-.mi-service-card:not(:last-child) {
+.mi-service-card:last-child {
+  /* keep one full step so 7/7 can lock into the stack like the others */
   margin-bottom: var(--mi-stack-step);
 }
 
