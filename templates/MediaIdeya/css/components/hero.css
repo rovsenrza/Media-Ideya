@@ -80,28 +80,28 @@
   object-position: bottom center;
 }
 
-/* sutun-sol.png — 428×1493 — scroll: out left + down */
+/* sutun-sol.png — 428×1493 — scroll: out left + down (70% weaker) */
 .mi-hero__col--l {
   left: calc(50% - 960px - 40px);
   top: -40px;
   width: 428px;
   height: 1493px;
   transform: translate3d(
-    calc(var(--mi-hero-p, 0) * -460px),
-    calc(var(--mi-hero-p, 0) * 140px),
+    calc(var(--mi-hero-p, 0) * -138px),
+    calc(var(--mi-hero-p, 0) * 42px),
     0
   );
 }
 
-/* sutun-sag.png — 475×1548 — scroll: out right + down */
+/* sutun-sag.png — 475×1548 — scroll: out right + down (70% weaker) */
 .mi-hero__col--r {
   left: calc(50% - 960px + 1485px);
   top: -60px;
   width: 475px;
   height: 1548px;
   transform: translate3d(
-    calc(var(--mi-hero-p, 0) * 460px),
-    calc(var(--mi-hero-p, 0) * 140px),
+    calc(var(--mi-hero-p, 0) * 138px),
+    calc(var(--mi-hero-p, 0) * 42px),
     0
   );
 }
@@ -112,20 +112,20 @@
   width: 475px;
   height: 1548px;
   transform: translate3d(
-    calc(var(--mi-hero-p, 0) * 520px),
-    calc(var(--mi-hero-p, 0) * 160px),
+    calc(var(--mi-hero-p, 0) * 156px),
+    calc(var(--mi-hero-p, 0) * 48px),
     0
   );
 }
 
-/* statuya.png — 888×1007 — scroll: up */
+/* statuya.png — 888×1007 — scroll: up (30% weaker) */
 .mi-hero__statue {
   position: absolute;
   left: 50%;
   top: 554px;
   width: 888px;
   height: 1007px;
-  transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -420px), 0);
+  transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -294px), 0);
   display: block;
   z-index: 1;
   max-width: none;
