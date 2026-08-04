@@ -308,6 +308,29 @@
     }
   }
 
+  /* Articles — title/label fade-up + cards L→R stagger */
+  var articles = document.querySelector('.mi-articles[data-aos="articles"]');
+  if (articles) {
+    if (reduce) {
+      articles.classList.add('aos-animate');
+    } else if ('IntersectionObserver' in window) {
+      var articlesObs = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (!entries[i].isIntersecting) continue;
+            articles.classList.add('aos-animate');
+            articlesObs.disconnect();
+            break;
+          }
+        },
+        { root: null, rootMargin: '0px 0px -12% 0px', threshold: 0.18 }
+      );
+      articlesObs.observe(articles);
+    } else {
+      articles.classList.add('aos-animate');
+    }
+  }
+
   var faq = document.querySelector('[data-faq]');
   if (faq) {
     faq.addEventListener(
