@@ -20,21 +20,21 @@
 .mi-logo {
   display: flex;
   align-items: center;
-  flex: 0 0 217px;
-  width: 217px;
-  height: 61px;
+  flex: 0 0 calc(217px * var(--mi-s));
+  width: calc(217px * var(--mi-s));
+  height: calc(61px * var(--mi-s));
 }
 
 .mi-logo img {
-  width: 89px;
-  height: 60px;
+  width: calc(89px * var(--mi-s));
+  height: calc(60px * var(--mi-s));
   object-fit: contain;
 }
 
 .mi-nav {
   display: flex;
   align-items: center;
-  gap: clamp(32px, calc(32px + 48 * ((100vw - 992px) / 928)), 80px);
+  gap: calc(80px * var(--mi-s));
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
   font-weight: 500;

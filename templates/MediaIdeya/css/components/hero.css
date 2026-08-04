@@ -173,8 +173,8 @@
 .mi-hero__title {
   position: absolute;
   left: 50%;
-  top: clamp(120px, calc(195px * var(--mi-s)), 195px);
-  width: min(calc(1065px * var(--mi-s)), calc(100% - 2 * var(--mi-gutter)));
+  top: calc(195px * var(--mi-s));
+  width: calc(1065px * var(--mi-s));
   max-width: calc(100% - 2 * var(--mi-gutter));
   transform: translateX(-50%);
   margin: 0;
@@ -215,9 +215,9 @@
 .mi-hero__scroll {
   position: absolute;
   left: 50%;
-  top: min(calc(878px * var(--mi-s)), calc(100vh - 120px));
-  width: clamp(64px, calc(86px * var(--mi-s)), 86px);
-  height: clamp(64px, calc(86px * var(--mi-s)), 86px);
+  top: min(calc(878px * var(--mi-s)), calc(100vh - calc(120px * var(--mi-s))));
+  width: calc(86px * var(--mi-s));
+  height: calc(86px * var(--mi-s));
   transform: translateX(-50%);
   z-index: 4;
   opacity: calc(1 - var(--mi-hero-p, 0) * 1.4);

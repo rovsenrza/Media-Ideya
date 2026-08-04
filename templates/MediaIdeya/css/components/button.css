@@ -4,10 +4,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: clamp(56px, calc(56px + 22 * ((100vw - 992px) / 928)), 78px);
-  padding: clamp(16px, calc(16px + 8 * ((100vw - 992px) / 928)), 24px)
-    clamp(28px, calc(28px + 20 * ((100vw - 992px) / 928)), 48px);
+  gap: calc(10px * var(--mi-s));
+  min-height: calc(78px * var(--mi-s));
+  padding: calc(24px * var(--mi-s)) calc(48px * var(--mi-s));
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
   font-weight: 500;
@@ -24,16 +23,15 @@
 }
 
 .mi-btn__icon {
-  width: 24px;
-  height: 24px;
+  width: calc(24px * var(--mi-s));
+  height: calc(24px * var(--mi-s));
   flex-shrink: 0;
 }
 
 /* Header CTA — 204×61, white pill, text #264A65 */
 .mi-btn--header {
-  min-height: clamp(48px, calc(48px + 13 * ((100vw - 992px) / 928)), 61px);
-  padding: clamp(12px, calc(12px + 6 * ((100vw - 992px) / 928)), 18px)
-    clamp(20px, calc(20px + 12 * ((100vw - 992px) / 928)), 32px);
+  min-height: calc(61px * var(--mi-s));
+  padding: calc(18px * var(--mi-s)) calc(32px * var(--mi-s));
   gap: 0;
   font-size: var(--mi-fs-18);
   line-height: 1.4;
@@ -48,5 +46,5 @@
 }
 
 .mi-btn--icon {
-  min-width: 299px;
+  min-width: calc(299px * var(--mi-s));
 }

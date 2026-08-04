@@ -9,7 +9,7 @@
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
   /* Figma 1:97 — pt 120 / pb 80 */
-  padding: var(--mi-space-section) var(--mi-gutter) clamp(56px, calc(56px + 24 * ((100vw - 992px) / 928)), 80px);
+  padding: var(--mi-space-section) var(--mi-gutter) calc(80px * var(--mi-s));
   /* Ellipse 9 sits at top:-272 — must bleed over partners, not clip */
   overflow: visible;
 }
@@ -66,11 +66,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--mi-space-gap-sm);
-  min-height: clamp(96px, calc(96px + 36 * ((100vw - 992px) / 928)), 132px);
-  padding: clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
-    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
-    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
-    clamp(36px, calc(36px + 24 * ((100vw - 992px) / 928)), 60px);
+  min-height: calc(132px * var(--mi-s));
+  padding: calc(40px * var(--mi-s)) calc(40px * var(--mi-s)) calc(40px * var(--mi-s)) calc(60px * var(--mi-s));
   list-style: none;
   cursor: pointer;
   font-family: var(--mi-font);
@@ -86,9 +83,9 @@
 .mi-faq__icon {
   position: relative;
   flex-shrink: 0;
-  width: clamp(36px, calc(36px + 12 * ((100vw - 992px) / 928)), 48px);
-  height: clamp(36px, calc(36px + 12 * ((100vw - 992px) / 928)), 48px);
-  background: center / 66% 66% no-repeat url("../../images/icons/plus.svg");
+  width: calc(48px * var(--mi-s));
+  height: calc(48px * var(--mi-s));
+  background: center / calc(32px * var(--mi-s)) calc(32px * var(--mi-s)) no-repeat url("../../images/icons/plus.svg");
 }
 
 .mi-faq__item[open] .mi-faq__icon {
@@ -97,11 +94,8 @@
 
 .mi-faq__a {
   margin: 0;
-  padding: 0
-    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
-    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
-    clamp(36px, calc(36px + 24 * ((100vw - 992px) / 928)), 60px);
-  max-width: min(1281px, 100%);
+  padding: 0 calc(40px * var(--mi-s)) calc(40px * var(--mi-s)) calc(60px * var(--mi-s));
+  max-width: calc(1281px * var(--mi-s));
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
   font-weight: 300;

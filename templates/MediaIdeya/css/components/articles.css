@@ -20,17 +20,17 @@
 
 .mi-articles__grid {
   display: flex;
-  gap: clamp(24px, calc(24px + 16 * ((100vw - 992px) / 928)), 40px);
+  gap: calc(40px * var(--mi-s));
   width: 100%;
 }
 
 .mi-article-card {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--mi-space-gap-sm);
   flex: 1 1 0;
   min-width: 0;
-  max-width: 547px;
+  max-width: calc(547px * var(--mi-s));
 }
 
 .mi-article-card__media {

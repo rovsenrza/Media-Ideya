@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px);
+  gap: calc(40px * var(--mi-s));
   width: 100%;
   /* Figma 1:33 — pt 120 */
   padding: var(--mi-space-section) var(--mi-gutter);
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px);
+  gap: calc(40px * var(--mi-s));
   width: 100%;
 }
 
@@ -115,7 +115,7 @@
   transform: translateX(-50%);
   margin: 0;
   font-family: var(--mi-font);
-  font-size: clamp(140px, calc(140px + 185.262 * ((100vw - 992px) / 928)), 325.262px);
+  font-size: calc(325.262px * var(--mi-s));
   font-weight: 600;
   /* cap-height ≈ flush; kills leftover gap under letters */
   line-height: 0.72;
@@ -136,12 +136,12 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px) var(--mi-gutter);
+  padding: calc(40px * var(--mi-s)) var(--mi-gutter);
   border-top: 1px solid rgba(67, 133, 187, 0.5);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(48px, calc(48px + 52 * ((100vw - 992px) / 928)), 100px);
+  gap: calc(100px * var(--mi-s));
 }
 
 .mi-footer__inner {
@@ -157,7 +157,7 @@
 
 .mi-footer__contacts {
   display: flex;
-  gap: clamp(48px, calc(48px + 72 * ((100vw - 992px) / 928)), 120px);
+  gap: calc(120px * var(--mi-s));
   align-items: flex-start;
 }
 
@@ -201,9 +201,8 @@
 }
 
 .mi-footer__social-img {
-  width: clamp(160px, calc(160px + 64 * ((100vw - 992px) / 928)), 224px);
-  height: auto;
-  aspect-ratio: 224 / 64;
+  width: calc(224px * var(--mi-s));
+  height: calc(64px * var(--mi-s));
   max-width: none;
   display: block;
 }

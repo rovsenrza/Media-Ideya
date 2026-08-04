@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 547px;
+  max-width: calc(547px * var(--mi-s));
 }
 
 .mi-card__media {

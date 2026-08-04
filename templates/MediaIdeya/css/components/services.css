@@ -3,8 +3,8 @@
 */
 
 .mi-services {
-  --mi-services-title-h: clamp(100px, calc(100px + 40 * ((100vw - 992px) / 928)), 140px);
-  --mi-services-stick-top: calc(var(--mi-header-height) + 16px);
+  --mi-services-title-h: calc(140px * var(--mi-s));
+  --mi-services-stick-top: calc(var(--mi-header-height) + calc(16px * var(--mi-s)));
   --mi-stack-step: 100vh;
   --mi-stack-count: 7;
 
@@ -29,13 +29,13 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: calc(24px * var(--mi-s));
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
   height: calc(100vh - var(--mi-services-stick-top));
   box-sizing: border-box;
-  padding-bottom: 24px;
+  padding-bottom: calc(24px * var(--mi-s));
   overflow: hidden;
   background: var(--mi-color-surface-dark);
 }
@@ -88,8 +88,8 @@
   width: 100%;
   height: 100%;
   min-height: 0;
-  max-height: min(740px, calc(100% - 0px));
-  padding: clamp(40px, calc(40px + 40 * ((100vw - 992px) / 928)), 80px);
+  max-height: calc(740px * var(--mi-s));
+  padding: calc(80px * var(--mi-s));
   box-sizing: border-box;
   background: var(--mi-color-surface-soft);
   border-radius: var(--mi-radius-card);
@@ -107,7 +107,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: min(658px, 48%);
+  width: calc(658px * var(--mi-s));
   max-width: 48%;
   min-height: 0;
   height: 100%;
@@ -125,7 +125,7 @@
 .mi-service-card__content {
   display: flex;
   flex-direction: column;
-  gap: clamp(24px, calc(24px + 16 * ((100vw - 992px) / 928)), 40px);
+  gap: calc(40px * var(--mi-s));
   width: 100%;
 }
 
@@ -140,7 +140,7 @@
 
 .mi-service-card__list {
   margin: 0;
-  padding: 0 0 0 30px;
+  padding: 0 0 0 calc(30px * var(--mi-s));
   list-style: disc;
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
@@ -150,13 +150,13 @@
 }
 
 .mi-service-card__text + .mi-service-card__list {
-  margin-top: -20px;
+  margin-top: calc(-20px * var(--mi-s));
 }
 
 .mi-service-card__count {
   position: absolute;
-  top: clamp(40px, calc(40px + 40 * ((100vw - 992px) / 928)), 80px);
-  right: clamp(40px, calc(40px + 40 * ((100vw - 992px) / 928)), 80px);
+  top: calc(80px * var(--mi-s));
+  right: calc(80px * var(--mi-s));
   z-index: 3;
   font-family: var(--mi-font);
   font-size: var(--mi-fs-40);
@@ -170,7 +170,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: min(860px, 50%);
+  width: calc(860px * var(--mi-s));
   max-width: 50%;
   height: 100%;
   border-radius: var(--mi-radius-card);
