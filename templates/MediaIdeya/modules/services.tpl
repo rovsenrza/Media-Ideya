@@ -1,13 +1,16 @@
 <section class="mi-services" id="services" aria-label="Услуги">
 	<div class="mi-services__inner">
-		<header class="mi-section-title mi-section-title--dark">
-			<h2 class="mi-section-title__heading">Что мы создаем</h2>
-			<a class="mi-section-title__label" href="/uslugi.html">Наши услуги</a>
-		</header>
+		<div class="mi-services__head">
+			<header class="mi-section-title mi-section-title--dark">
+				<h2 class="mi-section-title__heading">Что мы создаем</h2>
+				<a class="mi-section-title__label" href="/uslugi.html">Наши услуги</a>
+			</header>
+		</div>
 
 		<div class="mi-services__list" data-services-stack>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">On-packing</h3>
 					<div class="mi-service-card__content">
@@ -29,9 +32,12 @@
 						<img src="{THEME}/images/services/slide-1.png" alt="" width="860" height="740" decoding="async" fetchpriority="high">
 					</picture>
 				</div>
+			
+				</div>
 			</article>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">Product-placement</h3>
 					<div class="mi-service-card__content">
@@ -49,9 +55,12 @@
 						<img src="{THEME}/images/services/slide-2.png" alt="" width="860" height="740" loading="lazy" decoding="async">
 					</picture>
 				</div>
+			
+				</div>
 			</article>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">Лицензионные продукты</h3>
 					<div class="mi-service-card__content">
@@ -69,9 +78,12 @@
 						<img src="{THEME}/images/services/slide-3.png" alt="" width="860" height="740" loading="lazy" decoding="async">
 					</picture>
 				</div>
+			
+				</div>
 			</article>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">Геймификация</h3>
 					<div class="mi-service-card__content">
@@ -89,9 +101,12 @@
 						<img src="{THEME}/images/services/slide-4.png" alt="" width="860" height="740" loading="lazy" decoding="async">
 					</picture>
 				</div>
+			
+				</div>
 			</article>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">QSR сегмент (сети быстрого питания, кофеен и др)</h3>
 					<div class="mi-service-card__content">
@@ -109,9 +124,12 @@
 						<img src="{THEME}/images/services/slide-5.png" alt="" width="860" height="740" loading="lazy" decoding="async">
 					</picture>
 				</div>
+			
+				</div>
 			</article>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">Разработка рекламных роликов</h3>
 					<div class="mi-service-card__content">
@@ -129,9 +147,12 @@
 						<img src="{THEME}/images/services/slide-6.png" alt="" width="860" height="740" loading="lazy" decoding="async">
 					</picture>
 				</div>
+			
+				</div>
 			</article>
 
 			<article class="mi-service-card">
+				<div class="mi-service-card__shell">
 				<div class="mi-service-card__body">
 					<h3 class="mi-service-card__title">Работа с блогерами</h3>
 					<div class="mi-service-card__content">
@@ -148,6 +169,8 @@
 						<source srcset="{THEME}/images/services/slide-7.webp" type="image/webp">
 						<img src="{THEME}/images/services/slide-7.png" alt="" width="860" height="740" loading="lazy" decoding="async">
 					</picture>
+				</div>
+			
 				</div>
 			</article>
 

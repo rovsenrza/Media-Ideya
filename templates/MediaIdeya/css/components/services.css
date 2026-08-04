@@ -10,7 +10,6 @@
   --mi-stack-step: 100vh;
 
   position: relative;
-  isolation: isolate;
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
@@ -18,62 +17,54 @@
 }
 
 .mi-services__inner {
+  position: relative;
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 0;
 }
 
-/* Title stays pinned above the card stack — never under a card */
-.mi-services .mi-section-title {
+/* Sticky headline bar — always above service cards */
+.mi-services__head {
   position: sticky;
   top: var(--mi-services-stick-top);
-  z-index: 50;
+  z-index: 100;
   box-sizing: border-box;
   min-height: var(--mi-services-title-h);
   padding-bottom: 24px;
   background: var(--mi-color-surface-dark);
 }
 
-.mi-services__list {
+.mi-services__head .mi-section-title {
   position: relative;
   z-index: 1;
+}
+
+.mi-services__list {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: 0;
-  /* last card also needs a step so it can stick in the stack */
   padding-bottom: 10vh;
 }
 
-/* Service card — Figma «услуга» 1720×740 — sticky stack */
+/* Sticky slot only — no transform here (keeps title stacking correct) */
 .mi-service-card {
   --mi-stack-i: 1;
   --mi-stack-p: 0;
   position: sticky;
   top: var(--mi-services-card-top);
   z-index: calc(10 + var(--mi-stack-i));
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
   width: 100%;
-  min-height: 740px;
   margin-bottom: var(--mi-stack-step);
-  padding: 80px;
-  background: var(--mi-color-surface-soft);
-  border-radius: var(--mi-radius-card);
-  color: var(--mi-color-surface-dark);
-  overflow: hidden;
-  transform-origin: center center;
-  /* covered card: -30% scale, -30% opacity (p finishes before cover phase) */
-  transform: scale(calc(1 - var(--mi-stack-p) * 0.3));
-  opacity: calc(1 - var(--mi-stack-p) * 0.3);
-  will-change: transform, opacity;
+  background: transparent;
 }
 
 .mi-service-card:last-child {
-  /* keep one full step so 7/7 can lock into the stack like the others */
   margin-bottom: var(--mi-stack-step);
 }
 
@@ -84,6 +75,25 @@
 .mi-service-card:nth-child(5) { --mi-stack-i: 5; }
 .mi-service-card:nth-child(6) { --mi-stack-i: 6; }
 .mi-service-card:nth-child(7) { --mi-stack-i: 7; }
+
+/* Visual card — scale/opacity on shell while under next card */
+.mi-service-card__shell {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 740px;
+  padding: 80px;
+  background: var(--mi-color-surface-soft);
+  border-radius: var(--mi-radius-card);
+  color: var(--mi-color-surface-dark);
+  overflow: hidden;
+  transform-origin: center center;
+  transform: scale(calc(1 - var(--mi-stack-p) * 0.3));
+  opacity: calc(1 - var(--mi-stack-p) * 0.3);
+  will-change: transform, opacity;
+}
 
 .mi-service-card__body {
   position: relative;
@@ -170,13 +180,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mi-services .mi-section-title,
+  .mi-services__head,
   .mi-service-card {
     position: relative;
     top: auto;
   }
 
-  .mi-service-card {
+  .mi-service-card__shell {
     transform: none !important;
     opacity: 1 !important;
   }
