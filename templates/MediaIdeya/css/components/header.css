@@ -1,4 +1,4 @@
-/* Header module — Figma node 1:302 (шапка) */
+/* Header — compact bar + glass for scroll (designer feedback) */
 
 .mi-header {
   position: relative;
@@ -14,29 +14,29 @@
   width: 100%;
   height: 100%;
   margin-inline: auto;
-  padding: 20px var(--mi-gutter);
+  padding: calc(10px * var(--mi-s)) var(--mi-gutter);
 }
 
 .mi-logo {
   display: flex;
   align-items: center;
-  flex: 0 0 calc(217px * var(--mi-s));
-  width: calc(217px * var(--mi-s));
-  height: calc(61px * var(--mi-s));
+  flex: 0 0 calc(160px * var(--mi-s));
+  width: calc(160px * var(--mi-s));
+  height: calc(44px * var(--mi-s));
 }
 
 .mi-logo img {
-  width: calc(89px * var(--mi-s));
-  height: calc(60px * var(--mi-s));
+  width: calc(66px * var(--mi-s));
+  height: calc(44px * var(--mi-s));
   object-fit: contain;
 }
 
 .mi-nav {
   display: flex;
   align-items: center;
-  gap: calc(80px * var(--mi-s));
+  gap: calc(56px * var(--mi-s));
   font-family: var(--mi-font);
-  font-size: var(--mi-fs-20);
+  font-size: var(--mi-fs-16);
   font-weight: 500;
   line-height: 1.5;
   white-space: nowrap;
@@ -51,24 +51,28 @@
   opacity: 0.8;
 }
 
-/* Home: overlay hero, stays fixed while banner sticky-scrolls */
+/* Home: fixed glass over hero / dark sections */
 .is-home .mi-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: transparent;
+  background: var(--mi-color-header-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Non-home: solid bar so white nav stays readable */
+/* Non-home: same glass language */
 body:not(.is-home) .mi-header {
-  background: var(--mi-color-surface-dark);
+  background: var(--mi-color-header-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Opening: AOS-style fade-up */
 .mi-js .mi-header[data-aos="fade-up"] {
   opacity: 0;
-  transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, 24px, 0);
 }
 
 .mi-js .mi-header[data-aos="fade-up"].aos-animate {

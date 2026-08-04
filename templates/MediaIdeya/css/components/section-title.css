@@ -1,4 +1,6 @@
-/* Section title row — Figma «заголовок» */
+/* Section title row — Figma «заголовок»
+   Section H2 uses --mi-fs-section (88); hero/footer keep --mi-fs-96
+*/
 
 .mi-section-title {
   display: flex;
@@ -11,7 +13,7 @@
 .mi-section-title__heading {
   margin: 0;
   font-family: var(--mi-font);
-  font-size: var(--mi-fs-96);
+  font-size: var(--mi-fs-section);
   font-weight: 500;
   line-height: 1.1;
 }

@@ -23,8 +23,7 @@
 
 	<div class="mi-about__inner">
 		<div class="mi-about__text">
-			<p class="mi-about__eyebrow">О нас</p>
-			<h2 class="mi-about__title">MEDIA IDEYA</h2>
+			<h2 class="mi-about__title mi-reveal">MEDIA IDEYA</h2>
 			<p class="mi-about__desc">Мы&nbsp;специализируемся на&nbsp;брендировании продуктов от&nbsp;крупнейших производителей нашей страны и&nbsp;СНГ. За плечами — команда, которая прошла через десятки ниш и&nbsp;знает, где реклама действительно продаёт, а где просто расходует бюджет.</p>
 		</div>
 

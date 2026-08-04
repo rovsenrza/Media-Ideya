@@ -1,8 +1,8 @@
 <section class="mi-articles" id="articles" aria-label="Статьи" data-aos="articles">
 	<div class="mi-articles__inner">
 		<header class="mi-section-title mi-section-title--dark mi-articles__head">
-			<h2 class="mi-section-title__heading mi-articles__heading">Разбираем рынок вслух</h2>
-			<a class="mi-section-title__label mi-articles__label" href="/">Статьи</a>
+			<h2 class="mi-section-title__heading mi-articles__heading mi-reveal">Разбираем рынок вслух</h2>
+			<a class="mi-section-title__label mi-articles__label mi-reveal mi-reveal--delay" href="/">Статьи</a>
 		</header>
 
 		<div class="mi-articles__grid">

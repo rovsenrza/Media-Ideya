@@ -30,7 +30,7 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
-  min-height: calc(700px * var(--mi-s));
+  min-height: calc(560px * var(--mi-s));
   box-sizing: border-box;
   padding: var(--mi-space-section-sm) var(--mi-gutter) var(--mi-space-section);
   background: var(--mi-color-surface-dark);
@@ -58,18 +58,13 @@
 }
 
 .mi-clients__eyebrow {
-  margin: 0;
-  font-family: var(--mi-font);
-  font-size: var(--mi-fs-20);
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--mi-color-blue);
+  display: none;
 }
 
 .mi-clients__title {
   margin: 0;
   font-family: var(--mi-font);
-  font-size: var(--mi-fs-96);
+  font-size: var(--mi-fs-section);
   font-weight: 500;
   line-height: 1.1;
 }
@@ -148,9 +143,7 @@
   background: linear-gradient(0deg, #112331 0%, rgba(17, 35, 49, 0) 100%);
 }
 
-/* ——— AOS (партнеры.mp4): title ~400–1000ms, logos blur→sharp ~1000–2000ms ——— */
-.mi-js .mi-clients[data-aos="clients"] .mi-clients__eyebrow,
-.mi-js .mi-clients[data-aos="clients"] .mi-clients__title,
+/* ——— AOS — title via .mi-reveal; logos blur→sharp ——— */
 .mi-js .mi-clients[data-aos="clients"] .mi-clients__sub {
   opacity: 0;
   transform: translate3d(0, 20px, 0);
@@ -162,31 +155,13 @@
   transform: translate3d(0, 28px, 0);
 }
 
-.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__eyebrow {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.6s var(--mi-ease),
-    transform 0.6s var(--mi-ease);
-  transition-delay: 300ms;
-}
-
-.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__title {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.7s var(--mi-ease),
-    transform 0.7s var(--mi-ease);
-  transition-delay: 500ms;
-}
-
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__sub {
   opacity: 1;
   transform: none;
   transition:
     opacity 0.7s var(--mi-ease),
     transform 0.7s var(--mi-ease);
-  transition-delay: 700ms;
+  transition-delay: 500ms;
 }
 
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row {
@@ -200,22 +175,22 @@
 }
 
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(1) {
-  transition-delay: 1000ms;
+  transition-delay: 800ms;
 }
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(2) {
-  transition-delay: 1150ms;
+  transition-delay: 950ms;
 }
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(3) {
-  transition-delay: 1300ms;
+  transition-delay: 1100ms;
 }
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(4) {
-  transition-delay: 1450ms;
+  transition-delay: 1250ms;
 }
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(5) {
-  transition-delay: 1600ms;
+  transition-delay: 1400ms;
 }
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(6) {
-  transition-delay: 1750ms;
+  transition-delay: 1550ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -243,8 +218,6 @@
     transform: none !important;
   }
 
-  .mi-js .mi-clients[data-aos="clients"] .mi-clients__eyebrow,
-  .mi-js .mi-clients[data-aos="clients"] .mi-clients__title,
   .mi-js .mi-clients[data-aos="clients"] .mi-clients__sub,
   .mi-js .mi-clients[data-aos="clients"] .mi-clients__row {
     opacity: 1 !important;

@@ -162,6 +162,28 @@
     syncStack();
   }
 
+  /* Services — soft L→R title when pin enters */
+  if (services) {
+    if (reduce) {
+      services.classList.add('aos-animate');
+    } else if ('IntersectionObserver' in window) {
+      var servicesObs = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (!entries[i].isIntersecting) continue;
+            services.classList.add('aos-animate');
+            servicesObs.disconnect();
+            break;
+          }
+        },
+        { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+      );
+      servicesObs.observe(services);
+    } else {
+      services.classList.add('aos-animate');
+    }
+  }
+
   /* About — AOS: play timeline when section enters viewport */
   var about = document.querySelector('.mi-about[data-aos="about"]');
   if (about) {
@@ -266,28 +288,9 @@
     });
   }
 
-  /* FAQ — letter-by-letter headline (parallel) + items L→R fade */
+  /* FAQ — soft L→R title + items fade (no letter typing) */
   var faqSection = document.querySelector('.mi-faq[data-aos="faq"]');
   if (faqSection) {
-    function splitFaqChars(el) {
-      if (!el || el.dataset.split === '1') return;
-      var text = el.textContent;
-      el.setAttribute('aria-label', text);
-      el.textContent = '';
-      for (var i = 0; i < text.length; i++) {
-        var span = document.createElement('span');
-        span.className = 'mi-faq__char';
-        span.style.setProperty('--mi-char-i', String(i));
-        span.setAttribute('aria-hidden', 'true');
-        span.textContent = text.charAt(i) === ' ' ? '\u00A0' : text.charAt(i);
-        el.appendChild(span);
-      }
-      el.dataset.split = '1';
-    }
-
-    splitFaqChars(faqSection.querySelector('.mi-faq__heading'));
-    splitFaqChars(faqSection.querySelector('.mi-faq__label'));
-
     if (reduce) {
       faqSection.classList.add('aos-animate');
     } else if ('IntersectionObserver' in window) {

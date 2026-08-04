@@ -30,10 +30,10 @@
 
 /* Header CTA — 204×61, white pill, text #264A65 */
 .mi-btn--header {
-  min-height: calc(61px * var(--mi-s));
-  padding: calc(18px * var(--mi-s)) calc(32px * var(--mi-s));
+  min-height: calc(44px * var(--mi-s));
+  padding: calc(10px * var(--mi-s)) calc(22px * var(--mi-s));
   gap: 0;
-  font-size: var(--mi-fs-18);
+  font-size: var(--mi-fs-16);
   line-height: 1.4;
   background: var(--mi-color-inverse);
   color: var(--mi-color-brand);
@@ -45,6 +45,12 @@
   border: 1px solid currentColor;
 }
 
+/* Figma icon button 299 — content-sized, not stretched */
 .mi-btn--icon {
-  min-width: calc(299px * var(--mi-s));
+  width: calc(299px * var(--mi-s));
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-self: flex-start;
+  padding-inline: calc(28px * var(--mi-s));
 }

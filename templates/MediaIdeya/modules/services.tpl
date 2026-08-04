@@ -1,10 +1,10 @@
-<section class="mi-services" id="services" aria-label="Услуги" data-services-stack style="--mi-stack-count: 7">
+<section class="mi-services" id="services" aria-label="Услуги" data-services-stack data-aos="services" style="--mi-stack-count: 7">
 	<div class="mi-services__track">
 		<div class="mi-services__pin">
 			<div class="mi-services__head">
 				<header class="mi-section-title mi-section-title--dark">
-					<h2 class="mi-section-title__heading">Что мы создаем</h2>
-					<a class="mi-section-title__label" href="/uslugi.html">Наши услуги</a>
+					<h2 class="mi-section-title__heading mi-reveal">Что мы создаем</h2>
+					<a class="mi-section-title__label mi-reveal mi-reveal--delay" href="/uslugi.html">Наши услуги</a>
 				</header>
 			</div>
 			<div class="mi-services__stage">

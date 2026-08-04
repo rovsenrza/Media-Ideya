@@ -60,7 +60,12 @@
 			</h1>
 
 			<a class="mi-hero__scroll" href="#services" aria-label="Далее">
-				<img src="{THEME}/images/hero/scroll.svg" alt="" width="86" height="86" decoding="async">
+				<svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<circle cx="43" cy="43" r="42" stroke="currentColor" stroke-width="2"/>
+					<g class="mi-hero__scroll-arrow">
+						<path d="M43 30.75V55.25M36 48.25L43 55.25L50 48.25" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+					</g>
+				</svg>
 			</a>
 		</div>
 	</div>

@@ -1,8 +1,6 @@
 /* Media Ideya — design tokens (Figma 1920)
-   Source: https://www.figma.com/design/kjgO8zApNk7weuAFgIdCPb
-
-   Laptop strategy (992–1920): same composition as 1920, uniformly scaled.
-   --mi-s = min(1, 100vw / 1920) — one factor for type, space, radii, canvas.
+   Source: https://www.figma.com/design/vZBU6EVsQkEpdA2iTUvuTL
+   Scale: --mi-s = min(1, 100vw / 1920px)
 */
 
 :root {
@@ -15,15 +13,16 @@
      MUST divide by 1920px (not 1920) so the result is unitless */
   --mi-s: min(1, calc(100vw / 1920px));
 
-  /* Layout — Figma × --mi-s */
+  /* Layout — Figma × --mi-s (header compacted for scroll) */
   --mi-page-width: calc(1920px * var(--mi-s));
   --mi-content-width: calc(1720px * var(--mi-s));
   --mi-gutter: calc(100px * var(--mi-s));
-  --mi-header-height: calc(101px * var(--mi-s));
+  --mi-header-height: calc(72px * var(--mi-s));
 
-  /* Type — Figma scale 96 / 64 / 40 / 32 / 24 / 20 / 18 / 16 */
+  /* Type — Figma scale; section H2 reduced vs hero/footer 96 */
   --mi-font: "Roboto Flex", "Segoe UI", sans-serif;
   --mi-fs-96: calc(96px * var(--mi-s));
+  --mi-fs-section: calc(88px * var(--mi-s)); /* section titles ~86–90 */
   --mi-fs-64: calc(64px * var(--mi-s));
   --mi-fs-40: calc(40px * var(--mi-s));
   --mi-fs-32: calc(32px * var(--mi-s));
@@ -45,6 +44,7 @@
   --mi-color-hero-sky-from: #8db5d5;
   --mi-color-hero-sky-to: #6398c3;
   --mi-color-hero-fade-top: #4a7ca3;
+  --mi-color-header-glass: rgba(17, 35, 49, 0.72);
 
   /* Radii */
   --mi-radius-btn: 100px;

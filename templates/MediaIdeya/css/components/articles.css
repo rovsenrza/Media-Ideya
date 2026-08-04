@@ -96,34 +96,10 @@
   color: inherit;
 }
 
-/* ——— AOS — title/label fade-up, cards L→R stagger (site motion language) ——— */
-.mi-js .mi-articles[data-aos="articles"] .mi-articles__heading,
-.mi-js .mi-articles[data-aos="articles"] .mi-articles__label {
-  opacity: 0;
-  transform: translate3d(0, 24px, 0);
-}
-
+/* ——— AOS — titles via .mi-reveal; cards L→R stagger ——— */
 .mi-js .mi-articles[data-aos="articles"] .mi-article-card {
   opacity: 0;
   transform: translate3d(-40px, 20px, 0);
-}
-
-.mi-js .mi-articles[data-aos="articles"].aos-animate .mi-articles__heading {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.7s var(--mi-ease),
-    transform 0.7s var(--mi-ease);
-  transition-delay: 120ms;
-}
-
-.mi-js .mi-articles[data-aos="articles"].aos-animate .mi-articles__label {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.7s var(--mi-ease),
-    transform 0.7s var(--mi-ease);
-  transition-delay: 220ms;
 }
 
 .mi-js .mi-articles[data-aos="articles"].aos-animate .mi-article-card {
@@ -145,8 +121,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mi-js .mi-articles[data-aos="articles"] .mi-articles__heading,
-  .mi-js .mi-articles[data-aos="articles"] .mi-articles__label,
   .mi-js .mi-articles[data-aos="articles"] .mi-article-card {
     opacity: 1 !important;
     transform: none !important;

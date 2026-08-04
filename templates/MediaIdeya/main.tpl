@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{THEME}/css/components/button.css">
 	<link rel="stylesheet" href="{THEME}/css/components/header.css">
 	<link rel="stylesheet" href="{THEME}/css/components/section-title.css">
+	<link rel="stylesheet" href="{THEME}/css/components/reveal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/card.css">
 	<link rel="stylesheet" href="{THEME}/css/components/footer.css">
 	<link rel="stylesheet" href="{THEME}/css/engine.css">

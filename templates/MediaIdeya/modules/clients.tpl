@@ -3,8 +3,7 @@
 		<div class="mi-clients__pin">
 			<div class="mi-clients__inner">
 				<header class="mi-clients__head">
-					<p class="mi-clients__eyebrow">Партнеры</p>
-					<h2 class="mi-clients__title">Нам доверяют</h2>
+					<h2 class="mi-clients__title mi-reveal">Нам доверяют</h2>
 					<p class="mi-clients__sub">Компании, с которыми мы уже строили результат</p>
 				</header>
 

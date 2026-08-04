@@ -3,8 +3,8 @@
 
 	<div class="mi-faq__inner">
 		<header class="mi-section-title mi-section-title--dark mi-faq__head">
-			<h2 class="mi-section-title__heading mi-faq__heading">Отвечаем заранее</h2>
-			<span class="mi-section-title__label mi-faq__label">Вопрос-ответ</span>
+			<h2 class="mi-section-title__heading mi-faq__heading mi-reveal">Отвечаем заранее</h2>
+			<span class="mi-section-title__label mi-faq__label mi-reveal mi-reveal--delay">Вопрос-ответ</span>
 		</header>
 
 		<div class="mi-faq__list" data-faq>

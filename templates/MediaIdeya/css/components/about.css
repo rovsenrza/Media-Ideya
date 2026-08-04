@@ -82,6 +82,7 @@
   transform: translateX(-50%);
   z-index: 2;
   pointer-events: none;
+  opacity: 1; /* static — never tied to CTA AOS */
 }
 
 .mi-about__glow img {
@@ -118,19 +119,10 @@
   text-align: center;
 }
 
-.mi-about__eyebrow {
-  margin: 0;
-  font-family: var(--mi-font);
-  font-size: var(--mi-fs-20);
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--mi-color-blue);
-}
-
 .mi-about__title {
   margin: 0;
   font-family: var(--mi-font);
-  font-size: var(--mi-fs-96);
+  font-size: var(--mi-fs-section);
   font-weight: 500;
   line-height: 1.1;
   color: var(--mi-color-surface-dark);
@@ -220,17 +212,17 @@
   pointer-events: none;
 }
 
-/* ——— AOS timeline (о нас.mp4 ms → delay/duration) ———
-   0–600 colonnade | 700 eyebrow | 1000 title | 1400 desc
-   1800/2200/2600 stats | 3200 CTA+glow
-*/
-.mi-js .mi-about[data-aos="about"] .mi-about__colonnade {
+/* ——— AOS timeline — clouds + colonnade on appear; glow is static ——— */
+.mi-js .mi-about[data-aos="about"] .mi-about__cloud {
   opacity: 0;
-  transform: translate3d(-50%, 18%, 0);
+  transform: translate3d(0, 28px, 0);
 }
 
-.mi-js .mi-about[data-aos="about"] .mi-about__eyebrow,
-.mi-js .mi-about[data-aos="about"] .mi-about__title,
+.mi-js .mi-about[data-aos="about"] .mi-about__colonnade {
+  opacity: 0;
+  transform: translate3d(-50%, 14%, 0);
+}
+
 .mi-js .mi-about[data-aos="about"] .mi-about__desc,
 .mi-js .mi-about[data-aos="about"] .mi-about__stat,
 .mi-js .mi-about[data-aos="about"] .mi-about__cta {
@@ -238,35 +230,40 @@
   transform: translate3d(0, 24px, 0);
 }
 
-.mi-js .mi-about[data-aos="about"] .mi-about__glow {
-  opacity: 0;
+.mi-js .mi-about[data-aos="about"].aos-animate .mi-about__cloud--a {
+  opacity: 0.85;
+  transform: none;
+  transition:
+    opacity 1.1s var(--mi-ease),
+    transform 1.4s var(--mi-ease);
+  transition-delay: 0ms;
+}
+
+.mi-js .mi-about[data-aos="about"].aos-animate .mi-about__cloud--b {
+  opacity: 0.85;
+  transform: none;
+  transition:
+    opacity 1.2s var(--mi-ease),
+    transform 1.6s var(--mi-ease);
+  transition-delay: 120ms;
+}
+
+.mi-js .mi-about[data-aos="about"].aos-animate .mi-about__cloud--c {
+  opacity: 0.85;
+  transform: none;
+  transition:
+    opacity 1.1s var(--mi-ease),
+    transform 1.5s var(--mi-ease);
+  transition-delay: 200ms;
 }
 
 .mi-js .mi-about[data-aos="about"].aos-animate .mi-about__colonnade {
   opacity: 1;
   transform: translate3d(-50%, 0, 0);
   transition:
-    opacity 0.6s var(--mi-ease),
-    transform 0.6s var(--mi-ease);
-  transition-delay: 0ms;
-}
-
-.mi-js .mi-about[data-aos="about"].aos-animate .mi-about__eyebrow {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.7s var(--mi-ease),
-    transform 0.7s var(--mi-ease);
-  transition-delay: 700ms;
-}
-
-.mi-js .mi-about[data-aos="about"].aos-animate .mi-about__title {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.8s var(--mi-ease),
-    transform 0.8s var(--mi-ease);
-  transition-delay: 1000ms;
+    opacity 0.85s var(--mi-ease),
+    transform 1s var(--mi-ease);
+  transition-delay: 180ms;
 }
 
 .mi-js .mi-about[data-aos="about"].aos-animate .mi-about__desc {
@@ -275,7 +272,7 @@
   transition:
     opacity 0.9s var(--mi-ease),
     transform 0.9s var(--mi-ease);
-  transition-delay: 1400ms;
+  transition-delay: 700ms;
 }
 
 .mi-js .mi-about[data-aos="about"].aos-animate .mi-about__stat:nth-child(1) {
@@ -284,7 +281,7 @@
   transition:
     opacity 0.7s var(--mi-ease),
     transform 0.7s var(--mi-ease);
-  transition-delay: 1800ms;
+  transition-delay: 1000ms;
 }
 
 .mi-js .mi-about[data-aos="about"].aos-animate .mi-about__stat:nth-child(2) {
@@ -293,7 +290,7 @@
   transition:
     opacity 0.7s var(--mi-ease),
     transform 0.7s var(--mi-ease);
-  transition-delay: 2200ms;
+  transition-delay: 1180ms;
 }
 
 .mi-js .mi-about[data-aos="about"].aos-animate .mi-about__stat:nth-child(3) {
@@ -302,42 +299,34 @@
   transition:
     opacity 0.7s var(--mi-ease),
     transform 0.7s var(--mi-ease);
-  transition-delay: 2600ms;
+  transition-delay: 1360ms;
 }
 
 .mi-js .mi-about[data-aos="about"].aos-animate .mi-about__cta {
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.8s var(--mi-ease),
-    transform 0.8s var(--mi-ease);
-  transition-delay: 3200ms;
-}
-
-.mi-js .mi-about[data-aos="about"].aos-animate .mi-about__glow {
-  opacity: 1;
-  transition: opacity 0.8s var(--mi-ease);
-  transition-delay: 3200ms;
+    opacity 0.7s var(--mi-ease),
+    transform 0.7s var(--mi-ease);
+  transition-delay: 1600ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .mi-js .mi-about[data-aos="about"] .mi-about__cloud,
   .mi-js .mi-about[data-aos="about"] .mi-about__colonnade,
-  .mi-js .mi-about[data-aos="about"] .mi-about__eyebrow,
-  .mi-js .mi-about[data-aos="about"] .mi-about__title,
   .mi-js .mi-about[data-aos="about"] .mi-about__desc,
   .mi-js .mi-about[data-aos="about"] .mi-about__stat,
-  .mi-js .mi-about[data-aos="about"] .mi-about__cta,
-  .mi-js .mi-about[data-aos="about"] .mi-about__glow {
+  .mi-js .mi-about[data-aos="about"] .mi-about__cta {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
 
-  .mi-js .mi-about[data-aos="about"] .mi-about__colonnade {
-    transform: translateX(-50%) !important;
+  .mi-js .mi-about[data-aos="about"] .mi-about__cloud {
+    opacity: 0.85 !important;
   }
 
-  .mi-js .mi-about[data-aos="about"] .mi-about__glow {
+  .mi-js .mi-about[data-aos="about"] .mi-about__colonnade {
     transform: translateX(-50%) !important;
   }
 }

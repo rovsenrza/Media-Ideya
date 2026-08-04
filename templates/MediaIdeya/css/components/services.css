@@ -3,7 +3,7 @@
 */
 
 .mi-services {
-  --mi-services-title-h: calc(140px * var(--mi-s));
+  --mi-services-title-h: calc(110px * var(--mi-s));
   --mi-services-stick-top: calc(var(--mi-header-height) + calc(16px * var(--mi-s)));
   --mi-stack-step: 100vh;
   --mi-stack-count: 7;
@@ -29,13 +29,13 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: calc(24px * var(--mi-s));
+  gap: calc(60px * var(--mi-s));
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
   height: calc(100vh - var(--mi-services-stick-top));
   box-sizing: border-box;
-  padding-bottom: calc(24px * var(--mi-s));
+  padding-bottom: calc(48px * var(--mi-s));
   overflow: hidden;
   background: var(--mi-color-surface-dark);
 }
@@ -96,8 +96,9 @@
   color: var(--mi-color-surface-dark);
   overflow: hidden;
   transform-origin: center center;
-  transform: scale(calc(1 - var(--mi-stack-p) * 0.3));
-  opacity: calc(1 - var(--mi-stack-p) * 0.3);
+  transform: scale(calc(1 - var(--mi-stack-p) * 0.28));
+  /* Covered layer fully fades out — previous card must not show through */
+  opacity: calc(1 - var(--mi-stack-p));
   will-change: transform, opacity;
 }
 

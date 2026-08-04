@@ -2,6 +2,7 @@
 
 .mi-footer {
   --mi-footer-hand-nudge: 1.75vw;
+  --mi-footer-brand-p: 0;
   position: relative;
   background: linear-gradient(180deg, #0d2f4c 0%, #112331 45.269%);
   color: var(--mi-color-inverse);
@@ -88,7 +89,7 @@
 
 .mi-footer__word {
   display: inline-block;
-  margin-right: 0.33em;
+  margin-right: 0.18em;
 }
 
 .mi-footer__word:last-child {
@@ -141,7 +142,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: calc(100px * var(--mi-s));
+  gap: calc(64px * var(--mi-s));
 }
 
 .mi-footer__inner {
@@ -272,27 +273,13 @@
   }
 }
 
-@keyframes mi-footer-brand {
-  /* stay below layout & invisible while hands enter (0–55%) */
-  0%,
-  55% {
-    opacity: 0;
-    bottom: 0;
-    transform: translate(-50%, 100%);
-  }
-  /* rise with hands inward nudge → flush to footer bottom */
-  100% {
-    opacity: 0.5;
-    bottom: 0;
-    transform: translate(-50%, 0);
-  }
-}
-
+/* Watermark: scroll-scrubbed via --mi-footer-brand-p (0→1), not early AOS */
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
-  opacity: 0;
+  opacity: calc(0.5 * var(--mi-footer-brand-p, 0));
   bottom: 0;
-  transform: translate(-50%, 100%);
-  visibility: hidden;
+  transform: translate(-50%, calc((1 - var(--mi-footer-brand-p, 0)) * 100%));
+  visibility: visible;
+  will-change: transform, opacity;
 }
 
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__word,
@@ -315,11 +302,6 @@
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__hand--r {
   animation: mi-footer-hand-r 2s var(--mi-ease) 40ms forwards;
-}
-
-.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__brand {
-  visibility: visible;
-  animation: mi-footer-brand 2s var(--mi-ease) forwards;
 }
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__word {
