@@ -60,8 +60,8 @@
   }
 
   /* Hero sticky — scrub maps to video exit (~2.9–5.8s of 360.mp4)
-     First scroll from top → GSAP Observer + progress tween (no ScrollTo lag).
-     Later scrolls + scroll up stay native.
+     p 0–0.35 title lines crop (staggered)
+     p 0–1    columns drift out, statue rises
   */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
@@ -69,16 +69,6 @@
     var LINE_STAGGER = 0.08;
     var LINE_SPAN = 0.16;
     var ticking = false;
-    var snapping = false;
-    var snapTween = null;
-    var heroSnap = { p: 0 };
-    var TOP_EPS = 4;
-    var hasGsap = typeof window.gsap !== 'undefined';
-    var gsap = hasGsap ? window.gsap : null;
-
-    if (gsap && window.Observer) {
-      gsap.registerPlugin(window.Observer);
-    }
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -93,12 +83,11 @@
       return Math.max(hero.offsetHeight - window.innerHeight, 1);
     }
 
-    function readProgress() {
+    function progress() {
       return clamp(-hero.getBoundingClientRect().top / range(), 0, 1);
     }
 
-    function applyProgress(p) {
-      heroSnap.p = p;
+    function apply(p) {
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
       for (var i = 0; i < lines.length; i++) {
         var t = easeOut(clamp((p - i * LINE_STAGGER) / LINE_SPAN, 0, 1));
@@ -108,8 +97,7 @@
 
     function sync() {
       ticking = false;
-      if (snapping) return;
-      applyProgress(readProgress());
+      apply(progress());
     }
 
     function onScroll() {
@@ -119,124 +107,9 @@
       }
     }
 
-    function heroEndY() {
-      var docTop = hero.getBoundingClientRect().top + window.pageYOffset;
-      return Math.max(0, Math.round(docTop + hero.offsetHeight - window.innerHeight));
-    }
-
-    function atHeroStart() {
-      return window.pageYOffset <= TOP_EPS && heroSnap.p < 0.02;
-    }
-
-    function finishSnap() {
-      var endY = heroEndY();
-      window.scrollTo(0, endY);
-      applyProgress(1);
-      snapping = false;
-      snapTween = null;
-      document.documentElement.classList.remove('is-hero-snapping');
-    }
-
-    function cancelSnap() {
-      if (!snapTween) return;
-      snapTween.kill();
-      snapTween = null;
-      snapping = false;
-      document.documentElement.classList.remove('is-hero-snapping');
-      applyProgress(readProgress());
-    }
-
-    function snapToHeroEnd() {
-      if (!gsap || snapping || heroSnap.p >= 0.995) return;
-
-      var endY = heroEndY();
-      var startP = heroSnap.p;
-      var startY = window.pageYOffset;
-
-      if (startP >= 0.995) {
-        finishSnap();
-        return;
-      }
-
-      snapping = true;
-      document.documentElement.classList.add('is-hero-snapping');
-
-      if (snapTween) snapTween.kill();
-
-      snapTween = gsap.to(heroSnap, {
-        p: 1,
-        duration: 0.58,
-        ease: 'power2.inOut',
-        overwrite: true,
-        onUpdate: function () {
-          var p = heroSnap.p;
-          var t = startP >= 1 ? 1 : (p - startP) / (1 - startP);
-          applyProgress(p);
-          window.scrollTo(0, Math.round(startY + t * (endY - startY)));
-        },
-        onComplete: finishSnap,
-      });
-    }
-
-    function onKeyDown(e) {
-      if (e.defaultPrevented) return;
-      var down =
-        e.key === 'ArrowDown' ||
-        e.key === 'PageDown' ||
-        e.key === ' ' ||
-        e.key === 'Spacebar';
-      if (!down) return;
-      if (!atHeroStart() && !snapping) return;
-      e.preventDefault();
-      snapToHeroEnd();
-    }
-
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
-    window.addEventListener('keydown', onKeyDown);
     sync();
-
-    if (gsap && window.Observer) {
-      window.Observer.create({
-        target: window,
-        type: 'wheel,touch,pointer',
-        tolerance: 8,
-        preventDefault: function () {
-          return snapping || atHeroStart();
-        },
-        onDown: function () {
-          if (snapping) return;
-          if (atHeroStart()) snapToHeroEnd();
-        },
-        onUp: function () {
-          if (snapping) cancelSnap();
-        },
-      });
-    } else {
-      function onWheel(e) {
-        if (e.deltaY <= 0) {
-          if (snapping) cancelSnap();
-          return;
-        }
-        if (snapping) {
-          e.preventDefault();
-          return;
-        }
-        if (!atHeroStart()) return;
-        e.preventDefault();
-        snapToHeroEnd();
-      }
-
-      window.addEventListener('wheel', onWheel, { passive: false, capture: true });
-    }
-
-    var scrollCue = hero.querySelector('.mi-hero__scroll');
-    if (scrollCue) {
-      scrollCue.addEventListener('click', function (e) {
-        e.preventDefault();
-        snapToHeroEnd();
-      });
-    }
   } else if (hero && reduce) {
     hero.style.setProperty('--mi-hero-p', '1');
   }

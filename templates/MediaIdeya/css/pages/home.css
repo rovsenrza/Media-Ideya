@@ -23,9 +23,3 @@
 .is-home .mi-faq + .mi-articles {
   margin-top: 0;
 }
-
-/* Hero first-scroll snap — block native scroll during GSAP tween */
-html.is-hero-snapping {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
