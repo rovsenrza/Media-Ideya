@@ -90,24 +90,19 @@
 }
 
 .mi-hero__col img {
-  display: block;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: contain;
-  object-position: top center;
+  object-position: bottom center;
 }
 
-/* Figma 1:291 / 30:75 — mirror pair, 617w, ±186px off 1920 canvas */
-.mi-hero__col--l,
-.mi-hero__col--r {
-  top: calc(-110px * var(--mi-s));
-  width: calc(617px * var(--mi-s));
-  height: calc(1104px * var(--mi-s));
-}
-
+/* Video: columns same capital level (Figma 1:291–293 y=-110) */
 .mi-hero__col--l {
-  left: calc(50% - (1146px * var(--mi-s)));
+  left: calc(50% - (1000px * var(--mi-s)));
+  top: calc(-40px * var(--mi-s));
+  width: calc(428px * var(--mi-s));
+  height: calc(1493px * var(--mi-s));
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * -120px * var(--mi-s)),
     calc(var(--mi-hero-p, 0) * 36px * var(--mi-s)),
@@ -115,11 +110,27 @@
   );
 }
 
+/* Sağ sütun — Figma simmetriya: bir az sağa */
 .mi-hero__col--r {
-  left: calc(50% + (529px * var(--mi-s)));
+  left: calc(50% + (545px * var(--mi-s)));
+  top: calc(-40px * var(--mi-s));
+  width: calc(475px * var(--mi-s));
+  height: calc(1548px * var(--mi-s));
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * 120px * var(--mi-s)),
     calc(var(--mi-hero-p, 0) * 36px * var(--mi-s)),
+    0
+  );
+}
+
+.mi-hero__col--r2 {
+  left: calc(50% + (505px * var(--mi-s)));
+  top: calc(-40px * var(--mi-s));
+  width: calc(475px * var(--mi-s));
+  height: calc(1548px * var(--mi-s));
+  transform: translate3d(
+    calc(var(--mi-hero-p, 0) * 140px * var(--mi-s)),
+    calc(var(--mi-hero-p, 0) * 42px * var(--mi-s)),
     0
   );
 }
@@ -274,7 +285,8 @@
 
   .mi-hero__title-line-inner,
   .mi-hero__col--l,
-  .mi-hero__col--r {
+  .mi-hero__col--r,
+  .mi-hero__col--r2 {
     transform: none !important;
   }
 
