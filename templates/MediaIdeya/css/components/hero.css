@@ -165,8 +165,8 @@
   bottom: 0;
   top: auto;
   z-index: 2;
-  height: calc(38.4vh + var(--mi-hero-p, 0) * 33.6vh);
-  min-height: calc(336px * var(--mi-s));
+  height: calc(26.88vh + var(--mi-hero-p, 0) * 23.52vh);
+  min-height: calc(235px * var(--mi-s));
   pointer-events: none;
   background: linear-gradient(
     180deg,
@@ -304,7 +304,7 @@
   }
 
   .mi-hero__fade-bottom {
-    height: 44vh;
+    height: 30.8vh;
   }
 
   .mi-hero__statue {
