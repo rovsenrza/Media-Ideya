@@ -64,13 +64,9 @@
     syncHeaderGlass();
   }
 
-  /* Hero title — word by word */
+  /* Hero title — L→R line reveal (.mi-reveal) */
   var title = document.querySelector('.mi-hero__title');
   if (title) {
-    var words = title.querySelectorAll('.mi-hero__word');
-    for (var i = 0; i < words.length; i++) {
-      words[i].style.setProperty('--mi-word-i', String(i));
-    }
     if (reduce) {
       title.classList.add('is-ready');
     } else {

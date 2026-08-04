@@ -215,17 +215,8 @@
 
 .mi-hero__title-line-inner {
   display: block;
-  will-change: transform;
+  will-change: transform, clip-path, opacity;
   transform: translate3d(0, calc(var(--mi-line-t, 0) * -110%), 0);
-}
-
-.mi-hero__word {
-  display: inline-block;
-  margin-right: 0.33em;
-}
-
-.mi-hero__word:last-child {
-  margin-right: 0;
 }
 
 .mi-hero__scroll {
@@ -267,19 +258,17 @@
   }
 }
 
-/* Opening: title words 1-by-1 — video text appears ~1.2–2.8s */
-.mi-js .mi-hero__word {
-  opacity: 0;
-  transform: translate3d(0, 0.35em, 0);
+/* Opening: L→R line reveal (shared .mi-reveal) — video text ~1.2–2.8s */
+.mi-js .mi-hero__title .mi-reveal {
+  transition-delay: 1.05s;
 }
 
-.mi-js .mi-hero__title.is-ready .mi-hero__word {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.85s var(--mi-ease),
-    transform 0.85s var(--mi-ease);
-  transition-delay: calc(1.05s + var(--mi-word-i, 0) * 0.26s);
+.mi-js .mi-hero__title .mi-hero__title-line:nth-child(2) .mi-reveal {
+  transition-delay: 1.17s;
+}
+
+.mi-js .mi-hero__title .mi-hero__title-line:nth-child(3) .mi-reveal {
+  transition-delay: 1.29s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -287,10 +276,8 @@
     height: 100vh;
   }
 
-  .mi-js .mi-hero__word {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+  .mi-js .mi-hero__title .mi-reveal {
+    transition-delay: 0s !important;
   }
 
   .mi-hero__title-line-inner,

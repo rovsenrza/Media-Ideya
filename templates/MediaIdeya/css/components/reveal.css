@@ -7,7 +7,8 @@
 }
 
 .mi-js .aos-animate .mi-reveal,
-.mi-js .is-revealed .mi-reveal {
+.mi-js .is-revealed .mi-reveal,
+.mi-js .mi-hero__title.is-ready .mi-reveal {
   clip-path: inset(0 -2% 0 0);
   opacity: 1;
   transition:
@@ -16,7 +17,8 @@
 }
 
 .mi-js .aos-animate .mi-reveal--delay,
-.mi-js .is-revealed .mi-reveal--delay {
+.mi-js .is-revealed .mi-reveal--delay,
+.mi-js .mi-hero__title.is-ready .mi-reveal--delay {
   transition-delay: 120ms;
 }
 
