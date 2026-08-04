@@ -13,10 +13,11 @@
 - Title: 96 Medium white, center
 - Sub: 20 Light white, gap 24 from title
 - Button: #4385bb, px 48 py 24, radius 100, 20 Medium
-- Hand R: 710×768, left 1431, top -142; object-bottom; mix-blend screen
-- Hand L: 630×768, left -143, top -142; object-bottom; mix-blend screen
-- Brand watermark 1:32: top 572 within footer, ~325px, #0d304c opacity 0.5
-- overflow:visible on footer/cta (hands extend into bar)
+- Hand R: 710×768, left 1431, top -142; object-bottom; mix-blend screen; max-width none
+- Hand L: 630×768, left -143, top -142; object-bottom; mix-blend screen; max-width none
+- Brand watermark 1:32: bottom 254 + translateY(100%), 325.262px, #0d304c opacity 0.5
+- Bar: px 100 py 40 gap 100; inner 1720 (no double gutter from shell)
+- reset img height must stay `auto` (height:100% breaks hands)
 
 ### подвал (1:40)
 - border-top: rgba(67,133,187,0.5)
