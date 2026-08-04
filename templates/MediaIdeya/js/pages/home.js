@@ -61,7 +61,7 @@
 
   /* Hero sticky — scrub maps to video exit (~2.9–5.8s of 360.mp4)
      p 0–0.35 title lines crop (staggered)
-     p 0–1    columns drift out, statue rises, bottom fade lifts
+     p 0–1    columns drift out, statue rises, bottom fade expands up
   */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {

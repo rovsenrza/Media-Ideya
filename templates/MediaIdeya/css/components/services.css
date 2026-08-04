@@ -15,6 +15,25 @@
   padding: 0 var(--mi-gutter);
 }
 
+/* Soft seam over hero→services join (covers any residual hard crop) */
+.mi-services::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 4;
+  height: calc(160px * var(--mi-s));
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 35, 49, 0) 0%,
+    rgba(17, 35, 49, 0.55) 42%,
+    #112331 100%
+  );
+  transform: translateY(-100%);
+}
+
 /* Scroll length = equal steps between cards + one pin viewport */
 .mi-services__track {
   position: relative;
