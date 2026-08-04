@@ -1,13 +1,13 @@
-<section class="mi-services" id="services" aria-label="Услуги">
-	<div class="mi-services__inner">
-		<div class="mi-services__head">
-			<header class="mi-section-title mi-section-title--dark">
-				<h2 class="mi-section-title__heading">Что мы создаем</h2>
-				<a class="mi-section-title__label" href="/uslugi.html">Наши услуги</a>
-			</header>
-		</div>
-
-		<div class="mi-services__list" data-services-stack>
+<section class="mi-services" id="services" aria-label="Услуги" data-services-stack style="--mi-stack-count: 7">
+	<div class="mi-services__track">
+		<div class="mi-services__pin">
+			<div class="mi-services__head">
+				<header class="mi-section-title mi-section-title--dark">
+					<h2 class="mi-section-title__heading">Что мы создаем</h2>
+					<a class="mi-section-title__label" href="/uslugi.html">Наши услуги</a>
+				</header>
+			</div>
+			<div class="mi-services__stage">
 
 			<article class="mi-service-card">
 				<div class="mi-service-card__shell">
@@ -174,6 +174,7 @@
 				</div>
 			</article>
 
+			</div>
 		</div>
 	</div>
 </section>

@@ -76,40 +76,68 @@
     sync();
   }
 
-  /* Services z-stack — section scroll split equally per card;
-     within each step: 50% shrink, 50% cover */
-  var stack = document.querySelector('[data-services-stack]');
-  if (stack && !reduce) {
-    var cards = stack.querySelectorAll('.mi-service-card');
+  /* Services pin stack — equal steps; shrink then cover; pin leaves with scroll */
+  var services = document.querySelector('[data-services-stack]');
+  if (services && !reduce) {
+    var track = services.querySelector('.mi-services__track');
+    var cards = services.querySelectorAll('.mi-service-card');
     var stackTick = false;
     var SHRINK_SHARE = 0.5;
+    var n = cards.length;
+    var steps = Math.max(n - 1, 1);
 
-    function clampStack(n, a, b) {
-      return Math.min(b, Math.max(a, n));
+    function clampStack(v, a, b) {
+      return Math.min(b, Math.max(a, v));
     }
 
-    function stepPx(card) {
-      var mb = parseFloat(window.getComputedStyle(card).marginBottom);
-      return Math.max(mb || 0, window.innerHeight * 0.5, 1);
+    function smooth(t) {
+      return t * t * (3 - 2 * t);
     }
 
     function syncStack() {
       stackTick = false;
-      for (var i = 0; i < cards.length; i++) {
-        var p = 0;
-        if (i < cards.length - 1) {
-          var curTop = cards[i].getBoundingClientRect().top;
-          var nextTop = cards[i + 1].getBoundingClientRect().top;
-          var travel = stepPx(cards[i]);
-          var raw = clampStack(1 - (nextTop - curTop) / travel, 0, 1);
-          if (raw <= SHRINK_SHARE) {
-            var t = raw / SHRINK_SHARE;
-            p = t * t * (3 - 2 * t);
+      if (!track || !n) return;
+
+      var range = Math.max(track.offsetHeight - window.innerHeight, 1);
+      var p = clampStack(-track.getBoundingClientRect().top / range, 0, 1);
+      var seg = p * steps;
+      var i = Math.min(Math.floor(seg), steps - 1);
+      var local = clampStack(seg - i, 0, 1);
+
+      for (var j = 0; j < n; j++) {
+        var scaleP = 0;
+        var y = 100;
+
+        if (j < i) {
+          scaleP = 1;
+          y = 0;
+        } else if (j === i) {
+          y = 0;
+          scaleP = local <= SHRINK_SHARE ? smooth(local / SHRINK_SHARE) : 1;
+        } else if (j === i + 1) {
+          scaleP = 0;
+          if (local <= SHRINK_SHARE) {
+            y = 100;
           } else {
-            p = 1;
+            y = 100 * (1 - (local - SHRINK_SHARE) / (1 - SHRINK_SHARE));
           }
+        } else {
+          scaleP = 0;
+          y = 100;
         }
-        cards[i].style.setProperty('--mi-stack-p', p.toFixed(4));
+
+        /* last card fully in when scroll ends */
+        if (p >= 0.999 && j === n - 1) {
+          scaleP = 0;
+          y = 0;
+        }
+        if (p >= 0.999 && j < n - 1) {
+          scaleP = 1;
+          y = 0;
+        }
+
+        cards[j].style.setProperty('--mi-stack-p', scaleP.toFixed(4));
+        cards[j].style.setProperty('--mi-card-y', y.toFixed(4) + '%');
       }
     }
 
