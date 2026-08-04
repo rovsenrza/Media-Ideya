@@ -1,22 +1,68 @@
-/* Footer — Figma node 1:31 «футер» */
+/* Footer — Figma 1:31 (форма 1:33 + подвал 1:40) */
 
 .mi-footer {
-  background: var(--mi-color-surface-dark);
+  position: relative;
+  background: linear-gradient(180deg, #0d2f4c 0%, #112331 45.269%);
   color: var(--mi-color-inverse);
+  overflow: hidden;
 }
 
+/* —— onfooter / форма —— */
 .mi-footer__cta {
   position: relative;
   overflow: hidden;
-  padding: 120px var(--mi-gutter) 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 120px var(--mi-gutter);
   text-align: center;
+  border-radius: 60px 60px 0 0;
+}
+
+.mi-footer__hand {
+  position: absolute;
+  top: -142px;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mi-footer__hand img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.mi-footer__hand--l {
+  left: calc(50% - 960px - 143px);
+  width: 630px;
+  height: 768px;
+}
+
+.mi-footer__hand--r {
+  left: calc(50% - 960px + 1431px);
+  width: 710px;
+  height: 768px;
 }
 
 .mi-footer__cta-inner {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
-  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.mi-footer__cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
 }
 
 .mi-footer__cta-title {
@@ -25,26 +71,54 @@
   font-size: var(--mi-fs-96);
   font-weight: 500;
   line-height: 1.1;
+  color: #fff;
 }
 
 .mi-footer__cta-text {
-  margin: 24px 0 0;
+  margin: 0;
   font-size: var(--mi-fs-20);
   font-weight: 300;
   line-height: 1.5;
+  color: #fff;
 }
 
 .mi-footer__cta .mi-btn {
-  margin-top: 40px;
+  margin: 0;
 }
 
+/* —— подвал —— */
 .mi-footer__bar {
   position: relative;
-  padding: 40px var(--mi-gutter) 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px var(--mi-gutter);
+  border-top: 1px solid rgba(67, 133, 187, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.mi-footer__brand {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 35%);
+  margin: 0;
+  font-family: var(--mi-font);
+  font-size: 325px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0d304c;
+  opacity: 0.5;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
 .mi-footer__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -59,73 +133,66 @@
   gap: 120px;
 }
 
+.mi-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .mi-footer__col p,
 .mi-footer__col a {
   margin: 0;
   font-size: var(--mi-fs-20);
   font-weight: 500;
   line-height: 1.5;
+  color: #fff;
+}
+
+.mi-footer__mail {
+  text-decoration: underline;
+  text-underline-position: from-font;
 }
 
 .mi-footer__label {
   display: block;
-  margin-bottom: 16px;
+  margin: 0;
   font-size: var(--mi-fs-16);
+  font-weight: 400;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+  opacity: 0.5;
 }
 
 .mi-footer__social {
-  text-align: right;
-}
-
-.mi-footer__social .mi-footer__label {
-  margin-bottom: 16px;
-}
-
-.mi-footer__social-list {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 16px;
-  margin-top: 16px;
 }
 
-.mi-footer__social-link {
-  display: block;
-  width: 64px;
+.mi-footer__social-img {
+  width: 224px;
   height: 64px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  transition: background var(--mi-duration) var(--mi-ease);
-}
-
-.mi-footer__social-link:hover {
-  background: rgba(255, 255, 255, 0.22);
+  display: block;
 }
 
 .mi-footer__legal {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: var(--mi-content-width);
-  margin: 80px auto 0;
+  margin-inline: auto;
   font-size: var(--mi-fs-16);
+  font-weight: 400;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff;
 }
 
-.mi-footer__brand {
-  margin-top: 40px;
-  font-family: var(--mi-font);
-  font-size: clamp(64px, 12vw, 280px);
-  font-weight: 500;
-  line-height: 0.9;
-  text-align: center;
-  letter-spacing: -0.02em;
-  opacity: 0.18;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  overflow: hidden;
+.mi-footer__legal span,
+.mi-footer__legal a {
+  opacity: 0.5;
+  color: inherit;
 }

@@ -1,6 +1,4 @@
-/* Hero / banner — Figma node 1:285
-   Design canvas 1920 centered; bg full-bleed on >1920.
-*/
+/* Hero / banner — Figma 1:285 (file kjgO8zApNk7weuAFgIdCPb) */
 
 .mi-hero {
   position: relative;
@@ -28,10 +26,9 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 1493px;
-  background: linear-gradient(180deg, var(--mi-color-hero-sky-from) 0%, var(--mi-color-hero-sky-to) 100%);
+  background: linear-gradient(180deg, #8db5d5 0%, #6398c3 100%);
 }
 
-/* Positions from Figma, anchored to 1920 center: calc(50% - 960px + x) */
 .mi-hero__cloud {
   position: absolute;
   display: block;
@@ -62,11 +59,12 @@
   z-index: 1;
 }
 
+/* Figma: object-bottom / cover within exact box */
 .mi-hero__col img {
   width: 100%;
   height: 100%;
-  object-fit: fill; /* Figma box 617×1603 — full capital+shaft, no side crop */
-  object-position: center bottom;
+  object-fit: cover;
+  object-position: bottom center;
 }
 
 .mi-hero__col--l {
@@ -76,13 +74,12 @@
   height: 1603px;
 }
 
-/* Figma: right cols flipped (rotate-180 + scaleY-1 ≈ scaleX-1) */
+/* Right exports already flipped from Figma node 1:292 */
 .mi-hero__col--r {
   left: calc(50% - 960px + 1486px);
   top: -110px;
   width: 623px;
   height: 1603px;
-  transform: scaleX(-1);
 }
 
 .mi-hero__col--r2 {
@@ -90,8 +87,6 @@
   top: -55px;
   width: 623px;
   height: 1603px;
-  transform: scaleX(-1);
-  opacity: 0.95;
 }
 
 .mi-hero__statue {
@@ -102,12 +97,13 @@
   height: 1092px;
   transform: translateX(-50%);
   display: block;
+  z-index: 1;
 }
 
 .mi-hero__statue img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: bottom center;
 }
 
@@ -117,6 +113,7 @@
   right: 0;
   top: 900px;
   height: 661px;
+  z-index: 2;
   background: linear-gradient(
     180deg,
     rgba(17, 35, 49, 0) 0%,
@@ -131,14 +128,16 @@
   right: 0;
   top: 0;
   height: 213px;
-  background: linear-gradient(180deg, var(--mi-color-hero-fade-top) 0%, rgba(150, 187, 217, 0) 100%);
+  z-index: 2;
+  background: linear-gradient(180deg, #4a7ca3 0%, rgba(150, 187, 217, 0) 100%);
 }
 
 .mi-hero__title {
   position: absolute;
   left: 50%;
   top: 195px;
-  width: min(1065px, calc(100% - 80px));
+  width: 1065px;
+  max-width: calc(100% - 80px);
   transform: translateX(-50%);
   margin: 0;
   font-family: var(--mi-font);
@@ -146,8 +145,8 @@
   font-weight: 500;
   line-height: 1.1;
   text-align: center;
-  color: var(--mi-color-inverse);
-  z-index: 2;
+  color: #fff;
+  z-index: 3;
 }
 
 .mi-hero__scroll {
@@ -157,7 +156,7 @@
   width: 86px;
   height: 86px;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 4;
   transition: opacity var(--mi-duration) var(--mi-ease), transform var(--mi-duration) var(--mi-ease);
 }
 

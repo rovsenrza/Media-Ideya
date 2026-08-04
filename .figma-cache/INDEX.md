@@ -6,15 +6,14 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 
 | Node | Section | File |
 |------|---------|------|
-| `1:30` | Home frame | _(fetch later)_ |
+| `1:285` | Hero / banner | `1-285_hero.md` |
+| `1:31` | Footer + onfooter | `1-31_footer.md` |
 | `1:302` | Header | _(fetch later)_ |
-| `1:285` | Hero | _(fetch later)_ |
 | `1:266` | Services | _(fetch later)_ |
 | `1:115` | About | _(fetch later)_ |
 | `1:77` | Clients | _(fetch later)_ |
 | `1:97` | FAQ | _(fetch later)_ |
 | `1:61` | Articles | _(fetch later)_ |
-| `1:31` | Footer | _(fetch later)_ |
 | `1:311` | Services page | _(fetch later)_ |
 
 fileKey: `kjgO8zApNk7weuAFgIdCPb` (Pro team — aktiv)
