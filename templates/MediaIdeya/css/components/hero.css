@@ -4,8 +4,8 @@
   --mi-hero-p: 0;
   position: relative;
   width: 100%;
-  /* sticky pin (100vh) + scroll travel for live title exit */
-  height: 220vh;
+  /* sticky pin (100vh) + short travel — swipe snaps start↔end */
+  height: 160vh;
   color: var(--mi-color-inverse);
   background: var(--mi-color-surface-dark);
 }
