@@ -1,18 +1,28 @@
 /* Hero / banner — Figma 1:285 (file kjgO8zApNk7weuAFgIdCPb) */
 
 .mi-hero {
+  --mi-hero-p: 0;
   position: relative;
   width: 100%;
-  height: 1561px;
-  overflow: hidden;
+  /* sticky pin (100vh) + scroll travel for live title exit */
+  height: 220vh;
   color: var(--mi-color-inverse);
   background: var(--mi-color-surface-dark);
+}
+
+.mi-hero__pin {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .mi-hero__stage {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 100vh;
 }
 
 .mi-hero__bg {
@@ -161,6 +171,10 @@
 
 .mi-hero__title-line {
   display: block;
+  will-change: transform, opacity;
+  /* live scrub: JS sets --mi-line-t 0→1 per line */
+  opacity: calc(1 - var(--mi-line-t, 0));
+  transform: translate3d(0, calc(var(--mi-line-t, 0) * -1.15em), 0);
 }
 
 .mi-hero__word {
@@ -175,17 +189,22 @@
 .mi-hero__scroll {
   position: absolute;
   left: 50%;
-  top: 878px;
+  top: min(878px, calc(100vh - 120px));
   width: 86px;
   height: 86px;
   transform: translateX(-50%);
   z-index: 4;
-  transition: opacity var(--mi-duration) var(--mi-ease), transform var(--mi-duration) var(--mi-ease);
+  opacity: calc(1 - var(--mi-hero-p, 0) * 1.4);
+  pointer-events: auto;
+  transition: transform var(--mi-duration) var(--mi-ease);
 }
 
 .mi-hero__scroll:hover {
-  opacity: 0.85;
   transform: translateX(-50%) translateY(4px);
+}
+
+.mi-js .mi-hero.is-leaving .mi-hero__scroll {
+  pointer-events: none;
 }
 
 .mi-hero__scroll img {
@@ -209,9 +228,23 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .mi-hero {
+    height: 100vh;
+  }
+
   .mi-js .mi-hero__word {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .mi-hero__title-line {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mi-hero__scroll {
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 }
