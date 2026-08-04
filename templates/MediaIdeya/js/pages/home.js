@@ -104,8 +104,13 @@
       'wheel',
       function (e) {
         if (e.ctrlKey || e.deltaY <= 0) return;
+
+        /* interrupt in-flight “to end” — no freeze */
         if (window.MI._scrollLock) {
-          e.preventDefault();
+          if (raf) cancelAnimationFrame(raf);
+          raf = 0;
+          window.MI._scrollLock = false;
+          sync();
           return;
         }
 
