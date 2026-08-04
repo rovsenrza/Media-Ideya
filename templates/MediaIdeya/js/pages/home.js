@@ -153,6 +153,86 @@
     syncStack();
   }
 
+  /* About — Jitter «о нас.mp4» scrub (native scroll, pin/track) */
+  var about = document.querySelector('[data-about-scroll]');
+  if (about) {
+    var aboutTrack = about.querySelector('.mi-about__track');
+    var aboutStats = about.querySelectorAll('[data-about-stat]');
+    var aboutTick = false;
+
+    function clampAbout(v, a, b) {
+      return Math.min(b, Math.max(a, v));
+    }
+
+    function smoothAbout(t) {
+      t = clampAbout(t, 0, 1);
+      return t * t * (3 - 2 * t);
+    }
+
+    /* Map overall progress → piece (start, end) → 0..1 eased */
+    function piece(p, a, b) {
+      return smoothAbout((p - a) / Math.max(b - a, 0.0001));
+    }
+
+    function syncAbout() {
+      aboutTick = false;
+      if (!aboutTrack) return;
+
+      var range = Math.max(aboutTrack.offsetHeight - window.innerHeight, 1);
+      var p = clampAbout(-aboutTrack.getBoundingClientRect().top / range, 0, 1);
+
+      /*
+        Video ~8030ms → p 0..1
+        0.00–0.08  colonnade rise
+        0.07–0.14  eyebrow «О нас»
+        0.10–0.18  title
+        0.14–0.25  desc
+        0.22–0.42  stats stagger
+        0.38–0.50  CTA + glow
+        0.50–0.65  hold
+        0.65–0.72  content fade
+        0.72–1.00  dark wave cover
+      */
+      var col = piece(p, 0, 0.08);
+      var eye = piece(p, 0.07, 0.14);
+      var title = piece(p, 0.1, 0.18);
+      var desc = piece(p, 0.14, 0.25);
+      var btn = piece(p, 0.38, 0.5);
+      var out = piece(p, 0.65, 0.72);
+      var cover = piece(p, 0.72, 1);
+
+      about.style.setProperty('--mi-about-p', p.toFixed(4));
+      about.style.setProperty('--mi-about-col', col.toFixed(4));
+      about.style.setProperty('--mi-about-eye', eye.toFixed(4));
+      about.style.setProperty('--mi-about-title', title.toFixed(4));
+      about.style.setProperty('--mi-about-desc', desc.toFixed(4));
+      about.style.setProperty('--mi-about-btn', btn.toFixed(4));
+      about.style.setProperty('--mi-about-out', out.toFixed(4));
+      about.style.setProperty('--mi-about-cover', cover.toFixed(4));
+
+      for (var s = 0; s < aboutStats.length; s++) {
+        var start = 0.22 + s * 0.055;
+        var end = start + 0.08;
+        aboutStats[s].style.setProperty('--mi-stat-t', piece(p, start, end).toFixed(4));
+      }
+    }
+
+    function onAboutScroll() {
+      if (!aboutTick) {
+        aboutTick = true;
+        requestAnimationFrame(syncAbout);
+      }
+    }
+
+    if (reduce) {
+      about.classList.add('is-static');
+    } else {
+      window.addEventListener('scroll', onAboutScroll, { passive: true });
+      window.addEventListener('resize', onAboutScroll, { passive: true });
+      syncAbout();
+    }
+  }
+
   var scrollBtn = document.querySelector('.mi-hero__scroll');
   if (scrollBtn) {
     scrollBtn.addEventListener('click', function (e) {

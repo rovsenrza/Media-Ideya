@@ -1,13 +1,42 @@
-/* About — Figma node 1:115 «3 о нас» */
+/* About — Figma 1:115 + Jitter «о нас.mp4» scroll scrub
+   Track scrolls; pin sticks 100vh; --mi-about-* vars drive reveal / exit.
+*/
 
 .mi-about {
+  --mi-about-p: 0;
+  --mi-about-col: 0;
+  --mi-about-eye: 0;
+  --mi-about-title: 0;
+  --mi-about-desc: 0;
+  --mi-about-stat: 0;
+  --mi-about-btn: 0;
+  --mi-about-out: 0;
+  --mi-about-cover: 0;
+  --mi-about-wave-h: 229px;
+  --mi-about-scroll: 240vh;
+
   position: relative;
   width: 100%;
-  min-height: 1051px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 117.08%);
   color: var(--mi-color-surface-dark);
-  padding: 140px var(--mi-gutter) 331px;
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-about__track {
+  position: relative;
+  height: var(--mi-about-scroll);
+}
+
+.mi-about__pin {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 140px var(--mi-gutter) 120px;
+  background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 117.08%);
 }
 
 .mi-about__bg {
@@ -52,7 +81,7 @@
   height: 666px;
 }
 
-/* колоннада 1:121 — 2342×1654, centered on viewport */
+/* колоннада — enters from below (0→1), slight settle */
 .mi-about__colonnade {
   position: absolute;
   left: 50%;
@@ -60,9 +89,10 @@
   width: 2342px;
   height: 1654px;
   display: block;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, calc((1 - var(--mi-about-col)) * 18%), 0);
   z-index: 2;
   max-width: none;
+  will-change: transform;
 }
 
 .mi-about__colonnade img {
@@ -72,7 +102,7 @@
   object-position: center center;
 }
 
-/* Ellipse 10 (1:124) — soft glow behind button; box 1142×359 @ 389,467 */
+/* Ellipse 10 — glow with CTA */
 .mi-about__glow {
   position: absolute;
   left: 50%;
@@ -82,6 +112,8 @@
   transform: translateX(-50%);
   z-index: 2;
   pointer-events: none;
+  opacity: calc(var(--mi-about-btn) * (1 - var(--mi-about-out)));
+  will-change: opacity;
 }
 
 .mi-about__glow img {
@@ -106,16 +138,30 @@
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
+  opacity: calc(1 - var(--mi-about-out));
+  will-change: opacity;
 }
 
 .mi-about__text {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 16px;
   width: 100%;
   max-width: 806px;
   text-align: center;
+}
+
+.mi-about__eyebrow {
+  margin: 0;
+  font-family: var(--mi-font);
+  font-size: var(--mi-fs-20);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--mi-color-blue);
+  opacity: var(--mi-about-eye);
+  transform: translate3d(0, calc((1 - var(--mi-about-eye)) * 16px), 0);
+  will-change: opacity, transform;
 }
 
 .mi-about__title {
@@ -125,15 +171,21 @@
   font-weight: 500;
   line-height: 1.1;
   color: var(--mi-color-surface-dark);
+  opacity: var(--mi-about-title);
+  transform: translate3d(0, calc((1 - var(--mi-about-title)) * 24px), 0);
+  will-change: opacity, transform;
 }
 
 .mi-about__desc {
-  margin: 0;
+  margin: 24px 0 0;
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
   font-weight: 300;
   line-height: 1.5;
   color: var(--mi-color-surface-dark);
+  opacity: var(--mi-about-desc);
+  transform: translate3d(0, calc((1 - var(--mi-about-desc)) * 20px), 0);
+  will-change: opacity, transform;
 }
 
 .mi-about__stats {
@@ -148,6 +200,9 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  opacity: var(--mi-stat-t, 0);
+  transform: translate3d(0, calc((1 - var(--mi-stat-t, 0)) * 28px), 0);
+  will-change: opacity, transform;
 }
 
 .mi-about__stat-num {
@@ -177,23 +232,97 @@
   line-height: 1.5;
 }
 
-/* плашк 1:263 — top 861, h 229.15; колоннада overlays it */
-.mi-about__wave {
-  position: absolute;
-  left: 50%;
-  top: 861px;
-  transform: translateX(-50%);
-  z-index: 1;
-  width: 100%;
-  min-width: 1920px;
-  height: 229px;
-  line-height: 0;
-  pointer-events: none;
+.mi-about__cta {
+  opacity: var(--mi-about-btn);
+  transform: translate3d(0, calc((1 - var(--mi-about-btn)) * 20px), 0);
+  will-change: opacity, transform;
 }
 
-.mi-about__wave img {
+/* Dark wave cover — resting 229px tip → full viewport (exit ~5.9–7.4s) */
+.mi-about__cover {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 20;
   width: 100%;
-  height: 100%;
+  min-width: 1920px;
+  height: calc(
+    var(--mi-about-wave-h) +
+      var(--mi-about-cover) * (100% - var(--mi-about-wave-h))
+  );
+  transform: translateX(-50%);
+  pointer-events: none;
+  line-height: 0;
+  will-change: height;
+}
+
+.mi-about__cover-wave {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--mi-about-wave-h);
   display: block;
   object-fit: fill;
+}
+
+.mi-about__cover-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--mi-about-wave-h) * 0.45);
+  bottom: 0;
+  background: var(--mi-color-surface-dark);
+}
+
+/* Reduced motion / no-JS: full composed frame */
+@media (prefers-reduced-motion: reduce) {
+  .mi-about {
+    --mi-about-col: 1;
+    --mi-about-eye: 1;
+    --mi-about-title: 1;
+    --mi-about-desc: 1;
+    --mi-about-btn: 1;
+    --mi-about-out: 0;
+    --mi-about-cover: 0;
+    --mi-about-scroll: auto;
+  }
+
+  .mi-about__track {
+    height: auto;
+  }
+
+  .mi-about__pin {
+    position: relative;
+    height: auto;
+    min-height: 1051px;
+  }
+
+  .mi-about__stat {
+    --mi-stat-t: 1;
+  }
+}
+
+.mi-about.is-static {
+  --mi-about-col: 1;
+  --mi-about-eye: 1;
+  --mi-about-title: 1;
+  --mi-about-desc: 1;
+  --mi-about-btn: 1;
+  --mi-about-out: 0;
+  --mi-about-cover: 0;
+}
+
+.mi-about.is-static .mi-about__track {
+  height: auto;
+}
+
+.mi-about.is-static .mi-about__pin {
+  position: relative;
+  height: auto;
+  min-height: 1051px;
+}
+
+.mi-about.is-static .mi-about__stat {
+  --mi-stat-t: 1;
 }
