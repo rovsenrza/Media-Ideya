@@ -37,10 +37,10 @@
     var lines = hero.querySelectorAll('.mi-hero__title-line');
     var ticking = false;
     var snapping = false;
-    var snapTimer = 0;
-    var settleTimer = 0;
+    var snapRaf = 0;
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
+    var SNAP_MS = 1200;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -58,10 +58,6 @@
       return hero.getBoundingClientRect().top + window.pageYOffset;
     }
 
-    function yForProgress(p) {
-      return heroDocTop() + p * range();
-    }
-
     function isPinned() {
       var r = hero.getBoundingClientRect();
       return r.top <= 1 && r.bottom > window.innerHeight + 1;
@@ -77,75 +73,60 @@
 
     function updateHeroScroll() {
       ticking = false;
+      if (snapping) return;
       applyProgress(progress());
     }
 
     function onScroll() {
+      if (snapping) return;
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(updateHeroScroll);
       }
-      if (snapping) return;
-      window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(function () {
-        if (snapping || !isPinned()) return;
-        var p = progress();
-        if (p > 0.03 && p < 0.97) {
-          snapTo(p >= 0.5 ? 1 : 0);
-        }
-      }, 60);
     }
 
-    var SNAP_MS = 1400;
-    var snapRaf = 0;
-
-    function easeInOutCubic(t) {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    /* starts moving immediately — no ease-in freeze */
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
     }
 
-    function snapTo(p) {
-      p = p >= 0.5 ? 1 : 0;
+    function snapTo(target) {
+      target = target >= 0.5 ? 1 : 0;
+      var startP = progress();
       var startY = window.pageYOffset;
-      var endY = yForProgress(p);
-      if (Math.abs(startY - endY) < 2) {
-        applyProgress(p);
+      var top = heroDocTop();
+      var endY = top + target * range();
+
+      if (Math.abs(startP - target) < 0.01 && Math.abs(startY - endY) < 2) {
+        applyProgress(target);
         snapping = false;
         return;
       }
 
-      snapping = true;
-      window.clearTimeout(snapTimer);
       if (snapRaf) cancelAnimationFrame(snapRaf);
+      snapping = true;
 
       var t0 = performance.now();
 
       function step(now) {
         var t = clamp((now - t0) / SNAP_MS, 0, 1);
-        var e = easeInOutCubic(t);
-        var y = startY + (endY - startY) * e;
-        window.scrollTo(0, y);
-        applyProgress(progress());
+        var e = easeOutCubic(t);
+        var p = startP + (target - startP) * e;
+        window.scrollTo(0, startY + (endY - startY) * e);
+        applyProgress(p);
 
         if (t < 1) {
           snapRaf = requestAnimationFrame(step);
           return;
         }
 
-        window.scrollTo(0, yForProgress(p));
-        applyProgress(p);
+        window.scrollTo(0, endY);
+        applyProgress(target);
         snapping = false;
         snapRaf = 0;
       }
 
       snapRaf = requestAnimationFrame(step);
-      snapTimer = window.setTimeout(function () {
-        if (!snapping) return;
-        if (snapRaf) cancelAnimationFrame(snapRaf);
-        window.scrollTo(0, yForProgress(p));
-        applyProgress(p);
-        snapping = false;
-        snapRaf = 0;
-      }, SNAP_MS + 120);
     }
 
     function onWheel(e) {
@@ -157,7 +138,6 @@
         return;
       }
 
-      /* inside sticky travel — any nudge commits to start or end */
       if (pinned || (p > 0.02 && p < 0.98)) {
         if (e.deltaY > 4) {
           e.preventDefault();
@@ -169,7 +149,6 @@
         return;
       }
 
-      /* just finished sticky — swipe up snaps back to start */
       if (p >= 0.98 && e.deltaY < -4) {
         var bottom = hero.getBoundingClientRect().bottom;
         if (bottom > window.innerHeight * 0.4) {
@@ -190,8 +169,7 @@
       }
       var dy = touchY - e.changedTouches[0].clientY;
       touchY = null;
-      if (!isPinned()) return;
-      if (snapping) return;
+      if (!isPinned() || snapping) return;
       var p = progress();
       if (dy > 28 && p < 0.99) snapTo(1);
       else if (dy < -28 && p > 0.01) snapTo(0);
