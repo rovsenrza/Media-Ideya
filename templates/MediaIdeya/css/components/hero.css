@@ -165,7 +165,7 @@
   right: 0;
   bottom: 0;
   z-index: 6;
-  height: calc(661px * var(--mi-s));
+  height: calc(330px * var(--mi-s));
   pointer-events: none;
   background: linear-gradient(
     180deg,
