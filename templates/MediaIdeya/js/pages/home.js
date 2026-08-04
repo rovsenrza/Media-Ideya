@@ -33,16 +33,15 @@
 
   /*
    * Hero scroll — simple:
-   * 1) --mi-hero-p follows real scroll
-   * 2) From section start, first down-wheel goes to section end
-   * 3) Everything else = normal (site-wide slow scroll in main.js)
+   * Inside first section: down → end, up → top
+   * Outside: site-wide slow scroll (main.js)
    */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
     var lines = hero.querySelectorAll('.mi-hero__title-line');
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
-    var TO_END_MS = 1100;
+    var MOVE_MS = 1100;
     var raf = 0;
 
     function clamp(n, a, b) {
@@ -59,6 +58,11 @@
 
     function docTop() {
       return hero.getBoundingClientRect().top + window.pageYOffset;
+    }
+
+    function inSection() {
+      var r = hero.getBoundingClientRect();
+      return r.top <= 1 && r.bottom > window.innerHeight + 1;
     }
 
     function apply(p) {
@@ -103,24 +107,36 @@
     window.addEventListener(
       'wheel',
       function (e) {
-        if (e.ctrlKey || e.deltaY <= 0) return;
+        if (e.ctrlKey) return;
 
-        /* interrupt in-flight “to end” — no freeze */
+        /* interrupt current move, then apply new direction */
         if (window.MI._scrollLock) {
           if (raf) cancelAnimationFrame(raf);
           raf = 0;
           window.MI._scrollLock = false;
           sync();
+        }
+
+        if (!inSection()) return;
+
+        var p = progress();
+        var top = Math.round(docTop());
+        var end = Math.round(top + range());
+
+        if (e.deltaY > 0) {
+          if (p >= 0.98) return;
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          scrollToY(end, MOVE_MS);
           return;
         }
 
-        /* only from the very start of the sticky section */
-        if (progress() > 0.05) return;
-        if (hero.getBoundingClientRect().top > 2) return;
-
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        scrollToY(Math.round(docTop() + range()), TO_END_MS);
+        if (e.deltaY < 0) {
+          if (p <= 0.02) return;
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          scrollToY(top, MOVE_MS);
+        }
       },
       { passive: false, capture: true }
     );
