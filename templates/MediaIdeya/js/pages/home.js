@@ -14,9 +14,36 @@
       smoothWheel: true,
       syncTouch: true,
       wheelMultiplier: 0.92,
+      touchMultiplier: 0.92,
     });
 
     document.documentElement.classList.add('lenis', 'lenis-smooth');
+
+    /* Banner zone — scroll 25% slower while hero is active */
+    var heroForScroll = document.querySelector('[data-hero-sticky]');
+    if (heroForScroll) {
+      var BASE_SCROLL_MULT = 0.92;
+      var HERO_SCROLL_MULT = BASE_SCROLL_MULT * 0.75;
+
+      function heroScrollEndY() {
+        var docTop =
+          heroForScroll.getBoundingClientRect().top + window.pageYOffset;
+        return Math.max(
+          0,
+          docTop + heroForScroll.offsetHeight - window.innerHeight
+        );
+      }
+
+      function syncLenisHeroSpeed() {
+        var inHero = window.pageYOffset < heroScrollEndY() - 1;
+        var mult = inHero ? HERO_SCROLL_MULT : BASE_SCROLL_MULT;
+        lenis.options.wheelMultiplier = mult;
+        lenis.options.touchMultiplier = mult;
+      }
+
+      lenis.on('scroll', syncLenisHeroSpeed);
+      syncLenisHeroSpeed();
+    }
 
     gsap.ticker.add(function (time) {
       lenis.raf(time * 1000);
