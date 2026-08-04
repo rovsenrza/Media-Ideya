@@ -23,7 +23,7 @@
   right: 0;
   top: 0;
   z-index: 4;
-  height: calc(160px * var(--mi-s));
+  height: calc(128px * var(--mi-s));
   pointer-events: none;
   background: linear-gradient(
     180deg,
