@@ -9,7 +9,7 @@
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
   /* Figma 1:97 — pt 120 / pb 80 */
-  padding: var(--mi-space-section) var(--mi-gutter) 80px;
+  padding: var(--mi-space-section) var(--mi-gutter) clamp(56px, calc(56px + 24 * ((100vw - 992px) / 928)), 80px);
   /* Ellipse 9 sits at top:-272 — must bleed over partners, not clip */
   overflow: visible;
 }
@@ -18,9 +18,9 @@
 .mi-faq__glow {
   position: absolute;
   left: 50%;
-  top: -272px;
-  width: 876px;
-  height: 876px;
+  top: calc(-272px * var(--mi-s));
+  width: calc(876px * var(--mi-s));
+  height: calc(876px * var(--mi-s));
   transform: translateX(-50%);
   border-radius: 50%;
   background: radial-gradient(
@@ -40,19 +40,19 @@
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: var(--mi-space-gap-md);
 }
 
 .mi-faq__list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--mi-space-gap-sm);
   width: 100%;
 }
 
 .mi-faq__item {
   background: #0d304c;
-  border-radius: 40px;
+  border-radius: var(--mi-radius-media);
   overflow: hidden;
 }
 
@@ -65,9 +65,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  min-height: 132px;
-  padding: 40px 40px 40px 60px;
+  gap: var(--mi-space-gap-sm);
+  min-height: clamp(96px, calc(96px + 36 * ((100vw - 992px) / 928)), 132px);
+  padding: clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
+    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
+    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
+    clamp(36px, calc(36px + 24 * ((100vw - 992px) / 928)), 60px);
   list-style: none;
   cursor: pointer;
   font-family: var(--mi-font);
@@ -83,9 +86,9 @@
 .mi-faq__icon {
   position: relative;
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: center / 32px 32px no-repeat url("../../images/icons/plus.svg");
+  width: clamp(36px, calc(36px + 12 * ((100vw - 992px) / 928)), 48px);
+  height: clamp(36px, calc(36px + 12 * ((100vw - 992px) / 928)), 48px);
+  background: center / 66% 66% no-repeat url("../../images/icons/plus.svg");
 }
 
 .mi-faq__item[open] .mi-faq__icon {
@@ -94,8 +97,11 @@
 
 .mi-faq__a {
   margin: 0;
-  padding: 0 40px 40px 60px;
-  max-width: 1281px;
+  padding: 0
+    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
+    clamp(28px, calc(28px + 12 * ((100vw - 992px) / 928)), 40px)
+    clamp(36px, calc(36px + 24 * ((100vw - 992px) / 928)), 60px);
+  max-width: min(1281px, 100%);
   font-family: var(--mi-font);
   font-size: var(--mi-fs-20);
   font-weight: 300;

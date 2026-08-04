@@ -5,11 +5,11 @@
 .mi-about {
   position: relative;
   width: 100%;
-  min-height: 1051px;
+  min-height: calc(1051px * var(--mi-s));
   overflow: hidden;
   background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 117.08%);
   color: var(--mi-color-surface-dark);
-  padding: 140px var(--mi-gutter) 331px;
+  padding: clamp(96px, calc(140px * var(--mi-s)), 140px) var(--mi-gutter) calc(331px * var(--mi-s));
 }
 
 .mi-about__bg {
@@ -32,34 +32,34 @@
   object-fit: cover;
 }
 
-/* облака — metadata coords relative to 1:115 */
+/* облака — metadata coords relative to 1:115, scaled via --mi-s */
 .mi-about__cloud--a {
-  left: calc(50% - 960px - 247px);
-  top: 124px;
-  width: 1635px;
-  height: 666px;
+  left: calc(50% - (1207px * var(--mi-s)));
+  top: calc(124px * var(--mi-s));
+  width: calc(1635px * var(--mi-s));
+  height: calc(666px * var(--mi-s));
 }
 
 .mi-about__cloud--b {
-  left: calc(50% - 960px - 188px);
-  top: 252px;
-  width: 2296px;
-  height: 936px;
+  left: calc(50% - (1148px * var(--mi-s)));
+  top: calc(252px * var(--mi-s));
+  width: calc(2296px * var(--mi-s));
+  height: calc(936px * var(--mi-s));
 }
 
 .mi-about__cloud--c {
-  left: calc(50% - 960px + 560px);
-  top: 21px;
-  width: 1635px;
-  height: 666px;
+  left: calc(50% - (400px * var(--mi-s)));
+  top: calc(21px * var(--mi-s));
+  width: calc(1635px * var(--mi-s));
+  height: calc(666px * var(--mi-s));
 }
 
 .mi-about__colonnade {
   position: absolute;
   left: 50%;
-  top: 276px;
-  width: 2342px;
-  height: 1654px;
+  top: calc(276px * var(--mi-s));
+  width: calc(2342px * var(--mi-s));
+  height: calc(1654px * var(--mi-s));
   display: block;
   transform: translateX(-50%);
   z-index: 2;
@@ -76,9 +76,9 @@
 .mi-about__glow {
   position: absolute;
   left: 50%;
-  top: 467px;
-  width: 1142px;
-  height: 359px;
+  top: calc(467px * var(--mi-s));
+  width: calc(1142px * var(--mi-s));
+  height: calc(359px * var(--mi-s));
   transform: translateX(-50%);
   z-index: 2;
   pointer-events: none;
@@ -102,7 +102,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 60px;
+  gap: var(--mi-space-gap-md);
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
@@ -114,7 +114,7 @@
   align-items: center;
   gap: 16px;
   width: 100%;
-  max-width: 806px;
+  max-width: min(806px, 100%);
   text-align: center;
 }
 
@@ -149,7 +149,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 100px;
+  gap: clamp(48px, calc(48px + 52 * ((100vw - 992px) / 928)), 100px);
 }
 
 .mi-about__stat {
@@ -170,8 +170,8 @@
 }
 
 .mi-about__wreath {
-  width: 51px;
-  height: 95px;
+  width: calc(51px * var(--mi-s));
+  height: calc(95px * var(--mi-s));
   flex-shrink: 0;
 }
 
@@ -194,8 +194,8 @@
   transform: translateX(-50%);
   z-index: 1;
   width: 100%;
-  min-width: 1920px;
-  height: 229px;
+  min-width: 100%;
+  height: calc(229px * var(--mi-s));
   line-height: 0;
   pointer-events: none;
 }

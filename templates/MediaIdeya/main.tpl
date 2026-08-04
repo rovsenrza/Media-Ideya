@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="{THEME}/css/base/reset.css">
 	<link rel="stylesheet" href="{THEME}/css/base/typography.css">
 	<link rel="stylesheet" href="{THEME}/css/layout/shell.css">
+	<link rel="stylesheet" href="{THEME}/css/layout/breakpoints.css">
 	<link rel="stylesheet" href="{THEME}/css/components/button.css">
 	<link rel="stylesheet" href="{THEME}/css/components/header.css">
 	<link rel="stylesheet" href="{THEME}/css/components/section-title.css">
@@ -60,9 +61,7 @@
 			[/page-title]
 			[/not-available]
 
-			<div id="content-below">
-				{content}
-			</div>
+			
 		</main>
 
 		{include file="modules/footer.tpl"}

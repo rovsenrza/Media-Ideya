@@ -1,0 +1,147 @@
+/* Layout breakpoints — 992 → 1280 → 1440 → 1920
+   Typography/spacing come from fluid tokens; this file tunes structure.
+*/
+
+/* —— ≤1439 (laptop) —— */
+@media (max-width: 1439.98px) {
+  .mi-nav {
+    gap: clamp(40px, 5vw, 64px);
+  }
+
+  .mi-footer__cta-title {
+    white-space: normal;
+  }
+
+  .mi-footer__contacts {
+    gap: clamp(48px, 6vw, 96px);
+  }
+
+  .mi-footer__bar {
+    gap: clamp(48px, 5vw, 80px);
+  }
+
+  .mi-about__stats {
+    gap: clamp(48px, 5.5vw, 80px);
+  }
+
+  .mi-service-card__shell {
+    padding: clamp(48px, 4.5vw, 72px);
+  }
+
+  .mi-service-card__count {
+    top: clamp(48px, 4.5vw, 72px);
+    right: clamp(48px, 4.5vw, 72px);
+  }
+
+  .mi-faq__q {
+    min-height: clamp(96px, 8vw, 120px);
+    padding: clamp(28px, 2.5vw, 36px) clamp(28px, 2.5vw, 36px) clamp(28px, 2.5vw, 36px) clamp(36px, 3.5vw, 52px);
+  }
+
+  .mi-faq__a {
+    padding: 0 clamp(28px, 2.5vw, 36px) clamp(28px, 2.5vw, 36px) clamp(36px, 3.5vw, 52px);
+  }
+}
+
+/* —— ≤1279 (compact laptop) —— */
+@media (max-width: 1279.98px) {
+  .mi-nav {
+    gap: clamp(28px, 3.5vw, 48px);
+  }
+
+  .mi-logo {
+    flex-basis: clamp(160px, 18vw, 200px);
+    width: clamp(160px, 18vw, 200px);
+  }
+
+  .mi-articles__grid {
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+
+  .mi-clients__inner {
+    gap: var(--mi-space-gap-md);
+  }
+
+  .mi-clients {
+    --mi-clients-box-h: clamp(360px, 40vw, 460px);
+  }
+
+  .mi-about {
+    min-height: 0;
+    padding: clamp(96px, 9vw, 120px) var(--mi-gutter) clamp(200px, 22vw, 280px);
+  }
+
+  .mi-about__inner {
+    gap: var(--mi-space-gap-md);
+  }
+
+  .mi-footer__bar {
+    padding: 32px var(--mi-gutter);
+  }
+
+  .mi-footer__legal {
+    white-space: normal;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .mi-service-card__content {
+    gap: clamp(24px, 3vw, 36px);
+  }
+
+  .mi-services {
+    --mi-services-title-h: clamp(96px, 10vw, 120px);
+  }
+
+  .mi-faq__item {
+    border-radius: var(--mi-radius-media);
+  }
+
+  .mi-btn--icon {
+    min-width: 0;
+  }
+}
+
+/* —— ≤991 floor (tablet landscape start — keep usable until mobile pass) —— */
+@media (max-width: 991.98px) {
+  .mi-nav {
+    gap: 24px;
+    font-size: var(--mi-fs-16);
+  }
+
+  .mi-header__inner {
+    padding-block: 12px;
+  }
+
+  .mi-articles__grid {
+    flex-wrap: wrap;
+  }
+
+  .mi-article-card {
+    flex: 1 1 calc(50% - 12px);
+    max-width: none;
+  }
+
+  .mi-about__stats {
+    flex-wrap: wrap;
+    gap: 40px 48px;
+  }
+
+  .mi-footer__inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .mi-footer__social {
+    align-items: flex-start;
+  }
+
+  .mi-footer__contacts {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .mi-clients__pin {
+    min-height: 0;
+  }
+}

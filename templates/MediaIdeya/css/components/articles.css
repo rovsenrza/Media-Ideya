@@ -15,12 +15,12 @@
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: var(--mi-space-gap-md);
 }
 
 .mi-articles__grid {
   display: flex;
-  gap: 40px;
+  gap: clamp(24px, calc(24px + 16 * ((100vw - 992px) / 928)), 40px);
   width: 100%;
 }
 
@@ -37,7 +37,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 40px;
+  border-radius: var(--mi-radius-media);
   aspect-ratio: 547 / 329;
   background: var(--mi-color-surface-soft);
 }
@@ -87,7 +87,7 @@
 .mi-article-card__title {
   margin: 0;
   font-family: var(--mi-font);
-  font-size: 24px;
+  font-size: var(--mi-fs-24);
   font-weight: 500;
   line-height: 1.3;
 }

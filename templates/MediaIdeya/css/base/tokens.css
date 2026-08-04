@@ -1,22 +1,37 @@
 /* Media Ideya — design tokens (Figma 1920)
    Source: https://www.figma.com/design/kjgO8zApNk7weuAFgIdCPb
+
+   Fluid range: 992px → 1920px
+   Formula: clamp(min@992, min + (max-min)*((100vw-992)/928), max@1920)
 */
 
 :root {
-  /* Layout — 1920 design guide; full-bleed sections ignore hard cap */
+  /* Breakpoint anchors */
+  --mi-bp-sm: 992px;
+  --mi-bp-md: 1280px;
+  --mi-bp-lg: 1440px;
+  --mi-bp-xl: 1920px;
+  --mi-fluid-range: 928; /* 1920 - 992 */
+
+  /* Design-canvas scale (decorative layers locked to 1920 artboard) */
+  --mi-s: min(1, calc(100vw / 1920));
+
+  /* Layout — fluid gutters / content */
   --mi-page-width: 1920px;
   --mi-content-width: 1720px;
-  --mi-gutter: 100px;
-  --mi-header-height: 101px;
+  --mi-gutter: clamp(40px, calc(40px + 60 * ((100vw - 992px) / 928)), 100px);
+  --mi-header-height: clamp(72px, calc(72px + 29 * ((100vw - 992px) / 928)), 101px);
 
-  /* Type */
+  /* Type — Figma scale 96 / 64 / 40 / 32 / 20 / 16, fluid 992→1920 */
   --mi-font: "Roboto Flex", "Segoe UI", sans-serif;
-  --mi-fs-96: 96px;
-  --mi-fs-64: 64px;
-  --mi-fs-40: 40px;
-  --mi-fs-32: 32px;
-  --mi-fs-20: 20px;
-  --mi-fs-16: 16px;
+  --mi-fs-96: clamp(48px, calc(48px + 48 * ((100vw - 992px) / 928)), 96px);
+  --mi-fs-64: clamp(36px, calc(36px + 28 * ((100vw - 992px) / 928)), 64px);
+  --mi-fs-40: clamp(26px, calc(26px + 14 * ((100vw - 992px) / 928)), 40px);
+  --mi-fs-32: clamp(22px, calc(22px + 10 * ((100vw - 992px) / 928)), 32px);
+  --mi-fs-24: clamp(18px, calc(18px + 6 * ((100vw - 992px) / 928)), 24px);
+  --mi-fs-20: clamp(16px, calc(16px + 4 * ((100vw - 992px) / 928)), 20px);
+  --mi-fs-18: clamp(15px, calc(15px + 3 * ((100vw - 992px) / 928)), 18px);
+  --mi-fs-16: clamp(14px, calc(14px + 2 * ((100vw - 992px) / 928)), 16px);
 
   /* Colors — Figma */
   --mi-color-bg: #ffffff;
@@ -35,15 +50,69 @@
   /* Radii */
   --mi-radius-btn: 100px;
   --mi-radius-pill: 100px;
-  --mi-radius-card: 60px;
+  --mi-radius-card: clamp(28px, calc(28px + 32 * ((100vw - 992px) / 928)), 60px);
+  --mi-radius-media: clamp(20px, calc(20px + 20 * ((100vw - 992px) / 928)), 40px);
 
   /* Spacing — Figma 1:30 section stack */
-  --mi-space-section: 120px;
-  --mi-space-section-sm: 100px;
-  --mi-space-section-gap: 52px; /* about → clients (1:115 end → 1:77) */
-  --mi-hero-scroll: 200vh; /* sticky travel ≈ video exit 2.9–5.8s */
+  --mi-space-section: clamp(72px, calc(72px + 48 * ((100vw - 992px) / 928)), 120px);
+  --mi-space-section-sm: clamp(64px, calc(64px + 36 * ((100vw - 992px) / 928)), 100px);
+  --mi-space-section-gap: clamp(32px, calc(32px + 20 * ((100vw - 992px) / 928)), 52px);
+  --mi-space-gap-lg: clamp(40px, calc(40px + 40 * ((100vw - 992px) / 928)), 80px);
+  --mi-space-gap-md: clamp(32px, calc(32px + 28 * ((100vw - 992px) / 928)), 60px);
+  --mi-space-gap-sm: clamp(16px, calc(16px + 8 * ((100vw - 992px) / 928)), 24px);
+  --mi-hero-scroll: 200vh;
 
   /* Motion */
   --mi-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --mi-duration: 0.35s;
+}
+
+/* Lock design tokens at / above Figma canvas */
+@media (min-width: 1920px) {
+  :root {
+    --mi-s: 1;
+    --mi-gutter: 100px;
+    --mi-header-height: 101px;
+    --mi-fs-96: 96px;
+    --mi-fs-64: 64px;
+    --mi-fs-40: 40px;
+    --mi-fs-32: 32px;
+    --mi-fs-24: 24px;
+    --mi-fs-20: 20px;
+    --mi-fs-18: 18px;
+    --mi-fs-16: 16px;
+    --mi-radius-card: 60px;
+    --mi-radius-media: 40px;
+    --mi-space-section: 120px;
+    --mi-space-section-sm: 100px;
+    --mi-space-section-gap: 52px;
+    --mi-space-gap-lg: 80px;
+    --mi-space-gap-md: 60px;
+    --mi-space-gap-sm: 24px;
+  }
+}
+
+/* Floor at tablet landscape start */
+@media (max-width: 991.98px) {
+  :root {
+    --mi-s: calc(992 / 1920);
+    --mi-gutter: 40px;
+    --mi-header-height: 72px;
+    --mi-fs-96: 48px;
+    --mi-fs-64: 36px;
+    --mi-fs-40: 26px;
+    --mi-fs-32: 22px;
+    --mi-fs-24: 18px;
+    --mi-fs-20: 16px;
+    --mi-fs-18: 15px;
+    --mi-fs-16: 14px;
+    --mi-radius-card: 28px;
+    --mi-radius-media: 20px;
+    --mi-space-section: 72px;
+    --mi-space-section-sm: 64px;
+    --mi-space-section-gap: 32px;
+    --mi-space-gap-lg: 40px;
+    --mi-space-gap-md: 32px;
+    --mi-space-gap-sm: 16px;
+  }
 }
