@@ -38,9 +38,18 @@
 		</div>
 
 		<h1 class="mi-hero__title">
-			<span class="mi-hero__title-line">Рекламное агентство</span>
-			<span class="mi-hero__title-line">с&nbsp;экспертизой рынка</span>
-			<span class="mi-hero__title-line">Cross-marketing</span>
+			<span class="mi-hero__title-line">
+				<span class="mi-hero__word">Рекламное</span>
+				<span class="mi-hero__word">агентство</span>
+			</span>
+			<span class="mi-hero__title-line">
+				<span class="mi-hero__word">с</span>
+				<span class="mi-hero__word">экспертизой</span>
+				<span class="mi-hero__word">рынка</span>
+			</span>
+			<span class="mi-hero__title-line">
+				<span class="mi-hero__word">Cross-marketing</span>
+			</span>
 		</h1>
 
 		<a class="mi-hero__scroll" href="#services" aria-label="Далее">

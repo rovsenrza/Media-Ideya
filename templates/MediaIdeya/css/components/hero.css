@@ -157,11 +157,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
 }
 
 .mi-hero__title-line {
   display: block;
+}
+
+.mi-hero__word {
+  display: inline-block;
+  margin-right: 0.33em;
+}
+
+.mi-hero__word:last-child {
+  margin-right: 0;
 }
 
 .mi-hero__scroll {
@@ -172,11 +180,12 @@
   height: 86px;
   transform: translateX(-50%);
   z-index: 4;
-  transition: opacity var(--mi-duration) var(--mi-ease);
+  transition: opacity var(--mi-duration) var(--mi-ease), transform var(--mi-duration) var(--mi-ease);
 }
 
 .mi-hero__scroll:hover {
   opacity: 0.85;
+  transform: translateX(-50%) translateY(4px);
 }
 
 .mi-hero__scroll img {
@@ -184,196 +193,25 @@
   height: 86px;
 }
 
-/* —— Jitter banner motion (Рекламное агентство 360.mp4 ~8s) —— */
-.mi-hero {
-  --mi-hero-scroll: 0;
-}
-
-.mi-js .mi-hero__col--l,
-.mi-js .mi-hero__col--r,
-.mi-js .mi-hero__col--r2,
-.mi-js .mi-hero__statue,
-.mi-js .mi-hero__title-line,
-.mi-js .mi-hero__scroll,
-.mi-js .mi-hero__cloud {
-  will-change: transform, opacity;
-}
-
-/* Initial (pre-ready) */
-.mi-js .mi-hero:not(.is-ready) .mi-hero__col--l {
-  transform: translate3d(-160px, 0, 0);
+/* Opening: title words 1-by-1 (banner art stays static) */
+.mi-js .mi-hero__word {
   opacity: 0;
+  transform: translate3d(0, 0.35em, 0);
 }
 
-.mi-js .mi-hero:not(.is-ready) .mi-hero__col--r,
-.mi-js .mi-hero:not(.is-ready) .mi-hero__col--r2 {
-  transform: translate3d(160px, 0, 0);
-  opacity: 0;
-}
-
-.mi-js .mi-hero:not(.is-ready) .mi-hero__statue {
-  transform: translate3d(-50%, 80px, 0);
-  opacity: 0;
-}
-
-.mi-js .mi-hero:not(.is-ready) .mi-hero__title-line {
-  transform: translate3d(0, 28px, 0);
-  opacity: 0;
-}
-
-.mi-js .mi-hero:not(.is-ready) .mi-hero__scroll {
-  opacity: 0;
-  transform: translate3d(-50%, 16px, 0);
-}
-
-/* Entrance */
-.mi-js .mi-hero.is-ready .mi-hero__col--l {
-  transform: translate3d(calc(var(--mi-hero-scroll) * -120px), 0, 0);
-  opacity: calc(1 - var(--mi-hero-scroll) * 1.25);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__col--r {
-  transform: translate3d(calc(var(--mi-hero-scroll) * 120px), 0, 0);
-  opacity: calc(1 - var(--mi-hero-scroll) * 1.25);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__col--r2 {
-  transform: translate3d(calc(var(--mi-hero-scroll) * 140px), 0, 0);
-  opacity: calc(1 - var(--mi-hero-scroll) * 1.35);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__statue {
-  transform: translate3d(-50%, calc(var(--mi-hero-scroll) * 60px), 0);
-  opacity: calc(1 - var(--mi-hero-scroll) * 1.1);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__title {
-  opacity: calc(1 - var(--mi-hero-scroll) * 1.4);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__title-line {
-  transform: translate3d(0, 0, 0);
+.mi-js .mi-hero__title.is-ready .mi-hero__word {
   opacity: 1;
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__scroll {
-  opacity: calc(1 - var(--mi-hero-scroll) * 1.5);
-  transform: translate3d(-50%, 0, 0);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__cloud--l {
-  transform: translate3d(calc(var(--mi-hero-scroll) * -40px), 0, 0);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__cloud--r {
-  transform: translate3d(calc(var(--mi-hero-scroll) * 40px), 0, 0);
-}
-
-.mi-js .mi-hero.is-ready .mi-hero__sky {
-  filter: brightness(calc(1 - var(--mi-hero-scroll) * 0.55));
-}
-
-/* Entrance transitions only before settled */
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__col--l,
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__col--r,
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__col--r2,
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__statue,
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__scroll {
+  transform: none;
   transition:
-    transform 1.15s var(--mi-ease),
-    opacity 1.15s var(--mi-ease);
-}
-
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__title-line {
-  transition:
-    transform 0.9s var(--mi-ease),
-    opacity 0.9s var(--mi-ease);
-}
-
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__title-line:nth-child(1) {
-  transition-delay: 0.35s;
-}
-
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__title-line:nth-child(2) {
-  transition-delay: 0.5s;
-}
-
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__title-line:nth-child(3) {
-  transition-delay: 0.65s;
-}
-
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__statue {
-  transition-delay: 0.15s;
-}
-
-.mi-js .mi-hero.is-ready:not(.is-settled) .mi-hero__scroll {
-  transition-delay: 0.85s;
-}
-
-/* Idle: scroll cue bob + cloud drift */
-.mi-js .mi-hero.is-settled .mi-hero__scroll {
-  animation: mi-hero-scroll-bob 2.2s var(--mi-ease) infinite;
-}
-
-.mi-js .mi-hero.is-settled .mi-hero__cloud--l {
-  animation: mi-hero-cloud-drift-l 28s linear infinite;
-}
-
-.mi-js .mi-hero.is-settled .mi-hero__cloud--r {
-  animation: mi-hero-cloud-drift-r 34s linear infinite;
-}
-
-@keyframes mi-hero-scroll-bob {
-  0%,
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-  50% {
-    transform: translate3d(-50%, 10px, 0);
-  }
-}
-
-@keyframes mi-hero-cloud-drift-l {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(36px, 0, 0);
-  }
-}
-
-@keyframes mi-hero-cloud-drift-r {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-28px, 0, 0);
-  }
+    opacity 0.45s var(--mi-ease),
+    transform 0.45s var(--mi-ease);
+  transition-delay: calc(0.55s + var(--mi-word-i, 0) * 0.14s);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mi-js .mi-hero__col--l,
-  .mi-js .mi-hero__col--r,
-  .mi-js .mi-hero__col--r2,
-  .mi-js .mi-hero__statue,
-  .mi-js .mi-hero__title-line,
-  .mi-js .mi-hero__scroll,
-  .mi-js .mi-hero__cloud--l,
-  .mi-js .mi-hero__cloud--r {
-    transform: none !important;
+  .mi-js .mi-hero__word {
     opacity: 1 !important;
+    transform: none !important;
     transition: none !important;
-    animation: none !important;
-    filter: none !important;
-  }
-
-  .mi-js .mi-hero__statue {
-    transform: translateX(-50%) !important;
-  }
-
-  .mi-js .mi-hero__scroll {
-    transform: translateX(-50%) !important;
   }
 }

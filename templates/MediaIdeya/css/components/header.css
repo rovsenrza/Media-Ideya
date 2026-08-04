@@ -64,3 +64,25 @@
 body:not(.is-home) .mi-header {
   background: var(--mi-color-surface-dark);
 }
+
+/* Opening: AOS-style fade-up */
+.mi-js .mi-header[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+}
+
+.mi-js .mi-header[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s var(--mi-ease),
+    transform 0.8s var(--mi-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-js .mi-header[data-aos="fade-up"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
