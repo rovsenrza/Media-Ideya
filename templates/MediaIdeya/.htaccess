@@ -6,7 +6,7 @@
    Deny from all
 </IfModule>
 
-<FilesMatch "\.(css)$|^$">
+<FilesMatch "\.(css|js)$|^$">
    <IfModule mod_authz_core.c>
        Require all granted
    </IfModule>
