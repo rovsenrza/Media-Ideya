@@ -15,6 +15,34 @@
     }
   }
 
+  /* Header glass — only after hero/banner scrolled past */
+  var heroForGlass = document.querySelector('[data-hero-sticky]');
+  if (header && heroForGlass) {
+    var glassTick = false;
+
+    function syncHeaderGlass() {
+      glassTick = false;
+      var bottom = heroForGlass.getBoundingClientRect().bottom;
+      var threshold = header.offsetHeight || 72;
+      if (bottom <= threshold) {
+        header.classList.add('mi-header--glass');
+      } else {
+        header.classList.remove('mi-header--glass');
+      }
+    }
+
+    function onGlassScroll() {
+      if (!glassTick) {
+        glassTick = true;
+        requestAnimationFrame(syncHeaderGlass);
+      }
+    }
+
+    window.addEventListener('scroll', onGlassScroll, { passive: true });
+    window.addEventListener('resize', onGlassScroll, { passive: true });
+    syncHeaderGlass();
+  }
+
   /* Hero title — word by word */
   var title = document.querySelector('.mi-hero__title');
   if (title) {

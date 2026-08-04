@@ -51,18 +51,28 @@
   opacity: 0.8;
 }
 
-/* Home: fixed glass over hero / dark sections */
+/* Home: fixed over hero — glass only after banner scrolled past */
 .is-home .mi-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    background 0.35s var(--mi-ease),
+    backdrop-filter 0.35s var(--mi-ease),
+    -webkit-backdrop-filter 0.35s var(--mi-ease);
+}
+
+.is-home .mi-header.mi-header--glass {
   background: var(--mi-color-header-glass);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Non-home: same glass language */
+/* Non-home: glass always */
 body:not(.is-home) .mi-header {
   background: var(--mi-color-header-glass);
   backdrop-filter: blur(10px);
