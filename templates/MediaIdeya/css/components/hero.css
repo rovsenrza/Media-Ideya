@@ -102,7 +102,7 @@
   left: calc(50% - (1000px * var(--mi-s)));
   top: calc(-40px * var(--mi-s));
   width: calc(428px * var(--mi-s));
-  height: calc(1493px * var(--mi-s));
+  height: calc(1548px * var(--mi-s));
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * -120px * var(--mi-s)),
     calc(var(--mi-hero-p, 0) * 36px * var(--mi-s)),
@@ -114,7 +114,7 @@
 .mi-hero__col--r {
   left: calc(50% + (545px * var(--mi-s)));
   top: calc(-40px * var(--mi-s));
-  width: calc(475px * var(--mi-s));
+  width: calc(428px * var(--mi-s));
   height: calc(1548px * var(--mi-s));
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * 120px * var(--mi-s)),
@@ -126,7 +126,7 @@
 .mi-hero__col--r2 {
   left: calc(50% + (505px * var(--mi-s)));
   top: calc(-40px * var(--mi-s));
-  width: calc(475px * var(--mi-s));
+  width: calc(428px * var(--mi-s));
   height: calc(1548px * var(--mi-s));
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * 140px * var(--mi-s)),
