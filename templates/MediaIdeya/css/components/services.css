@@ -9,26 +9,29 @@
   --mi-stack-count: 7;
 
   position: relative;
+  z-index: 2;
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
   padding: 0 var(--mi-gutter);
 }
 
-/* Soft seam only at hero→services join (below the fold on load) */
+/* Gradient overlay at section top — sits below the fold on load,
+   covers hero→services join (Figma fade h 661) */
 .mi-services::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  z-index: 4;
-  height: calc(120px * var(--mi-s));
+  z-index: 5;
+  height: calc(661px * var(--mi-s));
   pointer-events: none;
   background: linear-gradient(
     180deg,
     rgba(17, 35, 49, 0) 0%,
-    rgba(17, 35, 49, 0.55) 42%,
+    rgba(17, 35, 49, 0.28) 28%,
+    rgba(17, 35, 49, 0.7) 62%,
     #112331 100%
   );
   transform: translateY(-100%);

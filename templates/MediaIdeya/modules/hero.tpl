@@ -34,7 +34,6 @@
 					<img src="{THEME}/images/statuya.png" alt="" width="888" height="1007" decoding="async" fetchpriority="high">
 				</picture>
 
-				<div class="mi-hero__fade-bottom"></div>
 				<div class="mi-hero__fade-top"></div>
 			</div>
 
@@ -69,4 +68,7 @@
 			</a>
 		</div>
 	</div>
+
+	<!-- Below the fold: gradient handoff into services (Figma fade h 661) -->
+	<div class="mi-hero__fade-bottom" aria-hidden="true"></div>
 </section>
