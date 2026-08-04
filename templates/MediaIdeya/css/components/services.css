@@ -4,7 +4,7 @@
 
 .mi-services {
   --mi-services-title-h: calc(110px * var(--mi-s));
-  --mi-services-stick-top: calc(var(--mi-header-height) + calc(16px * var(--mi-s)));
+  --mi-services-stick-top: var(--mi-header-height);
   --mi-stack-step: 100vh;
   --mi-stack-count: 7;
 

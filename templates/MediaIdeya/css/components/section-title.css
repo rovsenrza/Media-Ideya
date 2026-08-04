@@ -10,6 +10,17 @@
   width: 100%;
 }
 
+/* Figma: 120px from section top to headline */
+.mi-section-title--dark {
+  margin-top: calc(120px * var(--mi-s));
+}
+
+/* FAQ / articles already use section padding for this gap */
+.mi-faq .mi-section-title--dark,
+.mi-articles .mi-section-title--dark {
+  margin-top: 0;
+}
+
 .mi-section-title__heading {
   margin: 0;
   font-family: var(--mi-font);
