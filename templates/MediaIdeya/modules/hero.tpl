@@ -37,9 +37,13 @@
 			<div class="mi-hero__fade-top"></div>
 		</div>
 
-		<h1 class="mi-hero__title">Рекламное агентство<br>с&nbsp;экспертизой рынка<br>Cross-marketing</h1>
+		<h1 class="mi-hero__title">
+			<span class="mi-hero__title-line">Рекламное агентство</span>
+			<span class="mi-hero__title-line">с&nbsp;экспертизой рынка</span>
+			<span class="mi-hero__title-line">Cross-marketing</span>
+		</h1>
 
-		<a class="mi-hero__scroll" href="#content-below" aria-label="Далее">
+		<a class="mi-hero__scroll" href="#services" aria-label="Далее">
 			<img src="{THEME}/images/hero/scroll.svg" alt="" width="86" height="86" decoding="async">
 		</a>
 	</div>
