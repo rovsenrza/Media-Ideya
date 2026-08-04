@@ -201,9 +201,14 @@
   text-align: center;
   color: #fff;
   z-index: 3;
+}
+
+/* Single L→R reveal — all lines linear, no per-line delay */
+.mi-hero__title-reveal {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 /* Each line crops independently — video title exit ~2.9–3.4s */
@@ -258,17 +263,9 @@
   }
 }
 
-/* Opening: L→R line reveal (shared .mi-reveal) — video text ~1.2–2.8s */
-.mi-js .mi-hero__title .mi-reveal {
+/* Opening: one L→R reveal for full title — video text ~1.2s */
+.mi-js .mi-hero__title.is-ready .mi-hero__title-reveal.mi-reveal {
   transition-delay: 1.05s;
-}
-
-.mi-js .mi-hero__title .mi-hero__title-line:nth-child(2) .mi-reveal {
-  transition-delay: 1.17s;
-}
-
-.mi-js .mi-hero__title .mi-hero__title-line:nth-child(3) .mi-reveal {
-  transition-delay: 1.29s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -276,7 +273,7 @@
     height: 100vh;
   }
 
-  .mi-js .mi-hero__title .mi-reveal {
+  .mi-js .mi-hero__title .mi-hero__title-reveal.mi-reveal {
     transition-delay: 0s !important;
   }
 
