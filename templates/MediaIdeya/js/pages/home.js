@@ -31,35 +31,20 @@
     }
   }
 
-  /* Hero sticky scroll — lines slide up on way down, slide down on way up */
+  /* Hero sticky scroll — all lines slide up together (no fade), reverse on scroll up */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
-    var lines = hero.querySelectorAll('.mi-hero__title-line');
     var ticking = false;
-    var LINE_STAGGER = 0.14;
-    var LINE_SPAN = 0.42;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
-    }
-
-    function smoothstep(t) {
-      return t * t * (3 - 2 * t);
     }
 
     function updateHeroScroll() {
       ticking = false;
       var max = hero.offsetHeight - window.innerHeight;
       var p = max > 0 ? clamp(-hero.getBoundingClientRect().top / max, 0, 1) : 0;
-
       hero.style.setProperty('--mi-hero-p', p.toFixed(4));
-      hero.classList.toggle('is-leaving', p > 0.08);
-
-      for (var i = 0; i < lines.length; i++) {
-        var start = i * LINE_STAGGER;
-        var t = clamp((p - start) / LINE_SPAN, 0, 1);
-        lines[i].style.setProperty('--mi-line-t', smoothstep(t).toFixed(4));
-      }
     }
 
     function onScroll() {

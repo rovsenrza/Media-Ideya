@@ -51,9 +51,9 @@
   opacity: 0.8;
 }
 
-/* Home: overlay hero (Figma шапка inside banner) */
+/* Home: overlay hero, stays fixed while banner sticky-scrolls */
 .is-home .mi-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
