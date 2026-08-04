@@ -4,12 +4,14 @@
 
 .mi-faq {
   position: relative;
+  z-index: 2;
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
   /* Figma 1:97 — pt 120 / pb 80 */
   padding: var(--mi-space-section) var(--mi-gutter) 80px;
-  overflow: hidden;
+  /* Ellipse 9 sits at top:-272 — must bleed over partners, not clip */
+  overflow: visible;
 }
 
 /* Ellipse 9 — soft radial glow */
