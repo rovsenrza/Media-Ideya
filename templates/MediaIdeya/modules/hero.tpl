@@ -15,18 +15,13 @@
 				</picture>
 
 				<picture class="mi-hero__col mi-hero__col--l">
-					<source srcset="{THEME}/images/sutun-sol.webp" type="image/webp">
-					<img src="{THEME}/images/sutun-sol.png" alt="" width="428" height="1493" decoding="async" fetchpriority="high">
+					<source srcset="{THEME}/images/sutun-kolon.webp" type="image/webp">
+					<img src="{THEME}/images/sutun-kolon.png" alt="" width="617" height="1603" decoding="async" fetchpriority="high">
 				</picture>
 
 				<picture class="mi-hero__col mi-hero__col--r">
-					<source srcset="{THEME}/images/sutun-sag.webp" type="image/webp">
-					<img src="{THEME}/images/sutun-sag.png" alt="" width="475" height="1548" decoding="async" fetchpriority="high">
-				</picture>
-
-				<picture class="mi-hero__col mi-hero__col--r2">
-					<source srcset="{THEME}/images/sutun-sag.webp" type="image/webp">
-					<img src="{THEME}/images/sutun-sag.png" alt="" width="475" height="1548" decoding="async">
+					<source srcset="{THEME}/images/sutun-kolon.webp" type="image/webp">
+					<img src="{THEME}/images/sutun-kolon.png" alt="" width="617" height="1603" decoding="async" fetchpriority="high">
 				</picture>
 
 				<picture class="mi-hero__statue">
