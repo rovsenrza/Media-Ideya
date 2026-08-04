@@ -96,22 +96,56 @@
       }, 60);
     }
 
+    var SNAP_MS = 1400;
+    var snapRaf = 0;
+
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
     function snapTo(p) {
       p = p >= 0.5 ? 1 : 0;
-      var y = yForProgress(p);
-      if (Math.abs(window.pageYOffset - y) < 2) {
+      var startY = window.pageYOffset;
+      var endY = yForProgress(p);
+      if (Math.abs(startY - endY) < 2) {
         applyProgress(p);
         snapping = false;
         return;
       }
+
       snapping = true;
       window.clearTimeout(snapTimer);
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      snapTimer = window.setTimeout(function () {
-        window.scrollTo({ top: yForProgress(p) });
+      if (snapRaf) cancelAnimationFrame(snapRaf);
+
+      var t0 = performance.now();
+
+      function step(now) {
+        var t = clamp((now - t0) / SNAP_MS, 0, 1);
+        var e = easeInOutCubic(t);
+        var y = startY + (endY - startY) * e;
+        window.scrollTo(0, y);
+        applyProgress(progress());
+
+        if (t < 1) {
+          snapRaf = requestAnimationFrame(step);
+          return;
+        }
+
+        window.scrollTo(0, yForProgress(p));
         applyProgress(p);
         snapping = false;
-      }, 700);
+        snapRaf = 0;
+      }
+
+      snapRaf = requestAnimationFrame(step);
+      snapTimer = window.setTimeout(function () {
+        if (!snapping) return;
+        if (snapRaf) cancelAnimationFrame(snapRaf);
+        window.scrollTo(0, yForProgress(p));
+        applyProgress(p);
+        snapping = false;
+        snapRaf = 0;
+      }, SNAP_MS + 120);
     }
 
     function onWheel(e) {
