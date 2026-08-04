@@ -39,11 +39,13 @@
     var snapping = false;
     var snapRaf = 0;
     var snapTarget = null;
-    var gestureLock = false;
-    var wheelIdleTimer = 0;
+    /* hard lock scroll Y after snap — kills trackpad momentum 2nd scroll */
+    var freezeY = null;
+    var freezeTimer = 0;
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
     var SNAP_MS = 1200;
+    var FREEZE_IDLE_MS = 550;
 
     function clamp(n, a, b) {
       return Math.min(b, Math.max(a, n));
@@ -74,53 +76,47 @@
       }
     }
 
-    function updateHeroScroll() {
-      ticking = false;
-      if (snapping) return;
-      applyProgress(progress());
+    function clearFreezeLater() {
+      window.clearTimeout(freezeTimer);
+      freezeTimer = window.setTimeout(function () {
+        freezeY = null;
+        snapTarget = null;
+      }, FREEZE_IDLE_MS);
     }
 
-    function onScroll() {
-      if (snapping) return;
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateHeroScroll);
-      }
+    function armFreeze(y) {
+      freezeY = y;
+      clearFreezeLater();
     }
 
     function easeOutCubic(t) {
       return 1 - Math.pow(1 - t, 3);
     }
 
-    function releaseGestureLater() {
-      window.clearTimeout(wheelIdleTimer);
-      wheelIdleTimer = window.setTimeout(function () {
-        gestureLock = false;
-        snapTarget = null;
-      }, 220);
-    }
-
     function snapTo(target) {
       target = target >= 0.5 ? 1 : 0;
 
-      /* already going / arrived — don't restart */
       if (snapping && snapTarget === target) return;
+
+      var top = heroDocTop();
+      var endY = Math.round(top + target * range());
+
       if (!snapping && Math.abs(progress() - target) < 0.02) {
+        window.scrollTo(0, endY);
         applyProgress(target);
-        gestureLock = true;
         snapTarget = target;
-        releaseGestureLater();
+        armFreeze(endY);
         return;
       }
 
       var startP = progress();
       var startY = window.pageYOffset;
-      var endY = heroDocTop() + target * range();
 
       if (snapRaf) cancelAnimationFrame(snapRaf);
       snapping = true;
       snapTarget = target;
-      gestureLock = true;
+      freezeY = null;
+      window.clearTimeout(freezeTimer);
 
       var t0 = performance.now();
 
@@ -140,17 +136,41 @@
         applyProgress(target);
         snapping = false;
         snapRaf = 0;
-        releaseGestureLater();
+        armFreeze(endY);
       }
 
       snapRaf = requestAnimationFrame(step);
     }
 
+    function onScroll() {
+      /* momentum after snap → pin back to freezeY (no 2nd scroll) */
+      if (freezeY != null && !snapping) {
+        if (Math.abs(window.pageYOffset - freezeY) > 0.5) {
+          window.scrollTo(0, freezeY);
+        }
+        clearFreezeLater();
+        return;
+      }
+
+      if (snapping) return;
+
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(function () {
+          ticking = false;
+          if (snapping || freezeY != null) return;
+          applyProgress(progress());
+        });
+      }
+    }
+
     function onWheel(e) {
-      /* absorb trackpad inertia after / during snap — prevents double scroll */
-      if (snapping || gestureLock) {
+      if (snapping || freezeY != null) {
         e.preventDefault();
-        releaseGestureLater();
+        if (freezeY != null) {
+          window.scrollTo(0, freezeY);
+          clearFreezeLater();
+        }
         return;
       }
 
@@ -188,19 +208,19 @@
       }
       var dy = touchY - e.changedTouches[0].clientY;
       touchY = null;
-      if (snapping || gestureLock) return;
+      if (snapping || freezeY != null) return;
       if (!isPinned() && progress() < 0.98) return;
       var p = progress();
       if (dy > 28 && p < 0.99) snapTo(1);
       else if (dy < -28 && p > 0.01) snapTo(0);
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: false });
     window.addEventListener('resize', onScroll, { passive: true });
-    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('wheel', onWheel, { passive: false, capture: true });
     window.addEventListener('touchstart', onTouchStart, { passive: true });
     window.addEventListener('touchend', onTouchEnd, { passive: true });
-    updateHeroScroll();
+    applyProgress(progress());
   }
 
   var scrollBtn = document.querySelector('.mi-hero__scroll');
