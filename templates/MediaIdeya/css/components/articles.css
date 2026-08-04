@@ -32,6 +32,7 @@
 }
 
 .mi-article-card__media {
+  position: relative;
   display: block;
   overflow: hidden;
   border-radius: 40px;
@@ -39,9 +40,16 @@
   background: var(--mi-color-surface-soft);
 }
 
+.mi-article-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .mi-article-card__media img {
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
   object-position: bottom center;
 }

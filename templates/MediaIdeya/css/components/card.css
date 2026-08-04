@@ -14,9 +14,16 @@
   background: #f2f2f2;
 }
 
+.mi-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .mi-card__media img {
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
 }
 
