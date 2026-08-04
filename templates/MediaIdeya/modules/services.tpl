@@ -5,7 +5,7 @@
 			<a class="mi-section-title__label" href="/uslugi.html">Наши услуги</a>
 		</header>
 
-		<div class="mi-services__list">
+		<div class="mi-services__list" data-services-stack>
 
 			<article class="mi-service-card">
 				<div class="mi-service-card__body">

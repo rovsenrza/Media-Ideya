@@ -1,12 +1,16 @@
-/* Services section — Figma 1:266 / stack layout 1:311
-   Cards alt-alta; swiper YOX. Animasiya sonra.
+/* Services — sticky z-stack (Jitter: услуги.mp4)
+   Native scroll only. Cards stick and stack by z-index.
 */
 
 .mi-services {
+  --mi-services-title-h: 120px;
+  --mi-services-stick-top: calc(var(--mi-header-height) + 24px);
+  --mi-services-card-top: calc(var(--mi-services-stick-top) + var(--mi-services-title-h));
+
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
-  padding: 0 var(--mi-gutter) var(--mi-space-section);
+  padding: 0 var(--mi-gutter) 0;
 }
 
 .mi-services__inner {
@@ -15,18 +19,36 @@
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
+}
+
+/* Title stays pinned while cards stack underneath */
+.mi-services .mi-section-title {
+  position: sticky;
+  top: var(--mi-services-stick-top);
+  z-index: 30;
+  padding-bottom: 20px;
+  background: linear-gradient(
+    180deg,
+    var(--mi-color-surface-dark) 70%,
+    rgba(17, 35, 49, 0) 100%
+  );
 }
 
 .mi-services__list {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
+  /* last card can fully clear before next section */
+  padding-bottom: 20vh;
 }
 
-/* Service card — Figma «услуга» 1720×740 */
+/* Service card — Figma «услуга» 1720×740 — sticky stack */
 .mi-service-card {
-  position: relative;
+  --mi-stack-i: 1;
+  position: sticky;
+  top: var(--mi-services-card-top);
+  z-index: calc(10 + var(--mi-stack-i));
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -38,6 +60,14 @@
   color: var(--mi-color-surface-dark);
   overflow: hidden;
 }
+
+.mi-service-card:nth-child(1) { --mi-stack-i: 1; }
+.mi-service-card:nth-child(2) { --mi-stack-i: 2; }
+.mi-service-card:nth-child(3) { --mi-stack-i: 3; }
+.mi-service-card:nth-child(4) { --mi-stack-i: 4; }
+.mi-service-card:nth-child(5) { --mi-stack-i: 5; }
+.mi-service-card:nth-child(6) { --mi-stack-i: 6; }
+.mi-service-card:nth-child(7) { --mi-stack-i: 7; }
 
 .mi-service-card__body {
   position: relative;
@@ -87,7 +117,7 @@
 }
 
 .mi-service-card__text + .mi-service-card__list {
-  margin-top: -20px; /* content gap 40 → visual gap 20 (Figma) */
+  margin-top: -20px;
 }
 
 .mi-service-card__count {
@@ -121,4 +151,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-services .mi-section-title,
+  .mi-service-card {
+    position: relative;
+    top: auto;
+  }
 }
