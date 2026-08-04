@@ -107,17 +107,19 @@
   margin: 0;
 }
 
-/* Brand watermark — rests at footer bottom: 0; rises from below with hands */
+/* Brand watermark — glyph baseline flush to footer bottom */
 .mi-footer__brand {
   position: absolute;
   left: 50%;
   bottom: 0;
-  transform: translate(-50%, 0);
+  transform: translateX(-50%);
   margin: 0;
   font-family: var(--mi-font);
   font-size: 325.262px;
   font-weight: 600;
-  line-height: 1.1;
+  /* cap-height ≈ flush; kills leftover gap under letters */
+  line-height: 0.72;
+  height: 0.72em;
   text-align: center;
   text-transform: uppercase;
   color: #0d304c;
@@ -126,6 +128,7 @@
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  overflow: visible;
 }
 
 /* —— подвал 1:40 —— */
@@ -277,7 +280,7 @@
     bottom: 0;
     transform: translate(-50%, 100%);
   }
-  /* rise with hands inward nudge → stuck to footer bottom */
+  /* rise with hands inward nudge → flush to footer bottom */
   100% {
     opacity: 0.5;
     bottom: 0;
@@ -423,8 +426,9 @@
   .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
     opacity: 0.5 !important;
     bottom: 0 !important;
-    transform: translate(-50%, 0) !important;
+    transform: translateX(-50%) !important;
     animation: none !important;
+    visibility: visible !important;
   }
 
   .mi-js .mi-footer[data-aos="footer"] .mi-footer__legal span,
