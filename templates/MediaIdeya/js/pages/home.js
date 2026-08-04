@@ -38,6 +38,9 @@
     var ticking = false;
     var snapping = false;
     var snapRaf = 0;
+    var snapTarget = null;
+    var gestureLock = false;
+    var wheelIdleTimer = 0;
     var LINE_STAGGER = 0.1;
     var LINE_SPAN = 0.22;
     var SNAP_MS = 1200;
@@ -85,26 +88,39 @@
       }
     }
 
-    /* starts moving immediately — no ease-in freeze */
     function easeOutCubic(t) {
       return 1 - Math.pow(1 - t, 3);
     }
 
+    function releaseGestureLater() {
+      window.clearTimeout(wheelIdleTimer);
+      wheelIdleTimer = window.setTimeout(function () {
+        gestureLock = false;
+        snapTarget = null;
+      }, 220);
+    }
+
     function snapTo(target) {
       target = target >= 0.5 ? 1 : 0;
-      var startP = progress();
-      var startY = window.pageYOffset;
-      var top = heroDocTop();
-      var endY = top + target * range();
 
-      if (Math.abs(startP - target) < 0.01 && Math.abs(startY - endY) < 2) {
+      /* already going / arrived — don't restart */
+      if (snapping && snapTarget === target) return;
+      if (!snapping && Math.abs(progress() - target) < 0.02) {
         applyProgress(target);
-        snapping = false;
+        gestureLock = true;
+        snapTarget = target;
+        releaseGestureLater();
         return;
       }
 
+      var startP = progress();
+      var startY = window.pageYOffset;
+      var endY = heroDocTop() + target * range();
+
       if (snapRaf) cancelAnimationFrame(snapRaf);
       snapping = true;
+      snapTarget = target;
+      gestureLock = true;
 
       var t0 = performance.now();
 
@@ -124,19 +140,22 @@
         applyProgress(target);
         snapping = false;
         snapRaf = 0;
+        releaseGestureLater();
       }
 
       snapRaf = requestAnimationFrame(step);
     }
 
     function onWheel(e) {
-      var p = progress();
-      var pinned = isPinned();
-
-      if (snapping) {
-        if (pinned || (p > 0.01 && p < 0.99)) e.preventDefault();
+      /* absorb trackpad inertia after / during snap — prevents double scroll */
+      if (snapping || gestureLock) {
+        e.preventDefault();
+        releaseGestureLater();
         return;
       }
+
+      var p = progress();
+      var pinned = isPinned();
 
       if (pinned || (p > 0.02 && p < 0.98)) {
         if (e.deltaY > 4) {
@@ -169,7 +188,8 @@
       }
       var dy = touchY - e.changedTouches[0].clientY;
       touchY = null;
-      if (!isPinned() || snapping) return;
+      if (snapping || gestureLock) return;
+      if (!isPinned() && progress() < 0.98) return;
       var p = progress();
       if (dy > 28 && p < 0.99) snapTo(1);
       else if (dy < -28 && p > 0.01) snapTo(0);
