@@ -108,19 +108,18 @@
   margin: 0;
 }
 
-/* Brand watermark — glyph baseline flush to footer bottom */
+/* Brand watermark — Figma 1:32: top @ y572 → bottom:254 + translateY(100%) */
 .mi-footer__brand {
   position: absolute;
   left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
+  bottom: calc(254px * var(--mi-s));
+  transform: translate(-50%, 100%);
   margin: 0;
   font-family: var(--mi-font);
   font-size: calc(325.262px * var(--mi-s));
   font-weight: 600;
-  /* cap-height ≈ flush; kills leftover gap under letters */
-  line-height: 0.72;
-  height: 0.72em;
+  line-height: 1.1;
+  height: auto;
   text-align: center;
   text-transform: uppercase;
   color: #0d304c;
@@ -273,11 +272,12 @@
   }
 }
 
-/* Watermark: scroll-scrubbed via --mi-footer-brand-p (0→1), not early AOS */
+/* Watermark: scroll-scrubbed via --mi-footer-brand-p (0→1)
+   Rest: bottom 254 + translateY(100%) = Figma y572 */
 .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
   opacity: calc(0.5 * var(--mi-footer-brand-p, 0));
-  bottom: 0;
-  transform: translate(-50%, calc((1 - var(--mi-footer-brand-p, 0)) * 100%));
+  bottom: calc(254px * var(--mi-s));
+  transform: translate(-50%, calc(100% + (1 - var(--mi-footer-brand-p, 0)) * 80%));
   visibility: visible;
   will-change: transform, opacity;
 }
@@ -407,8 +407,8 @@
 
   .mi-js .mi-footer[data-aos="footer"] .mi-footer__brand {
     opacity: 0.5 !important;
-    bottom: 0 !important;
-    transform: translateX(-50%) !important;
+    bottom: calc(254px * var(--mi-s)) !important;
+    transform: translate(-50%, 100%) !important;
     animation: none !important;
     visibility: visible !important;
   }
