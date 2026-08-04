@@ -1,12 +1,39 @@
-/* Clients — Figma node 1:77 «4 нам доверяют» */
+/* Clients / partners — Figma 1:77 + Jitter «партнеры.mp4»
+   AOS: title + logos blur-in on enter
+   Sticky pin: page scroll drives logo list inside .mi-clients__box (flow doesn't skip)
+*/
 
 .mi-clients {
+  --mi-clients-p: 0;
+  --mi-clients-box-h: 506px; /* Figma лого frame h */
+  --mi-clients-travel: 160vh;
+
   position: relative;
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
-  /* Figma 1:77 — title y=100; frame h=885 */
+  padding: 0;
+  overflow: visible;
+}
+
+.mi-clients__track {
+  position: relative;
+  height: calc(100vh + var(--mi-clients-travel));
+}
+
+.mi-clients__pin {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  box-sizing: border-box;
   padding: var(--mi-space-section-sm) var(--mi-gutter) var(--mi-space-section);
+  background: var(--mi-color-surface-dark);
   overflow: hidden;
 }
 
@@ -26,8 +53,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 16px;
   text-align: center;
+}
+
+.mi-clients__eyebrow {
+  margin: 0;
+  font-family: var(--mi-font);
+  font-size: var(--mi-fs-20);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--mi-color-blue);
 }
 
 .mi-clients__title {
@@ -39,10 +75,18 @@
 }
 
 .mi-clients__sub {
-  margin: 0;
+  margin: 8px 0 0;
   font-size: var(--mi-fs-20);
   font-weight: 300;
   line-height: 1.5;
+}
+
+/* Partner box — fixed viewport; logos scrub inside */
+.mi-clients__box {
+  position: relative;
+  width: 100%;
+  height: var(--mi-clients-box-h);
+  overflow: hidden;
 }
 
 .mi-clients__logos {
@@ -50,21 +94,20 @@
   flex-direction: column;
   gap: 48px;
   width: 100%;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--mi-clients-p) * -1 * var(--mi-clients-overflow, 0px)), 0);
 }
 
 .mi-clients__row {
   display: flex;
   justify-content: center;
   gap: 120px;
+  flex-shrink: 0;
 }
 
 .mi-clients__row--offset {
   padding-inline: 140px;
   gap: 120px;
-}
-
-.mi-clients__row--fade {
-  opacity: 0.28;
 }
 
 .mi-clients__logo {
@@ -75,6 +118,7 @@
   height: 128px;
   padding: 24px;
   border-radius: 32px;
+  flex-shrink: 0;
 }
 
 .mi-clients__logo img {
@@ -84,11 +128,12 @@
   filter: brightness(0) invert(1);
 }
 
+/* Edge fades — Figma градиент верх/низ 263px */
 .mi-clients__fade {
   position: absolute;
   left: 0;
   right: 0;
-  height: 263px;
+  height: 160px;
   pointer-events: none;
   z-index: 2;
 }
@@ -101,4 +146,110 @@
 .mi-clients__fade--bottom {
   bottom: 0;
   background: linear-gradient(0deg, #112331 0%, rgba(17, 35, 49, 0) 100%);
+}
+
+/* ——— AOS (партнеры.mp4): title ~400–1000ms, logos blur→sharp ~1000–2000ms ——— */
+.mi-js .mi-clients[data-aos="clients"] .mi-clients__eyebrow,
+.mi-js .mi-clients[data-aos="clients"] .mi-clients__title,
+.mi-js .mi-clients[data-aos="clients"] .mi-clients__sub {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+}
+
+.mi-js .mi-clients[data-aos="clients"] .mi-clients__row {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translate3d(0, 28px, 0);
+}
+
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__eyebrow {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s var(--mi-ease),
+    transform 0.6s var(--mi-ease);
+  transition-delay: 300ms;
+}
+
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__title {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s var(--mi-ease),
+    transform 0.7s var(--mi-ease);
+  transition-delay: 500ms;
+}
+
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__sub {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s var(--mi-ease),
+    transform 0.7s var(--mi-ease);
+  transition-delay: 700ms;
+}
+
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition:
+    opacity 0.9s var(--mi-ease),
+    filter 0.9s var(--mi-ease),
+    transform 0.9s var(--mi-ease);
+}
+
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(1) {
+  transition-delay: 1000ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(2) {
+  transition-delay: 1150ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(3) {
+  transition-delay: 1300ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(4) {
+  transition-delay: 1450ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(5) {
+  transition-delay: 1600ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(6) {
+  transition-delay: 1750ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-clients {
+    --mi-clients-travel: 0px;
+  }
+
+  .mi-clients__track {
+    height: auto;
+  }
+
+  .mi-clients__pin {
+    position: relative;
+    height: auto;
+    min-height: 0;
+  }
+
+  .mi-clients__box {
+    height: auto;
+    max-height: var(--mi-clients-box-h);
+    overflow-y: auto;
+  }
+
+  .mi-clients__logos {
+    transform: none !important;
+  }
+
+  .mi-js .mi-clients[data-aos="clients"] .mi-clients__eyebrow,
+  .mi-js .mi-clients[data-aos="clients"] .mi-clients__title,
+  .mi-js .mi-clients[data-aos="clients"] .mi-clients__sub,
+  .mi-js .mi-clients[data-aos="clients"] .mi-clients__row {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

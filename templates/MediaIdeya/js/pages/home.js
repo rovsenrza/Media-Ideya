@@ -185,6 +185,77 @@
     }
   }
 
+  /* Clients / partners — AOS enter + sticky logo scrub inside box */
+  var clients = document.querySelector('[data-clients-scroll]');
+  if (clients) {
+    var clientsTrack = clients.querySelector('.mi-clients__track');
+    var clientsBox = clients.querySelector('.mi-clients__box');
+    var clientsLogos = clients.querySelector('.mi-clients__logos');
+    var clientsTick = false;
+
+    function clampClients(v, a, b) {
+      return Math.min(b, Math.max(a, v));
+    }
+
+    function measureClients() {
+      if (!clientsBox || !clientsLogos || !clientsTrack) return;
+      var overflow = Math.max(clientsLogos.scrollHeight - clientsBox.clientHeight, 0);
+      clients.style.setProperty('--mi-clients-overflow', overflow + 'px');
+      /* travel ≈ overflow feel + buffer; keep pin time for logo list */
+      var travel = Math.max(overflow * 1.35, window.innerHeight * 0.9);
+      clientsTrack.style.height = window.innerHeight + travel + 'px';
+    }
+
+    function syncClients() {
+      clientsTick = false;
+      if (!clientsTrack) return;
+      var range = Math.max(clientsTrack.offsetHeight - window.innerHeight, 1);
+      var p = clampClients(-clientsTrack.getBoundingClientRect().top / range, 0, 1);
+      clients.style.setProperty('--mi-clients-p', p.toFixed(4));
+    }
+
+    function onClientsScroll() {
+      if (!clientsTick) {
+        clientsTick = true;
+        requestAnimationFrame(syncClients);
+      }
+    }
+
+    function onClientsResize() {
+      measureClients();
+      syncClients();
+    }
+
+    if (reduce) {
+      clients.classList.add('aos-animate');
+    } else {
+      measureClients();
+      window.addEventListener('scroll', onClientsScroll, { passive: true });
+      window.addEventListener('resize', onClientsResize, { passive: true });
+      window.addEventListener('load', onClientsResize, { passive: true });
+      syncClients();
+
+      if ('IntersectionObserver' in window) {
+        var clientsObs = new IntersectionObserver(
+          function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (!entries[i].isIntersecting) continue;
+              clients.classList.add('aos-animate');
+              clientsObs.disconnect();
+              /* remeasure after rows become visible */
+              setTimeout(onClientsResize, 400);
+              break;
+            }
+          },
+          { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+        );
+        clientsObs.observe(clients);
+      } else {
+        clients.classList.add('aos-animate');
+      }
+    }
+  }
+
   var scrollBtn = document.querySelector('.mi-hero__scroll');
   if (scrollBtn) {
     scrollBtn.addEventListener('click', function (e) {
