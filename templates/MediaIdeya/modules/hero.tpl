@@ -14,23 +14,23 @@
 			</picture>
 
 			<picture class="mi-hero__col mi-hero__col--l">
-				<source srcset="{THEME}/images/hero/column-left.webp" type="image/webp">
-				<img src="{THEME}/images/hero/column-left.png" alt="" width="617" height="1603" decoding="async" fetchpriority="high">
+				<source srcset="{THEME}/images/sutun-sol.webp" type="image/webp">
+				<img src="{THEME}/images/sutun-sol.png" alt="" width="428" height="1493" decoding="async" fetchpriority="high">
 			</picture>
 
 			<picture class="mi-hero__col mi-hero__col--r">
-				<source srcset="{THEME}/images/hero/column-right.webp" type="image/webp">
-				<img src="{THEME}/images/hero/column-right.png" alt="" width="623" height="1603" decoding="async" fetchpriority="high">
+				<source srcset="{THEME}/images/sutun-sag.webp" type="image/webp">
+				<img src="{THEME}/images/sutun-sag.png" alt="" width="475" height="1548" decoding="async" fetchpriority="high">
 			</picture>
 
 			<picture class="mi-hero__col mi-hero__col--r2">
-				<source srcset="{THEME}/images/hero/column-right.webp" type="image/webp">
-				<img src="{THEME}/images/hero/column-right.png" alt="" width="623" height="1603" decoding="async">
+				<source srcset="{THEME}/images/sutun-sag.webp" type="image/webp">
+				<img src="{THEME}/images/sutun-sag.png" alt="" width="475" height="1548" decoding="async">
 			</picture>
 
 			<picture class="mi-hero__statue">
-				<source srcset="{THEME}/images/hero/statue.webp" type="image/webp">
-				<img src="{THEME}/images/hero/statue.png" alt="" width="888" height="1092" decoding="async" fetchpriority="high">
+				<source srcset="{THEME}/images/statuya.webp" type="image/webp">
+				<img src="{THEME}/images/statuya.png" alt="" width="888" height="1007" decoding="async" fetchpriority="high">
 			</picture>
 
 			<div class="mi-hero__fade-bottom"></div>

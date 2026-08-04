@@ -57,53 +57,60 @@
   position: absolute;
   display: block;
   z-index: 1;
+  max-width: none;
+  line-height: 0;
 }
 
-/* Figma: object-bottom / cover within exact box */
 .mi-hero__col img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-width: none;
+  object-fit: contain;
   object-position: bottom center;
 }
 
+/* sutun-sol.png — 428×1493 */
 .mi-hero__col--l {
-  left: calc(50% - 960px - 189px);
-  top: -110px;
-  width: 617px;
-  height: 1603px;
+  left: calc(50% - 960px - 40px);
+  top: -40px;
+  width: 428px;
+  height: 1493px;
 }
 
-/* Right exports already flipped from Figma node 1:292 */
+/* sutun-sag.png — 475×1548 */
 .mi-hero__col--r {
-  left: calc(50% - 960px + 1486px);
-  top: -110px;
-  width: 623px;
-  height: 1603px;
+  left: calc(50% - 960px + 1485px);
+  top: -60px;
+  width: 475px;
+  height: 1548px;
 }
 
 .mi-hero__col--r2 {
   left: calc(50% - 960px + 1445px);
-  top: -55px;
-  width: 623px;
-  height: 1603px;
+  top: -20px;
+  width: 475px;
+  height: 1548px;
 }
 
+/* statuya.png — 888×1007 */
 .mi-hero__statue {
   position: absolute;
   left: 50%;
   top: 554px;
   width: 888px;
-  height: 1092px;
+  height: 1007px;
   transform: translateX(-50%);
   display: block;
   z-index: 1;
+  max-width: none;
+  line-height: 0;
 }
 
 .mi-hero__statue img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-width: none;
+  object-fit: contain;
   object-position: bottom center;
 }
 
