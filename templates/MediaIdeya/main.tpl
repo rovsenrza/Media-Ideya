@@ -4,7 +4,8 @@
 	{headers}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="shortcut icon" href="{THEME}/images/favicon.ico">
+	<link rel="icon" href="{THEME}/images/media-ideya-logo.png" type="image/png" sizes="any">
+	<link rel="apple-touch-icon" href="{THEME}/images/media-ideya-logo.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,500&display=swap">
@@ -34,6 +35,10 @@
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
 	[available=cat|showfull]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/available]
+	[available=cat|search|lastnews|tags|favorites]
+	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
+	<link rel="stylesheet" href="{THEME}/css/pages/catalog.css">
+	[/available]
 	[available=static]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/available]
 </head>
 <body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available]">
@@ -60,9 +65,16 @@
 				{page-description}
 			</div>
 			[/page-title]
+			[available=cat|search|lastnews|tags|favorites]
+			<div class="mi-catalog">
+				<div class="mi-catalog__grid">{content}</div>
+			</div>
+			[/available]
+			[not-available=cat|search|lastnews|tags|favorites]
+			{content}
+			[/not-available]
 			[/not-available]
 
-			
 		</main>
 
 		{include file="modules/footer.tpl"}
@@ -85,6 +97,8 @@
 	[available=main]
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+	<script src="{THEME}/js/components/faq.js" defer></script>
+	<script src="{THEME}/js/components/articles.js" defer></script>
 	<script src="{THEME}/js/pages/home.js" defer></script>
 	[/available]
 	[available=showfull]<script src="{THEME}/js/pages/article.js" defer></script>[/available]

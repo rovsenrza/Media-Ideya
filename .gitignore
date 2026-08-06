@@ -9,8 +9,9 @@ Thumbs.db
 *.swo
 *~
 
-# Environment / secrets
-.env
+# Local Cloudflare tunnel state (stakeholder preview)
+.tunnel/
+
 .env.*
 !.env.example
 

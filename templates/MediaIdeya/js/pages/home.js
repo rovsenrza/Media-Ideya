@@ -15,6 +15,9 @@
       syncTouch: true,
       wheelMultiplier: 0.92,
       touchMultiplier: 0.92,
+      prevent: function (node) {
+        return !!(node.closest && node.closest('[data-articles-swiper]'));
+      },
     });
 
     document.documentElement.classList.add('lenis', 'lenis-smooth');
@@ -166,7 +169,13 @@
     var stackTick = false;
     var SHRINK_SHARE = 0.5;
     var n = cards.length;
+    services.style.setProperty('--mi-stack-count', String(n || 1));
     var steps = Math.max(n - 1, 1);
+
+    for (var si = 0; si < n; si++) {
+      var countEl = cards[si].querySelector('.mi-service-card__count');
+      if (countEl) countEl.textContent = (si + 1) + ' / ' + n;
+    }
 
     function clampStack(v, a, b) {
       return Math.min(b, Math.max(a, v));
@@ -189,10 +198,16 @@
       for (var j = 0; j < n; j++) {
         var scaleP = 0;
         var y = 100;
+        var buried = 0;
 
-        if (j < i) {
+        if (j < i - 1) {
           scaleP = 1;
           y = 0;
+          buried = 1;
+        } else if (j === i - 1) {
+          scaleP = 1;
+          y = 0;
+          buried = local > 0 ? 1 : 0;
         } else if (j === i) {
           y = 0;
           scaleP = local <= SHRINK_SHARE ? smooth(local / SHRINK_SHARE) : 1;
@@ -208,7 +223,6 @@
           y = 100;
         }
 
-        /* last card fully in when scroll ends */
         if (p >= 0.999 && j === n - 1) {
           scaleP = 0;
           y = 0;
@@ -216,9 +230,11 @@
         if (p >= 0.999 && j < n - 1) {
           scaleP = 1;
           y = 0;
+          buried = 1;
         }
 
         cards[j].style.setProperty('--mi-stack-p', scaleP.toFixed(4));
+        cards[j].style.setProperty('--mi-stack-buried', String(buried));
         cards[j].style.setProperty('--mi-card-y', y.toFixed(4) + '%');
       }
     }
@@ -287,8 +303,39 @@
   if (clients) {
     var clientsTrack = clients.querySelector('.mi-clients__track');
     var clientsBox = clients.querySelector('.mi-clients__box');
-    var clientsLogos = clients.querySelector('.mi-clients__logos');
+    var clientsLogos = clients.querySelector('[data-clients-logos]');
     var clientsTick = false;
+
+    function layoutClientRows() {
+      if (!clientsLogos) return;
+      var logos = clientsLogos.querySelectorAll('.mi-clients__logo');
+      if (!logos.length) return;
+      if (clientsLogos.querySelector('.mi-clients__row')) return;
+
+      /* Figma 1:77 — brick grid: 4 → 3 → 4 → 3 … */
+      var rowPattern = [4, 3];
+      var frag = document.createDocumentFragment();
+      var li = 0;
+      var rowIndex = 0;
+
+      while (li < logos.length) {
+        var count = rowPattern[rowIndex % rowPattern.length];
+        var row = document.createElement('div');
+        row.className = 'mi-clients__row' + (count === 3 ? ' mi-clients__row--offset' : '');
+
+        for (var n = 0; n < count && li < logos.length; n++, li++) {
+          row.appendChild(logos[li]);
+        }
+
+        frag.appendChild(row);
+        rowIndex++;
+      }
+
+      clientsLogos.innerHTML = '';
+      clientsLogos.appendChild(frag);
+    }
+
+    layoutClientRows();
 
     function clampClients(v, a, b) {
       return Math.min(b, Math.max(a, v));
@@ -414,19 +461,5 @@
     }
   }
 
-  var faq = document.querySelector('[data-faq]');
-  if (faq) {
-    faq.addEventListener(
-      'toggle',
-      function (e) {
-        var item = e.target;
-        if (!item.open || item.tagName !== 'DETAILS') return;
-        var items = faq.querySelectorAll('details');
-        for (var i = 0; i < items.length; i++) {
-          if (items[i] !== item) items[i].open = false;
-        }
-      },
-      true
-    );
-  }
+  /* Footer CTA — titles via .mi-reveal; cards L→R stagger ——— */
 })();

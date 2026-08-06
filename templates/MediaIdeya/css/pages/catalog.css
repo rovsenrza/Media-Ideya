@@ -1,0 +1,36 @@
+/* Category / archive listing — article cards grid */
+
+.mi-main .mi-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: calc(40px * var(--mi-s));
+  padding-block: var(--mi-space-section);
+}
+
+.mi-catalog__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(40px * var(--mi-s));
+}
+
+.mi-catalog__grid .mi-article-card {
+  flex: 1 1 calc((100% - 2 * 40px * var(--mi-s)) / 3);
+  max-width: calc(547px * var(--mi-s));
+}
+
+@media (max-width: 1200px) {
+  .mi-catalog__grid .mi-article-card {
+    flex-basis: calc((100% - 40px * var(--mi-s)) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .mi-catalog__grid {
+    flex-direction: column;
+  }
+
+  .mi-catalog__grid .mi-article-card {
+    flex-basis: 100%;
+    max-width: none;
+  }
+}

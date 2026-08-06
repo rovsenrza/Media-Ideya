@@ -1,4 +1,4 @@
-<article class="mi-card mi-card--short[fixed] is-fixed[/fixed]">
+<article class="mi-article-card mi-article-card--list[fixed] is-fixed[/fixed]">
 	[not-group=5]
 	<div class="mi-card__admin">
 		[add-favorites]<span title="{{Add to favorites}}">★</span>[/add-favorites]
@@ -7,20 +7,28 @@
 	</div>
 	[/not-group]
 
-	<a class="mi-card__media" href="{full-link}">
-		[xfgiven_image]<img src="[xfvalue_image]" alt="{title}" width="547" height="308" loading="lazy" decoding="async">[/xfgiven_image]
+	<a class="mi-article-card__media" href="{full-link}">
+		[xfgiven_image]
+		<img src="[xfvalue_image_url_image]" alt="{title}" width="547" height="329" loading="lazy" decoding="async">
+		[/xfgiven_image]
+		[xfnotgiven_image]
+		<picture>
+			<source srcset="{THEME}/images/articles/card.webp" type="image/webp">
+			<img src="{THEME}/images/articles/card.png" alt="{title}" width="547" height="329" loading="lazy" decoding="async">
+		</picture>
+		[/xfnotgiven_image]
 	</a>
 
-	<div class="mi-card__body">
-		<h2 class="mi-card__title">
+	<div class="mi-article-card__body">
+		<div class="mi-article-card__meta">
+			[tags]
+			<span class="mi-article-card__tag">{tags}</span>
+			[/tags]
+			<time datetime="{date=Y-m-d}">[day-news]{date=d.m.Y}[/day-news]</time>
+		</div>
+		<h3 class="mi-article-card__title">
 			<a href="{full-link}">{title}</a>
-		</h2>
-		<div class="mi-card__excerpt">
-			{short-story}
-		</div>
-		<div class="mi-card__meta">
-			<time datetime="{date=Y-m-d}">[day-news]{date}[/day-news]</time>
-			<span class="mi-card__cat">{link-category}</span>
-		</div>
+		</h3>
+		<div class="mi-article-card__excerpt">{short-story limit="200"}</div>
 	</div>
 </article>

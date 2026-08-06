@@ -7,13 +7,15 @@
   --mi-services-stick-top: var(--mi-header-height);
   --mi-stack-step: 100vh;
   --mi-stack-count: 7;
+  --mi-stack-shrink: 0.28;
+  --mi-stack-fade: 0.3; /* closed peek → opacity 0.7 */
 
   position: relative;
   z-index: 2;
   width: 100%;
   background: var(--mi-color-surface-dark);
   color: var(--mi-color-inverse);
-  padding: 0 var(--mi-gutter);
+  padding: 0 var(--mi-gutter) calc(30px * var(--mi-s));
 }
 
 /* Gradient overlay at section top — sits below the fold on load,
@@ -51,7 +53,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: calc(60px * var(--mi-s));
+  gap: calc(40px * var(--mi-s));
   width: 100%;
   max-width: var(--mi-content-width);
   margin-inline: auto;
@@ -82,6 +84,7 @@
 .mi-service-card {
   --mi-stack-i: 1;
   --mi-stack-p: 0;
+  --mi-stack-buried: 0;
   --mi-card-y: 100%;
   position: absolute;
   inset: 0;
@@ -118,9 +121,10 @@
   color: var(--mi-color-surface-dark);
   overflow: hidden;
   transform-origin: center center;
-  transform: scale(calc(1 - var(--mi-stack-p) * 0.28));
-  /* Covered layer fully fades out — previous card must not show through */
-  opacity: calc(1 - var(--mi-stack-p));
+  transform: scale(calc(1 - var(--mi-stack-p) * var(--mi-stack-shrink)));
+  opacity: calc(
+    (1 - var(--mi-stack-buried)) * (1 - var(--mi-stack-p) * var(--mi-stack-fade))
+  );
   will-change: transform, opacity;
 }
 
@@ -161,7 +165,8 @@
   color: var(--mi-color-surface-dark);
 }
 
-.mi-service-card__list {
+.mi-service-card__list,
+.mi-service-card__details ul {
   margin: 0;
   padding: 0 0 0 calc(30px * var(--mi-s));
   list-style: disc;
@@ -172,7 +177,12 @@
   color: var(--mi-color-surface-dark);
 }
 
-.mi-service-card__text + .mi-service-card__list {
+.mi-service-card__details:empty {
+  display: none;
+}
+
+.mi-service-card__text + .mi-service-card__list,
+.mi-service-card__text + .mi-service-card__details {
   margin-top: calc(-20px * var(--mi-s));
 }
 
@@ -239,5 +249,9 @@
     min-height: 740px;
     transform: none !important;
     opacity: 1 !important;
+  }
+
+  .mi-service-card {
+    --mi-stack-buried: 0;
   }
 }

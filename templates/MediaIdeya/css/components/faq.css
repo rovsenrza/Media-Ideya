@@ -54,6 +54,14 @@
   background: #0d304c;
   border-radius: var(--mi-radius-media);
   overflow: hidden;
+  transition:
+    background-color 0.4s var(--mi-ease),
+    color 0.4s var(--mi-ease);
+}
+
+.mi-faq__item.is-open {
+  background: var(--mi-color-surface-soft);
+  color: var(--mi-color-surface-dark);
 }
 
 .mi-faq__item[open] {
@@ -74,6 +82,18 @@
   font-size: var(--mi-fs-40);
   font-weight: 500;
   line-height: 1.3;
+  transition:
+    background-color var(--mi-duration) var(--mi-ease),
+    padding-bottom var(--mi-duration) var(--mi-ease),
+    min-height 0.4s var(--mi-ease);
+}
+
+.mi-faq__item:not(.is-open) .mi-faq__q:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mi-faq__item.is-open .mi-faq__q:hover {
+  background: rgba(38, 74, 101, 0.04);
 }
 
 .mi-faq__q::-webkit-details-marker {
@@ -86,14 +106,29 @@
   width: calc(48px * var(--mi-s));
   height: calc(48px * var(--mi-s));
   background: center / calc(32px * var(--mi-s)) calc(32px * var(--mi-s)) no-repeat url("../../images/icons/plus.svg");
+  transition: transform 0.4s var(--mi-ease);
 }
 
+.mi-faq__item.is-open .mi-faq__icon,
 .mi-faq__item[open] .mi-faq__icon {
-  background-image: url("../../images/icons/close.svg");
+  transform: rotate(45deg);
 }
 
 .mi-faq__a {
-  margin: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    height 0.45s var(--mi-ease),
+    opacity 0.35s var(--mi-ease);
+}
+
+.mi-faq__item[open] .mi-faq__a {
+  height: auto;
+  opacity: 1;
+}
+
+.mi-faq__a-inner {
   padding: 0 calc(40px * var(--mi-s)) calc(40px * var(--mi-s)) calc(60px * var(--mi-s));
   max-width: calc(1281px * var(--mi-s));
   font-family: var(--mi-font);
@@ -103,6 +138,7 @@
   color: var(--mi-color-surface-dark);
 }
 
+.mi-faq__item.is-open .mi-faq__q,
 .mi-faq__item[open] .mi-faq__q {
   padding-bottom: 24px;
   min-height: 0;
@@ -142,6 +178,14 @@
   .mi-js .mi-faq[data-aos="faq"] .mi-faq__item {
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
+  }
+
+  .mi-faq__a {
+    transition: none !important;
+  }
+
+  .mi-faq__icon {
     transition: none !important;
   }
 }

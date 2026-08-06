@@ -15,17 +15,31 @@
   background: var(--mi-color-blue);
   color: var(--mi-color-inverse);
   white-space: nowrap;
-  transition: opacity var(--mi-duration) var(--mi-ease);
+  border: 1px solid transparent;
+  transition:
+    transform var(--mi-duration) var(--mi-ease),
+    background-color var(--mi-duration) var(--mi-ease),
+    border-color var(--mi-duration) var(--mi-ease),
+    box-shadow var(--mi-duration) var(--mi-ease),
+    opacity var(--mi-duration) var(--mi-ease);
 }
 
 .mi-btn:hover {
-  opacity: 0.88;
+  transform: translateY(calc(-2px * var(--mi-s)));
+  box-shadow: 0 calc(10px * var(--mi-s)) calc(28px * var(--mi-s)) rgba(67, 133, 187, 0.38);
+  opacity: 1;
+}
+
+.mi-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 calc(4px * var(--mi-s)) calc(12px * var(--mi-s)) rgba(67, 133, 187, 0.24);
 }
 
 .mi-btn__icon {
   width: calc(24px * var(--mi-s));
   height: calc(24px * var(--mi-s));
   flex-shrink: 0;
+  transition: transform var(--mi-duration) var(--mi-ease);
 }
 
 /* Header CTA — 204×61, white pill, text #264A65 */
@@ -39,10 +53,23 @@
   color: var(--mi-color-brand);
 }
 
+.mi-btn--header:hover {
+  background: var(--mi-color-surface-soft);
+  color: var(--mi-color-brand);
+  box-shadow: 0 calc(8px * var(--mi-s)) calc(22px * var(--mi-s)) rgba(17, 35, 49, 0.14);
+}
+
 .mi-btn--ghost {
   background: transparent;
   color: var(--mi-color-text);
   border: 1px solid currentColor;
+}
+
+.mi-btn--ghost:hover {
+  background: var(--mi-color-brand);
+  border-color: var(--mi-color-brand);
+  color: var(--mi-color-inverse);
+  box-shadow: 0 calc(8px * var(--mi-s)) calc(22px * var(--mi-s)) rgba(38, 74, 101, 0.2);
 }
 
 /* Figma icon button 299 — content-sized, not stretched */
@@ -53,4 +80,21 @@
   box-sizing: border-box;
   align-self: flex-start;
   padding-inline: calc(28px * var(--mi-s));
+}
+
+.mi-btn--icon:hover .mi-btn__icon {
+  transform: translate(calc(4px * var(--mi-s)), calc(-4px * var(--mi-s)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-btn,
+  .mi-btn__icon {
+    transition: none !important;
+  }
+
+  .mi-btn:hover,
+  .mi-btn:active {
+    transform: none;
+    box-shadow: none;
+  }
 }

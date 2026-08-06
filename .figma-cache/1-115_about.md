@@ -13,9 +13,10 @@
 - Button: #4385bb, px 48 py 24, radius 100
 
 ### колоннада (1:121)
-- left -211, top 276, 2342×1654
-- object-fit cover; mask alpha from Figma
-- centered on viewport (`left: 50%; translateX(-50%)`)
+- left -211 (centered 2342 on 1920), top 276, 2342×1654
+- mask: upscalemedia-transformed 1 → `colonnade-mask.png`
+- fill: upscalemedia-transformed 2 → `colonnade-fill.png` (object-cover)
+- glow Ellipse 10 inside mask @ 600,191 — 1142×359, opacity 0.8
 
 ### Ellipse 10 (1:124) — glow before button
 - box 1142×359 @ left 389, top 467 (centered)
@@ -29,7 +30,7 @@
 - z below colonnade
 
 ## Assets (local)
-- templates/MediaIdeya/images/about/colonnade.{png,webp}
+- templates/MediaIdeya/images/about/colonnade.{png,webp} + @2x — Figma 1:121 mask composite (2446 raw → 2342/4684)
 - templates/MediaIdeya/images/about/wave.svg
 - templates/MediaIdeya/images/about/cloud.*
 - templates/MediaIdeya/images/about/wreath.svg

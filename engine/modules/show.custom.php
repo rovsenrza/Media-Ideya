@@ -630,6 +630,7 @@ while ( $row = $db->get_row( $sql_result ) ) {
 		if (!$config['allow_smart_format']) {
 
 				$row['short_story'] = strip_tags( $row['short_story'], '<p><div><br><a>' );
+				$row['full_story'] = strip_tags( $row['full_story'], '<p><div><br><a><ul><ol><li>' );
 
 		} else {
 
@@ -639,6 +640,9 @@ while ( $row = $db->get_row( $sql_result ) ) {
 				$row['short_story'] = preg_replace( "#<!--TBegin(.+?)<!--TEnd-->#is", "", $row['short_story'] );
 				$row['short_story'] = preg_replace( "#<!--MBegin(.+?)<!--MEnd-->#is", "", $row['short_story'] );
 				$row['short_story'] = preg_replace( "#<img(.+?)>#is", "", $row['short_story'] );
+				$row['full_story'] = preg_replace( "#<!--TBegin(.+?)<!--TEnd-->#is", "", $row['full_story'] );
+				$row['full_story'] = preg_replace( "#<!--MBegin(.+?)<!--MEnd-->#is", "", $row['full_story'] );
+				$row['full_story'] = preg_replace( "#<img(.+?)>#is", "", $row['full_story'] );
 	
 			}
 	
@@ -647,6 +651,9 @@ while ( $row = $db->get_row( $sql_result ) ) {
 				$row['short_story'] = preg_replace( "#<!--dle_video_begin(.+?)<!--dle_video_end-->#is", "", $row['short_story'] );
 				$row['short_story'] = preg_replace( "#<!--dle_audio_begin(.+?)<!--dle_audio_end-->#is", "", $row['short_story'] );
 				$row['short_story'] = preg_replace( "#<!--dle_media_begin(.+?)<!--dle_media_end-->#is", "", $row['short_story'] );
+				$row['full_story'] = preg_replace( "#<!--dle_video_begin(.+?)<!--dle_video_end-->#is", "", $row['full_story'] );
+				$row['full_story'] = preg_replace( "#<!--dle_audio_begin(.+?)<!--dle_audio_end-->#is", "", $row['full_story'] );
+				$row['full_story'] = preg_replace( "#<!--dle_media_begin(.+?)<!--dle_media_end-->#is", "", $row['full_story'] );
 	
 			}
 
@@ -655,6 +662,7 @@ while ( $row = $db->get_row( $sql_result ) ) {
 	}
 
 	$row['short_story'] = stripslashes( $row['short_story'] );
+	$row['full_story'] = stripslashes( $row['full_story'] );
 
 	if (stripos ( $tpl->copy_template, "image-" ) !== false) {
 
@@ -691,12 +699,21 @@ while ( $row = $db->get_row( $sql_result ) ) {
 
 	}
 
-	if ($config['image_lazy']) $row['short_story'] = preg_replace_callback ( "#<(img|iframe)(.+?)>#i", "enable_lazyload", $row['short_story'] );
+	if ($config['image_lazy']) {
+		$row['short_story'] = preg_replace_callback ( "#<(img|iframe)(.+?)>#i", "enable_lazyload", $row['short_story'] );
+		$row['full_story'] = preg_replace_callback ( "#<(img|iframe)(.+?)>#i", "enable_lazyload", $row['full_story'] );
+	}
 	
 	$tpl->set( '{short-story}', $row['short_story'] );
 
 	if ( preg_match( "#\\{short-story limit=['\"](.+?)['\"]\\}#i", $tpl->copy_template, $matches ) ) {
 		$tpl->set( $matches[0], clear_content($row['short_story'], $matches[1]) );
+	}
+
+	$tpl->set( '{full-story}', $row['full_story'] );
+
+	if ( preg_match( "#\\{full-story limit=['\"](.+?)['\"]\\}#i", $tpl->copy_template, $matches ) ) {
+		$tpl->set( $matches[0], clear_content($row['full_story'], $matches[1]) );
 	}
 	
 	if( $config['user_in_news'] ) {

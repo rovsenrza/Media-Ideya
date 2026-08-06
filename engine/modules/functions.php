@@ -1690,7 +1690,7 @@ function custom_print( $matches=array() ) {
 		
 	$aviable = array("global");
 	$thisdate = date( "Y-m-d H:i:s", $_TIME );
-	$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, (p.full_story != '') as full_story, p.xfields, p.title, p.descr, p.keywords, p.category, p.alt_name, p.comm_num, p.allow_comm, p.allow_main, p.approve, p.fixed, p.symbol, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.disable_index, e.editdate, e.editor, e.reason {$user_select}FROM " . PREFIX . "_post p {cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) {$user_join}";
+	$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, p.full_story, p.xfields, p.title, p.descr, p.keywords, p.category, p.alt_name, p.comm_num, p.allow_comm, p.allow_main, p.approve, p.fixed, p.symbol, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.disable_index, e.editdate, e.editor, e.reason {$user_select}FROM " . PREFIX . "_post p {cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) {$user_join}";
 
 	$where = array();
 	$allow_cache = $config['allow_cache'];

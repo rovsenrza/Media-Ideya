@@ -1,0 +1,201 @@
+/**
+ * Media Ideya — DLE admin panel branding
+ * Loaded from templates/MediaIdeya/adminpanel.css
+ *
+ * DLE sidebar uses .sidebar-default (light theme rules) — override all nav
+ * text/hover/active so submenu stays readable on dark brand background.
+ */
+
+:root {
+  --mi-admin-brand: #264a65;
+  --mi-admin-brand-dark: #112331;
+  --mi-admin-accent: #4385bb;
+  --mi-admin-surface: #edf5fd;
+  --mi-admin-sidebar: #0d2f4c;
+  --mi-admin-sidebar-sub: rgba(0, 0, 0, 0.14);
+  --mi-admin-nav: rgba(255, 255, 255, 0.88);
+  --mi-admin-nav-muted: rgba(255, 255, 255, 0.46);
+  --mi-admin-nav-hover: rgba(67, 133, 187, 0.22);
+}
+
+/* —— Top bar —— */
+.navbar-inverse {
+  background-color: var(--mi-admin-brand-dark) !important;
+  border-color: var(--mi-admin-brand-dark) !important;
+}
+
+.navbar-brand {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.navbar-brand img {
+  display: none !important;
+}
+
+.navbar-brand::before {
+  content: "";
+  display: inline-block;
+  width: 89px;
+  height: 40px;
+  background: url("images/media-ideya-logo.png") center / contain no-repeat;
+  vertical-align: middle;
+}
+
+/* —— Sidebar shell —— */
+.sidebar,
+.sidebar.sidebar-default {
+  background-color: var(--mi-admin-sidebar) !important;
+  color: #fff !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.sidebar-default .category-title {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--mi-admin-nav-muted) !important;
+}
+
+/* Section label: «СПИСОК РАЗДЕЛОВ» */
+.sidebar .navigation .navigation-header,
+.sidebar-default .navigation .navigation-header,
+.sidebar .navigation .navigation-header span,
+.sidebar-default .navigation .navigation-header span {
+  color: var(--mi-admin-nav-muted) !important;
+}
+
+.sidebar .navigation .navigation-header a,
+.sidebar-default .navigation .navigation-header a {
+  color: var(--mi-admin-nav-muted) !important;
+}
+
+.sidebar .navigation .navigation-header a:hover,
+.sidebar .navigation .navigation-header a:focus,
+.sidebar-default .navigation .navigation-header a:hover,
+.sidebar-default .navigation .navigation-header a:focus {
+  color: #fff !important;
+}
+
+/* All menu levels — top + nested submenu */
+.sidebar .navigation li > a,
+.sidebar-default .navigation li > a,
+.sidebar .navigation > li > ul > li > a,
+.sidebar-default .navigation > li > ul > li > a,
+.sidebar .navigation > li > ul > li > ul > li > a,
+.sidebar-default .navigation > li > ul > li > ul > li > a,
+.dle_theme_j .sidebar-default .navigation li > a {
+  color: var(--mi-admin-nav) !important;
+}
+
+.sidebar .navigation li > a i,
+.sidebar-default .navigation li > a i,
+.dle_theme_j .sidebar-default .navigation li > a i {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.sidebar .navigation li > a:hover,
+.sidebar .navigation li > a:focus,
+.sidebar-default .navigation li > a:hover,
+.sidebar-default .navigation li > a:focus,
+.dle_theme_j .sidebar-default .navigation li > a:hover {
+  background-color: var(--mi-admin-nav-hover) !important;
+  color: #fff !important;
+}
+
+.sidebar .navigation li.active > a,
+.sidebar .navigation li.active > a:hover,
+.sidebar .navigation li.active > a:focus,
+.sidebar .navigation li.curmod > a,
+.sidebar .navigation li.curmod > a:hover,
+.sidebar .navigation li.curmod > a:focus,
+.sidebar-default .navigation li.active > a,
+.sidebar-default .navigation li.active > a:hover,
+.sidebar-default .navigation li.active > a:focus,
+.sidebar-default .navigation li.curmod > a,
+.sidebar-default .navigation li.curmod > a:hover,
+.sidebar-default .navigation li.curmod > a:focus,
+.sidebar-default .navigation > li.active > a,
+.dle_theme_j .sidebar-default .navigation li.active > a,
+.dle_theme_j .sidebar-default .navigation li.curmod > a {
+  background-color: var(--mi-admin-nav-hover) !important;
+  color: #fff !important;
+}
+
+.sidebar .navigation li.active > a > [class*="text-"],
+.sidebar-default .navigation li.active > a > [class*="text-"],
+.sidebar-default .navigation li.active > a > [class*="text-"] {
+  color: #fff !important;
+}
+
+.sidebar .navigation > li > ul,
+.sidebar-default .navigation > li > ul,
+.sidebar-default .navigation li.disabled > a,
+.sidebar-default .navigation li.disabled > a:hover {
+  background-color: var(--mi-admin-sidebar-sub) !important;
+}
+
+.sidebar-default .navigation li.disabled > a,
+.sidebar-default .navigation li.disabled > a:hover {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Collapsed sidebar flyout menus */
+.sidebar-xs .sidebar-main .navigation > li > ul,
+.sidebar-xs .sidebar-main.sidebar-default .navigation > li > ul {
+  background-color: var(--mi-admin-sidebar) !important;
+}
+
+.sidebar-xs .sidebar-main .navigation > li > a > span,
+.sidebar-xs .sidebar-main.sidebar-default .navigation > li > a > span {
+  background-color: var(--mi-admin-brand) !important;
+  color: #fff !important;
+}
+
+.sidebar-xs .sidebar-main.sidebar-default .navigation > li:hover:not(.active) > a {
+  background-color: var(--mi-admin-nav-hover) !important;
+  color: #fff !important;
+}
+
+/* —— Buttons / accents —— */
+.bg-teal,
+.btn-teal,
+.label-teal {
+  background-color: var(--mi-admin-accent) !important;
+  border-color: var(--mi-admin-accent) !important;
+}
+
+.btn-teal:hover,
+.btn-teal:focus {
+  background-color: #3574a8 !important;
+  border-color: #3574a8 !important;
+}
+
+.text-primary,
+.text-primary-600,
+a.text-primary {
+  color: var(--mi-admin-accent) !important;
+}
+
+.panel-primary > .panel-heading {
+  background-color: var(--mi-admin-brand) !important;
+  border-color: var(--mi-admin-brand) !important;
+}
+
+.page-header .page-title {
+  color: var(--mi-admin-brand-dark);
+}
+
+.login-container .login-form {
+  border-top: 3px solid var(--mi-admin-accent);
+}
+
+.login-container .btn-teal {
+  background-color: var(--mi-admin-accent) !important;
+}
+
+.breadcrumb-line {
+  background: var(--mi-admin-surface);
+}
+
+.breadcrumb-line .breadcrumb > li > a {
+  color: var(--mi-admin-brand);
+}

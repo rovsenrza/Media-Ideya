@@ -10,10 +10,7 @@
 		</picture>
 
 		<div class="mi-footer__cta-inner">
-			<div class="mi-footer__cta-copy">
-				<h2 class="mi-footer__cta-title mi-reveal">Обсудим ваш проект</h2>
-				<p class="mi-footer__cta-text mi-reveal mi-reveal--delay">Оставьте заявку — перезвоним и разберём, что сработает именно для вас</p>
-			</div>
+			{custom category="8" template="modules/settings-footer" limit="1" order="date" sort="asc" cache="no"}
 			<a class="mi-btn mi-footer__cta-btn" href="/index.php?do=feedback">Оставить заявку</a>
 		</div>
 	</div>
@@ -23,18 +20,7 @@
 
 		<div class="mi-footer__inner">
 			<div class="mi-footer__contacts">
-				<div class="mi-footer__col">
-					<span class="mi-footer__label">Адрес</span>
-					<p>г. Брянск<br>Проспект Станке Димитрова 54А,</p>
-				</div>
-				<div class="mi-footer__col">
-					<span class="mi-footer__label">Почта</span>
-					<a class="mi-footer__mail" href="mailto:info@mediaideya.ru">info@mediaideya.ru</a>
-				</div>
-				<div class="mi-footer__col">
-					<span class="mi-footer__label">Телефон</span>
-					<a href="tel:+79532843200">+7 (953) 284-32-00</a>
-				</div>
+				{custom category="8" template="modules/settings-contacts" limit="1" order="date" sort="asc" cache="no"}
 			</div>
 
 			<div class="mi-footer__social">
@@ -45,7 +31,7 @@
 
 		<div class="mi-footer__legal">
 			<span>ООО «Медиа Идея»</span>
-			<a href="/">Политика приватности</a>
+			<a href="/politika-privatnosti.html">Политика приватности</a>
 		</div>
 	</div>
 </footer>

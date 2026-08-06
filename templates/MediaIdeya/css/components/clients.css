@@ -192,6 +192,18 @@
 .mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(6) {
   transition-delay: 1550ms;
 }
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(7) {
+  transition-delay: 1700ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(8) {
+  transition-delay: 1850ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(9) {
+  transition-delay: 2000ms;
+}
+.mi-js .mi-clients[data-aos="clients"].aos-animate .mi-clients__row:nth-child(10) {
+  transition-delay: 2150ms;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .mi-clients {

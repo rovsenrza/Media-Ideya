@@ -8,11 +8,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/touch-icon-iphone.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/touch-icon-ipad.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/touch-icon-iphone-retina.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/touch-icon-ipad-retina.png">
+	<link rel="icon" href="{THEME}/images/media-ideya-logo.png" type="image/png" sizes="any">
+	<link rel="apple-touch-icon" href="{THEME}/images/media-ideya-logo.png">
 	<meta property="og:image" content="{THEME}/images/logo.png">
 	
 	<link href="{THEME}/css/styles.css" type="text/css" rel="stylesheet">

@@ -1,64 +1,14 @@
 <section class="mi-articles" id="articles" aria-label="Статьи" data-aos="articles">
-	<div class="mi-articles__inner">
+	<div class="mi-articles__head-wrap">
 		<header class="mi-section-title mi-section-title--dark mi-articles__head">
 			<h2 class="mi-section-title__heading mi-articles__heading mi-reveal">Разбираем рынок вслух</h2>
-			<a class="mi-section-title__label mi-articles__label mi-reveal mi-reveal--delay" href="/">Статьи</a>
+			<a class="mi-section-title__label mi-articles__label mi-reveal mi-reveal--delay" href="/stat-i/">Статьи</a>
 		</header>
+	</div>
 
-		<div class="mi-articles__grid">
-			<article class="mi-article-card">
-				<a class="mi-article-card__media" href="/">
-					<picture>
-						<source srcset="{THEME}/images/articles/card.webp" type="image/webp">
-						<img src="{THEME}/images/articles/card.png" alt="" width="547" height="329" loading="lazy" decoding="async">
-					</picture>
-				</a>
-				<div class="mi-article-card__body">
-					<div class="mi-article-card__meta">
-						<span class="mi-article-card__tag">маркетинг</span>
-						<time datetime="2026-04-12">12.04.2026</time>
-					</div>
-					<h3 class="mi-article-card__title">
-						<a href="/">Почему кросс-маркетинг работает лучше отдельных кампаний</a>
-					</h3>
-				</div>
-			</article>
-
-			<article class="mi-article-card">
-				<a class="mi-article-card__media" href="/">
-					<picture>
-						<source srcset="{THEME}/images/articles/card.webp" type="image/webp">
-						<img src="{THEME}/images/articles/card.png" alt="" width="547" height="329" loading="lazy" decoding="async">
-					</picture>
-				</a>
-				<div class="mi-article-card__body">
-					<div class="mi-article-card__meta">
-						<span class="mi-article-card__tag">маркетинг</span>
-						<time datetime="2026-04-12">12.04.2026</time>
-					</div>
-					<h3 class="mi-article-card__title">
-						<a href="/">Почему кросс-маркетинг работает лучше отдельных кампаний</a>
-					</h3>
-				</div>
-			</article>
-
-			<article class="mi-article-card">
-				<a class="mi-article-card__media" href="/">
-					<picture>
-						<source srcset="{THEME}/images/articles/card.webp" type="image/webp">
-						<img src="{THEME}/images/articles/card.png" alt="" width="547" height="329" loading="lazy" decoding="async">
-					</picture>
-				</a>
-				<div class="mi-article-card__body">
-					<div class="mi-article-card__meta">
-						<span class="mi-article-card__tag">маркетинг</span>
-						<time datetime="2026-04-12">12.04.2026</time>
-					</div>
-					<h3 class="mi-article-card__title">
-						<a href="/">Почему кросс-маркетинг работает лучше отдельных кампаний</a>
-					</h3>
-				</div>
-			</article>
+	<div class="mi-articles__rail" data-articles-swiper>
+		<div class="mi-articles__track" data-articles-track data-lenis-prevent-touch data-lenis-prevent-wheel tabindex="0" role="region" aria-label="Карусель статей">
+			{custom category="1" template="modules/article-card" limit="4" order="date" sort="desc" cache="no"}
 		</div>
 	</div>
 </section>

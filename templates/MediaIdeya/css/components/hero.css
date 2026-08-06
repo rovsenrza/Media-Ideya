@@ -5,6 +5,14 @@
 
 .mi-hero {
   --mi-hero-p: 0;
+  --mi-hero-col-w: 617px;
+  --mi-hero-col-h: 1603px;
+  --mi-hero-col-top: -110px;
+  --mi-hero-col-offset: 529px; /* inner edge from center — Figma 1:291 / 30:75 */
+  --mi-hero-bg-shift-x: 573px; /* фон 1:287 x=-573 */
+  --mi-hero-bg-shift-y: 110px; /* фон 1:287 y=-110 */
+  --mi-hero-cloud-l-nudge: 120px; /* visual fine-tune vs Figma */
+  --mi-hero-cloud-r-inset: 14px; /* 1920 − (−364 + 2270) */
   position: relative;
   z-index: 1;
   width: 100%;
@@ -50,17 +58,21 @@
   opacity: 0.3;
   will-change: transform;
   animation: mi-hero-cloud 28s ease-in-out infinite alternate;
+  background: none;
+  pointer-events: none;
 }
 
+/* Figma 1:289 / 1:290 — coords inside фон, shifted to viewport */
 .mi-hero__cloud--l {
-  left: calc(50% - (1533px * var(--mi-s)));
-  top: calc(18px * var(--mi-s));
+  left: calc(50% - ((960px + var(--mi-hero-bg-shift-x) - var(--mi-hero-cloud-l-nudge)) * var(--mi-s)));
+  top: calc((18px - var(--mi-hero-bg-shift-y)) * var(--mi-s));
   animation-duration: 32s;
 }
 
 .mi-hero__cloud--r {
-  left: calc(50% - (751px * var(--mi-s)));
-  top: calc(404px * var(--mi-s));
+  left: auto;
+  right: calc(var(--mi-hero-cloud-r-inset) * var(--mi-s));
+  top: calc((404px - var(--mi-hero-bg-shift-y)) * var(--mi-s));
   animation-duration: 36s;
   animation-direction: alternate-reverse;
 }
@@ -75,9 +87,15 @@
 }
 
 .mi-hero__cloud img {
+  display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
+}
+
+.mi-hero__cloud--r img {
   object-fit: cover;
+  object-position: right center;
 }
 
 .mi-hero__col {
@@ -97,12 +115,18 @@
   object-position: bottom center;
 }
 
-/* Video: columns same capital level (Figma 1:291–293 y=-110) */
+/* Figma 1:291 / 30:75 — 617×1603, top -110, symmetric ±529 inner gap */
+.mi-hero__col--l,
+.mi-hero__col--r {
+  top: calc(var(--mi-hero-col-top) * var(--mi-s));
+  width: calc(var(--mi-hero-col-w) * var(--mi-s));
+  height: calc(var(--mi-hero-col-h) * var(--mi-s));
+}
+
 .mi-hero__col--l {
-  left: calc(50% - (1000px * var(--mi-s)));
-  top: calc(-40px * var(--mi-s));
-  width: calc(428px * var(--mi-s));
-  height: calc(1548px * var(--mi-s));
+  left: calc(
+    54% - (var(--mi-hero-col-offset) + var(--mi-hero-col-w)) * var(--mi-s)
+  );
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * -120px * var(--mi-s)),
     calc(var(--mi-hero-p, 0) * 36px * var(--mi-s)),
@@ -110,12 +134,8 @@
   );
 }
 
-/* Sağ sütun — Figma simmetriya: bir az sağa */
 .mi-hero__col--r {
-  left: calc(50% + (545px * var(--mi-s)));
-  top: calc(-40px * var(--mi-s));
-  width: calc(428px * var(--mi-s));
-  height: calc(1548px * var(--mi-s));
+  left: calc(46% + var(--mi-hero-col-offset) * var(--mi-s));
   transform: translate3d(
     calc(var(--mi-hero-p, 0) * 120px * var(--mi-s)),
     calc(var(--mi-hero-p, 0) * 36px * var(--mi-s)),
@@ -123,16 +143,9 @@
   );
 }
 
-.mi-hero__col--r2 {
-  left: calc(50% + (505px * var(--mi-s)));
-  top: calc(-40px * var(--mi-s));
-  width: calc(428px * var(--mi-s));
-  height: calc(1548px * var(--mi-s));
-  transform: translate3d(
-    calc(var(--mi-hero-p, 0) * 140px * var(--mi-s)),
-    calc(var(--mi-hero-p, 0) * 42px * var(--mi-s)),
-    0
-  );
+/* Figma 30:75 — same asset, mirrored */
+.mi-hero__col--r img {
+  transform: scaleY(-1) rotate(180deg);
 }
 
 /* Video: statue rises through mid→late scroll (center brightens ~3–5.4s) */
@@ -141,7 +154,7 @@
   left: 50%;
   top: calc(554px * var(--mi-s));
   width: calc(888px * var(--mi-s));
-  height: calc(1007px * var(--mi-s));
+  height: calc(939px * var(--mi-s));
   transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -320px * var(--mi-s)), 0);
   display: block;
   z-index: 1;
@@ -183,13 +196,30 @@
   right: 0;
   top: 0;
   height: calc(213px * var(--mi-s));
-  z-index: 2;
+  z-index: 4;
   background: linear-gradient(180deg, #4a7ca3 0%, rgba(150, 187, 217, 0) 100%);
+}
+
+/* Figma 1:295 — bottom vignette inside viewport (top 900, h 593) */
+.mi-hero__fade-mid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(900px * var(--mi-s));
+  height: calc(593px * var(--mi-s));
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 35, 49, 0) 0%,
+    rgba(17, 35, 49, 0.7) 44.96%,
+    #112331 74.933%
+  );
 }
 
 .mi-hero__title {
   --mi-hero-reveal-start: 1.05s;
-  --mi-hero-reveal-step: 1.15s;
+  --mi-hero-reveal-step: 0.3s;
   position: absolute;
   left: 50%;
   top: calc(195px * var(--mi-s));
@@ -285,8 +315,7 @@
 
   .mi-hero__title-line-inner,
   .mi-hero__col--l,
-  .mi-hero__col--r,
-  .mi-hero__col--r2 {
+  .mi-hero__col--r {
     transform: none !important;
   }
 
