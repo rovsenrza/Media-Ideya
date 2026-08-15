@@ -2,7 +2,7 @@
 	<div class="mi-articles__head-wrap">
 		<header class="mi-section-title mi-section-title--dark mi-articles__head">
 			<h2 class="mi-section-title__heading mi-articles__heading mi-reveal">Разбираем рынок вслух</h2>
-			<a class="mi-section-title__label mi-articles__label mi-reveal mi-reveal--delay" href="/stat-i/">Статьи</a>
+			<a class="mi-section-title__label mi-articles__label mi-reveal mi-reveal--delay" href="{THEME}/../../stat-i/">Статьи</a>
 		</header>
 	</div>
 

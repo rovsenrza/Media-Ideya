@@ -1,3 +1,8 @@
+[category=2]
+{include file="modules/page-cases.tpl"}
+[/category]
+
+[not-category=2]
 <article class="mi-article[fixed] is-fixed[/fixed]">
 	[not-group=5]
 	<div class="mi-article__admin">
@@ -41,3 +46,4 @@
 	{navigation}
 	{addcomments}
 </section>
+[/not-category]

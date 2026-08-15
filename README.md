@@ -47,7 +47,7 @@ Media-Ideya/
 ## Development qeydləri
 
 - **Tema dəyişiklikləri** əsasən `templates/` içindədir — core `engine/` fayllarına toxunmayın (upgrade riski).
-- Figma dizaynından implementasiya üçün Cursor rule: `.cursor/rules/media-ideya-workflow.mdc`
+- Codex iş axını və layihə qaydaları: `AGENTS.md` (Cursor qaydası: `.cursor/rules/media-ideya-workflow.mdc`)
 - Codebase Memory index: project adı `Media-Ideya` (`.codebase-memory/`)
 
 ## Alətlər
@@ -73,14 +73,16 @@ templates/MediaIdeya/
     └── pages/
 ```
 
-Figma: [Медиа идея](https://www.figma.com/design/Bt4qOjgEAEywy7uJCnEQsP) — ilkin breakpoint **1920**.
+Figma: [MEDIA-IDEYA site](https://www.figma.com/design/xwP9bW8ocVlkXfKa0HwLVf/MEDIA-IDEYA-site--Copy-) — ilkin breakpoint **1920**.
 
 ## Status
 
 - [x] DLE 20.0 core yüklənib
 - [x] MediaIdeya skin skeleton (təmiz 4 core template + CSS/JS arxitektura)
-- [ ] Install tamamlanmayıb (`engine/data/` boş)
-- [ ] Figma → home (1920) implementasiya
+- [x] Lokal DLE install və MAMP mühiti işləkdir
+- [x] Figma → home (1920) implementasiya
+- [x] Figma → Контакты, О компании, Услуги və Кейсы implementasiya
+- [ ] Hosting/deploy istifadəçi yenidən aktiv edənədək dayandırılıb
 
 ## License
 

@@ -1,0 +1,1394 @@
+/* About page — Figma frame 47:801, 1920 × 6457 (header/footer excluded here). */
+
+.mi-about-page {
+  --mi-about-s: var(--mi-s);
+  --mi-about-canvas: calc(1920px * var(--mi-about-s));
+  width: 100%;
+  margin-top: calc(-1 * var(--mi-header-height));
+  overflow: clip;
+  color: var(--mi-color-inverse);
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-about-page,
+.mi-about-page button,
+.mi-about-page a {
+  font-family: var(--mi-font);
+}
+
+.mi-about-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mi-about-hero,
+.mi-about-team,
+.mi-about-process,
+.mi-about-reviews,
+.mi-about-gratitude,
+.mi-about-cta {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mi-about-hero__canvas,
+.mi-about-team__canvas,
+.mi-about-process__canvas,
+.mi-about-reviews__canvas,
+.mi-about-gratitude__canvas,
+.mi-about-cta__canvas {
+  position: relative;
+  width: var(--mi-about-canvas);
+  height: 100%;
+  margin-inline: auto;
+}
+
+/* Hero — 47:899 / 47:900 */
+
+.mi-about-hero {
+  height: calc(1145px * var(--mi-about-s));
+  isolation: isolate;
+  background: linear-gradient(180deg, #8db5d5 0%, #abd3f3 100%);
+}
+
+.mi-about-hero::before,
+.mi-about-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.mi-about-hero::before {
+  top: 0;
+  height: calc(213px * var(--mi-about-s));
+  background: linear-gradient(180deg, #4a7ca3 0%, rgba(74, 124, 163, 0) 100%);
+}
+
+.mi-about-hero::after {
+  bottom: 0;
+  height: calc(449px * var(--mi-about-s));
+  background: linear-gradient(180deg, rgba(237, 245, 253, 0) 0%, #edf5fd 100%);
+}
+
+.mi-about-hero__world {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mi-about-hero__statues {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.mi-about-hero__cloud {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mi-about-hero__cloud--left {
+  left: calc(-374px * var(--mi-about-s));
+  top: calc(299px * var(--mi-about-s));
+  width: calc(1616px * var(--mi-about-s));
+  height: calc(658px * var(--mi-about-s));
+}
+
+.mi-about-hero__cloud--right {
+  left: calc(922px * var(--mi-about-s));
+  top: calc(326px * var(--mi-about-s));
+  width: calc(1345px * var(--mi-about-s));
+  height: calc(548px * var(--mi-about-s));
+  transform: scaleX(-1);
+}
+
+.mi-about-hero__cloud--bottom {
+  left: calc(-41px * var(--mi-about-s));
+  top: calc(499px * var(--mi-about-s));
+  width: calc(2031px * var(--mi-about-s));
+  height: calc(827px * var(--mi-about-s));
+}
+
+.mi-about-hero__statue {
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;
+  transform-origin: 50% 100%;
+}
+
+.mi-about-hero__statue img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+.mi-about-hero__statue--left {
+  left: calc(-84px * var(--mi-about-s));
+  top: calc(457px * var(--mi-about-s));
+  width: calc(757px * var(--mi-about-s));
+  height: calc(688px * var(--mi-about-s));
+}
+
+.mi-about-hero__statue--center {
+  left: calc(602px * var(--mi-about-s));
+  top: calc(413px * var(--mi-about-s));
+  width: calc(716px * var(--mi-about-s));
+  height: calc(732px * var(--mi-about-s));
+}
+
+.mi-about-hero__statue--right {
+  left: calc(1248px * var(--mi-about-s));
+  top: calc(457px * var(--mi-about-s));
+  width: calc(749px * var(--mi-about-s));
+  height: calc(688px * var(--mi-about-s));
+}
+
+.mi-about-breadcrumb {
+  position: absolute;
+  z-index: 8;
+  left: calc(100px * var(--mi-about-s));
+  top: calc(84px * var(--mi-about-s));
+  display: flex;
+  align-items: center;
+  gap: calc(16px * var(--mi-about-s));
+  height: calc(24px * var(--mi-about-s));
+  font-size: calc(16px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.mi-about-breadcrumb a {
+  transition: opacity var(--mi-duration) var(--mi-ease);
+}
+
+.mi-about-breadcrumb a:hover {
+  opacity: 0.72;
+}
+
+.mi-about-hero__title {
+  position: absolute;
+  z-index: 7;
+  left: calc(512px * var(--mi-about-s));
+  top: calc(208px * var(--mi-about-s));
+  width: calc(897px * var(--mi-about-s));
+  font-size: calc(88px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: #fff;
+}
+
+.mi-about-hero__title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.mi-about-hero__title [data-about-hero-word] {
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}
+
+.mi-js .mi-about-hero:not(.is-composed) .mi-about-hero__title [data-about-hero-word],
+.mi-js .mi-about-hero:not(.is-composed) .mi-about-hero__statue {
+  opacity: 0;
+}
+
+.mi-about-hero.is-composed .mi-about-hero__title [data-about-hero-word] {
+  opacity: 0;
+  transform: translate3d(0, -10px, 0);
+  filter: blur(4px);
+}
+
+.mi-about-hero.is-composed .mi-about-hero__statue {
+  opacity: 1;
+}
+
+.mi-about-hero.is-composed .mi-about-hero__statues {
+  transform: scale(1.42);
+}
+
+/* Team — 47:892 */
+
+.mi-about-team {
+  height: calc(972px * var(--mi-about-s));
+  color: var(--mi-color-surface-dark);
+  background: var(--mi-color-surface-soft);
+}
+
+.mi-about-team__intro {
+  position: absolute;
+  left: calc(393px * var(--mi-about-s));
+  top: calc(120px * var(--mi-about-s));
+  width: calc(1134px * var(--mi-about-s));
+  text-align: center;
+}
+
+.mi-about-team__title {
+  font-size: calc(64px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.mi-about-team__lead {
+  width: calc(882px * var(--mi-about-s));
+  margin: calc(40px * var(--mi-about-s)) auto 0;
+  font-size: calc(20px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-about-team__stage {
+  position: absolute;
+  inset: calc(440px * var(--mi-about-s)) 0 0;
+}
+
+.mi-about-team__role {
+  position: absolute;
+  top: 0;
+  width: calc(440px * var(--mi-about-s));
+  height: calc(410px * var(--mi-about-s));
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(calc(180px * var(--mi-about-s)), 0, 0) scale(0.88);
+  transition:
+    left 2s cubic-bezier(0.25, 0.1, 0.25, 1),
+    top 2s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 2s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: left, top, opacity, transform;
+}
+
+.mi-about-team__role[data-state="active"] {
+  left: calc(740px * var(--mi-about-s));
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.mi-about-team__role[data-state="next"] {
+  left: calc(1316px * var(--mi-about-s));
+  top: calc(108px * var(--mi-about-s));
+  opacity: 1;
+  transform: none;
+}
+
+.mi-about-team__role[data-state="previous"] {
+  left: calc(164px * var(--mi-about-s));
+  top: calc(108px * var(--mi-about-s));
+  opacity: 0.42;
+  transform: none;
+}
+
+.mi-about-team:not(.is-running) .mi-about-team__role[data-state="previous"] {
+  opacity: 0;
+}
+
+.mi-about-team__role-media {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(384px * var(--mi-about-s));
+  height: calc(244px * var(--mi-about-s));
+  opacity: 0;
+  transform: translateX(-50%) scale(0.62) rotate(-8deg);
+  transform-origin: 50% 55%;
+  transition:
+    opacity 2s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+}
+
+.mi-about-team__role-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mi-about-team__role-copy {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transition: top 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: top;
+}
+
+.mi-about-team__role[data-state="active"] .mi-about-team__role-media {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) rotate(0deg);
+}
+
+.mi-about-team__role[data-state="previous"] .mi-about-team__role-media {
+  transform: translateX(-50%) scale(0.62) rotate(8deg);
+}
+
+.mi-about-team__role[data-state="active"] .mi-about-team__role-copy {
+  top: calc(264px * var(--mi-about-s));
+}
+
+.mi-about-team__role h3 {
+  margin: 0;
+  font-size: calc(40px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.mi-about-team__role p {
+  margin-top: calc(10px * var(--mi-about-s));
+  font-size: calc(20px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Idea / process — 47:829 */
+
+.mi-about-process {
+  height: calc(1124px * var(--mi-about-s));
+  isolation: isolate;
+  color: #fff;
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-about-process::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: calc(401px * var(--mi-about-s));
+  height: calc(723px * var(--mi-about-s));
+  background: linear-gradient(180deg, #10222f 0%, #112331 100%);
+}
+
+.mi-about-process__title {
+  position: absolute;
+  z-index: 7;
+  left: calc(389px * var(--mi-about-s));
+  top: calc(120px * var(--mi-about-s));
+  width: calc(1142px * var(--mi-about-s));
+  font-size: calc(88px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.mi-about-process__path {
+  position: absolute;
+  z-index: 0;
+  left: calc(199px * var(--mi-about-s));
+  top: calc(376px * var(--mi-about-s));
+  width: calc(1522px * var(--mi-about-s));
+  height: calc(883px * var(--mi-about-s));
+  pointer-events: none;
+}
+
+.mi-about-process__ghost {
+  position: absolute;
+  z-index: 1;
+  left: calc(682px * var(--mi-about-s));
+  top: calc(432px * var(--mi-about-s));
+  width: calc(556px * var(--mi-about-s));
+  height: calc(267px * var(--mi-about-s));
+  font-size: calc(240px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+  text-align: center;
+  color: rgba(67, 133, 187, 0.22);
+  pointer-events: none;
+  transform-origin: 50% 54%;
+}
+
+.mi-about-process__steps {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+}
+
+.mi-about-process__step {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(8px * var(--mi-about-s));
+  width: calc(312px * var(--mi-about-s));
+  height: calc(95px * var(--mi-about-s));
+  font-size: calc(40px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 calc(28px * var(--mi-about-s)) rgba(67, 133, 187, 0.55);
+  transform-origin: center;
+  will-change: opacity, transform, filter;
+}
+
+.mi-about-process__step img {
+  flex: 0 0 auto;
+  width: calc(51px * var(--mi-about-s));
+  height: calc(95px * var(--mi-about-s));
+}
+
+.mi-about-process__wreath--right {
+  transform: scaleX(-1);
+}
+
+.mi-about-process__step--creative {
+  left: calc(150px * var(--mi-about-s));
+  top: calc(566px * var(--mi-about-s));
+}
+
+.mi-about-process__step--strategy {
+  left: calc(257px * var(--mi-about-s));
+  top: calc(388px * var(--mi-about-s));
+}
+
+.mi-about-process__step--design {
+  left: calc(586px * var(--mi-about-s));
+  top: calc(287px * var(--mi-about-s));
+}
+
+.mi-about-process__step--development {
+  left: calc(1022px * var(--mi-about-s));
+  top: calc(287px * var(--mi-about-s));
+}
+
+.mi-about-process__step--production {
+  left: calc(1351px * var(--mi-about-s));
+  top: calc(388px * var(--mi-about-s));
+}
+
+.mi-about-process__step--launch {
+  left: calc(1458px * var(--mi-about-s));
+  top: calc(566px * var(--mi-about-s));
+}
+
+.mi-about-process__caption {
+  position: absolute;
+  z-index: 6;
+  left: calc(650px * var(--mi-about-s));
+  top: calc(504px * var(--mi-about-s));
+  width: calc(619px * var(--mi-about-s));
+  font-size: calc(40px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #fff;
+  will-change: opacity, transform, filter;
+}
+
+.mi-about-process__caption span {
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}
+
+.mi-about-process__bowl {
+  position: absolute;
+  z-index: 2;
+  left: calc(503px * var(--mi-about-s));
+  top: calc(553px * var(--mi-about-s));
+  width: calc(914px * var(--mi-about-s));
+  height: calc(724px * var(--mi-about-s));
+  overflow: hidden;
+  transform-origin: 50% 58%;
+  will-change: opacity, transform, filter;
+}
+
+.mi-about-process__bowl img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+.mi-js .mi-about-process:not(.is-composed) .mi-about-process__title,
+.mi-js .mi-about-process:not(.is-composed) .mi-about-process__path,
+.mi-js .mi-about-process:not(.is-composed) .mi-about-process__ghost,
+.mi-js .mi-about-process:not(.is-composed) .mi-about-process__step,
+.mi-js .mi-about-process:not(.is-composed) .mi-about-process__caption {
+  opacity: 0;
+}
+
+.mi-about-process.is-composed .mi-about-process__title,
+.mi-about-process.is-composed .mi-about-process__path {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.mi-about-process.is-composed .mi-about-process__bowl {
+  opacity: 1;
+  transform: translate3d(0, calc(-137px * var(--mi-about-s)), 0) scale(1.5);
+  filter: none;
+}
+
+.mi-about-process.is-composed .mi-about-process__ghost,
+.mi-about-process.is-composed .mi-about-process__step,
+.mi-about-process.is-composed .mi-about-process__caption {
+  opacity: 0;
+}
+
+/* Reviews — 47:885 */
+
+.mi-about-reviews {
+  height: calc(1028px * var(--mi-about-s));
+  color: #fff;
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-about-reviews__title {
+  position: absolute;
+  left: calc(100px * var(--mi-about-s));
+  top: calc(120px * var(--mi-about-s));
+  width: calc(1341px * var(--mi-about-s));
+  font-size: calc(88px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.mi-about-reviews__list {
+  position: absolute;
+  left: calc(100px * var(--mi-about-s));
+  top: calc(374px * var(--mi-about-s));
+  display: grid;
+  grid-template-columns: repeat(4, calc(400px * var(--mi-about-s)));
+  gap: calc(40px * var(--mi-about-s));
+}
+
+.mi-about-reviews__card {
+  position: relative;
+  width: calc(400px * var(--mi-about-s));
+  height: calc(574px * var(--mi-about-s));
+  overflow: hidden;
+  border-radius: calc(40px * var(--mi-about-s));
+  background: #fff;
+}
+
+/* Gratitude — 47:811 */
+
+.mi-about-gratitude {
+  height: calc(1277px * var(--mi-about-s));
+  isolation: isolate;
+  color: #fff;
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-about-gratitude::before,
+.mi-about-gratitude::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.mi-about-gratitude::before {
+  top: calc(120px * var(--mi-about-s));
+  height: calc(379px * var(--mi-about-s));
+  background: linear-gradient(180deg, #112331 0%, rgba(17, 35, 49, 0) 100%);
+}
+
+.mi-about-gratitude::after {
+  bottom: 0;
+  height: calc(251px * var(--mi-about-s));
+  background: linear-gradient(180deg, rgba(17, 35, 49, 0) 0%, #112331 100%);
+}
+
+.mi-about-gratitude__shelves {
+  position: absolute;
+  z-index: 0;
+  left: calc(12px * var(--mi-about-s));
+  top: calc(120px * var(--mi-about-s));
+  width: calc(1896px * var(--mi-about-s));
+  height: calc(1157px * var(--mi-about-s));
+  object-fit: cover;
+  object-position: center top;
+}
+
+.mi-about-gratitude__heading {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: calc(120px * var(--mi-about-s));
+  width: 100%;
+  text-align: center;
+}
+
+.mi-about-gratitude__title {
+  font-size: calc(88px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.mi-about-gratitude__heading p {
+  margin-top: calc(44px * var(--mi-about-s));
+  font-size: calc(20px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-about-gratitude__letters {
+  position: absolute;
+  z-index: 4;
+  left: calc(262px * var(--mi-about-s));
+  top: calc(464px * var(--mi-about-s));
+  display: grid;
+  grid-template-columns: repeat(3, calc(269.315px * var(--mi-about-s)));
+  grid-auto-rows: calc(116px * var(--mi-about-s));
+  justify-content: space-between;
+  row-gap: calc(129px * var(--mi-about-s));
+  width: calc(1395.315px * var(--mi-about-s));
+}
+
+.mi-about-gratitude__letters button {
+  display: block;
+  width: calc(269.315px * var(--mi-about-s));
+  height: calc(116px * var(--mi-about-s));
+  padding: 0;
+  border-radius: calc(12px * var(--mi-about-s));
+  transition:
+    transform 0.35s var(--mi-ease),
+    filter 0.35s var(--mi-ease);
+}
+
+.mi-about-gratitude__letters button:hover,
+.mi-about-gratitude__letters button:focus-visible {
+  transform: translateY(calc(-8px * var(--mi-about-s))) rotate(-1deg);
+  filter: drop-shadow(0 calc(12px * var(--mi-about-s)) calc(18px * var(--mi-about-s)) rgba(4, 13, 20, 0.34));
+}
+
+.mi-about-gratitude__letters img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* CTA — 47:803 */
+
+.mi-about-cta {
+  height: calc(603px * var(--mi-about-s));
+  isolation: isolate;
+  color: #fff;
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-about-cta__hand {
+  position: absolute;
+  z-index: 0;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mi-about-cta__hand--left {
+  left: calc(-182px * var(--mi-about-s));
+  top: calc(-118px * var(--mi-about-s));
+  width: calc(1260px * var(--mi-about-s));
+  clip-path: inset(0 50% 0 0);
+}
+
+.mi-about-cta__hand--right {
+  left: calc(762px * var(--mi-about-s));
+  top: calc(-132px * var(--mi-about-s));
+  width: calc(1420px * var(--mi-about-s));
+  clip-path: inset(0 0 0 50%);
+}
+
+.mi-about-cta__content {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  text-align: center;
+}
+
+.mi-about-cta__title {
+  position: absolute;
+  left: calc(511px * var(--mi-about-s));
+  top: calc(120px * var(--mi-about-s));
+  width: calc(898px * var(--mi-about-s));
+  font-size: calc(88px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.mi-about-cta__subtitle {
+  position: absolute;
+  left: calc(488px * var(--mi-about-s));
+  top: calc(241px * var(--mi-about-s));
+  width: calc(944px * var(--mi-about-s));
+  font-size: calc(64px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.mi-about-cta__lead {
+  position: absolute;
+  left: 0;
+  top: calc(335px * var(--mi-about-s));
+  width: 100%;
+  font-size: calc(20px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-about-cta__button {
+  position: absolute;
+  left: calc(834px * var(--mi-about-s));
+  top: calc(405px * var(--mi-about-s));
+  width: calc(252px * var(--mi-about-s));
+  min-height: calc(78px * var(--mi-about-s));
+}
+
+/* Narrow layouts retain the composition while giving type and controls room. */
+
+@media (max-width: 991px) {
+  .mi-about-page {
+    --mi-about-s: 1;
+    margin-top: calc(-1 * var(--mi-header-height));
+  }
+
+  .mi-about-hero__canvas,
+  .mi-about-team__canvas,
+  .mi-about-process__canvas,
+  .mi-about-reviews__canvas,
+  .mi-about-gratitude__canvas,
+  .mi-about-cta__canvas {
+    width: 100%;
+  }
+
+  .mi-about-hero {
+    height: clamp(620px, 90vw, 760px);
+  }
+
+  .mi-about-hero::before {
+    height: 180px;
+  }
+
+  .mi-about-hero::after {
+    height: 330px;
+  }
+
+  .mi-about-breadcrumb {
+    left: 24px;
+    top: 88px;
+    gap: 12px;
+    height: 21px;
+    font-size: 14px;
+  }
+
+  .mi-about-hero__title {
+    left: 20px;
+    top: 150px;
+    width: calc(100% - 40px);
+    font-size: clamp(34px, 7vw, 56px);
+  }
+
+  .mi-about-hero__cloud--left {
+    left: -360px;
+    top: 210px;
+    width: 900px;
+    height: auto;
+  }
+
+  .mi-about-hero__cloud--right {
+    left: 38%;
+    top: 250px;
+    width: 760px;
+    height: auto;
+  }
+
+  .mi-about-hero__cloud--bottom {
+    left: -320px;
+    top: 390px;
+    width: 1120px;
+    height: auto;
+  }
+
+  .mi-about-hero__statue--center {
+    left: calc(50% - 150px);
+    top: 300px;
+    width: 300px;
+    height: calc(100% - 300px);
+  }
+
+  .mi-about-hero__statue--left {
+    left: -132px;
+    top: 390px;
+    width: 320px;
+    height: calc(100% - 390px);
+  }
+
+  .mi-about-hero__statue--right {
+    left: auto;
+    right: -132px;
+    top: 390px;
+    width: 320px;
+    height: calc(100% - 390px);
+  }
+
+  .mi-about-team {
+    height: auto;
+    min-height: 880px;
+  }
+
+  .mi-about-team__canvas {
+    min-height: 880px;
+    padding: 68px 20px 72px;
+  }
+
+  .mi-about-team__intro {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .mi-about-team__title {
+    font-size: clamp(38px, 6.6vw, 54px);
+  }
+
+  .mi-about-team__lead {
+    width: min(680px, 100%);
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  .mi-about-team__stage {
+    position: relative;
+    inset: auto;
+    height: 430px;
+    margin-top: 48px;
+  }
+
+  .mi-about-team__role {
+    left: 50%;
+    top: 0;
+    width: min(360px, calc(100vw - 48px));
+    transform: translate3d(75%, 0, 0) scale(0.9);
+  }
+
+  .mi-about-team__role[data-state="active"] {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  .mi-about-team__role[data-state="next"] {
+    left: 50%;
+    top: 86px;
+    opacity: 0;
+    transform: translate3d(75%, 0, 0) scale(0.9);
+  }
+
+  .mi-about-team__role[data-state="previous"] {
+    left: 50%;
+    top: 86px;
+    opacity: 0;
+    transform: translate3d(-175%, 0, 0) scale(0.9);
+  }
+
+  .mi-about-team__role-media {
+    width: min(320px, calc(100vw - 80px));
+    height: 230px;
+  }
+
+  .mi-about-team__role[data-state="active"] .mi-about-team__role-copy {
+    top: 248px;
+  }
+
+  .mi-about-team__role h3 {
+    margin: 0;
+    font-size: 34px;
+  }
+
+  .mi-about-team__role p {
+    margin-top: 8px;
+    font-size: 18px;
+  }
+
+  .mi-about-process {
+    height: 850px;
+  }
+
+  .mi-about-process::before {
+    top: 240px;
+    height: 610px;
+  }
+
+  .mi-about-process__title {
+    left: 20px;
+    top: 68px;
+    width: calc(100% - 40px);
+    font-size: clamp(42px, 7vw, 58px);
+    white-space: normal;
+  }
+
+  .mi-about-process__path {
+    left: -160px;
+    top: 205px;
+    width: calc(100% + 320px);
+    height: 540px;
+  }
+
+  .mi-about-process__ghost {
+    left: 0;
+    top: 255px;
+    width: 100%;
+    height: 150px;
+    font-size: clamp(96px, 19vw, 150px);
+  }
+
+  .mi-about-process__step {
+    gap: 4px;
+    width: calc(50% - 28px);
+    height: 64px;
+    font-size: clamp(18px, 3.4vw, 26px);
+  }
+
+  .mi-about-process__step img {
+    width: 30px;
+    height: 56px;
+  }
+
+  .mi-about-process__step--creative,
+  .mi-about-process__step--design,
+  .mi-about-process__step--production {
+    left: 16px;
+  }
+
+  .mi-about-process__step--strategy,
+  .mi-about-process__step--development,
+  .mi-about-process__step--launch {
+    left: auto;
+    right: 16px;
+  }
+
+  .mi-about-process__step--creative,
+  .mi-about-process__step--strategy {
+    top: 270px;
+  }
+
+  .mi-about-process__step--design,
+  .mi-about-process__step--development {
+    top: 356px;
+  }
+
+  .mi-about-process__step--production,
+  .mi-about-process__step--launch {
+    top: 442px;
+  }
+
+  .mi-about-process__caption {
+    left: 24px;
+    top: 550px;
+    width: calc(100% - 48px);
+    font-size: clamp(30px, 5.2vw, 40px);
+  }
+
+  .mi-about-process__bowl {
+    left: 16px;
+    top: 515px;
+    width: calc(100% - 32px);
+    height: 335px;
+  }
+
+  .mi-about-reviews {
+    height: auto;
+    min-height: 760px;
+  }
+
+  .mi-about-reviews__canvas {
+    padding: 68px 20px 76px;
+  }
+
+  .mi-about-reviews__title {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(760px, 100%);
+    font-size: clamp(42px, 7vw, 58px);
+  }
+
+  .mi-about-reviews__list {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: min(82vw, 400px);
+    gap: 20px;
+    width: calc(100% + 20px);
+    margin-top: 44px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+  }
+
+  .mi-about-reviews__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mi-about-reviews__card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 574;
+    border-radius: 30px;
+    scroll-snap-align: start;
+  }
+
+  .mi-about-gratitude {
+    height: auto;
+    min-height: 790px;
+  }
+
+  .mi-about-gratitude::before {
+    top: 0;
+    height: 260px;
+  }
+
+  .mi-about-gratitude::after {
+    height: 180px;
+  }
+
+  .mi-about-gratitude__canvas {
+    min-height: 790px;
+    padding: 68px 20px 76px;
+  }
+
+  .mi-about-gratitude__shelves {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mi-about-gratitude__heading {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+
+  .mi-about-gratitude__title {
+    font-size: clamp(42px, 7vw, 58px);
+  }
+
+  .mi-about-gratitude__heading p {
+    margin-top: 24px;
+    font-size: 17px;
+  }
+
+  .mi-about-gratitude__letters {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 30px 14px;
+    width: min(700px, 100%);
+    margin: 70px auto 0;
+  }
+
+  .mi-about-gratitude__letters button {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 269.315 / 116;
+    border-radius: 10px;
+  }
+
+  .mi-about-cta {
+    height: 570px;
+  }
+
+  .mi-about-cta__hand--left {
+    left: 50%;
+    top: 120px;
+    width: 900px;
+    opacity: 0.48;
+    clip-path: none;
+    transform: translateX(-50%);
+  }
+
+  .mi-about-cta__hand--right {
+    display: none;
+  }
+
+  .mi-about-cta__title,
+  .mi-about-cta__subtitle,
+  .mi-about-cta__lead,
+  .mi-about-cta__button {
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .mi-about-cta__title {
+    top: 72px;
+    font-size: clamp(48px, 8vw, 68px);
+  }
+
+  .mi-about-cta__subtitle {
+    top: 148px;
+    font-size: clamp(34px, 6vw, 48px);
+    white-space: normal;
+  }
+
+  .mi-about-cta__lead {
+    top: 236px;
+    padding-inline: 12px;
+    font-size: 18px;
+  }
+
+  .mi-about-cta__button {
+    top: 330px;
+    left: max(20px, calc(50% - 126px));
+    width: min(252px, calc(100% - 40px));
+    min-height: 66px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 479px) {
+  .mi-about-hero {
+    height: 660px;
+  }
+
+  .mi-about-hero__title {
+    top: 148px;
+    font-size: clamp(32px, 9.4vw, 42px);
+  }
+
+  .mi-about-hero__statue--center {
+    left: calc(50% - 132px);
+    top: 304px;
+    width: 264px;
+    height: 356px;
+  }
+
+  .mi-about-hero__statue--left,
+  .mi-about-hero__statue--right {
+    top: 420px;
+    width: 270px;
+    height: 240px;
+  }
+
+  .mi-about-hero__statue--left {
+    left: -126px;
+  }
+
+  .mi-about-hero__statue--right {
+    right: -126px;
+  }
+
+  .mi-about-team,
+  .mi-about-team__canvas {
+    min-height: 940px;
+  }
+
+  .mi-about-team__canvas {
+    padding-top: 60px;
+  }
+
+  .mi-about-team__title {
+    font-size: 38px;
+  }
+
+  .mi-about-process {
+    height: 830px;
+  }
+
+  .mi-about-process__title {
+    font-size: 42px;
+  }
+
+  .mi-about-process__step {
+    width: calc(50% - 20px);
+    font-size: 17px;
+  }
+
+  .mi-about-process__step--creative,
+  .mi-about-process__step--design,
+  .mi-about-process__step--production {
+    left: 8px;
+  }
+
+  .mi-about-process__step--strategy,
+  .mi-about-process__step--development,
+  .mi-about-process__step--launch {
+    right: 8px;
+  }
+
+  .mi-about-gratitude__letters {
+    margin-top: 54px;
+    gap-block: 24px;
+  }
+
+  .mi-about-cta__subtitle {
+    top: 144px;
+  }
+
+  .mi-about-cta__lead {
+    top: 242px;
+  }
+
+  .mi-about-cta__button {
+    top: 342px;
+  }
+}
+
+/* Stable alternatives: all content remains available without motion. */
+
+.mi-about-page.is-reduced-motion .mi-about-hero__title [data-about-hero-word],
+.mi-about-page.is-reduced-motion .mi-about-hero__statue,
+.mi-about-page.is-reduced-motion .mi-about-process__title,
+.mi-about-page.is-reduced-motion .mi-about-process__path,
+.mi-about-page.is-reduced-motion .mi-about-process__ghost,
+.mi-about-page.is-reduced-motion .mi-about-process__step,
+.mi-about-page.is-reduced-motion .mi-about-process__caption,
+.mi-about-page.is-reduced-motion .mi-about-process__bowl {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.mi-about-page.is-reduced-motion .mi-about-hero__world {
+  transform: none !important;
+}
+
+.mi-about-page.is-reduced-motion .mi-about-hero__statues {
+  transform: none !important;
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team {
+  height: auto;
+  min-height: calc(1260px * var(--mi-about-s));
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__canvas {
+  min-height: calc(1260px * var(--mi-about-s));
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__stage {
+  left: calc(100px * var(--mi-about-s));
+  right: calc(100px * var(--mi-about-s));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(42px * var(--mi-about-s));
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__role,
+.mi-about-page.is-reduced-motion .mi-about-team__role[data-state] {
+  position: relative;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  transform: none;
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__role-media,
+.mi-about-page.is-reduced-motion .mi-about-team__role[data-state] .mi-about-team__role-media {
+  display: flex;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 100%;
+  height: calc(150px * var(--mi-about-s));
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__role-copy,
+.mi-about-page.is-reduced-motion .mi-about-team__role[data-state] .mi-about-team__role-copy {
+  position: relative;
+  left: auto;
+  top: auto;
+  transition: none;
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__role h3,
+.mi-about-page.is-reduced-motion .mi-about-team__role[data-state] h3 {
+  margin-top: calc(14px * var(--mi-about-s));
+  font-size: calc(28px * var(--mi-about-s));
+}
+
+.mi-about-page.is-reduced-motion .mi-about-team__role p {
+  font-size: calc(16px * var(--mi-about-s));
+}
+
+@media (max-width: 991px) {
+  .mi-about-page.is-reduced-motion .mi-about-team,
+  .mi-about-page.is-reduced-motion .mi-about-team__canvas {
+    min-height: 0;
+  }
+
+  .mi-about-page.is-reduced-motion .mi-about-team__stage {
+    left: auto;
+    right: auto;
+    height: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 18px;
+  }
+
+  .mi-about-page.is-reduced-motion .mi-about-team__role-media,
+  .mi-about-page.is-reduced-motion .mi-about-team__role[data-state] .mi-about-team__role-media {
+    height: 140px;
+  }
+
+  .mi-about-page.is-reduced-motion .mi-about-team__role h3,
+  .mi-about-page.is-reduced-motion .mi-about-team__role[data-state] h3 {
+    margin-top: 12px;
+    font-size: 25px;
+  }
+
+  .mi-about-page.is-reduced-motion .mi-about-team__role p {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-about-team__role,
+  .mi-about-gratitude__letters button {
+    transition: none !important;
+  }
+
+  .mi-about-gratitude__letters button:hover,
+  .mi-about-gratitude__letters button:focus-visible {
+    transform: none;
+  }
+}

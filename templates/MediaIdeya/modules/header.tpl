@@ -1,6 +1,6 @@
 <header class="mi-header" id="header" data-aos="fade-up">
 	<div class="mi-header__inner">
-		<a class="mi-logo" href="/" aria-label="Media Ideya">
+		<a class="mi-logo" href="{THEME}/../../" aria-label="Media Ideya">
 			<picture>
 				<source srcset="{THEME}/images/media-ideya-logo.png" type="image/webp">
 				<img src="{THEME}/images/media-ideya-logo.png" alt="Media Ideya" width="89" height="60" decoding="async">
@@ -11,6 +11,6 @@
 			{include file="modules/topmenu.tpl"}
 		</nav>
 
-		<a class="mi-btn mi-btn--header" href="/index.php?do=feedback">Оставить заявку</a>
+		<a class="mi-btn mi-btn--header" href="{THEME}/../../index.php?do=feedback">Оставить заявку</a>
 	</div>
 </header>

@@ -1,3 +1,12 @@
+[static=o-kompanii]
+{include file="modules/page-about.tpl"}
+[/static]
+
+[static=uslugi]
+{include file="modules/page-services.tpl"}
+[/static]
+
+[not-static=o-kompanii,uslugi]
 <article class="mi-static">
 	[group=1]
 	<div class="mi-static__admin">
@@ -15,3 +24,4 @@
 
 	{pages}
 </article>
+[/not-static]

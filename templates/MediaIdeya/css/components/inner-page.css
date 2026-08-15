@@ -1,0 +1,234 @@
+/* Shared shell for the four Figma inner pages (file xwP9bW8ocVlkXfKa0HwLVf). */
+
+.is-contact-page,
+.is-about-page,
+.is-services-page,
+.is-cases-page {
+  --mi-header-height: calc(84px * var(--mi-s));
+  background: var(--mi-color-surface-dark);
+}
+
+.is-contact-page .mi-header,
+.is-about-page .mi-header,
+.is-services-page .mi-header,
+.is-cases-page .mi-header {
+  background: var(--mi-color-surface-dark);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.is-contact-page .mi-header__inner,
+.is-about-page .mi-header__inner,
+.is-services-page .mi-header__inner,
+.is-cases-page .mi-header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  max-width: var(--mi-page-width);
+  padding: calc(20px * var(--mi-s)) var(--mi-gutter);
+}
+
+.is-contact-page .mi-logo,
+.is-about-page .mi-logo,
+.is-services-page .mi-logo,
+.is-cases-page .mi-logo {
+  width: calc(217px * var(--mi-s));
+  height: calc(44px * var(--mi-s));
+}
+
+.is-contact-page .mi-nav,
+.is-about-page .mi-nav,
+.is-services-page .mi-nav,
+.is-cases-page .mi-nav {
+  gap: calc(60px * var(--mi-s));
+}
+
+.is-contact-page .mi-btn--header,
+.is-about-page .mi-btn--header,
+.is-services-page .mi-btn--header,
+.is-cases-page .mi-btn--header {
+  justify-self: end;
+  min-height: calc(44px * var(--mi-s));
+  padding: calc(10px * var(--mi-s)) calc(22px * var(--mi-s));
+}
+
+.is-contact-page .mi-page-head,
+.is-about-page .mi-page-head,
+.is-services-page .mi-page-head,
+.is-cases-page .mi-page-head {
+  display: none;
+}
+
+.mi-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: calc(20px * var(--mi-s));
+  width: 100%;
+  height: calc(124px * var(--mi-s));
+  padding: calc(40px * var(--mi-s)) var(--mi-gutter);
+  color: #fff;
+  font-size: var(--mi-fs-16);
+  line-height: 1.5;
+}
+
+.mi-breadcrumbs a {
+  opacity: 0.5;
+  transition: opacity var(--mi-duration) var(--mi-ease);
+}
+
+.mi-breadcrumbs a:hover {
+  opacity: 1;
+}
+
+.mi-footer--bar .mi-footer__bar {
+  min-height: calc(308px * var(--mi-s));
+  gap: calc(100px * var(--mi-s));
+}
+
+.mi-footer--bar,
+.is-about-page .mi-footer,
+.is-services-page .mi-footer {
+  background: #112331;
+}
+
+.mi-footer__contacts .mi-footer__col:nth-child(1) {
+  width: calc(313px * var(--mi-s));
+}
+
+.mi-footer__contacts .mi-footer__col:nth-child(2) {
+  width: calc(180px * var(--mi-s));
+}
+
+.mi-footer__contacts .mi-footer__col:nth-child(3) {
+  width: calc(169px * var(--mi-s));
+}
+
+.mi-footer__contacts .mi-footer__col:first-child p {
+  white-space: pre-line;
+}
+
+.mi-footer--bar .mi-footer__brand,
+.is-about-page .mi-footer__brand,
+.is-services-page .mi-footer__brand {
+  bottom: calc(-140px * var(--mi-s));
+  height: 1.1em;
+  line-height: 1.1;
+}
+
+.mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__col,
+.mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__social,
+.mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__legal,
+.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__col,
+.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__social,
+.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__legal,
+.mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__col,
+.mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__social,
+.mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__legal {
+  opacity: 1;
+  transform: none;
+}
+
+.mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__brand.mi-reveal,
+.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__brand.mi-reveal,
+.mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__brand.mi-reveal {
+  clip-path: inset(0 -2% 0 0);
+  opacity: 0.5;
+}
+
+.is-about-page .mi-footer__cta,
+.is-services-page .mi-footer__cta {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .is-contact-page,
+  .is-about-page,
+  .is-services-page,
+  .is-cases-page {
+    --mi-header-height: 72px;
+  }
+
+  .is-contact-page .mi-header__inner,
+  .is-about-page .mi-header__inner,
+  .is-services-page .mi-header__inner,
+  .is-cases-page .mi-header__inner {
+    display: flex;
+    padding: 14px 20px;
+  }
+
+  .is-contact-page .mi-logo,
+  .is-about-page .mi-logo,
+  .is-services-page .mi-logo,
+  .is-cases-page .mi-logo {
+    flex: 0 0 66px;
+    width: 66px;
+    height: 44px;
+  }
+
+  .is-contact-page .mi-logo img,
+  .is-about-page .mi-logo img,
+  .is-services-page .mi-logo img,
+  .is-cases-page .mi-logo img {
+    width: 66px;
+    height: 44px;
+  }
+
+  .is-contact-page .mi-nav,
+  .is-about-page .mi-nav,
+  .is-services-page .mi-nav,
+  .is-cases-page .mi-nav {
+    display: none;
+  }
+
+  .is-contact-page .mi-btn--header,
+  .is-about-page .mi-btn--header,
+  .is-services-page .mi-btn--header,
+  .is-cases-page .mi-btn--header {
+    min-height: 42px;
+    padding: 9px 16px;
+    font-size: 14px;
+  }
+
+  .mi-breadcrumbs {
+    height: 84px;
+    gap: 14px;
+    padding: 28px 20px;
+    font-size: 14px;
+  }
+
+  .mi-footer--bar .mi-footer__bar {
+    min-height: 0;
+    padding: 40px 20px 28px;
+    gap: 36px;
+  }
+
+  .mi-footer--bar .mi-footer__inner,
+  .mi-footer--bar .mi-footer__contacts {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .mi-footer--bar .mi-footer__social {
+    align-items: flex-start;
+  }
+
+  .mi-footer--bar .mi-footer__social-img {
+    width: 168px;
+    height: 48px;
+  }
+
+  .mi-footer--bar .mi-footer__legal {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__brand,
+  .mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__brand,
+  .mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__brand {
+    bottom: calc(-140px * var(--mi-s)) !important;
+    clip-path: inset(0 -2% 0 0) !important;
+  }
+}

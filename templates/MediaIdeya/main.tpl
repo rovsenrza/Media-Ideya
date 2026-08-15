@@ -23,6 +23,9 @@
 	<link rel="stylesheet" href="{THEME}/css/components/card.css">
 	<link rel="stylesheet" href="{THEME}/css/components/footer.css">
 	<link rel="stylesheet" href="{THEME}/css/engine.css">
+	[available=feedback]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/available]
+	[static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/static]
+	[category=2]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/category]
 
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
@@ -34,14 +37,20 @@
 	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
-	[available=cat|showfull]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/available]
+	[available=cat|showfull][not-category=2]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/not-category][/available]
 	[available=cat|search|lastnews|tags|favorites]
+	[not-category=2]
 	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
 	<link rel="stylesheet" href="{THEME}/css/pages/catalog.css">
+	[/not-category]
 	[/available]
-	[available=static]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/available]
+	[available=static][not-static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/not-static][/available]
+	[available=feedback]<link rel="stylesheet" href="{THEME}/css/pages/contact-page.css">[/available]
+	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css">[/static]
+	[static=uslugi]<link rel="stylesheet" href="{THEME}/css/pages/services-page.css">[/static]
+	[category=2]<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css">[/category]
 </head>
-<body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available]">
+<body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available][available=feedback] is-contact-page[/available][static=o-kompanii] is-about-page[/static][static=uslugi] is-services-page[/static][category=2] is-cases-page[/category]">
 
 	[not-available=lostpassword|register]
 	<div class="mi-page">
@@ -66,9 +75,14 @@
 			</div>
 			[/page-title]
 			[available=cat|search|lastnews|tags|favorites]
+			[category=2]
+			{include file="modules/page-cases.tpl"}
+			[/category]
+			[not-category=2]
 			<div class="mi-catalog">
 				<div class="mi-catalog__grid">{content}</div>
 			</div>
+			[/not-category]
 			[/available]
 			[not-available=cat|search|lastnews|tags|favorites]
 			{content}
@@ -77,13 +91,14 @@
 
 		</main>
 
-		{include file="modules/footer.tpl"}
+		[available=feedback]{include file="modules/footer-bar.tpl"}[/available]
+		[not-available=feedback]{include file="modules/footer.tpl"}[/not-available]
 	</div>
 	[/not-available]
 
 	[available=lostpassword|register]
 	<div class="mi-auth">
-		<a class="mi-auth__back" href="/">{{Return to Homepage}}</a>
+		<a class="mi-auth__back" href="{THEME}/../../">{{Return to Homepage}}</a>
 		<div class="mi-auth__body">
 			{info}
 			{content}
@@ -102,6 +117,10 @@
 	<script src="{THEME}/js/pages/home.js" defer></script>
 	[/available]
 	[available=showfull]<script src="{THEME}/js/pages/article.js" defer></script>[/available]
-	[available=static]<script src="{THEME}/js/pages/static.js" defer></script>[/available]
+	[available=static][not-static=o-kompanii,uslugi]<script src="{THEME}/js/pages/static.js" defer></script>[/not-static][/available]
+	[available=feedback]<script src="{THEME}/js/pages/contact-page.js" defer></script>[/available]
+	[static=o-kompanii]<script src="{THEME}/js/pages/about-page.js" defer></script>[/static]
+	[static=uslugi]<script src="{THEME}/js/pages/services-page.js" defer></script>[/static]
+	[category=2]<script src="{THEME}/js/pages/cases-page.js" defer></script>[/category]
 </body>
 </html>

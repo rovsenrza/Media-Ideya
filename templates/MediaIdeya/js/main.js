@@ -11,6 +11,17 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var innerHeader = document.querySelector('body:not(.is-home) .mi-header[data-aos="fade-up"]');
+  if (innerHeader) {
+    if (reduce) {
+      innerHeader.classList.add('aos-animate');
+    } else {
+      window.requestAnimationFrame(function () {
+        innerHeader.classList.add('aos-animate');
+      });
+    }
+  }
+
   function clampHand(v, a, b) {
     return Math.min(b, Math.max(a, v));
   }

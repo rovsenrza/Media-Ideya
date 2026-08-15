@@ -33,7 +33,7 @@
 			{custom category="9" template="modules/about-stat" limit="3" order="date" sort="asc" cache="no"}
 		</div>
 
-		<a class="mi-btn mi-about__cta" href="/o-kompanii.html">Подробнее о компании</a>
+		<a class="mi-btn mi-about__cta" href="{THEME}/../../o-kompanii.html">Подробнее о компании</a>
 	</div>
 
 	<div class="mi-about__wave" aria-hidden="true">
