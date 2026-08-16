@@ -73,7 +73,7 @@ foreach ($schemaFlags as $k => $v) {
 	}
 }
 
-$homeUrl = mi_config_get('http_home_url') ?: 'http://localhost:8888/';
+$homeUrl = mi_config_get('http_home_url') ?: 'http://localhost:8888/mediaideya/';
 $iconPath = rtrim($homeUrl, '/') . '/templates/MediaIdeya/images/media-ideya-logo.png';
 if (mi_config_set('site_icon', $iconPath)) {
 	$log("  site_icon = {$iconPath}");

@@ -201,6 +201,10 @@
   max-width: none;
 }
 
+.mi-service-detail__laurel img:last-child {
+  transform: rotateY(180deg);
+}
+
 .mi-service-detail__laurel b {
   color: #4385bb;
   font-size: calc(32px * var(--mi-service-scale));
@@ -348,27 +352,27 @@
   will-change: transform;
 }
 
-.mi-service-detail__case--1 {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(1) {
   top: calc(-5px * var(--mi-service-scale));
   right: calc(68px * var(--mi-service-scale));
 }
 
-.mi-service-detail__case--2 {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(2) {
   top: calc(434px * var(--mi-service-scale));
   left: calc(68px * var(--mi-service-scale));
 }
 
-.mi-service-detail__case--3 {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(3) {
   top: calc(873px * var(--mi-service-scale));
   right: calc(68px * var(--mi-service-scale));
 }
 
-.mi-service-detail__case--4 {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(4) {
   top: calc(1312px * var(--mi-service-scale));
   left: calc(68px * var(--mi-service-scale));
 }
 
-.mi-service-detail__case--5 {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(5) {
   top: calc(1751px * var(--mi-service-scale));
   right: calc(68px * var(--mi-service-scale));
 }
@@ -384,16 +388,16 @@
   animation: mi-service-cloud-float 6.8s ease-in-out infinite;
 }
 
-.mi-service-detail__case--2 .mi-service-detail__case-float,
-.mi-service-detail__case--5 .mi-service-detail__case-float {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(2) .mi-service-detail__case-float,
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(5) .mi-service-detail__case-float {
   animation-delay: -2.2s;
 }
 
-.mi-service-detail__case--3 .mi-service-detail__case-float {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(3) .mi-service-detail__case-float {
   animation-delay: -4.4s;
 }
 
-.mi-service-detail__case--4 .mi-service-detail__case-float {
+.mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(4) .mi-service-detail__case-float {
   animation-delay: -1.1s;
 }
 
@@ -441,8 +445,7 @@
 .mi-service-detail__case-copy > span {
   color: #4385bb;
   font-weight: 300;
-  text-decoration: underline;
-  text-underline-offset: calc(3px * var(--mi-service-scale));
+  text-decoration: none;
 }
 
 .mi-service-detail__case-link:hover .mi-service-detail__case-copy > span {
@@ -468,7 +471,7 @@
     calc(80px * var(--mi-service-scale))
     calc(80px * var(--mi-service-scale))
     calc(290px * var(--mi-service-scale));
-  overflow: hidden;
+  overflow: visible;
   border-radius: calc(60px * var(--mi-service-scale));
   background:
     radial-gradient(ellipse 72% 145% at 0% 104%, #4385bb 0%, rgba(42, 84, 118, 0.58) 45%, rgba(17, 35, 49, 0) 74%),
@@ -686,6 +689,7 @@
   height: calc(20px * var(--mi-service-scale));
   margin: calc(2px * var(--mi-service-scale)) 0 0;
   accent-color: #4385bb;
+  background-color: transparent;
 }
 
 .mi-service-detail__consents a {
@@ -921,7 +925,7 @@
     transform: none !important;
   }
 
-  .mi-service-detail__case--1 {
+  .mi-service-detail__stage > aside.mi-service-detail__case:nth-of-type(1) {
     display: block;
   }
 

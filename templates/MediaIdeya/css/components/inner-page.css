@@ -211,10 +211,15 @@
     align-items: flex-start;
   }
 
-  .mi-footer--bar .mi-footer__social-img {
-    width: 168px;
-    height: 48px;
-  }
+	.mi-footer--bar .mi-footer__social-img {
+		width: 168px;
+		height: 48px;
+	}
+
+	.mi-footer--bar .mi-footer__social-links {
+		width: 168px;
+		height: 48px;
+	}
 
   .mi-footer--bar .mi-footer__legal {
     align-items: flex-start;

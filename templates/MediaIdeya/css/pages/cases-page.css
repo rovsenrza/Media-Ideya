@@ -199,6 +199,7 @@
   display: flex;
   flex-direction: column;
   gap: calc(12px * var(--mi-s));
+  counter-reset: mi-case-result;
 }
 
 .mi-case-results li {
@@ -206,6 +207,7 @@
   grid-template-columns: calc(84px * var(--mi-s)) 1fr;
   align-items: center;
   gap: calc(12px * var(--mi-s));
+  counter-increment: mi-case-result;
 }
 
 .mi-case-results li > span:last-child {
@@ -238,12 +240,17 @@
 
 .mi-case-results__number img:last-child {
   justify-self: end;
+  transform: rotateY(180deg);
 }
 
 .mi-case-results__number b {
   font-size: var(--mi-fs-32);
   font-weight: 300;
   line-height: 1;
+}
+
+.mi-case-results__number b::before {
+  content: counter(mi-case-result);
 }
 
 .mi-case-cta {

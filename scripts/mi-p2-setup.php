@@ -159,7 +159,7 @@ if (!is_dir(dirname($guidePath))) {
 	mkdir(dirname($guidePath), 0755, true);
 }
 
-$adminUrl = 'http://localhost:8888/admin.php';
+$adminUrl = 'http://localhost:8888/mediaideya/admin.php';
 $configPath = ENGINE_DIR . '/data/config.php';
 if (is_readable($configPath)) {
 	$configSrc = file_get_contents($configPath);

@@ -20,10 +20,27 @@ if (!$isCli) {
 	header('Content-Type: text/plain; charset=utf-8');
 }
 
+$p4StatePath = ENGINE_DIR . '/data/mi-p4-pages-content.json';
+$xfieldsPath = ENGINE_DIR . '/data/xfields.json';
+$xfieldsJson = is_file($xfieldsPath) ? @file_get_contents($xfieldsPath) : '';
+if ($xfieldsJson === false) {
+	exit("Blocked: cannot verify the xfield registry before destructive P0 work.\n");
+}
+if (is_file($p4StatePath) || strpos($xfieldsJson, '"service_detail_enabled"') !== false) {
+	exit("Blocked: P0 is a destructive legacy bootstrap and P4 content is already installed.\n");
+}
+
 require_once ENGINE_DIR . '/classes/plugins.class.php';
 
 if (!isset($db) || !is_object($db)) {
 	exit("DB connection failed\n");
+}
+
+$p4Categories = (int) $db->super_query(
+	'SELECT COUNT(*) AS total FROM ' . PREFIX . "_category WHERE id IN (10,11,12) OR alt_name IN ('about-team','about-reviews','about-certificates')"
+)['total'];
+if ($p4Categories > 0) {
+	exit("Blocked: P4-owned categories exist; P0 would delete them.\n");
 }
 
 $log = static function (string $line) use ($isCli): void {

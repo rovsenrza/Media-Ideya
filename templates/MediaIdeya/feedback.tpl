@@ -1,23 +1,10 @@
 <article class="mi-contact-page">
 	<section class="mi-contact-intro" aria-labelledby="mi-contact-title">
-		<nav class="mi-breadcrumbs" aria-label="Хлебные крошки">
-			<a href="{THEME}/../../">Главная</a>
-			<span aria-hidden="true">/</span>
-			<span>Контакты</span>
-		</nav>
-
-		<div class="mi-contact-intro__body">
-			<h1 class="mi-contact-intro__title" id="mi-contact-title">Контакты</h1>
-			{custom category="8" template="modules/contact-details" limit="1" order="date" sort="asc" cache="no"}
-			<img class="mi-contact-intro__wreath" src="{THEME}/images/pages/contact/wreath.png" width="630" height="556" alt="" decoding="async">
-		</div>
+		{custom category="8" template="modules/contact-details" limit="1" order="date" sort="asc" cache="no"}
 	</section>
 
 	<section class="mi-contact-location" aria-label="Адрес офиса">
 		{custom category="8" template="modules/contact-address" limit="1" order="date" sort="asc" cache="no"}
-		<div class="mi-contact-location__map">
-			<img src="{THEME}/images/pages/contact/map.png" width="1920" height="594" alt="Карта: офис Media Ideya, Брянск, проспект Станке Димитрова, 54А" loading="lazy" decoding="async">
-		</div>
 	</section>
 
 	<section class="mi-project-contact" aria-labelledby="mi-project-contact-title">
@@ -26,17 +13,7 @@
 				<img src="{THEME}/images/pages/contact/column.png" width="1568" height="2734" alt="" loading="lazy" decoding="async">
 			</div>
 
-			<div class="mi-project-contact__copy">
-				<h2 id="mi-project-contact-title">Давайте обсудим<br>вашу задачу</h2>
-				<p>Свяжитесь с нами удобным для вас способом или оставьте заявку на консультацию. Вместе разберём вашу задачу и найдём решение.</p>
-				<div class="mi-project-contact__channels">
-					<strong>Напишите нам:</strong>
-					<div>
-						<a href="https://t.me/mediaideya" rel="noopener noreferrer">Telegram <img src="{THEME}/images/pages/contact/telegram.svg" width="23" height="20" alt=""></a>
-						<a href="https://wa.me/79532843200" rel="noopener noreferrer">Whatsapp <img src="{THEME}/images/pages/contact/whatsapp.svg" width="24" height="24" alt=""></a>
-					</div>
-				</div>
-			</div>
+			{custom category="8" template="modules/contact-project-copy" limit="1" order="date" sort="asc" cache="no"}
 
 			<div class="mi-project-form">
 				<div class="mi-project-form__field mi-project-form__field--wide">

@@ -214,11 +214,76 @@ $xfields = [
 	'groups' => [],
 ];
 
-file_put_contents(
-	ENGINE_DIR . '/data/xfields.json',
-	json_encode($xfields, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-	LOCK_EX
-);
+// Preserve page-specific and future xfields. This sync owns only the fields
+// declared above; replacing the whole registry would make P4 admin content
+// disappear from edit forms.
+$xfieldsPath = ENGINE_DIR . '/data/xfields.json';
+$tempXfieldsPath = '';
+try {
+	if (!is_readable($xfieldsPath)) {
+		throw new RuntimeException('the current registry is not readable');
+	}
+	$originalXfieldsJson = file_get_contents($xfieldsPath);
+	$originalXfieldsStat = stat($xfieldsPath);
+	if ($originalXfieldsJson === false || $originalXfieldsStat === false) {
+		throw new RuntimeException('the current registry cannot be inspected');
+	}
+	$currentXfields = json_decode($originalXfieldsJson, true, 512, JSON_THROW_ON_ERROR);
+	if (!is_array($currentXfields) || !isset($currentXfields['fields']) || !is_array($currentXfields['fields'])) {
+		throw new RuntimeException('the current registry has an invalid structure');
+	}
+	if (!isset($currentXfields['groups']) || !is_array($currentXfields['groups'])) {
+		$currentXfields['groups'] = [];
+	}
+	$currentXfields['fields'] = array_replace($currentXfields['fields'], $xfields['fields']);
+	$encodedXfields = json_encode(
+		$currentXfields,
+		JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR
+	) . PHP_EOL;
+
+	$tempXfieldsPath = tempnam(dirname($xfieldsPath), 'xfields-sync-');
+	if ($tempXfieldsPath === false) {
+		$tempXfieldsPath = '';
+		throw new RuntimeException('the merged registry cannot be staged');
+	}
+	if (file_put_contents($tempXfieldsPath, $encodedXfields, LOCK_EX) === false) {
+		throw new RuntimeException('the merged registry cannot be staged');
+	}
+	$owner = (int) ($originalXfieldsStat['uid'] ?? -1);
+	$group = (int) ($originalXfieldsStat['gid'] ?? -1);
+	if ($owner >= 0 && fileowner($tempXfieldsPath) !== $owner && !@chown($tempXfieldsPath, $owner)) {
+		throw new RuntimeException('the registry owner cannot be preserved');
+	}
+	if ($group >= 0 && filegroup($tempXfieldsPath) !== $group && !@chgrp($tempXfieldsPath, $group)) {
+		throw new RuntimeException('the registry group cannot be preserved');
+	}
+	if (!@chmod($tempXfieldsPath, (int) $originalXfieldsStat['mode'] & 0777)) {
+		throw new RuntimeException('the registry permissions cannot be preserved');
+	}
+	$validatedXfields = json_decode((string) file_get_contents($tempXfieldsPath), true, 512, JSON_THROW_ON_ERROR);
+	if (
+		!isset($validatedXfields['fields'])
+		|| count($validatedXfields['fields']) !== count($currentXfields['fields'])
+	) {
+		throw new RuntimeException('the staged registry failed validation');
+	}
+	$currentOnDisk = file_get_contents($xfieldsPath);
+	if (
+		$currentOnDisk === false
+		|| !hash_equals(hash('sha256', $originalXfieldsJson), hash('sha256', $currentOnDisk))
+	) {
+		throw new RuntimeException('the registry changed during sync');
+	}
+	if (!rename($tempXfieldsPath, $xfieldsPath)) {
+		throw new RuntimeException('the merged registry cannot be installed atomically');
+	}
+	$tempXfieldsPath = '';
+} catch (Throwable $error) {
+	if ($tempXfieldsPath !== '' && is_file($tempXfieldsPath)) {
+		@unlink($tempXfieldsPath);
+	}
+	exit('XFields sync failed: ' . $error->getMessage() . "\n");
+}
 @unlink(ENGINE_DIR . '/cache/system/xfields.php');
 $log('XFields: image, service_image, client_logo, footer');
 

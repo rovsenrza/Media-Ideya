@@ -216,6 +216,28 @@
   display: block;
 }
 
+.mi-footer__social-links {
+	position: relative;
+	width: calc(224px * var(--mi-s));
+	height: calc(64px * var(--mi-s));
+}
+
+.mi-footer__social-links .mi-footer__social-img {
+	width: 100%;
+	height: 100%;
+}
+
+.mi-footer__social-link {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 28.57%;
+	border-radius: 50%;
+}
+
+.mi-footer__social-link--telegram { left: 0; }
+.mi-footer__social-link--whatsapp { left: 35.71%; }
+
 .mi-footer__legal {
   position: relative;
   z-index: 1;

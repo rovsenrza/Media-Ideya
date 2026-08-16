@@ -15,6 +15,8 @@ These instructions apply to every task in this repository.
 - Preserve DLE tags such as `{headers}`, `{content}`, `{AJAX}`, `{THEME}` and use `{include file="modules/<name>.tpl"}` for template modules.
 - In DLE static-page conditions, separate multiple names with commas (`[not-static=foo,bar]`); availability conditions use pipes.
 - Never commit runtime secrets or local configuration, including `engine/data/` and `.env` files.
+- Inner-page editorial content is installed by `scripts/mi-p4-pages-content.php`: dry-run first, then `--apply` only when the task authorizes local DB changes.
+- P0/P1 are legacy bootstrap scripts. Never rerun them after P4; P0 deletes categories above id 2 and both replace the xfield registry.
 
 ## Design source and Figma
 
@@ -44,6 +46,14 @@ templates/MediaIdeya/
 - A header, footer, card, button, or section title gets its own `modules/` file and matching component CSS (and JS when needed).
 - `main.tpl` is the shell only: includes plus shared assets. Keep page CSS/JS conditional and avoid loading unused assets.
 - Put shared values in `--mi-*` CSS variables. Put reusable styles in `css/components/`; page-specific styles only in `css/pages/`.
+
+## DLE content ownership
+
+- Categories 2, 4, 6 and 8 own Cases, Services, About singleton copy and Contacts respectively.
+- Categories 10, 11 and 12 own About team roles, reviews and gratitude documents.
+- Keep motion-bound slot counts and all structural HTML in templates. Expose only editorial text and content images through DLE fields.
+- Merge additions into `engine/data/xfields.json`; never replace the registry or remove fields owned by another page.
+- Repeatable page content is ordered by publication date ascending unless its template explicitly says otherwise.
 
 ## Assets and quality
 

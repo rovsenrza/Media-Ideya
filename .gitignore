@@ -14,6 +14,8 @@ Thumbs.db
 
 .env.*
 !.env.example
+.env.deploy
+!.env.deploy.example
 
 # DLE runtime config (created by installer — contains DB credentials)
 engine/data/*

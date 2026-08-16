@@ -8,12 +8,12 @@
 
 		<div class="mi-footer__social">
 			<span class="mi-footer__label">Следите за нами</span>
-			<img class="mi-footer__social-img" src="{THEME}/images/footer/social.svg" alt="" width="224" height="64" decoding="async">
+			{custom category="8" template="modules/settings-social" limit="1" order="date" sort="asc" cache="no"}
 		</div>
 	</div>
 
 	<div class="mi-footer__legal">
-		<span>ООО «Медиа Идея»</span>
+		{custom category="8" template="modules/settings-legal" limit="1" order="date" sort="asc" cache="no"}
 		<a href="{THEME}/../../politika-privatnosti.html">Политика приватности</a>
 	</div>
 </div>

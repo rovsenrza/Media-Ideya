@@ -69,10 +69,12 @@
 			{info}
 			[not-available=main]
 			[page-title]
+			[not-category=2]
 			<div class="mi-page-head">
 				<h1 class="mi-page-head__title">{page-title}</h1>
 				{page-description}
 			</div>
+			[/not-category]
 			[/page-title]
 			[available=cat|search|lastnews|tags|favorites]
 			[category=2]

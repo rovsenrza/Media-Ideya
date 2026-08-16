@@ -277,14 +277,16 @@
   will-change: left, top, opacity, transform;
 }
 
-.mi-about-team__role[data-state="active"] {
+.mi-about-team__role[data-state="active"],
+html:not(.mi-js) .mi-about-team__role:first-child {
   left: calc(740px * var(--mi-about-s));
   opacity: 1;
   pointer-events: auto;
   transform: none;
 }
 
-.mi-about-team__role[data-state="next"] {
+.mi-about-team__role[data-state="next"],
+html:not(.mi-js) .mi-about-team__role:nth-child(2) {
   left: calc(1316px * var(--mi-about-s));
   top: calc(108px * var(--mi-about-s));
   opacity: 1;
@@ -356,11 +358,19 @@
   letter-spacing: -0.015em;
 }
 
-.mi-about-team__role p {
+.mi-about-team__role-description {
   margin-top: calc(10px * var(--mi-about-s));
   font-size: calc(20px * var(--mi-about-s));
   font-weight: 300;
   line-height: 1.5;
+}
+
+.mi-about-team__role-description > :first-child {
+  margin-top: 0;
+}
+
+.mi-about-team__role-description > :last-child {
+  margin-bottom: 0;
 }
 
 /* Idea / process — 47:829 */
@@ -459,32 +469,32 @@
   transform: scaleX(-1);
 }
 
-.mi-about-process__step--creative {
-  left: calc(150px * var(--mi-about-s));
-  top: calc(566px * var(--mi-about-s));
-}
-
-.mi-about-process__step--strategy {
+.mi-about-process__step:nth-child(1) {
   left: calc(257px * var(--mi-about-s));
   top: calc(388px * var(--mi-about-s));
 }
 
-.mi-about-process__step--design {
+.mi-about-process__step:nth-child(2) {
+  left: calc(150px * var(--mi-about-s));
+  top: calc(566px * var(--mi-about-s));
+}
+
+.mi-about-process__step:nth-child(3) {
   left: calc(586px * var(--mi-about-s));
   top: calc(287px * var(--mi-about-s));
 }
 
-.mi-about-process__step--development {
+.mi-about-process__step:nth-child(4) {
   left: calc(1022px * var(--mi-about-s));
   top: calc(287px * var(--mi-about-s));
 }
 
-.mi-about-process__step--production {
+.mi-about-process__step:nth-child(5) {
   left: calc(1351px * var(--mi-about-s));
   top: calc(388px * var(--mi-about-s));
 }
 
-.mi-about-process__step--launch {
+.mi-about-process__step:nth-child(6) {
   left: calc(1458px * var(--mi-about-s));
   top: calc(566px * var(--mi-about-s));
 }
@@ -584,11 +594,71 @@
 
 .mi-about-reviews__card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: calc(400px * var(--mi-about-s));
   height: calc(574px * var(--mi-about-s));
   overflow: hidden;
   border-radius: calc(40px * var(--mi-about-s));
+  color: var(--mi-color-surface-dark);
   background: #fff;
+}
+
+.mi-about-reviews__media {
+  flex: 0 0 calc(250px * var(--mi-about-s));
+  width: 100%;
+  overflow: hidden;
+  background: var(--mi-color-surface-soft);
+}
+
+.mi-about-reviews__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mi-about-reviews__body {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: calc(36px * var(--mi-about-s));
+}
+
+.mi-about-reviews__quote {
+  font-size: calc(20px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-about-reviews__quote > :first-child {
+  margin-top: 0;
+}
+
+.mi-about-reviews__quote > :last-child {
+  margin-bottom: 0;
+}
+
+.mi-about-reviews__person {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6px * var(--mi-about-s));
+  margin-top: auto;
+}
+
+.mi-about-reviews__person strong {
+  font-size: calc(20px * var(--mi-about-s));
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.mi-about-reviews__meta {
+  display: flex;
+  flex-direction: column;
+  font-size: calc(16px * var(--mi-about-s));
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(17, 35, 49, 0.66);
 }
 
 /* Gratitude — 47:811 */
@@ -900,12 +970,14 @@
     transform: translate3d(75%, 0, 0) scale(0.9);
   }
 
-  .mi-about-team__role[data-state="active"] {
+  .mi-about-team__role[data-state="active"],
+  html:not(.mi-js) .mi-about-team__role:first-child {
     left: 50%;
     transform: translate3d(-50%, 0, 0);
   }
 
-  .mi-about-team__role[data-state="next"] {
+  .mi-about-team__role[data-state="next"],
+  html:not(.mi-js) .mi-about-team__role:nth-child(2) {
     left: 50%;
     top: 86px;
     opacity: 0;
@@ -982,31 +1054,32 @@
     height: 56px;
   }
 
-  .mi-about-process__step--creative,
-  .mi-about-process__step--design,
-  .mi-about-process__step--production {
+  .mi-about-process__step:nth-child(2),
+  .mi-about-process__step:nth-child(3),
+  .mi-about-process__step:nth-child(5) {
     left: 16px;
+    right: auto;
   }
 
-  .mi-about-process__step--strategy,
-  .mi-about-process__step--development,
-  .mi-about-process__step--launch {
+  .mi-about-process__step:nth-child(1),
+  .mi-about-process__step:nth-child(4),
+  .mi-about-process__step:nth-child(6) {
     left: auto;
     right: 16px;
   }
 
-  .mi-about-process__step--creative,
-  .mi-about-process__step--strategy {
+  .mi-about-process__step:nth-child(1),
+  .mi-about-process__step:nth-child(2) {
     top: 270px;
   }
 
-  .mi-about-process__step--design,
-  .mi-about-process__step--development {
+  .mi-about-process__step:nth-child(3),
+  .mi-about-process__step:nth-child(4) {
     top: 356px;
   }
 
-  .mi-about-process__step--production,
-  .mi-about-process__step--launch {
+  .mi-about-process__step:nth-child(5),
+  .mi-about-process__step:nth-child(6) {
     top: 442px;
   }
 
@@ -1068,6 +1141,23 @@
     aspect-ratio: 400 / 574;
     border-radius: 30px;
     scroll-snap-align: start;
+  }
+
+  .mi-about-reviews__media {
+    flex-basis: min(54vw, 250px);
+  }
+
+  .mi-about-reviews__body {
+    padding: 30px;
+  }
+
+  .mi-about-reviews__quote,
+  .mi-about-reviews__person strong {
+    font-size: 18px;
+  }
+
+  .mi-about-reviews__meta {
+    font-size: 15px;
   }
 
   .mi-about-gratitude {
@@ -1239,15 +1329,15 @@
     font-size: 17px;
   }
 
-  .mi-about-process__step--creative,
-  .mi-about-process__step--design,
-  .mi-about-process__step--production {
+  .mi-about-process__step:nth-child(2),
+  .mi-about-process__step:nth-child(3),
+  .mi-about-process__step:nth-child(5) {
     left: 8px;
   }
 
-  .mi-about-process__step--strategy,
-  .mi-about-process__step--development,
-  .mi-about-process__step--launch {
+  .mi-about-process__step:nth-child(1),
+  .mi-about-process__step:nth-child(4),
+  .mi-about-process__step:nth-child(6) {
     right: 8px;
   }
 
@@ -1347,7 +1437,7 @@
   font-size: calc(28px * var(--mi-about-s));
 }
 
-.mi-about-page.is-reduced-motion .mi-about-team__role p {
+.mi-about-page.is-reduced-motion .mi-about-team__role-description {
   font-size: calc(16px * var(--mi-about-s));
 }
 
@@ -1376,7 +1466,7 @@
     font-size: 25px;
   }
 
-  .mi-about-page.is-reduced-motion .mi-about-team__role p {
+  .mi-about-page.is-reduced-motion .mi-about-team__role-description {
     font-size: 15px;
   }
 }

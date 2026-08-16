@@ -8,6 +8,32 @@
   }
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var stage = page.querySelector(".mi-service-detail__stage");
+  var bubbles = stage
+    ? Array.prototype.filter.call(stage.children, function (child) {
+        return child.hasAttribute("data-service-bubble");
+      })
+    : [];
+
+  if (stage && bubbles.length && bubbles.length < 5) {
+    var bubbleSources = bubbles.slice();
+
+    while (bubbles.length < 5) {
+      var bubbleClone = bubbleSources[bubbles.length % bubbleSources.length].cloneNode(true);
+      var cloneLinks = bubbleClone.querySelectorAll("a, button, input, select, textarea");
+
+      bubbleClone.setAttribute("data-service-bubble-clone", "true");
+      bubbleClone.setAttribute("aria-hidden", "true");
+
+      Array.prototype.forEach.call(cloneLinks, function (control) {
+        control.setAttribute("tabindex", "-1");
+      });
+
+      stage.appendChild(bubbleClone);
+      bubbles.push(bubbleClone);
+    }
+  }
+
   var revealItems = Array.prototype.slice.call(
     page.querySelectorAll("[data-service-reveal]")
   );
@@ -99,6 +125,7 @@
       var phone = requestForm.querySelector('[name="phone"]');
       var message = requestForm.querySelector('[name="message"]');
       var selectedChannel = requestForm.querySelector('[name="contact_channel"]');
+      var subject = requestForm.querySelector("[data-service-subject]");
       var originalLabel = submit ? submit.textContent : "";
 
       if (submit) {
@@ -127,7 +154,10 @@
           payload.append("recip", recipient.value);
           payload.append("name", requestForm.elements.name.value);
           payload.append("mail", requestForm.elements.mail.value);
-          payload.append("subject", "Заявка: Product-placement");
+          payload.append(
+            "subject",
+            subject && subject.value ? subject.value : "Заявка с сайта"
+          );
           payload.append(
             "message",
             [
@@ -183,10 +213,6 @@
   }
 
   var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-  var stage = page.querySelector(".mi-service-detail__stage");
-  var bubbles = Array.prototype.slice.call(
-    page.querySelectorAll("[data-service-bubble]")
-  );
 
   if (!reducedMotion.matches && finePointer.matches && stage && bubbles.length) {
     var pointerX = 0;

@@ -8,6 +8,23 @@
   var runningAnimations = [];
   var teamTimers = [];
 
+  function initializeTeamState() {
+    var team = page.querySelector('[data-about-team]');
+    var roles = team ? team.querySelectorAll('[data-team-role]') : [];
+
+    for (var i = 0; i < roles.length; i++) {
+      var state = 'hidden';
+      if (i === 0) state = 'active';
+      else if (i === 1) state = 'next';
+      else if (i === roles.length - 1) state = 'previous';
+
+      roles[i].setAttribute('data-state', state);
+      roles[i].setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
+    }
+  }
+
+  initializeTeamState();
+
   function animate(element, keyframes, options) {
     if (!element || typeof element.animate !== 'function') return null;
     var animation = element.animate(keyframes, options);

@@ -46,8 +46,8 @@
   gap: calc(16px * var(--mi-s));
 }
 
-.mi-contact-detail:nth-child(1) { grid-area: phone; }
-.mi-contact-detail:nth-child(2) { grid-area: mail; }
+.mi-contact-detail--phone { grid-area: phone; }
+.mi-contact-detail--mail { grid-area: mail; }
 .mi-contact-detail--social { grid-area: social; }
 
 .mi-contact-detail__label {
@@ -68,11 +68,30 @@
   text-underline-offset: calc(4px * var(--mi-s));
 }
 
-.mi-contact-detail--social img {
-  width: calc(266px * var(--mi-s));
-  height: calc(78px * var(--mi-s));
-  max-width: none;
+.mi-contact-detail__social-links {
+	position: relative;
+	width: calc(266px * var(--mi-s));
+	height: calc(78px * var(--mi-s));
+	max-width: none;
 }
+
+.mi-contact-detail__social-links img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+}
+
+.mi-contact-detail__social-link {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 29.32%;
+	border-radius: 50%;
+}
+
+.mi-contact-detail__social-link--telegram { left: 0; }
+.mi-contact-detail__social-link--whatsapp { left: 35.34%; }
 
 .mi-contact-intro__wreath {
   position: absolute;
@@ -420,9 +439,10 @@
     overflow-wrap: anywhere;
   }
 
-  .mi-contact-detail--social img {
+  .mi-contact-detail__social-links {
     width: 213px;
     height: auto;
+	 aspect-ratio: 266 / 78;
   }
 
   .mi-contact-intro__wreath {
