@@ -85,10 +85,14 @@
 .mi-request-modal__form { display: grid; flex: 0 0 calc(700px * var(--mi-s)); gap: calc(20px * var(--mi-s)); align-content: start; min-width: 0; }
 .mi-request-modal__field { display: grid; gap: calc(10px * var(--mi-s)); font-size: var(--mi-fs-16); font-weight: 400; line-height: 1.5; }
 .mi-request-modal__field-row { display: grid; grid-template-columns: 1fr 1fr; gap: calc(20px * var(--mi-s)); }
-.mi-request-modal__field input, .mi-request-modal__field textarea { box-sizing: border-box; width: 100%; height: calc(78px * var(--mi-s)); padding: calc(24px * var(--mi-s)) calc(40px * var(--mi-s)); border: 0; border-radius: calc(16px * var(--mi-s)); background: #edf5fd; color: #112331; font: 300 var(--mi-fs-20) / 1.5 var(--mi-font); outline-offset: 3px; resize: none; }
+.mi-request-modal__field input, .mi-request-modal__field textarea { box-sizing: border-box; width: 100%; height: calc(78px * var(--mi-s)); padding: calc(24px * var(--mi-s)) calc(40px * var(--mi-s)); border: 0; border-radius: calc(16px * var(--mi-s)); outline: 0; background: #edf5fd; color: #112331; font: 300 var(--mi-fs-20) / 1.5 var(--mi-font); resize: none; }
 .mi-request-modal__phone-input { display: flex; align-items: center; box-sizing: border-box; width: 100%; height: calc(78px * var(--mi-s)); padding: 0 calc(40px * var(--mi-s)); border-radius: calc(16px * var(--mi-s)); background: #edf5fd; }
 .mi-request-modal__phone-input b { flex: none; color: #112331; font: 500 var(--mi-fs-20) / 1.5 var(--mi-font); }
 .mi-request-modal__phone-input input { height: 100%; padding: 0 0 0 .35em; border-radius: 0; }
+.mi-request-modal__field input:focus,
+.mi-request-modal__field input:focus-visible,
+.mi-request-modal__field textarea:focus,
+.mi-request-modal__field textarea:focus-visible { outline: 0; box-shadow: none; }
 .mi-request-modal__field textarea { min-height: calc(78px * var(--mi-s)); overflow: hidden; }
 .mi-request-modal__field input::placeholder, .mi-request-modal__field textarea::placeholder { color: #939a9f; opacity: 1; }
 .mi-request-modal__consents { display: grid; gap: calc(10px * var(--mi-s)); padding-bottom: calc(10px * var(--mi-s)); }
