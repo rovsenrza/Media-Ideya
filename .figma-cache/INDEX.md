@@ -18,6 +18,7 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 | `47:121` | Кейсы popup — viewport state | `47-121_cases-popup.md` |
 | `47:422` | Кейсы popup — expanded reference | `47-121_cases-popup.md` |
 | `47:108` | Team role cards | `47-801_about.md` |
+| `47:818` | About gratitude letter hover | `47-818_gratitude-letter-hover.md` |
 
 ## Legacy references
 
@@ -29,5 +30,8 @@ The entries below belong to older Figma files. They are provenance references on
 | `1:31` | Footer + onfooter | `1-31_footer.md` |
 | `1:115` | About | `1-115_about.md` |
 | `1:311` | Old services index | _(not cached)_ |
+| `84:902` | Footer icons | `84-902_footer-icons-legacy.md` |
+| `101:2450` | Request form | `101-2450_request-form-legacy.md` |
+| `101:2454` | Loading indicator | `101-2454_loading-indicator-legacy.md` |
 
 Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQkEpdA2iTUvuTL`.

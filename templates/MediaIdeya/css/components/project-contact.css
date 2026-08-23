@@ -1,0 +1,358 @@
+.mi-project-contact {
+  height: calc(842px * var(--mi-s));
+  padding: 0 var(--mi-gutter) calc(120px * var(--mi-s));
+  background: var(--mi-color-surface-dark);
+}
+
+.mi-project-contact__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(650px * var(--mi-s)) calc(700px * var(--mi-s));
+  width: 100%;
+  height: calc(722px * var(--mi-s));
+  padding: calc(80px * var(--mi-s)) calc(80px * var(--mi-s)) calc(80px * var(--mi-s)) calc(290px * var(--mi-s));
+  border-radius: var(--mi-radius-card);
+  background:
+    radial-gradient(circle at 16% 100%, rgba(67, 133, 187, 0.9), transparent 38%),
+    #0d304c;
+  overflow: visible;
+}
+
+.mi-project-contact__column {
+  position: absolute;
+  z-index: 1;
+  left: calc(-15px * var(--mi-s));
+  top: calc(-39px * var(--mi-s));
+  width: calc(306px * var(--mi-s));
+  height: calc(761px * var(--mi-s));
+  max-width: none;
+  object-fit: cover;
+  object-position: right center;
+  clip-path: inset(calc(-60px * var(--mi-s)) 0 0 0);
+}
+
+.mi-project-contact__column img {
+  position: absolute;
+  top: calc(-19px * var(--mi-s));
+  left: calc(-164px * var(--mi-s));
+  width: calc(633px * var(--mi-s));
+  height: calc(1104px * var(--mi-s));
+  max-width: none;
+}
+
+.mi-project-contact__copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-right: calc(80px * var(--mi-s));
+}
+
+.mi-project-contact__copy h2 {
+  font-size: var(--mi-fs-64);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.mi-project-contact__copy > p {
+  width: calc(500px * var(--mi-s));
+  margin-top: calc(40px * var(--mi-s));
+  font-size: var(--mi-fs-20);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-project-contact__channels {
+  display: flex;
+  flex-direction: column;
+  gap: calc(24px * var(--mi-s));
+  margin-top: auto;
+}
+
+.mi-project-contact__channels strong {
+  font-size: var(--mi-fs-24);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.mi-project-contact__channels > div {
+  display: flex;
+  gap: calc(20px * var(--mi-s));
+}
+
+.mi-project-contact__channels a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(12px * var(--mi-s));
+  width: calc(213px * var(--mi-s));
+  min-height: calc(78px * var(--mi-s));
+  border-radius: var(--mi-radius-pill);
+  background: #4385bb;
+  font-size: var(--mi-fs-20);
+  font-weight: 500;
+  line-height: 1.5;
+  transition: transform var(--mi-duration) var(--mi-ease), background-color var(--mi-duration) var(--mi-ease);
+}
+
+.mi-project-contact__channels a:hover {
+  transform: translateY(calc(-2px * var(--mi-s)));
+  background: #5597ce;
+}
+
+.mi-project-contact__channels img {
+  width: calc(24px * var(--mi-s));
+  height: calc(24px * var(--mi-s));
+}
+
+.mi-project-form {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px * var(--mi-s));
+  min-width: 0;
+}
+
+.mi-project-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(20px * var(--mi-s));
+}
+
+.mi-project-form__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(8px * var(--mi-s));
+  min-width: 0;
+}
+
+.mi-project-form__field--phone::after {
+  content: "+7";
+  position: absolute;
+  z-index: 1;
+  left: calc(40px * var(--mi-s));
+  bottom: calc(24px * var(--mi-s));
+  color: var(--mi-color-surface-dark);
+  font: 300 var(--mi-fs-20) / 1.5 var(--mi-font);
+  pointer-events: none;
+}
+
+.mi-project-form__field label,
+.mi-project-form__engine label {
+  font-size: var(--mi-fs-16);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mi-project-form__field input,
+.mi-project-form__field textarea,
+.mi-project-form__engine input,
+.mi-project-form__engine select {
+  width: 100%;
+  min-height: calc(78px * var(--mi-s));
+  padding: calc(24px * var(--mi-s)) calc(40px * var(--mi-s));
+  border: 0;
+  border-radius: calc(16px * var(--mi-s));
+  outline: 0;
+  background: var(--mi-color-surface-soft);
+  color: var(--mi-color-surface-dark);
+  font: 300 var(--mi-fs-20) / 1.5 var(--mi-font);
+  resize: none;
+}
+
+.mi-project-form__field input::placeholder,
+.mi-project-form__field textarea::placeholder {
+  color: rgba(17, 35, 49, 0.38);
+}
+
+.mi-project-form__field input:focus,
+.mi-project-form__field textarea:focus {
+  box-shadow: 0 0 0 2px #4385bb;
+}
+
+.mi-project-form__consents {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10px * var(--mi-s));
+}
+
+.mi-project-form__consents label {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(12px * var(--mi-s));
+  font-size: var(--mi-fs-16);
+  font-weight: 300;
+  line-height: 1.35;
+}
+
+.mi-project-form__consents input {
+  appearance: none;
+  flex: 0 0 calc(20px * var(--mi-s));
+  width: calc(20px * var(--mi-s));
+  height: calc(20px * var(--mi-s));
+  margin: 0;
+  border: 1px solid #fff;
+}
+
+.mi-project-form__consents input:checked {
+  background: #4385bb;
+  box-shadow: inset 0 0 0 calc(4px * var(--mi-s)) #0d304c;
+}
+
+.mi-project-form__consents a {
+  text-decoration: underline;
+  text-underline-offset: calc(2px * var(--mi-s));
+}
+
+.mi-project-form__engine {
+  position: absolute;
+  z-index: 8;
+  right: 0;
+  bottom: calc(88px * var(--mi-s));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(10px * var(--mi-s));
+  width: 100%;
+  padding: calc(20px * var(--mi-s));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: calc(16px * var(--mi-s));
+  background: #0d304c;
+  box-shadow: 0 calc(18px * var(--mi-s)) calc(60px * var(--mi-s)) rgba(0, 0, 0, 0.32);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(calc(12px * var(--mi-s)));
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.mi-project-form__engine.is-challenge-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.mi-project-form__recipient {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.mi-project-form__submit {
+  width: 100%;
+  min-height: calc(78px * var(--mi-s));
+  margin-top: auto;
+}
+
+.mi-project-form.is-sent {
+  display: grid;
+  place-items: center;
+}
+
+.mi-project-form__success {
+  max-width: calc(520px * var(--mi-s));
+  color: #fff;
+  font-size: var(--mi-fs-40);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .mi-project-contact {
+    height: auto;
+    padding: 48px 20px;
+  }
+
+  .mi-project-contact__card {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    height: auto;
+    min-height: 0;
+    padding: 48px 24px;
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  .mi-project-contact__column {
+    left: -80px;
+    bottom: -40px;
+    width: 330px;
+    height: auto;
+    opacity: 0.22;
+  }
+
+  .mi-project-contact__column img {
+    top: -19px;
+    left: -164px;
+    width: 633px;
+    height: 1104px;
+  }
+
+  .mi-project-contact__copy { padding: 0; }
+  .mi-project-contact__copy h2 { font-size: clamp(42px, 12vw, 64px); }
+
+  .mi-project-contact__copy > p {
+    width: auto;
+    margin-top: 24px;
+    font-size: 18px;
+  }
+
+  .mi-project-contact__channels { margin-top: 40px; }
+  .mi-project-contact__channels strong { font-size: 22px; }
+  .mi-project-contact__channels > div { flex-direction: column; }
+  .mi-project-contact__channels a { width: 100%; min-height: 62px; font-size: 18px; }
+
+  .mi-project-form { gap: 18px; }
+  .mi-project-form__row { grid-template-columns: 1fr; gap: 18px; }
+  .mi-project-form__field { gap: 7px; }
+  .mi-project-form__field label { font-size: 14px; }
+
+  .mi-project-form__field--phone::after {
+    left: 20px;
+    bottom: 18px;
+    font-size: 17px;
+  }
+
+  .mi-project-form__field input,
+  .mi-project-form__field textarea,
+  .mi-project-form__engine input,
+  .mi-project-form__engine select {
+    min-height: 64px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    font-size: 17px;
+  }
+
+  .mi-project-form__consents label { gap: 10px; font-size: 13px; }
+  .mi-project-form__consents input { flex-basis: 20px; width: 20px; height: 20px; }
+
+  .mi-project-form__submit {
+    min-height: 64px;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .mi-project-form__engine {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    width: auto;
+    padding: 18px;
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-project-contact__channels a { transition: none; }
+}

@@ -19,6 +19,8 @@
 	<link rel="stylesheet" href="{THEME}/css/components/button.css">
 	<link rel="stylesheet" href="{THEME}/css/components/header.css">
 	<link rel="stylesheet" href="{THEME}/css/components/section-title.css">
+	<link rel="stylesheet" href="{THEME}/css/components/project-contact.css">
+	<link rel="stylesheet" href="{THEME}/css/components/request-modal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/reveal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/card.css">
 	<link rel="stylesheet" href="{THEME}/css/components/footer.css">
@@ -109,11 +111,13 @@
 	[/available]
 
 	{AJAX}
+	{include file="modules/request-modal.tpl"}
 
-	<script src="{THEME}/js/main.js" defer></script>
-	[available=main]
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+	<script src="{THEME}/js/main.js" defer></script>
+	<script src="{THEME}/js/components/request-modal.js" defer></script>
+	[available=main]
 	<script src="{THEME}/js/components/faq.js" defer></script>
 	<script src="{THEME}/js/components/articles.js" defer></script>
 	<script src="{THEME}/js/pages/home.js" defer></script>
