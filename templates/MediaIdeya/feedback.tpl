@@ -9,10 +9,6 @@
 
 	<section class="mi-project-contact" aria-labelledby="mi-project-contact-title">
 		<div class="mi-project-contact__card">
-			<div class="mi-project-contact__column" aria-hidden="true">
-				<img src="{THEME}/images/pages/contact/column.png" width="1568" height="2734" alt="" loading="lazy" decoding="async">
-			</div>
-
 			{custom category="8" template="modules/contact-project-copy" limit="1" order="date" sort="asc" cache="no"}
 
 			<div class="mi-project-form">
@@ -23,7 +19,7 @@
 				<div class="mi-project-form__row">
 					<div class="mi-project-form__field mi-project-form__field--phone">
 						<label for="subject">Телефон*</label>
-						<input type="tel" maxlength="45" name="subject" id="subject" placeholder="+7 (000) 000-00-00" autocomplete="tel" inputmode="tel" required>
+						<input type="tel" maxlength="45" name="subject" id="subject" placeholder="(000) 000-00-00" autocomplete="tel" inputmode="tel" required>
 					</div>
 					<div class="mi-project-form__field">
 						<label for="mail">Почта*</label>

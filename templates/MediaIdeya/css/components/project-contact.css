@@ -356,3 +356,65 @@
 @media (prefers-reduced-motion: reduce) {
   .mi-project-contact__channels a { transition: none; }
 }
+
+/* Figma 101:2450 — source layout: no decorative column, centered 475/700 split. */
+@media (min-width: 992px) {
+  .mi-project-contact {
+    height: calc(842px * var(--mi-s)) !important;
+    padding: 0 var(--mi-gutter) calc(120px * var(--mi-s)) !important;
+  }
+
+  .mi-project-contact__card {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: calc(80px * var(--mi-s)) !important;
+    width: 100% !important;
+    height: calc(722px * var(--mi-s)) !important;
+    padding: calc(80px * var(--mi-s)) !important;
+    border-radius: calc(60px * var(--mi-s)) !important;
+    background: radial-gradient(1046.5px 1390.8px at 0 104%, #4385bb 0%, rgba(42,84,118,.5) 50%, transparent 100%), #0d304c !important;
+    overflow: hidden !important;
+  }
+
+  .mi-project-contact__column { display: none !important; }
+
+  .mi-project-contact__copy {
+    flex: 0 0 calc(475px * var(--mi-s)) !important;
+    align-self: stretch !important;
+    padding: 0 !important;
+  }
+
+  .mi-project-contact__copy > p {
+    width: 100% !important;
+    margin-top: calc(40px * var(--mi-s)) !important;
+  }
+
+  .mi-project-contact__channels { gap: calc(16px * var(--mi-s)) !important; }
+
+  .mi-project-contact__channels a {
+    width: auto !important;
+    min-height: calc(78px * var(--mi-s)) !important;
+    padding: calc(24px * var(--mi-s)) calc(48px * var(--mi-s)) !important;
+  }
+
+  .mi-project-form {
+    flex: 0 0 calc(700px * var(--mi-s)) !important;
+    gap: calc(20px * var(--mi-s)) !important;
+  }
+
+  .mi-project-form__field { gap: calc(10px * var(--mi-s)) !important; }
+  .mi-project-form__field label { font-weight: 400 !important; }
+
+  .mi-project-form__field input,
+  .mi-project-form__field textarea {
+    height: calc(78px * var(--mi-s)) !important;
+    min-height: calc(78px * var(--mi-s)) !important;
+  }
+
+  .mi-project-form__consents label {
+    align-items: center !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+  }
+}
