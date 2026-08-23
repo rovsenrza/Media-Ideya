@@ -35,3 +35,9 @@ The entries below belong to older Figma files. They are provenance references on
 | `101:2454` | Loading indicator | `101-2454_loading-indicator-legacy.md` |
 
 Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQkEpdA2iTUvuTL`.
+
+## User-provided references
+
+| Node | Section | File |
+|------|---------|------|
+| `101:2447` | Modal — 1920 desktop | `101-2447_modal-1920-user-reference.md` |

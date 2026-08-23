@@ -10,19 +10,31 @@
 
 .mi-request-modal.is-open { display: grid; }
 
+.mi-request-modal__background {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 1920px;
+  height: 1561px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
 .mi-request-modal__backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(17, 35, 49, .78);
-  backdrop-filter: blur(10px);
+  background: rgba(17, 35, 49, .9);
 }
 
 .mi-request-modal__dialog {
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: calc(80px * var(--mi-s));
   width: min(calc(1720px * var(--mi-s)), 100%);
   min-height: calc(722px * var(--mi-s));
@@ -35,14 +47,20 @@
 .mi-request-modal__close {
   position: absolute;
   z-index: 2;
-  top: calc(-42px * var(--mi-s));
-  right: calc(48px * var(--mi-s));
+  top: calc(-20px * var(--mi-s));
+  right: calc(32px * var(--mi-s));
   display: grid;
   place-items: center;
   width: calc(44px * var(--mi-s));
   height: calc(44px * var(--mi-s));
-  font: 300 calc(42px * var(--mi-s)) / 1 var(--mi-font);
-  color: #fff;
+  padding: 0;
+  line-height: 0;
+}
+
+.mi-request-modal__close img {
+  display: block;
+  width: calc(36px * var(--mi-s));
+  height: calc(36px * var(--mi-s));
 }
 
 .mi-request-modal__copy {
@@ -82,10 +100,27 @@
 .mi-request-modal__loader img { width: calc(143px * var(--mi-s)); height: calc(268px * var(--mi-s)); }
 .mi-request-modal__loader span { font: 500 calc(222px * var(--mi-s)) / 1.1 var(--mi-font); color: #4385bb; white-space: nowrap; }
 
+/* Figma 101:2447 desktop canvas — 1920 × 1080. */
+@media (min-width: 1920px) {
+  .mi-request-modal { padding: 100px; }
+  .mi-request-modal__dialog { width: 1720px; min-height: 722px; height: 722px; padding: 80px; gap: 80px; border-radius: 60px; }
+  .mi-request-modal__copy { flex-basis: 475px; min-height: 562px; }
+  .mi-request-modal__form { flex-basis: 700px; gap: 20px; }
+  .mi-request-modal__heading { gap: 40px; }
+  .mi-request-modal__heading h2 { font-size: 64px; }
+  .mi-request-modal__messenger-links { gap: 20px; }
+  .mi-request-modal__field { gap: 10px; font-size: 16px; }
+  .mi-request-modal__field-row { gap: 20px; }
+  .mi-request-modal__field input, .mi-request-modal__field textarea { height: 78px; padding: 24px 40px; border-radius: 16px; font-size: 20px; }
+  .mi-request-modal__consents { gap: 10px; padding-bottom: 10px; }
+  .mi-request-modal__close { top: -20px; right: 32px; width: 36px; height: 36px; }
+  .mi-request-modal__close img { width: 36px; height: 36px; }
+}
+
 @media (max-width: 991px) {
   .mi-request-modal { padding: 16px; }
   .mi-request-modal__dialog { flex-direction: column; gap: 32px; width: min(720px, 100%); min-height: 0; padding: 56px 28px; border-radius: 28px; }
-  .mi-request-modal__close { top: 10px; right: 14px; width: 36px; height: 36px; font-size: 34px; }
+  .mi-request-modal__close { top: 10px; right: 14px; width: 36px; height: 36px; }
   .mi-request-modal__copy { flex-basis: auto; gap: 36px; min-height: 0; }
   .mi-request-modal__heading { gap: 18px; }
   .mi-request-modal__heading h2 { font-size: 36px; }

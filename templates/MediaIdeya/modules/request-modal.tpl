@@ -1,7 +1,8 @@
 <div class="mi-request-modal" data-request-modal aria-hidden="true">
+	<img class="mi-request-modal__background" src="{THEME}/images/modal/background.png" width="1920" height="1561" alt="" aria-hidden="true">
 	<div class="mi-request-modal__backdrop" data-request-modal-close></div>
 	<section class="mi-request-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="mi-request-modal-title">
-		<button class="mi-request-modal__close" type="button" aria-label="Закрыть" data-request-modal-close><span aria-hidden="true">×</span></button>
+		<button class="mi-request-modal__close" type="button" aria-label="Закрыть" data-request-modal-close><img src="{THEME}/images/icons/modal-close.svg" width="36" height="36" alt=""></button>
 		<div class="mi-request-modal__copy">
 			<div class="mi-request-modal__heading"><h2 id="mi-request-modal-title">Давайте обсудим вашу задачу</h2><p>Свяжитесь с нами удобным для вас способом или оставьте заявку на консультацию. Вместе разберём вашу задачу и найдём решение.</p></div>
 			<div class="mi-request-modal__messengers"><strong>Напишите нам:</strong>{custom category="8" template="modules/request-modal-messengers" limit="1" order="date" sort="asc" cache="no"}</div>
