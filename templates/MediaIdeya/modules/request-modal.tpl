@@ -9,7 +9,7 @@
 		</div>
 		<form class="mi-request-modal__form" action="{THEME}/../../index.php?do=feedback" method="post" data-request-modal-form>
 			<label class="mi-request-modal__field mi-request-modal__field--wide">ФИО*<input name="name" type="text" placeholder="ФИО" autocomplete="name" required></label>
-			<div class="mi-request-modal__field-row"><label class="mi-request-modal__field">Телефон*<input name="phone" type="tel" placeholder="+7 (000) 000-00-00" autocomplete="tel" required></label><label class="mi-request-modal__field">Почта*<input name="mail" type="email" placeholder="Почта" autocomplete="email" required></label></div>
+			<div class="mi-request-modal__field-row"><label class="mi-request-modal__field mi-request-modal__field--phone">Телефон*<span class="mi-request-modal__phone-input"><b>+7</b><input name="phone" type="tel" placeholder="(000) 000-00-00" autocomplete="tel" required></span></label><label class="mi-request-modal__field">Почта*<input name="mail" type="email" placeholder="Почта" autocomplete="email" required></label></div>
 			<label class="mi-request-modal__field mi-request-modal__field--wide">Описание задачи<textarea name="message" rows="1" placeholder="Описание задачи"></textarea></label>
 			<div class="mi-request-modal__consents"><label><input type="checkbox" required><span>Ознакомлен(а) и принимаю условия <a href="{THEME}/../../politika-privatnosti.html">Политики обработки персональных данных</a></span></label><label><input type="checkbox" required><span>Даю свое согласие на <a href="{THEME}/../../politika-privatnosti.html">обработку персональных данных</a></span></label></div>
 			<button class="mi-btn mi-request-modal__submit" type="submit">Отправить заявку</button>

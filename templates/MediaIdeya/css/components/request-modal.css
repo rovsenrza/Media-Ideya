@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: center;
   gap: calc(80px * var(--mi-s));
-  width: min(calc(1720px * var(--mi-s)), 100%);
+  width: min(calc(1415px * var(--mi-s)), 100%);
   min-height: calc(722px * var(--mi-s));
   padding: calc(80px * var(--mi-s));
   border-radius: calc(60px * var(--mi-s));
@@ -86,6 +86,9 @@
 .mi-request-modal__field { display: grid; gap: calc(10px * var(--mi-s)); font-size: var(--mi-fs-16); font-weight: 400; line-height: 1.5; }
 .mi-request-modal__field-row { display: grid; grid-template-columns: 1fr 1fr; gap: calc(20px * var(--mi-s)); }
 .mi-request-modal__field input, .mi-request-modal__field textarea { box-sizing: border-box; width: 100%; height: calc(78px * var(--mi-s)); padding: calc(24px * var(--mi-s)) calc(40px * var(--mi-s)); border: 0; border-radius: calc(16px * var(--mi-s)); background: #edf5fd; color: #112331; font: 300 var(--mi-fs-20) / 1.5 var(--mi-font); outline-offset: 3px; resize: none; }
+.mi-request-modal__phone-input { display: flex; align-items: center; box-sizing: border-box; width: 100%; height: calc(78px * var(--mi-s)); padding: 0 calc(40px * var(--mi-s)); border-radius: calc(16px * var(--mi-s)); background: #edf5fd; }
+.mi-request-modal__phone-input b { flex: none; color: #112331; font: 500 var(--mi-fs-20) / 1.5 var(--mi-font); }
+.mi-request-modal__phone-input input { height: 100%; padding: 0 0 0 .35em; border-radius: 0; }
 .mi-request-modal__field textarea { min-height: calc(78px * var(--mi-s)); overflow: hidden; }
 .mi-request-modal__field input::placeholder, .mi-request-modal__field textarea::placeholder { color: #939a9f; opacity: 1; }
 .mi-request-modal__consents { display: grid; gap: calc(10px * var(--mi-s)); padding-bottom: calc(10px * var(--mi-s)); }
@@ -100,18 +103,25 @@
 .mi-request-modal__loader img { width: calc(143px * var(--mi-s)); height: calc(268px * var(--mi-s)); }
 .mi-request-modal__loader span { font: 500 calc(222px * var(--mi-s)) / 1.1 var(--mi-font); color: #4385bb; white-space: nowrap; }
 
-/* Figma 101:2447 desktop canvas — 1920 × 1080. */
+/* Figma 101:2450 desktop canvas — 1920 × 1080.
+   The card is content-sized: 80 + 475 + 80 + 700 + 80 = 1415px. */
 @media (min-width: 1920px) {
   .mi-request-modal { padding: 100px; }
-  .mi-request-modal__dialog { width: 1720px; min-height: 722px; height: 722px; padding: 80px; gap: 80px; border-radius: 60px; }
-  .mi-request-modal__copy { flex-basis: 475px; min-height: 562px; }
-  .mi-request-modal__form { flex-basis: 700px; gap: 20px; }
+  .mi-request-modal__dialog { display: grid; grid-template-columns: 475px 700px; align-items: center; justify-content: center; width: 1415px; min-height: 722px; height: 722px; padding: 80px; gap: 0; column-gap: 80px; border-radius: 60px; }
+  .mi-request-modal__copy { width: 475px; min-height: 562px; }
+  .mi-request-modal__form { width: 700px; gap: 20px; }
   .mi-request-modal__heading { gap: 40px; }
-  .mi-request-modal__heading h2 { font-size: 64px; }
+  .mi-request-modal__heading h2 { font-size: 64px; line-height: 70.4px; }
+  .mi-request-modal__heading p { font-size: 20px; line-height: 30px; }
+  .mi-request-modal__messengers { gap: 16px; }
+  .mi-request-modal__messengers strong { font-size: 24px; line-height: 31.2px; }
   .mi-request-modal__messenger-links { gap: 20px; }
+  .mi-request-modal__messenger { min-height: 78px; padding: 24px 48px; font-size: 20px; line-height: 30px; }
   .mi-request-modal__field { gap: 10px; font-size: 16px; }
   .mi-request-modal__field-row { gap: 20px; }
   .mi-request-modal__field input, .mi-request-modal__field textarea { height: 78px; padding: 24px 40px; border-radius: 16px; font-size: 20px; }
+  .mi-request-modal__phone-input { height: 78px; padding: 0 40px; border-radius: 16px; }
+  .mi-request-modal__phone-input b { font-size: 20px; }
   .mi-request-modal__consents { gap: 10px; padding-bottom: 10px; }
   .mi-request-modal__close { top: -20px; right: 32px; width: 36px; height: 36px; }
   .mi-request-modal__close img { width: 36px; height: 36px; }
