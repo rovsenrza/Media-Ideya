@@ -369,11 +369,23 @@
     top: clamp(-86px, -20vw, -64px);
     width: clamp(269.13px, 84.103vw, 361.643px);
     height: clamp(699.21px, 218.503vw, 939.563px);
+    overflow: hidden;
   }
 
   /* Figma 101:524/101:525 stretch the original column raster to the
      302.77 × 786.61 layer bounds; `contain` left both columns undersized. */
   .mi-hero__col img { object-fit: fill; }
+
+  /* Figma layer exports 101:525 / 101:524 show only the inner 78px edge
+     of each 302.77px layer. The raw asset contains transparent outer space,
+     so crop its rendered position inside the layer before the hero clips it. */
+  .mi-hero__col--l img {
+    transform: translateX(clamp(103.111px, 32.222vw, 138.555px));
+  }
+
+  .mi-hero__col--r img {
+    transform: translateX(clamp(-138.555px, -32.222vw, -103.111px)) scaleX(-1);
+  }
 
   .mi-hero__col--l {
     left: clamp(-268.75px, -62.5vw, -200px);
