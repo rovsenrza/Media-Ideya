@@ -135,12 +135,14 @@
 
 @keyframes mi-home-cta-left {
   from { transform: translate3d(-5%, 0, 0); }
-  to { transform: translate3d(0, 0, 0); }
+  /* Figma 84:612 final: move the left fingertip onto the shared axis. */
+  to { transform: translate3d(0, calc(-101px * var(--mi-s)), 0); }
 }
 
 @keyframes mi-home-cta-right {
   from { transform: translate3d(5%, 0, 0); }
-  to { transform: translate3d(0, 0, 0); }
+  /* Figma 84:611 final: meet the left fingertip on that axis. */
+  to { transform: translate3d(0, calc(70px * var(--mi-s)), 0); }
 }
 
 @media (max-width: 991px) {
