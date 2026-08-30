@@ -3,7 +3,9 @@
 .mi-home-cta {
   position: relative;
   display: grid;
-  min-height: calc(960px * var(--mi-s));
+  /* The native-proportion left raster ends at the contact scene's lower
+     edge. Do not retain the transparent 53px strip below it. */
+  min-height: calc(907px * var(--mi-s));
   overflow: hidden;
   background: #112331;
   isolation: isolate;
