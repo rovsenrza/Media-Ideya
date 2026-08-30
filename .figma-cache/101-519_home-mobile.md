@@ -24,6 +24,7 @@
 3. Services: Figma node `101:539`, `360 × 800`; 20px top/60px bottom padding, 32px title, 20px gap; cards `328 × 665`, 24px radius. The service media is 232.432 × 200; title/body starts at y224, counter is 24px. All DLE cards remain in the desktop-style sticky stack; the first card is the initial Figma viewport state.
    - Nodes `101:542`, `101:548`, `101:550`, `101:554`, `101:555`, `101:556`: card uses #EDF5FD, 24px radius; media `232.432 × 200` top-right; title 28px / 1.1, count 24px / 1.2, body 14px Light / 1.5, and the standard 14px mobile action button.
    - The mobile stack uses the responsive Figma stage height as both sticky-pin height and per-card scroll interval; it must not fall back to a viewport-height calculation.
+   - Nodes `101:542` / `101:549` (refetched 2026-08-30): first service alone uses the dedicated mobile layout: light card, `10px` outer image/content gap; image frame `232.432 × 200`, `16.216px` radius at top right; content frame below it is full width with `24px` padding and `16px` gap. Header is a title/count row (`28px / 1.1`, `24px / 1.2`); body has `10px` gap; CTA uses the shared mobile button. Its illustration is a special Figma composition, not a generic desktop image crop. Cards 2–7 keep their desktop side-media composition and only receive responsive mobile scaling.
 4. About: `360 × 800`; centered copy and 3 stats in one row; mobile heading 32px.
 5. Clients: `360 × 730`; centered heading, 328px logo grid area.
 6. FAQ: 16px gutter, 20px gaps; cards use 20px padding/radius; question is 18px.
