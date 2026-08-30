@@ -61,12 +61,11 @@
     }
 
     function range() {
-      /* Figma MCP 101:520 is an 800px mobile stage. Its scroll track is
-         deliberately 1600px, so use the stage height (not the browser's
-         variable mobile viewport) for the same title/column/statue timeline
-         used on desktop. */
+      /* On mobile the Figma 101:520 scene occupies one scaled viewport.
+         Scrub through that scene itself so there is no extra blank sticky
+         viewport before the services section. */
       if (heroMobileQuery.matches && heroPin) {
-        return Math.max(hero.offsetHeight - heroPin.offsetHeight, 1);
+        return Math.max(hero.offsetHeight, 1);
       }
       return Math.max(hero.offsetHeight - window.innerHeight, 1);
     }

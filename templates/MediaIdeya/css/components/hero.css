@@ -337,7 +337,7 @@
   /* Figma 101:520 is a 360 × 800 composition. Scale the entire coordinate
      system from 320 to 430px instead of freezing its 360px values. */
   .mi-hero {
-    height: clamp(1422.222px, 444.444vw, 1911.111px);
+    height: clamp(711.111px, 222.222vw, 955.556px);
   }
 
   .mi-hero__pin {
