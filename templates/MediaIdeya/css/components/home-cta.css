@@ -27,7 +27,9 @@
   position: absolute;
   display: block;
   max-width: none;
-  object-fit: contain;
+  /* Figma 84:609 uses size-full + object-bottom. Do not contain the
+     transparent source image: it changes the fingertips' meeting point. */
+  object-fit: fill;
   object-position: bottom center;
   will-change: opacity, transform;
   transition: opacity 260ms linear 2480ms;
