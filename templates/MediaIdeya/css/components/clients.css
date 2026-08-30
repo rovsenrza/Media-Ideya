@@ -251,19 +251,49 @@
     height: 730px;
     min-height: 0;
     padding: 60px 16px;
+    justify-content: flex-start;
   }
-  .mi-clients__inner { gap: 36px; }
+  .mi-clients__inner { gap: 24px; }
   .mi-clients__title { font-size: 32px; }
   .mi-clients__sub { margin: 0; font-size: 14px; }
   .mi-clients__box { height: 462px; }
   .mi-clients__logos {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 16px;
+    position: relative;
+    display: block;
+    height: 462px;
+    transform: none;
   }
   .mi-clients__row,
   .mi-clients__row--offset { display: contents; }
-  .mi-clients__logo { width: auto; height: 56px; padding: 10px; border-radius: 32px; }
+
+  /* Figma 101:717 — a 2/1/2/1/2/1/2 staggered logo matrix. */
+  .mi-clients__logo {
+    position: absolute;
+    width: 122px;
+    height: 56px;
+    padding: 10.767px;
+    border-radius: 32px;
+    box-sizing: border-box;
+  }
+  .mi-clients__logo:nth-child(1),
+  .mi-clients__logo:nth-child(4),
+  .mi-clients__logo:nth-child(7),
+  .mi-clients__logo:nth-child(10) { left: 0; }
+  .mi-clients__logo:nth-child(2),
+  .mi-clients__logo:nth-child(5),
+  .mi-clients__logo:nth-child(8),
+  .mi-clients__logo:nth-child(11) { right: 0; }
+  .mi-clients__logo:nth-child(3),
+  .mi-clients__logo:nth-child(6),
+  .mi-clients__logo:nth-child(9) { left: 50%; transform: translateX(-50%); }
+  .mi-clients__logo:nth-child(1), .mi-clients__logo:nth-child(2) { top: 0; }
+  .mi-clients__logo:nth-child(3) { top: 68px; }
+  .mi-clients__logo:nth-child(4), .mi-clients__logo:nth-child(5) { top: 136px; }
+  .mi-clients__logo:nth-child(6) { top: 204px; }
+  .mi-clients__logo:nth-child(7), .mi-clients__logo:nth-child(8) { top: 271px; }
+  .mi-clients__logo:nth-child(9) { top: 338px; }
+  .mi-clients__logo:nth-child(10), .mi-clients__logo:nth-child(11) { top: 406px; }
+  .mi-clients__logo:nth-child(n + 12) { display: none; }
   .mi-clients__logo img { width: 104px; height: 36px; }
   .mi-clients__fade { height: 105px; }
 }

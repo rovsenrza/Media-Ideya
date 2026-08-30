@@ -25,8 +25,8 @@
    - Nodes `101:542`, `101:548`, `101:550`, `101:554`, `101:555`, `101:556`: card uses #EDF5FD, 24px radius; media `232.432 × 200` top-right; title 28px / 1.1, count 24px / 1.2, body 14px Light / 1.5, and the standard 14px mobile action button.
    - The mobile stack uses the responsive Figma stage height as both sticky-pin height and per-card scroll interval; it must not fall back to a viewport-height calculation.
    - Nodes `101:542` / `101:549` (refetched 2026-08-30): every service uses the same mobile layout: light card, `10px` outer image/content gap; image frame `232.432 × 200`, `16.216px` radius at top right; content frame below it is full width with `24px` padding and `16px` gap. Header is a title/count row (`28px / 1.1`, `24px / 1.2`); body has `10px` gap; CTA uses the shared mobile button. The DLE image source for each card is its desktop composition and must retain its native `cover/right` crop inside this common mobile image frame.
-4. About: `360 × 800`; centered copy and 3 stats in one row; mobile heading 32px.
-5. Clients: `360 × 730`; centered heading, 328px logo grid area.
+4. About (`101:566`): `360 × 800`; 70px top / 270px bottom / 16px side padding; centered text group (32px title, 14px body, 16px gap), then stats at a 24px gap. Cloud source positions: 747×304 at (-330,160) and (38,153); 1050×427 at (-303,323). Figma `101:568` adds a 360×371 `#CEE0F0 → #D8EAFA` sky layer at y372. Colonnade is 726×513 at x -183.5 / y419; wave begins y690, 412×110. Stats use 32px numbers, 32×60 wreaths, 4px label gap, and `16px 35px` wrap gap.
+5. Clients (`101:717`): `360 × 730`; heading starts y60 with 32px centered title and 14px subtitle; logo area begins y158. Logos are 122×56 / 32px radius and appear as a 2/1/2/1/2/1/2 staggered matrix (left/right at x16/222, centre at x119), y positions 158,226,294,362,429,496,564.
 6. FAQ: 16px gutter, 20px gaps; cards use 20px padding/radius; question is 18px.
 7. Articles: first horizontal card `308px` wide; image `308 × 185`, 24px radius.
 8. CTA: `360 × 800`, centered copy and request button. Footer: 16px horizontal padding, 40px vertical padding.

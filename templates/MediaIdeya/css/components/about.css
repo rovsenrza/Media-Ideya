@@ -362,6 +362,17 @@
   .mi-about__cloud--b { left: -303px; top: 323px; width: 1050px; height: 427px; }
   .mi-about__cloud--c { left: 38px; top: 153px; width: 747px; height: 304px; }
 
+  /* Figma 101:568 — light sky layer behind the cloud/colonnade scene. */
+  .mi-about__sky {
+    position: absolute;
+    top: 372px;
+    left: 50%;
+    width: 360px;
+    height: 371px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #cee0f0 0%, #d8eafa 100%);
+  }
+
   .mi-about__colonnade {
     top: 419px;
     width: 726px;

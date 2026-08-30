@@ -1,5 +1,6 @@
 <section class="mi-about" id="about" aria-label="О компании" data-aos="about">
 	<div class="mi-about__bg" aria-hidden="true">
+		<div class="mi-about__sky"></div>
 		<picture class="mi-about__cloud mi-about__cloud--a">
 			<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/2.png" type="image/png">
 			<source srcset="{THEME}/images/about/cloud.webp" type="image/webp">
