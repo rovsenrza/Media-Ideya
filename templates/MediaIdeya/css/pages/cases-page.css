@@ -91,6 +91,8 @@
   scrollbar-width: thin;
   overscroll-behavior: contain;
   scroll-behavior: auto;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mi-case-dialog__content::-webkit-scrollbar {

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru"[available=lostpassword|register] class="page-form"[/available]>
 <head>
-	{headers}
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
+	{headers}
 	<link rel="icon" href="{THEME}/images/media-ideya-logo.png" type="image/png" sizes="any">
 	<link rel="apple-touch-icon" href="{THEME}/images/media-ideya-logo.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,6 +117,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
 	<script src="{THEME}/js/main.js" defer></script>
+	<script src="{THEME}/js/components/phone-mask.js" defer></script>
 	<script src="{THEME}/js/components/request-modal.js" defer></script>
 	[available=main]
 	<script src="{THEME}/js/components/faq.js" defer></script>

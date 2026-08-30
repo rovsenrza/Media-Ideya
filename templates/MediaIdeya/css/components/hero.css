@@ -332,3 +332,77 @@
     animation: none !important;
   }
 }
+
+@media (max-width: 991px) {
+  .mi-hero {
+    height: 1600px;
+  }
+
+  .mi-hero__pin {
+    position: sticky;
+    top: 0;
+    height: 800px;
+  }
+
+  .mi-hero__stage {
+    min-height: 800px;
+    height: 800px;
+  }
+
+  .mi-hero__sky {
+    height: 770px;
+  }
+
+  .mi-hero__cloud {
+    width: 927px;
+    height: 378px;
+    animation-duration: 28s;
+  }
+
+  .mi-hero__cloud--l { left: -447px; top: -9px; }
+  .mi-hero__cloud--r { right: auto; left: -128px; top: 148px; }
+
+  .mi-hero__col--l,
+  .mi-hero__col--r {
+    top: -72px;
+    width: 303px;
+    height: 787px;
+  }
+
+  .mi-hero__col--l {
+    left: -225px;
+    transform: translate3d(calc(var(--mi-hero-p, 0) * -120px), calc(var(--mi-hero-p, 0) * 36px), 0);
+  }
+
+  .mi-hero__col--r {
+    left: 282px;
+    transform: translate3d(calc(var(--mi-hero-p, 0) * 120px), calc(var(--mi-hero-p, 0) * 36px), 0);
+  }
+
+  .mi-hero__statue {
+    top: 278px;
+    width: 391px;
+    height: 481px;
+    transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -160px), 0);
+  }
+
+  .mi-hero__fade-top { height: 96px; }
+  .mi-hero__fade-mid { top: 398px; height: 402px; }
+  .mi-hero__fade-bottom { display: none; }
+
+  .mi-hero__title {
+    top: 99px;
+    width: calc(100% - 32px);
+    max-width: none;
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .mi-hero__scroll {
+    top: 672px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .mi-hero__scroll svg { width: 64px; height: 64px; }
+}

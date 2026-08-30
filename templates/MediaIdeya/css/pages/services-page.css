@@ -344,11 +344,16 @@
 .mi-service-detail__case {
   --mi-bubble-x: 0px;
   --mi-bubble-y: 0px;
+  --mi-bubble-scroll-y: 0px;
   position: absolute;
   z-index: 2;
   width: calc(442px * var(--mi-service-scale));
   height: calc(299px * var(--mi-service-scale));
-  transform: translate3d(var(--mi-bubble-x), var(--mi-bubble-y), 0);
+  transform: translate3d(
+    var(--mi-bubble-x),
+    calc(var(--mi-bubble-y) + var(--mi-bubble-scroll-y)),
+    0
+  );
   will-change: transform;
 }
 
@@ -610,18 +615,9 @@
   gap: calc(10px * var(--mi-service-scale));
 }
 
-.mi-service-detail__field--phone::after {
-  content: "+7";
-  position: absolute;
-  z-index: 1;
-  left: calc(40px * var(--mi-service-scale));
-  bottom: calc(24px * var(--mi-service-scale));
-  color: #112331;
-  font-size: calc(20px * var(--mi-service-scale));
-  font-weight: 300;
-  line-height: 1.5;
-  pointer-events: none;
-}
+.mi-service-detail__phone-input { display: flex; align-items: center; box-sizing: border-box; width: 100%; height: calc(78px * var(--mi-service-scale)); padding: 0 calc(40px * var(--mi-service-scale)); border-radius: calc(16px * var(--mi-service-scale)); background: #edf5fd; }
+.mi-service-detail__phone-input b { flex: none; color: #112331; font-size: calc(20px * var(--mi-service-scale)); font-weight: 500; line-height: 1.5; }
+.mi-service-detail__field .mi-service-detail__phone-input input { height: 100%; min-height: 0; padding: 0 0 0 .35em; border: 0; border-radius: 0; background: transparent; }
 
 .mi-service-detail__field > span {
   color: #fff;
@@ -664,6 +660,13 @@
 .mi-service-detail__field textarea:focus {
   border-color: #4385bb;
   box-shadow: 0 0 0 3px rgba(67, 133, 187, 0.24);
+}
+
+.mi-service-detail__field .mi-service-detail__phone-input input:focus,
+.mi-service-detail__field .mi-service-detail__phone-input input:focus-visible {
+  outline: 0;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .mi-service-detail__consents {
@@ -966,6 +969,10 @@
     padding: 0 20px 64px;
   }
 
+  .mi-service-detail__request.mi-project-contact {
+    padding: 48px 20px;
+  }
+
   .mi-service-detail__request-card {
     display: grid;
     width: min(100%, 720px);
@@ -1042,11 +1049,8 @@
     border-radius: 12px;
   }
 
-  .mi-service-detail__field--phone::after {
-    left: 20px;
-    bottom: 17px;
-    font-size: 16px;
-  }
+  .mi-service-detail__phone-input { height: 64px; padding: 0 20px; border-radius: 12px; }
+  .mi-service-detail__phone-input b { font-size: 16px; }
 
   .mi-service-detail__consents {
     gap: 12px;

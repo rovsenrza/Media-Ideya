@@ -2,96 +2,28 @@
   'use strict';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lenis = null;
+  var lenis = window.MI && window.MI.lenis;
 
-  /* GSAP + Lenis smooth scroll (GreenSock-recommended sync) */
-  if (!reduce && window.gsap && window.Lenis) {
-    var gsap = window.gsap;
+  /* Banner zone — retain its home-only 25% slower scroll response. */
+  var heroForScroll = document.querySelector('[data-hero-sticky]');
+  if (lenis && heroForScroll) {
+    var BASE_SCROLL_MULT = 0.92;
+    var HERO_SCROLL_MULT = BASE_SCROLL_MULT * 0.75;
 
-    lenis = new window.Lenis({
-      lerp: 0.09,
-      duration: 1.25,
-      smoothWheel: true,
-      syncTouch: true,
-      wheelMultiplier: 0.92,
-      touchMultiplier: 0.92,
-      prevent: function (node) {
-        return !!(node.closest && node.closest('[data-articles-swiper]'));
-      },
-    });
-
-    document.documentElement.classList.add('lenis', 'lenis-smooth');
-
-    /* Banner zone — scroll 25% slower while hero is active */
-    var heroForScroll = document.querySelector('[data-hero-sticky]');
-    if (heroForScroll) {
-      var BASE_SCROLL_MULT = 0.92;
-      var HERO_SCROLL_MULT = BASE_SCROLL_MULT * 0.75;
-
-      function heroScrollEndY() {
-        var docTop =
-          heroForScroll.getBoundingClientRect().top + window.pageYOffset;
-        return Math.max(
-          0,
-          docTop + heroForScroll.offsetHeight - window.innerHeight
-        );
-      }
-
-      function syncLenisHeroSpeed() {
-        var inHero = window.pageYOffset < heroScrollEndY() - 1;
-        var mult = inHero ? HERO_SCROLL_MULT : BASE_SCROLL_MULT;
-        lenis.options.wheelMultiplier = mult;
-        lenis.options.touchMultiplier = mult;
-      }
-
-      lenis.on('scroll', syncLenisHeroSpeed);
-      syncLenisHeroSpeed();
+    function heroScrollEndY() {
+      var docTop = heroForScroll.getBoundingClientRect().top + window.pageYOffset;
+      return Math.max(0, docTop + heroForScroll.offsetHeight - window.innerHeight);
     }
 
-    gsap.ticker.add(function (time) {
-      lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0);
-  }
-
-  /* Header — AOS fade-up */
-  var header = document.querySelector('.mi-header[data-aos="fade-up"]');
-  if (header) {
-    if (reduce) {
-      header.classList.add('aos-animate');
-    } else {
-      requestAnimationFrame(function () {
-        header.classList.add('aos-animate');
-      });
-    }
-  }
-
-  /* Header glass — only after hero/banner scrolled past */
-  var heroForGlass = document.querySelector('[data-hero-sticky]');
-  if (header && heroForGlass) {
-    var glassTick = false;
-
-    function syncHeaderGlass() {
-      glassTick = false;
-      var bottom = heroForGlass.getBoundingClientRect().bottom;
-      var threshold = header.offsetHeight || 72;
-      if (bottom <= threshold) {
-        header.classList.add('mi-header--glass');
-      } else {
-        header.classList.remove('mi-header--glass');
-      }
+    function syncLenisHeroSpeed() {
+      var inHero = window.pageYOffset < heroScrollEndY() - 1;
+      var mult = inHero ? HERO_SCROLL_MULT : BASE_SCROLL_MULT;
+      lenis.options.wheelMultiplier = mult;
+      lenis.options.touchMultiplier = mult;
     }
 
-    function onGlassScroll() {
-      if (!glassTick) {
-        glassTick = true;
-        requestAnimationFrame(syncHeaderGlass);
-      }
-    }
-
-    window.addEventListener('scroll', onGlassScroll, { passive: true });
-    window.addEventListener('resize', onGlassScroll, { passive: true });
-    syncHeaderGlass();
+    lenis.on('scroll', syncLenisHeroSpeed);
+    syncLenisHeroSpeed();
   }
 
   /* Hero title — L→R line reveal (.mi-reveal) */

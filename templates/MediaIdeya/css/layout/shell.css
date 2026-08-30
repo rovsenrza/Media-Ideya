@@ -15,6 +15,11 @@
   width: 100%;
 }
 
+/* Fixed shared header: retain the former in-flow offset on inner pages. */
+.mi-body:not(.is-home) .mi-main {
+  padding-top: var(--mi-header-height);
+}
+
 .mi-container {
   width: 100%;
   max-width: var(--mi-page-width);
@@ -43,4 +48,15 @@
 
 .mi-auth__body {
   width: min(480px, 100%);
+}
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-smooth body {
+  overscroll-behavior: none;
+}
+
+html.lenis.lenis-stopped body {
+  overflow: hidden;
 }

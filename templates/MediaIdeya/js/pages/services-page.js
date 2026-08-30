@@ -84,35 +84,23 @@
     });
   }
 
-  var channelButtons = Array.prototype.slice.call(
-    page.querySelectorAll("[data-service-channel]")
-  );
+  var channelButtons = page.querySelectorAll("[data-service-channel]");
   var channelInput = page.querySelector("[data-service-channel-input]");
 
-  channelButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      var isSelected = button.classList.contains("is-selected");
+  if (channelButtons.length && channelInput) {
+    Array.prototype.forEach.call(channelButtons, function (button) {
+      button.addEventListener("click", function () {
+        Array.prototype.forEach.call(channelButtons, function (item) {
+          item.classList.remove("is-selected");
+          item.setAttribute("aria-pressed", "false");
+        });
 
-      channelButtons.forEach(function (item) {
-        item.classList.remove("is-selected");
-        item.setAttribute("aria-pressed", "false");
-      });
-
-      if (isSelected) {
-        if (channelInput) {
-          channelInput.value = "";
-        }
-        return;
-      }
-
-      button.classList.add("is-selected");
-      button.setAttribute("aria-pressed", "true");
-
-      if (channelInput) {
+        button.classList.add("is-selected");
+        button.setAttribute("aria-pressed", "true");
         channelInput.value = button.getAttribute("data-service-channel") || "";
-      }
+      });
     });
-  });
+  }
 
   var requestForm = page.querySelector("[data-service-form]");
 
@@ -124,7 +112,6 @@
       var submit = requestForm.querySelector('[type="submit"]');
       var phone = requestForm.querySelector('[name="phone"]');
       var message = requestForm.querySelector('[name="message"]');
-      var selectedChannel = requestForm.querySelector('[name="contact_channel"]');
       var subject = requestForm.querySelector("[data-service-subject]");
       var originalLabel = submit ? submit.textContent : "";
 
@@ -161,8 +148,7 @@
           payload.append(
             "message",
             [
-              "Телефон: " + phone.value,
-              selectedChannel && selectedChannel.value ? "Удобный канал: " + selectedChannel.value : "",
+              "Телефон: " + (phone.value ? "+7 " + phone.value : ""),
               message.value || "Описание задачи не указано."
             ].filter(Boolean).join("\n")
           );
@@ -214,9 +200,10 @@
 
   var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
-  if (!reducedMotion.matches && finePointer.matches && stage && bubbles.length) {
+  if (!reducedMotion.matches && stage && bubbles.length) {
     var pointerX = 0;
     var pointerY = 0;
+    var scrollProgress = 0;
     var animationFrame = 0;
 
     var renderBubbleShift = function () {
@@ -234,33 +221,53 @@
           "--mi-bubble-y",
           pointerY * depth + "px"
         );
+        bubble.style.setProperty(
+          "--mi-bubble-scroll-y",
+          (scrollProgress * (5 + index * 1.25) * direction).toFixed(2) + "px"
+        );
       });
     };
 
-    stage.addEventListener("pointermove", function (event) {
+    var requestBubbleRender = function () {
+      if (!animationFrame) {
+        animationFrame = window.requestAnimationFrame(renderBubbleShift);
+      }
+    };
+
+    var syncScrollShift = function () {
       var bounds = stage.getBoundingClientRect();
+      var viewportCenter = window.innerHeight * 0.5;
+      var range = Math.max(window.innerHeight + bounds.height * 0.5, 1);
+      scrollProgress = Math.max(-1, Math.min(1, (viewportCenter - (bounds.top + bounds.height * 0.5)) / range));
+      requestBubbleRender();
+    };
 
-      pointerX = Math.max(
-        -1,
-        Math.min(1, (event.clientX - bounds.left - bounds.width / 2) / (bounds.width / 2))
-      );
-      pointerY = Math.max(
-        -1,
-        Math.min(1, (event.clientY - bounds.top - bounds.height / 2) / (bounds.height / 2))
-      );
+    if (finePointer.matches) {
+      stage.addEventListener("pointermove", function (event) {
+        var bounds = stage.getBoundingClientRect();
 
-      if (!animationFrame) {
-        animationFrame = window.requestAnimationFrame(renderBubbleShift);
-      }
-    });
+        pointerX = Math.max(
+          -1,
+          Math.min(1, (event.clientX - bounds.left - bounds.width / 2) / (bounds.width / 2))
+        );
+        pointerY = Math.max(
+          -1,
+          Math.min(1, (event.clientY - bounds.top - bounds.height / 2) / (bounds.height / 2))
+        );
 
-    stage.addEventListener("pointerleave", function () {
-      pointerX = 0;
-      pointerY = 0;
+        requestBubbleRender();
+      });
 
-      if (!animationFrame) {
-        animationFrame = window.requestAnimationFrame(renderBubbleShift);
-      }
-    });
+      stage.addEventListener("pointerleave", function () {
+        pointerX = 0;
+        pointerY = 0;
+
+        requestBubbleRender();
+      });
+    }
+
+    window.addEventListener("scroll", syncScrollShift, { passive: true });
+    window.addEventListener("resize", syncScrollShift, { passive: true });
+    syncScrollShift();
   }
 })();

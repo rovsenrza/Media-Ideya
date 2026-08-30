@@ -7,3 +7,4 @@
 - Form: outer `1720×722`, `60` radius, `80` top/right/bottom and `290` left content offset. Text column `650`, form column `700`; inputs `78` high, `16` radius.
 - Original assets live in `templates/MediaIdeya/images/pages/contact/`.
 - Implementation: `feedback.tpl`, `css/pages/contact-page.css`, `js/pages/contact-page.js`.
+- Rechecked 2026-08-23: footer social group is `224×64` (three `64px` circles, `16px` gaps); contact social group is `266×78` (three `78px` circles, `16px` gaps). Render the Telegram, WhatsApp and VK glyph assets inside the circles rather than exporting the empty background-circle groups alone.

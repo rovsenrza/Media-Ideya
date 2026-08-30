@@ -14,7 +14,7 @@
 			[/xfgiven_case_hero]
 		</div>
 
-		<div class="mi-case-dialog__content" data-case-scroll tabindex="0">
+		<div class="mi-case-dialog__content" data-case-scroll data-lenis-prevent tabindex="0">
 			<header class="mi-case-dialog__header">
 				[xfgiven_case_brand]<p class="mi-case-dialog__brand">[xfvalue_case_brand]</p>[/xfgiven_case_brand]
 				<h1 id="mi-case-title">{title}</h1>
@@ -96,7 +96,7 @@
 				<div class="mi-case-cta__copy">
 					<h2>[xfvalue_case_cta_title]</h2>
 					[xfgiven_case_cta_text]<p>[xfvalue_case_cta_text]</p>[/xfgiven_case_cta_text]
-					<a class="mi-btn" href="{THEME}/../../index.php?do=feedback">Придумать механику для вашего бренда</a>
+					<button class="mi-btn" type="button" data-request-modal-open>Придумать механику для вашего бренда</button>
 				</div>
 				<img src="{THEME}/images/pages/cases/head.png" width="260" height="395" alt="" loading="lazy" decoding="async">
 			</aside>

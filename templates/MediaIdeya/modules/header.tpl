@@ -11,6 +11,12 @@
 			{include file="modules/topmenu.tpl"}
 		</nav>
 
-		<a class="mi-btn mi-btn--header" href="{THEME}/../../index.php?do=feedback">Оставить заявку</a>
+		<button class="mi-btn mi-btn--header" type="button" data-request-modal-open>Оставить заявку</button>
+		<button class="mi-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mi-mobile-menu" data-mobile-menu-toggle>
+			<img src="{THEME}/images/icons/menu-deep.svg" alt="" width="26" height="26" decoding="async">
+		</button>
 	</div>
+	<nav class="mi-mobile-menu" id="mi-mobile-menu" aria-label="Мобильное меню" data-mobile-menu>
+		{include file="modules/topmenu.tpl"}
+	</nav>
 </header>

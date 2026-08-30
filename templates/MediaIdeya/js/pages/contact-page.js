@@ -1,6 +1,55 @@
 (function () {
   'use strict';
 
+  /* Figma feedback: a restrained wreath parallax on pointer movement/scroll. */
+  var wreath = document.querySelector('.mi-contact-intro__wreath');
+  var intro = document.querySelector('.mi-contact-intro__body');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (wreath && intro && !reduceMotion && finePointer) {
+    var parallaxTick = false;
+    var pointerX = 0;
+    var pointerY = 0;
+
+    function clamp(value, minimum, maximum) {
+      return Math.min(maximum, Math.max(minimum, value));
+    }
+
+    function syncWreathParallax() {
+      parallaxTick = false;
+      var rect = intro.getBoundingClientRect();
+      var scrollY = clamp(-rect.top / Math.max(window.innerHeight, 1), -1, 1) * 12;
+      wreath.style.setProperty('--mi-contact-wreath-x', pointerX.toFixed(2) + 'px');
+      wreath.style.setProperty('--mi-contact-wreath-y', pointerY.toFixed(2) + 'px');
+      wreath.style.setProperty('--mi-contact-wreath-scroll-y', scrollY.toFixed(2) + 'px');
+    }
+
+    function requestParallaxSync() {
+      if (!parallaxTick) {
+        parallaxTick = true;
+        window.requestAnimationFrame(syncWreathParallax);
+      }
+    }
+
+    intro.addEventListener('pointermove', function (event) {
+      var rect = intro.getBoundingClientRect();
+      pointerX = clamp((event.clientX - rect.left) / Math.max(rect.width, 1) - 0.5, -0.5, 0.5) * 16;
+      pointerY = clamp((event.clientY - rect.top) / Math.max(rect.height, 1) - 0.5, -0.5, 0.5) * 12;
+      requestParallaxSync();
+    });
+
+    intro.addEventListener('pointerleave', function () {
+      pointerX = 0;
+      pointerY = 0;
+      requestParallaxSync();
+    });
+
+    window.addEventListener('scroll', requestParallaxSync, { passive: true });
+    window.addEventListener('resize', requestParallaxSync, { passive: true });
+    syncWreathParallax();
+  }
+
   var phone = document.querySelector('.mi-contact-page input[type="tel"]');
   if (!phone) return;
 
@@ -14,34 +63,12 @@
       if (mail && draft.mail) mail.value = draft.mail;
       if (message && draft.message) message.value = draft.message;
       if (draft.phone) phone.value = draft.phone;
+      phone.dispatchEvent(new Event('input', { bubbles: true }));
       sessionStorage.removeItem('mi-feedback-draft');
     }
   } catch (storageError) {
     /* Form remains usable when storage is disabled or contains invalid data. */
   }
-
-  function formatRussianPhone(value) {
-    var digits = value.replace(/\D/g, '');
-    if (digits.charAt(0) === '8') digits = '7' + digits.slice(1);
-    if (digits.charAt(0) !== '7') digits = '7' + digits;
-    digits = digits.slice(0, 11);
-
-    var result = '+7';
-    if (digits.length > 1) result += ' (' + digits.slice(1, 4);
-    if (digits.length >= 4) result += ')';
-    if (digits.length > 4) result += ' ' + digits.slice(4, 7);
-    if (digits.length > 7) result += '-' + digits.slice(7, 9);
-    if (digits.length > 9) result += '-' + digits.slice(9, 11);
-    return result;
-  }
-
-  phone.addEventListener('input', function () {
-    phone.value = formatRussianPhone(phone.value);
-  });
-
-  phone.addEventListener('focus', function () {
-    if (!phone.value) phone.value = '+7';
-  });
 
   var sendmail = document.getElementById('sendmail');
   var engineFields = document.querySelector('.mi-project-form__engine');

@@ -22,9 +22,9 @@
 		<div class="mi-contact-detail mi-contact-detail--social">
 			<span class="mi-contact-detail__label">Соц.сети</span>
 			<div class="mi-contact-detail__social-links">
-				<img src="{THEME}/images/pages/contact/socials.svg" width="266" height="78" alt="" decoding="async">
-				[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link mi-contact-detail__social-link--telegram" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"></a>[/xfgiven_contact_telegram_url]
-				[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link mi-contact-detail__social-link--whatsapp" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"></a>[/xfgiven_contact_whatsapp_url]
+				[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"><img src="{THEME}/images/icons/telegram.svg" width="78" height="78" alt=""></a>[/xfgiven_contact_telegram_url]
+				[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"><img src="{THEME}/images/icons/whatsapp.svg" width="78" height="78" alt=""></a>[/xfgiven_contact_whatsapp_url]
+				<a class="mi-contact-detail__social-link" href="https://vk.com/mediaideya" aria-label="ВКонтакте" rel="noopener noreferrer"><img src="{THEME}/images/icons/vk.svg" width="78" height="78" alt=""></a>
 			</div>
 		</div>
 	</div>

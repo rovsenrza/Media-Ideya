@@ -28,7 +28,7 @@
 						<a href="https://{{website_url}}/" target="_blank" rel="nofollow">{{Developers Website}}</a>
 						<a href="https://forum.dle-news.ru/" target="_blank">{{Support forum}}</a>
 						<a href="https://{{website_url}}/price.html" target="_blank">{{Buy Engine}}</a>
-						<a href="/index.php?do=feedback">{{Contacts}}</a>
+						<a href="/contact">{{Contacts}}</a>
 					</nav>
 				</div>
 			</li>

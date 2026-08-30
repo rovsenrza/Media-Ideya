@@ -5,26 +5,31 @@
 				<div class="mi-hero__sky"></div>
 
 				<picture class="mi-hero__cloud mi-hero__cloud--l">
+					<source media="(max-width: 991px)" srcset="{THEME}/images/hero/mobile-cloud.png" type="image/png">
 					<source srcset="{THEME}/images/hero/cloud.webp 1x, {THEME}/images/hero/cloud@2x.webp 2x" type="image/webp">
 					<img src="{THEME}/images/hero/cloud.png" srcset="{THEME}/images/hero/cloud.png 1x, {THEME}/images/hero/cloud@2x.png 2x" alt="" width="2270" height="924" decoding="async" fetchpriority="high">
 				</picture>
 
 				<picture class="mi-hero__cloud mi-hero__cloud--r">
+					<source media="(max-width: 991px)" srcset="{THEME}/images/hero/mobile-cloud.png" type="image/png">
 					<source srcset="{THEME}/images/hero/cloud.webp 1x, {THEME}/images/hero/cloud@2x.webp 2x" type="image/webp">
 					<img src="{THEME}/images/hero/cloud.png" srcset="{THEME}/images/hero/cloud.png 1x, {THEME}/images/hero/cloud@2x.png 2x" alt="" width="2270" height="924" decoding="async">
 				</picture>
 
 				<picture class="mi-hero__col mi-hero__col--l">
+					<source media="(max-width: 991px)" srcset="{THEME}/images/hero/mobile-column.png" type="image/png">
 					<source srcset="{THEME}/images/sutun-sol.webp" type="image/webp">
 					<img src="{THEME}/images/sutun-sol.png" alt="" width="617" height="1603" decoding="async" fetchpriority="high">
 				</picture>
 
 				<picture class="mi-hero__col mi-hero__col--r" aria-hidden="true">
+					<source media="(max-width: 991px)" srcset="{THEME}/images/hero/mobile-column.png" type="image/png">
 					<source srcset="{THEME}/images/sutun-sol.webp" type="image/webp">
 					<img src="{THEME}/images/sutun-sol.png" alt="" width="617" height="1603" decoding="async">
 				</picture>
 
 				<picture class="mi-hero__statue">
+					<source media="(max-width: 991px)" srcset="{THEME}/images/hero/mobile-statue.png" type="image/png">
 					<source srcset="{THEME}/images/statuya.webp" type="image/webp">
 					<img src="{THEME}/images/statuya.png" alt="" width="888" height="939" decoding="async" fetchpriority="high">
 				</picture>

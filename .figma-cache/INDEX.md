@@ -4,7 +4,7 @@ MCP `get_design_context` / `get_metadata` outputları burada saxlanılır.
 
 **Məqsəd:** rate-limit və təkrar MCP çağırışını azaltmaq.
 
-## Active file
+## Legacy desktop source
 
 - fileKey: `xwP9bW8ocVlkXfKa0HwLVf`
 - URL: https://www.figma.com/design/xwP9bW8ocVlkXfKa0HwLVf/MEDIA-IDEYA-site--Copy-
@@ -38,7 +38,15 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 
 ## User-provided references
 
+### Current mobile source of truth
+
+- fileKey: `26q72HBLqm2BrQP1NnVPqy`
+- URL: https://www.figma.com/design/26q72HBLqm2BrQP1NnVPqy/MEDIA-IDEYA-site--Copy-
+- Mobile canvas: `360px`
+- Asset rule: download and use only source `rawImages` / exported SVGs from Figma. Never use exported node previews as content assets.
+
 | Node | Section | File |
 |------|---------|------|
+| `101:519` | Главная — mobile 360px | `101-519_home-mobile.md` |
 | `101:2447` | Modal — 1920 desktop | `101-2447_modal-1920-user-reference.md` |
 | `101:2450` | Request form — 1920 desktop | `101-2450_request-form-1920-user-reference.md` |

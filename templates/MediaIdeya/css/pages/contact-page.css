@@ -69,29 +69,26 @@
 }
 
 .mi-contact-detail__social-links {
-	position: relative;
+	display: flex;
+	gap: calc(16px * var(--mi-s));
 	width: calc(266px * var(--mi-s));
 	height: calc(78px * var(--mi-s));
 	max-width: none;
 }
 
-.mi-contact-detail__social-links img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	max-width: none;
-}
-
 .mi-contact-detail__social-link {
-	position: absolute;
-	top: 0;
-	height: 100%;
-	width: 29.32%;
+	display: block;
+	flex: 0 0 calc(78px * var(--mi-s));
+	width: calc(78px * var(--mi-s));
+	height: calc(78px * var(--mi-s));
 	border-radius: 50%;
 }
 
-.mi-contact-detail__social-link--telegram { left: 0; }
-.mi-contact-detail__social-link--whatsapp { left: 35.34%; }
+.mi-contact-detail__social-link img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
 
 .mi-contact-intro__wreath {
   position: absolute;
@@ -101,7 +98,13 @@
   width: calc(630px * var(--mi-s));
   height: calc(556px * var(--mi-s));
   max-width: none;
-  object-fit: fill;
+  object-fit: contain;
+  transform: translate3d(
+    var(--mi-contact-wreath-x, 0px),
+    calc(var(--mi-contact-wreath-y, 0px) + var(--mi-contact-wreath-scroll-y, 0px)),
+    0
+  );
+  will-change: transform;
 }
 
 .mi-contact-location {
@@ -131,15 +134,23 @@
 }
 
 .mi-contact-location__map,
-.mi-contact-location__map img {
+.mi-contact-location__map iframe {
   width: 100%;
   height: calc(594px * var(--mi-s));
 }
 
-.mi-contact-location__map img {
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
+.mi-contact-location__map {
+  position: relative;
+  overflow: hidden;
+}
+
+.mi-contact-location__map iframe {
+  display: block;
+  position: absolute;
+  inset: 0;
+  min-width: 100%;
+  min-height: 100%;
+  border: 0;
 }
 
 .mi-project-contact {
@@ -159,7 +170,8 @@
   background:
     radial-gradient(circle at 16% 100%, rgba(67, 133, 187, 0.9), transparent 38%),
     #0d304c;
-  overflow: hidden;
+  /* Let the capital of the left column project above the rounded card. */
+  overflow: visible;
 }
 
 .mi-project-contact__column {
@@ -172,6 +184,9 @@
   max-width: none;
   object-fit: cover;
   object-position: right center;
+  /* Card remains open only above its top edge; the column box ends exactly at
+     the card bottom, so its lower portion stays clipped. */
+  clip-path: inset(calc(-60px * var(--mi-s)) 0 0 0);
 }
 
 .mi-project-contact__column img {
@@ -272,16 +287,9 @@
   min-width: 0;
 }
 
-.mi-project-form__field--phone::after {
-  content: "+7";
-  position: absolute;
-  z-index: 1;
-  left: calc(40px * var(--mi-s));
-  bottom: calc(24px * var(--mi-s));
-  color: var(--mi-color-surface-dark);
-  font: 300 var(--mi-fs-20) / 1.5 var(--mi-font);
-  pointer-events: none;
-}
+.mi-project-phone-input { display: flex; align-items: center; box-sizing: border-box; width: 100%; min-height: calc(78px * var(--mi-s)); padding: 0 calc(40px * var(--mi-s)); border-radius: calc(16px * var(--mi-s)); background: var(--mi-color-surface-soft); }
+.mi-project-phone-input b { flex: none; color: var(--mi-color-surface-dark); font: 500 var(--mi-fs-20) / 1.5 var(--mi-font); }
+.mi-project-form__field .mi-project-phone-input input { height: 100%; min-height: 0; padding: 0 0 0 .35em; border-radius: 0; background: transparent; }
 
 .mi-project-form__field label,
 .mi-project-form__engine label {
@@ -314,6 +322,12 @@
 .mi-project-form__field input:focus,
 .mi-project-form__field textarea:focus {
   box-shadow: 0 0 0 2px #4385bb;
+}
+
+.mi-project-form__field .mi-project-phone-input input:focus,
+.mi-project-form__field .mi-project-phone-input input:focus-visible {
+  outline: 0;
+  box-shadow: none;
 }
 
 .mi-project-form__consents {
@@ -467,12 +481,8 @@
   .mi-contact-location__copy p { max-width: none; font-size: 22px; }
 
   .mi-contact-location__map,
-  .mi-contact-location__map img {
+  .mi-contact-location__map iframe {
     height: 360px;
-  }
-
-  .mi-contact-location__map img {
-    object-position: 52% center;
   }
 
   .mi-project-contact {
@@ -488,6 +498,7 @@
     min-height: 0;
     padding: 48px 24px;
     border-radius: 32px;
+    overflow: hidden;
   }
 
   .mi-project-contact__column {
@@ -539,11 +550,8 @@
   .mi-project-form__field { gap: 7px; }
   .mi-project-form__field label { font-size: 14px; }
 
-  .mi-project-form__field--phone::after {
-    left: 20px;
-    bottom: 18px;
-    font-size: 17px;
-  }
+  .mi-project-phone-input { min-height: 64px; padding: 0 20px; border-radius: 14px; }
+  .mi-project-phone-input b { font-size: 17px; }
 
   .mi-project-form__field input,
   .mi-project-form__field textarea,

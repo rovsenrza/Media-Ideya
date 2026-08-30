@@ -12,6 +12,7 @@ DirectoryIndex index.php
 	RewriteRule ^category_pages.xml$ uploads/category_pages.xml [L]
 	RewriteRule ^tags_pages.xml$ uploads/tags_pages.xml [L]
 	RewriteRule ^news_pages(\d*?).xml$ uploads/news_pages$1.xml [L]
+	RewriteRule ^contact?$ index.php?do=feedback [L,QSA]
 
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d

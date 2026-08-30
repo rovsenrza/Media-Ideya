@@ -350,3 +350,38 @@
     transform: translateX(-50%) !important;
   }
 }
+
+@media (max-width: 991px) {
+  .mi-about {
+    min-height: 800px;
+    height: 800px;
+    padding: 70px 16px 270px;
+  }
+
+  .mi-about__cloud--a { left: -330px; top: 160px; width: 747px; height: 304px; }
+  .mi-about__cloud--b { left: -303px; top: 323px; width: 1050px; height: 427px; }
+  .mi-about__cloud--c { left: 38px; top: 153px; width: 747px; height: 304px; }
+
+  .mi-about__colonnade {
+    top: 419px;
+    width: 726px;
+    height: 513px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .mi-about__colonnade-glow { display: none; }
+
+  .mi-about__inner { gap: 24px; }
+  .mi-about__text { max-width: 328px; }
+  .mi-about__title { font-size: 32px; }
+  .mi-about__desc { margin-top: 0; font-size: 14px; }
+
+  .mi-about__stats { width: 100%; gap: 16px 35px; flex-wrap: wrap; justify-content: center; }
+  .mi-about__stat { gap: 4px; max-width: none; text-align: center; }
+  .mi-about__stat-num { font-size: 32px; }
+  .mi-about__wreath { width: 32px; height: 60px; }
+  .mi-about__stat-label { font-size: 14px; }
+  .mi-about__cta { position: relative; z-index: 3; }
+  .mi-about__wave { display: block; top: 690px; bottom: auto; width: 412px; height: 110px; }
+}

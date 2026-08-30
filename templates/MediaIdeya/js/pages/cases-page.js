@@ -48,7 +48,14 @@
       if (cancelled) return;
       var elapsed = Math.min((now - start) / 1000, 4.1);
       panel.scrollTop = max * (measuredPosition(elapsed) / 900);
-      if (elapsed < 4.1) animationFrame = window.requestAnimationFrame(frame);
+      if (elapsed < 4.1) {
+        animationFrame = window.requestAnimationFrame(frame);
+      } else {
+        /* The popup animation is a one-way reveal: freeze the supplied final
+           frame rather than allowing a later layout tick to reset it. */
+        panel.scrollTop = max;
+        panel.classList.add('is-motion-complete');
+      }
     }
 
     animationFrame = window.requestAnimationFrame(frame);
@@ -57,6 +64,11 @@
   ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (eventName) {
     panel.addEventListener(eventName, cancelAutoScroll, { passive: true, once: true });
   });
+
+  /* Lenis owns the document, not the popup's independently scrollable panel. */
+  panel.addEventListener('wheel', function (event) {
+    event.stopPropagation();
+  }, { passive: true });
 
   var close = document.querySelector('[data-case-close]');
   if (close) {

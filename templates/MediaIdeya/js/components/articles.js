@@ -22,10 +22,12 @@
     'wheel',
     function (event) {
       if (!canScroll()) return;
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      /* Preserve vertical wheel scrolling for the page. The rail only owns
+         deliberate horizontal trackpad gestures; mouse drag remains available. */
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
 
       event.preventDefault();
-      track.scrollLeft += event.deltaY;
+      track.scrollLeft += event.deltaX;
     },
     { passive: false }
   );
@@ -35,6 +37,9 @@
     function (event) {
       if (event.button !== 0 || event.pointerType !== 'mouse') return;
       if (!canScroll()) return;
+      /* A card remains a link. Starting a press on an interactive element must
+         never turn it into a rail drag or swallow its click. */
+      if (event.target.closest('a, button, input, textarea, select, label')) return;
 
       dragging = true;
       moved = false;
@@ -44,7 +49,7 @@
       track.classList.add('is-dragging');
       track.setPointerCapture(activePointer);
     },
-    true
+    false
   );
 
   track.addEventListener(
@@ -90,7 +95,7 @@
       event.preventDefault();
       event.stopImmediatePropagation();
     },
-    true
+    false
   );
 
   track.addEventListener('dragstart', function (event) {

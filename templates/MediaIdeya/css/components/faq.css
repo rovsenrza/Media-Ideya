@@ -189,3 +189,16 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 991px) {
+  .mi-faq { padding: 20px 16px 60px; }
+  .mi-faq__glow { top: -147px; width: 492px; height: 492px; }
+  .mi-faq__inner { gap: 20px; }
+  .mi-faq__label { display: none; }
+  .mi-faq__heading { font-size: 32px; }
+  .mi-faq__list { gap: 10px; }
+  .mi-faq__item { border-radius: 20px; }
+  .mi-faq__q { min-height: 0; padding: 20px; font-size: 18px; }
+  .mi-faq__icon { width: 24px; height: 24px; background-size: 16px; }
+  .mi-faq__a-inner { padding: 0 20px 20px; font-size: 14px; }
+}

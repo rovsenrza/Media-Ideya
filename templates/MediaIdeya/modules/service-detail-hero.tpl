@@ -20,6 +20,6 @@
 
 	<div class="mi-service-detail__hero-copy" data-service-reveal>
 		<h1 id="mi-service-detail-title">{title}</h1>
-		<a class="mi-btn mi-service-detail__hero-cta" href="#service-request">Оставить заявку</a>
+		<button class="mi-btn mi-service-detail__hero-cta" type="button" data-request-modal-open>Оставить заявку</button>
 	</div>
 </section>

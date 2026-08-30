@@ -838,9 +838,6 @@ var dle_login_hash = '{$dle_login_hash}';
 HTML;
 
 $skin_footer = <<<HTML
-					<div class="footer text-muted text-size-small">
-						DataLife Engine&reg;  Copyright 2004-{$year} &copy; <a href="https://dle-news.ru/" target="_blank">SoftNews Media Group</a> All rights reserved.
-					</div>
 				</div>
 			</div>
 		</div>

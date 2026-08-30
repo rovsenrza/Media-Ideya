@@ -5,6 +5,7 @@
   if (!list) return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile = window.matchMedia('(max-width: 991px)').matches;
   var items = list.querySelectorAll('.mi-faq__item');
 
   function getBody(item) {
@@ -63,6 +64,18 @@
 
       body.addEventListener('transitionend', onEnd);
     });
+  }
+
+  /* The mobile Figma frame opens the first answer by default. Keep an
+     explicitly open DLE item intact; otherwise initialise the first card. */
+  if (mobile && items.length) {
+    var hasOpen = Array.prototype.some.call(items, function (item) {
+      return item.open || item.hasAttribute('open');
+    });
+    if (!hasOpen) {
+      items[0].open = true;
+      items[0].classList.add('is-open');
+    }
   }
 
   items.forEach(function (item) {

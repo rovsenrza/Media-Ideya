@@ -1,19 +1,23 @@
 <section class="mi-about" id="about" aria-label="О компании" data-aos="about">
 	<div class="mi-about__bg" aria-hidden="true">
 		<picture class="mi-about__cloud mi-about__cloud--a">
+			<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/2.png" type="image/png">
 			<source srcset="{THEME}/images/about/cloud.webp" type="image/webp">
 			<img src="{THEME}/images/about/cloud.png" alt="" width="1635" height="666" decoding="async">
 		</picture>
 		<picture class="mi-about__cloud mi-about__cloud--b">
+			<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/2.png" type="image/png">
 			<source srcset="{THEME}/images/about/cloud.webp" type="image/webp">
 			<img src="{THEME}/images/about/cloud.png" alt="" width="2296" height="936" decoding="async">
 		</picture>
 		<picture class="mi-about__cloud mi-about__cloud--c">
+			<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/2.png" type="image/png">
 			<source srcset="{THEME}/images/about/cloud.webp" type="image/webp">
 			<img src="{THEME}/images/about/cloud.png" alt="" width="1635" height="666" decoding="async">
 		</picture>
 		<div class="mi-about__colonnade" aria-hidden="true">
 			<picture class="mi-about__colonnade-fill">
+				<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/3.png" type="image/png">
 				<source srcset="{THEME}/images/about/colonnade-fill.webp 1x, {THEME}/images/about/colonnade-fill@2x.webp 2x" type="image/webp">
 				<img src="{THEME}/images/about/colonnade-fill.png" srcset="{THEME}/images/about/colonnade-fill.png 1x, {THEME}/images/about/colonnade-fill@2x.png 2x" alt="" width="2342" height="1654" loading="lazy" decoding="async">
 			</picture>

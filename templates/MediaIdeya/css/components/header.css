@@ -1,10 +1,20 @@
 /* Header — compact bar + glass for scroll (designer feedback) */
 
 .mi-header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 50;
   height: var(--mi-header-height);
   color: var(--mi-color-inverse);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    background 0.35s var(--mi-ease),
+    backdrop-filter 0.35s var(--mi-ease),
+    -webkit-backdrop-filter 0.35s var(--mi-ease);
 }
 
 .mi-header__inner {
@@ -51,32 +61,87 @@
   opacity: 0.8;
 }
 
-/* Home: fixed over hero — glass only after banner scrolled past */
-.is-home .mi-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition:
-    background 0.35s var(--mi-ease),
-    backdrop-filter 0.35s var(--mi-ease),
-    -webkit-backdrop-filter 0.35s var(--mi-ease);
-}
-
-.is-home .mi-header.mi-header--glass {
+.mi-header.mi-header--glass {
   background: var(--mi-color-header-glass);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Non-home: glass always */
-body:not(.is-home) .mi-header {
-  background: var(--mi-color-header-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.mi-menu-toggle,
+.mi-mobile-menu {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .mi-header {
+    --mi-header-height: 50px;
+    height: var(--mi-header-height);
+  }
+
+  .mi-header__inner {
+    padding: 12px 16px;
+  }
+
+  .mi-logo {
+    flex: 0 0 38.64px;
+    width: 38.64px;
+    height: 26px;
+  }
+
+  .mi-logo img {
+    width: 38.64px;
+    height: 26px;
+  }
+
+  .mi-nav {
+    display: none;
+  }
+
+  .mi-menu-toggle {
+    display: grid;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    place-items: center;
+  }
+
+  .mi-menu-toggle img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .mi-mobile-menu {
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 20px;
+    background: #0d304c;
+    box-shadow: 0 16px 36px rgba(17, 35, 49, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity var(--mi-duration) var(--mi-ease), transform var(--mi-duration) var(--mi-ease);
+  }
+
+  .mi-mobile-menu a {
+    padding: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .mi-header.is-menu-open .mi-mobile-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
 }
 
 /* Opening: AOS-style fade-up */

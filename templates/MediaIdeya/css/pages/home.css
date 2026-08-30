@@ -36,3 +36,17 @@ html.lenis.lenis-smooth body {
 html.lenis.lenis-stopped body {
   overflow: hidden;
 }
+
+@media (max-width: 991px) {
+  .is-home {
+    --mi-s: 1;
+    --mi-gutter: 16px;
+    --mi-header-height: 50px;
+    --mi-fs-section: 32px;
+  }
+
+  .is-home .mi-main { overflow: hidden; }
+
+  .is-home .mi-section-title__heading { font-size: 32px; }
+
+}

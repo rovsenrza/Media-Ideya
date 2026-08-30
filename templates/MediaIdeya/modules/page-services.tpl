@@ -8,36 +8,41 @@
 		</div>
 	</section>
 
-	<section class="mi-service-detail__request mi-project-contact" id="service-request" aria-labelledby="mi-project-contact-title">
-		<div class="mi-project-contact__card" data-service-reveal>
-			{custom category="8" template="modules/contact-project-copy" limit="1" order="date" sort="asc" cache="no"}
+	<section class="mi-service-detail__request" id="service-request" aria-labelledby="mi-service-request-title">
+		<div class="mi-service-detail__request-card" data-service-reveal>
+			<div class="mi-service-detail__request-column" aria-hidden="true">
+				<img src="{THEME}/images/pages/services/column.png" alt="" width="1568" height="2734" loading="lazy" decoding="async">
+			</div>
 
-			<form class="mi-project-form" action="{THEME}/../../contact" method="post" data-service-form>
+			{custom category="8" template="modules/project-request-service" limit="1" order="date" sort="asc" cache="no"}
+
+			<form class="mi-service-detail__form" action="{THEME}/../../index.php?do=feedback" method="post" data-service-form>
 				<input type="hidden" name="do" value="feedback">
 				{custom category="4" xfields="service_detail_enabled|1" template="modules/service-detail-form-context" limit="1" order="date" sort="asc" cache="no"}
+				<input type="hidden" name="contact_channel" value="" data-service-channel-input>
 
-				<div class="mi-project-form__field">
-					<label for="service-name">ФИО*</label>
-					<input type="text" name="name" id="service-name" placeholder="ФИО" autocomplete="name" required>
+				<label class="mi-service-detail__field">
+					<span>ФИО*</span>
+					<input type="text" name="name" placeholder="ФИО" autocomplete="name" required>
+				</label>
+
+				<div class="mi-service-detail__field-row">
+					<label class="mi-service-detail__field mi-service-detail__field--phone">
+						<span>Телефон*</span>
+						<span class="mi-service-detail__phone-input"><b>+7</b><input type="tel" name="phone" placeholder="(000) 000-00-00" autocomplete="tel" data-mi-phone-mask required></span>
+					</label>
+					<label class="mi-service-detail__field">
+						<span>Почта*</span>
+						<input type="email" name="mail" placeholder="Почта" autocomplete="email" required>
+					</label>
 				</div>
 
-				<div class="mi-project-form__row">
-					<div class="mi-project-form__field mi-project-form__field--phone">
-						<label for="service-phone">Телефон*</label>
-						<input type="tel" name="phone" id="service-phone" placeholder="(000) 000-00-00" autocomplete="tel" required>
-					</div>
-					<div class="mi-project-form__field">
-						<label for="service-mail">Почта*</label>
-						<input type="email" name="mail" id="service-mail" placeholder="Почта" autocomplete="email" required>
-					</div>
-				</div>
+				<label class="mi-service-detail__field">
+					<span>Описание задачи</span>
+					<textarea name="message" rows="1" placeholder="Описание задачи"></textarea>
+				</label>
 
-				<div class="mi-project-form__field">
-					<label for="service-message">Описание задачи</label>
-					<textarea name="message" id="service-message" rows="2" placeholder="Описание задачи" required></textarea>
-				</div>
-
-				<div class="mi-project-form__consents">
+				<div class="mi-service-detail__consents">
 					<label>
 						<input type="checkbox" name="privacy_policy" value="1" required>
 						<span>Ознакомлен(а) и принимаю условия <a href="{THEME}/../../politika-privatnosti.html">Политики обработки персональных данных</a></span>
@@ -48,7 +53,7 @@
 					</label>
 				</div>
 
-				<button class="mi-btn mi-project-form__submit" type="submit">Отправить заявку</button>
+				<button class="mi-service-detail__submit" type="submit">Отправить заявку</button>
 			</form>
 		</div>
 	</section>

@@ -4,51 +4,7 @@
 .is-about-page,
 .is-services-page,
 .is-cases-page {
-  --mi-header-height: calc(84px * var(--mi-s));
   background: var(--mi-color-surface-dark);
-}
-
-.is-contact-page .mi-header,
-.is-about-page .mi-header,
-.is-services-page .mi-header,
-.is-cases-page .mi-header {
-  background: var(--mi-color-surface-dark);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.is-contact-page .mi-header__inner,
-.is-about-page .mi-header__inner,
-.is-services-page .mi-header__inner,
-.is-cases-page .mi-header__inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  max-width: var(--mi-page-width);
-  padding: calc(20px * var(--mi-s)) var(--mi-gutter);
-}
-
-.is-contact-page .mi-logo,
-.is-about-page .mi-logo,
-.is-services-page .mi-logo,
-.is-cases-page .mi-logo {
-  width: calc(217px * var(--mi-s));
-  height: calc(44px * var(--mi-s));
-}
-
-.is-contact-page .mi-nav,
-.is-about-page .mi-nav,
-.is-services-page .mi-nav,
-.is-cases-page .mi-nav {
-  gap: calc(60px * var(--mi-s));
-}
-
-.is-contact-page .mi-btn--header,
-.is-about-page .mi-btn--header,
-.is-services-page .mi-btn--header,
-.is-cases-page .mi-btn--header {
-  justify-self: end;
-  min-height: calc(44px * var(--mi-s));
-  padding: calc(10px * var(--mi-s)) calc(22px * var(--mi-s));
 }
 
 .is-contact-page .mi-page-head,
@@ -106,6 +62,30 @@
   white-space: pre-line;
 }
 
+/* Keep the two-line address and the complete phone number intact on compact
+   desktop widths. The 1920px Figma column widths remain above this range. */
+@media (min-width: 992px) and (max-width: 1599px) {
+  .mi-footer__contacts {
+    flex-shrink: 0;
+  }
+
+  .mi-footer__contacts .mi-footer__col {
+    flex: 0 0 auto;
+  }
+
+  .mi-footer__contacts .mi-footer__col:nth-child(1) {
+    width: calc(360px * var(--mi-s));
+  }
+
+  .mi-footer__contacts .mi-footer__col:nth-child(3) {
+    width: calc(200px * var(--mi-s));
+  }
+
+  .mi-footer__contacts .mi-footer__col:nth-child(3) a {
+    white-space: nowrap;
+  }
+}
+
 .mi-footer--bar .mi-footer__brand,
 .is-about-page .mi-footer__brand,
 .is-services-page .mi-footer__brand {
@@ -117,9 +97,6 @@
 .mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__col,
 .mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__social,
 .mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__legal,
-.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__col,
-.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__social,
-.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__legal,
 .mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__col,
 .mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__social,
 .mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__legal {
@@ -128,7 +105,6 @@
 }
 
 .mi-js .mi-footer--bar[data-aos="footer"] .mi-footer__brand.mi-reveal,
-.mi-js .is-about-page .mi-footer[data-aos="footer"] .mi-footer__brand.mi-reveal,
 .mi-js .is-services-page .mi-footer[data-aos="footer"] .mi-footer__brand.mi-reveal {
   clip-path: inset(0 -2% 0 0);
   opacity: 0.5;

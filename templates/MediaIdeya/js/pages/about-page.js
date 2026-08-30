@@ -72,10 +72,12 @@
     var hero = page.querySelector('[data-about-hero]');
     var process = page.querySelector('[data-about-process]');
     var team = page.querySelector('[data-about-team]');
+    var cta = page.querySelector('[data-aos="about-cta"]');
     var roles = page.querySelectorAll('[data-team-role]');
 
     if (hero) hero.classList.add('is-composed');
     if (process) process.classList.add('is-composed');
+    if (cta) cta.classList.add('aos-animate');
     if (team) {
       team.classList.add('is-composed');
       var stage = team.querySelector('.mi-about-team__stage');
@@ -92,9 +94,47 @@
     return;
   }
 
-  /* Hero reference: 4.63 s total — word stagger, statues, then the final zoom. */
+  /* Hero reference: timed entrance; the final statue lift is scroll-scrubbed. */
   var hero = page.querySelector('[data-about-hero]');
   var HERO_DURATION = 4630;
+  var heroStatueGroup = hero ? hero.querySelector('[data-about-hero-statues]') : null;
+
+  function setupHeroStatueScroll() {
+    if (!hero || !heroStatueGroup) return;
+
+    var ticking = false;
+    var words = hero.querySelectorAll('[data-about-hero-word]');
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function sync() {
+      ticking = false;
+      var range = Math.max(hero.offsetHeight * 0.8, 1);
+      var progress = clamp(-hero.getBoundingClientRect().top / range, 0, 1);
+      var scale = parseFloat(window.getComputedStyle(page).getPropertyValue('--mi-about-s')) || 1;
+      heroStatueGroup.style.transform = 'translate3d(0, ' + (-320 * scale * progress).toFixed(2) + 'px, 0)';
+
+      for (var i = 0; i < words.length; i++) {
+        var wordProgress = clamp((progress - i * 0.055) / 0.22, 0, 1);
+        words[i].style.opacity = (1 - wordProgress).toFixed(3);
+        words[i].style.transform = 'translate3d(0, ' + (-10 * wordProgress).toFixed(2) + 'px, 0)';
+        words[i].style.filter = 'blur(' + (4 * wordProgress).toFixed(2) + 'px)';
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(sync);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    sync();
+  }
 
   function playHero() {
     if (!hero || hero.classList.contains('is-running')) return;
@@ -103,7 +143,6 @@
     var heroAnimations = [];
     var words = hero.querySelectorAll('[data-about-hero-word]');
     var wordDelays = [100, 275, 450, 625, 800];
-    var statueGroup = hero.querySelector('[data-about-hero-statues]');
     var leftStatue = hero.querySelector('[data-about-hero-statue="left"]');
     var centerStatue = hero.querySelector('[data-about-hero-statue="center"]');
     var rightStatue = hero.querySelector('[data-about-hero-statue="right"]');
@@ -115,12 +154,12 @@
           [
             {
               opacity: 0,
-              transform: 'translate3d(0, 38px, 0)',
+              transform: 'none',
               filter: 'blur(9px)',
             },
             {
               opacity: 1,
-              transform: 'translate3d(0, 0, 0)',
+              transform: 'none',
               filter: 'blur(0)',
             },
           ],
@@ -222,28 +261,18 @@
       )
     );
 
-    heroAnimations.push(
-      animate(
-        statueGroup,
-        [
-          { transform: 'scale(1)' },
-          { transform: 'scale(1.42)' },
-        ],
-        {
-          duration: 800,
-          delay: 3670,
-          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          fill: 'both',
-        }
-      )
-    );
-
     window.setTimeout(function () {
       settle(hero, heroAnimations);
     }, HERO_DURATION);
   }
 
   observeOnce(hero, 0.08, playHero);
+  setupHeroStatueScroll();
+
+  var aboutCta = page.querySelector('[data-aos="about-cta"]');
+  observeOnce(aboutCta, 0.16, function () {
+    aboutCta.classList.add('aos-animate');
+  });
 
   /* Team reference: five continuous 2 s transitions, ending on Specialists. */
   var team = page.querySelector('[data-about-team]');
@@ -293,21 +322,103 @@
 
   observeOnce(team, 0.22, playTeam);
 
-  /* Process reference: fixed 9.5 s timeline. */
+  /* Process: after the timed sequence, retain Figma's composed end frame. */
   var process = page.querySelector('[data-about-process]');
-  var PROCESS_DURATION = 9500;
   var PROCESS_COLLAPSE_START = 5330;
   var PROCESS_COLLAPSE_END = 6200;
   var PROCESS_CAPTION_START = 6200;
   var PROCESS_CAPTION_END = 8200;
-  var PROCESS_BOWL_START = 8200;
-  var PROCESS_BOWL_END = 9300;
   var STEP_DELAYS = [1430, 2030, 2570, 3030, 3570, 4170];
+  var processScrollLocked = false;
+  var processUsesLenisLock = false;
+  var processLockWatcherStarted = false;
+  var processHasAdvanced = false;
+  var processAutoAdvancing = false;
+  var lastProcessScrollY = window.pageYOffset;
+
+  function preventProcessScroll(event) {
+    event.preventDefault();
+  }
+
+  function preventProcessKeyScroll(event) {
+    var scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
+    if (scrollKeys.indexOf(event.key) === -1) return;
+    if (event.key === 'ArrowUp' || event.key === 'PageUp' || event.key === 'Home') {
+      unlockProcessScroll();
+      return;
+    }
+    event.preventDefault();
+  }
+
+  function releaseProcessOnReverseScroll(event) {
+    if (event.type === 'wheel' && event.deltaY < 0) unlockProcessScroll();
+  }
+
+  function lockProcessScroll() {
+    if (processScrollLocked) return;
+
+    processScrollLocked = true;
+    window.addEventListener('wheel', releaseProcessOnReverseScroll, { passive: true });
+    var lenis = window.MI && window.MI.lenis;
+    if (lenis && typeof lenis.stop === 'function') {
+      processUsesLenisLock = true;
+      lenis.stop();
+      return;
+    }
+
+    document.documentElement.classList.add('mi-process-scroll-locked');
+    window.addEventListener('wheel', preventProcessScroll, { passive: false });
+    window.addEventListener('touchmove', preventProcessScroll, { passive: false });
+    window.addEventListener('keydown', preventProcessKeyScroll);
+  }
+
+  function unlockProcessScroll() {
+    if (!processScrollLocked) return;
+
+    processScrollLocked = false;
+    window.removeEventListener('wheel', releaseProcessOnReverseScroll);
+    if (processUsesLenisLock) {
+      var lenis = window.MI && window.MI.lenis;
+      if (lenis && typeof lenis.start === 'function') lenis.start();
+      processUsesLenisLock = false;
+      return;
+    }
+
+    document.documentElement.classList.remove('mi-process-scroll-locked');
+    window.removeEventListener('wheel', preventProcessScroll);
+    window.removeEventListener('touchmove', preventProcessScroll);
+    window.removeEventListener('keydown', preventProcessKeyScroll);
+  }
+
+  function watchProcessScrollLock() {
+    if (!process || processLockWatcherStarted) return;
+
+    var steps = process.querySelector('.mi-about-process__steps');
+    if (!steps) return;
+
+    processLockWatcherStarted = true;
+    var ticking = false;
+    function syncProcessLock() {
+      ticking = false;
+      if (!process.classList.contains('is-running') || process.classList.contains('is-timeline-complete')) return;
+      if (steps.getBoundingClientRect().bottom <= window.innerHeight) lockProcessScroll();
+    }
+    function requestSync() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(syncProcessLock);
+    }
+
+    window.addEventListener('scroll', requestSync, { passive: true });
+    window.addEventListener('resize', requestSync);
+    syncProcessLock();
+  }
 
   function playProcess() {
     if (!process || process.classList.contains('is-running')) return;
 
     process.classList.add('is-running');
+    watchProcessScrollLock();
     var processAnimations = [];
     var heading = process.querySelector('[data-process-heading]');
     var path = process.querySelector('.mi-about-process__path');
@@ -450,7 +561,6 @@
 
       var captionSpans = caption.querySelectorAll('span');
       var revealStagger = captionSpans.length > 1 ? 600 / (captionSpans.length - 1) : 0;
-      var exitStagger = captionSpans.length > 1 ? 330 / (captionSpans.length - 1) : 0;
 
       for (var captionIndex = 0; captionIndex < captionSpans.length; captionIndex++) {
         processAnimations.push(
@@ -469,50 +579,79 @@
           )
         );
 
-        processAnimations.push(
-          animate(
-            captionSpans[captionIndex],
-            [
-              { opacity: 1, transform: 'translate3d(0, 0, 0)', filter: 'blur(0)' },
-              { opacity: 0, transform: 'translate3d(0, -18px, 0)', filter: 'blur(5px)' },
-            ],
-            {
-              duration: 100,
-              delay: 7770 + captionIndex * exitStagger,
-              easing: 'linear',
-              fill: 'forwards',
-            }
-          )
-        );
       }
     }
 
-    var aboutScale = parseFloat(window.getComputedStyle(page).getPropertyValue('--mi-about-s')) || 1;
-    var bowlLift = -137 * aboutScale;
-
-    processAnimations.push(
-      animate(
-        bowl,
-        [
-          { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0)', offset: 0 },
-          { opacity: 1, transform: 'translate3d(0, ' + bowlLift * 0.72 + 'px, 0) scale(1.36)', filter: 'blur(0)', offset: 0.38 },
-          { opacity: 1, transform: 'translate3d(0, ' + bowlLift + 'px, 0) scale(1.5)', filter: 'blur(0)', offset: 1 },
-        ],
-        {
-          duration: PROCESS_BOWL_END - PROCESS_BOWL_START,
-          delay: PROCESS_BOWL_START,
-          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          fill: 'both',
-        }
-      )
-    );
-
     window.setTimeout(function () {
       settle(process, processAnimations);
-    }, PROCESS_DURATION);
+      process.classList.add('is-timeline-complete');
+      unlockProcessScroll();
+
+      /* First pass: lift the bowl, then hand the visitor to the next section.
+         Subsequent upward scrolling uses the fixed Figma composition below. */
+      if (!bowl || processHasAdvanced) return;
+      processHasAdvanced = true;
+      processAutoAdvancing = true;
+      var scale = parseFloat(window.getComputedStyle(page).getPropertyValue('--mi-about-s')) || 1;
+      var lift = animate(
+        bowl,
+        [
+          { transform: 'translate3d(0, 0, 0) scale(1)' },
+          { transform: 'translate3d(0, ' + (-320 * scale) + 'px, 0) scale(1.5)' },
+        ],
+        { duration: 1100, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+      );
+      /* The bowl zoom and transition to reviews are one combined gesture. */
+      var next = process.nextElementSibling;
+      var lenis = window.MI && window.MI.lenis;
+      if (next && lenis) lenis.scrollTo(next, { duration: 1.1, offset: 0 });
+      else if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(function () { processAutoAdvancing = false; }, 1250);
+    }, PROCESS_CAPTION_END);
   }
 
   observeOnce(process, 0.18, playProcess);
+
+  window.addEventListener('scroll', function () {
+    var currentScrollY = window.pageYOffset;
+    var isReturning = currentScrollY < lastProcessScrollY;
+    lastProcessScrollY = currentScrollY;
+    if (!processHasAdvanced || !process || processAutoAdvancing || !isReturning) return;
+    /* Returning to this area must show the supplied completed still, not the
+       lifted transition frame or a second autoplay. */
+    var rect = process.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.45 && rect.bottom > window.innerHeight * 0.2) {
+      var returnedBowl = process.querySelector('[data-process-bowl]');
+      if (returnedBowl) {
+        returnedBowl.getAnimations().forEach(function (animation) { animation.cancel(); });
+        returnedBowl.style.transform = 'none';
+      }
+      /* Restore the entire completed Figma composition, not just its bowl. */
+      var returnedHeading = process.querySelector('[data-process-heading]');
+      var returnedPath = process.querySelector('.mi-about-process__path');
+      var returnedGhost = process.querySelector('[data-process-ghost]');
+      var returnedCaption = process.querySelector('[data-process-caption]');
+      var returnedSteps = process.querySelectorAll('[data-process-step]');
+      var restored = [returnedHeading, returnedPath, returnedGhost, returnedCaption];
+      for (var i = 0; i < returnedSteps.length; i++) restored.push(returnedSteps[i]);
+      for (var j = 0; j < restored.length; j++) {
+        if (!restored[j]) continue;
+        restored[j].getAnimations().forEach(function (animation) { animation.cancel(); });
+        restored[j].style.opacity = '1';
+        restored[j].style.transform = 'none';
+        restored[j].style.filter = 'none';
+      }
+      if (returnedCaption) {
+        var words = returnedCaption.querySelectorAll('span');
+        for (var k = 0; k < words.length; k++) {
+          words[k].getAnimations().forEach(function (animation) { animation.cancel(); });
+          words[k].style.opacity = '1';
+          words[k].style.transform = 'none';
+          words[k].style.filter = 'none';
+        }
+      }
+    }
+  }, { passive: true });
 
   window.addEventListener(
     'pagehide',
@@ -523,6 +662,7 @@
       for (var i = 0; i < runningAnimations.length; i++) {
         if (runningAnimations[i]) runningAnimations[i].cancel();
       }
+      unlockProcessScroll();
     },
     { once: true }
   );

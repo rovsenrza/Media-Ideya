@@ -11,15 +11,80 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var innerHeader = document.querySelector('body:not(.is-home) .mi-header[data-aos="fade-up"]');
-  if (innerHeader) {
+  /* Site-wide GSAP + Lenis smooth scrolling. Page scripts receive the single
+     shared Lenis instance through MI, preventing duplicate RAF loops. */
+  if (!reduce && window.gsap && window.Lenis) {
+    var lenis = new window.Lenis({
+      lerp: 0.09,
+      duration: 1.25,
+      smoothWheel: true,
+      syncTouch: true,
+      wheelMultiplier: 0.92,
+      touchMultiplier: 0.92,
+    });
+
+    window.MI.lenis = lenis;
+    document.documentElement.classList.add('lenis', 'lenis-smooth');
+    window.gsap.ticker.add(function (time) {
+      lenis.raf(time * 1000);
+    });
+    window.gsap.ticker.lagSmoothing(0);
+  }
+
+  var header = document.querySelector('.mi-header[data-aos="fade-up"]');
+  if (header) {
     if (reduce) {
-      innerHeader.classList.add('aos-animate');
+      header.classList.add('aos-animate');
     } else {
       window.requestAnimationFrame(function () {
-        innerHeader.classList.add('aos-animate');
+        header.classList.add('aos-animate');
       });
     }
+
+    /* Shared glass behaviour: hero pages change after their banner; all other
+       pages change after the first header-height of downward scroll. */
+    var glassBoundary = document.querySelector(
+      '[data-hero-sticky], [data-about-hero], .mi-service-detail__hero'
+    );
+    var glassTick = false;
+
+    function syncHeaderGlass() {
+      glassTick = false;
+      var threshold = header.offsetHeight || 72;
+      var shouldGlass = glassBoundary
+        ? glassBoundary.getBoundingClientRect().bottom <= threshold
+        : window.pageYOffset > threshold;
+      header.classList.toggle('mi-header--glass', shouldGlass);
+    }
+
+    function onHeaderScroll() {
+      if (!glassTick) {
+        glassTick = true;
+        window.requestAnimationFrame(syncHeaderGlass);
+      }
+    }
+
+    window.addEventListener('scroll', onHeaderScroll, { passive: true });
+    window.addEventListener('resize', onHeaderScroll, { passive: true });
+    syncHeaderGlass();
+  }
+
+  var menuToggle = document.querySelector('[data-mobile-menu-toggle]');
+  var mobileMenu = document.querySelector('[data-mobile-menu]');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', function () {
+      var open = header.classList.toggle('is-menu-open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    });
+
+    mobileMenu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) {
+        header.classList.remove('is-menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+    });
   }
 
   function clampHand(v, a, b) {

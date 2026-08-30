@@ -6,7 +6,7 @@
 	<div class="page_form__form">
 		<div class="regtext">
 		[registration]
-			{{<b>Hello, dear visitor of our website!</b><br><br>Registration on our site will allow you to become its full participant. You will be able to add news on the website, write your comments, view the hidden text and more. In case of problems encountered during the registration process, please contact the website <a href="/index.php?do=feedback">Administrator</a>.}}
+			{{<b>Hello, dear visitor of our website!</b><br><br>Registration on our site will allow you to become its full participant. You will be able to add news on the website, write your comments, view the hidden text and more. In case of problems encountered during the registration process, please contact the website <a href="/contact">Administrator</a>.}}
 		[/registration]
 		[validation]
 			{{<b>Dear visitor,</b><br>Your account has been registered on our website, but your profile information is incomplete. Please, fill in the additional fields of your profile.}}

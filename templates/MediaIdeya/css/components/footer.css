@@ -401,3 +401,19 @@
     opacity: 0.5 !important;
   }
 }
+
+@media (max-width: 991px) {
+  .mi-footer__bar { padding: 40px 16px; gap: 40px; }
+  .mi-footer__brand { bottom: -6%; font-size: 61.782px; }
+  .mi-footer__inner { flex-direction: column; gap: 24px; }
+  .mi-footer__contacts { flex-direction: column; gap: 20px; }
+  .mi-footer__col { gap: 10px; }
+  .mi-footer__col p,
+  .mi-footer__col a { font-size: 14px; }
+  .mi-footer__label { font-size: 12px; }
+  .mi-footer__social { width: 100%; align-items: flex-start; gap: 10px; }
+  .mi-footer__social-img,
+  .mi-footer__social-links { width: 112px; height: 48px; }
+  .mi-footer__social-link { width: 48px; height: 48px; }
+  .mi-footer__legal { font-size: 12px; }
+}
