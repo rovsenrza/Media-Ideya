@@ -37,7 +37,8 @@
 
 /* Exact 1920px Figma positions from node 84:609. */
 .mi-home-cta__figure--left {
-  top: calc(202px * var(--mi-s));
+  /* Figma 84:612: fingertip sits on the shared contact axis before motion. */
+  top: calc(101px * var(--mi-s));
   left: calc(50% - ((960px + 499px) * var(--mi-s)));
   width: calc(1521px * var(--mi-s));
   /* Native height: 806px at the 1521px Figma display width. */
@@ -45,7 +46,8 @@
 }
 
 .mi-home-cta__figure--right {
-  top: calc(-465px * var(--mi-s));
+  /* Figma 84:611: same contact axis as the left layer. */
+  top: calc(-395px * var(--mi-s));
   left: calc(50% - ((960px - 945px) * var(--mi-s)));
   width: calc(2082px * var(--mi-s));
   /* Native height: 1643px at the 2082px Figma display width. */
@@ -135,14 +137,12 @@
 
 @keyframes mi-home-cta-left {
   from { transform: translate3d(-5%, 0, 0); }
-  /* Figma 84:612 final: move the left fingertip onto the shared axis. */
-  to { transform: translate3d(0, calc(-101px * var(--mi-s)), 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 @keyframes mi-home-cta-right {
   from { transform: translate3d(5%, 0, 0); }
-  /* Figma 84:611 final: meet the left fingertip on that axis. */
-  to { transform: translate3d(0, calc(70px * var(--mi-s)), 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 @media (max-width: 991px) {

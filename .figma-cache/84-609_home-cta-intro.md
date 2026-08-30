@@ -13,7 +13,7 @@
 - The native-proportion layers are calibrated to the Figma export fingertip axis (`y=475px`).
 - Approved placement adjustment: left source layer `translateX(-5%)`, right source layer `translateX(5%)`.
 - Intro motion: both layers converge to their Figma bounds over `1850ms` before the orb transition.
-- Final contact alignment (nodes `84:612` / `84:611`): left `translateY(-101px)`, right `translateY(70px)` on the 1920px canvas.
+- Final contact alignment (nodes `84:612` / `84:611`) is in the static layer positions: left top `101px`, right top `-395px` on the 1920px canvas. Motion is X-axis only.
 - Used only by the homepage CTA transition.
 
 ## Motion reference
