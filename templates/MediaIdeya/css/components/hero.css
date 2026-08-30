@@ -389,12 +389,12 @@
 
   .mi-hero__col--l {
     left: clamp(-268.75px, -62.5vw, -200px);
-    transform: translate3d(calc(var(--mi-hero-p, 0) * clamp(-143.332px, -33.333vw, -106.666px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
+    transform: translate3d(calc(-5% + var(--mi-hero-p, 0) * clamp(-143.332px, -33.333vw, -106.666px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
   }
 
   .mi-hero__col--r {
     left: clamp(250.666px, 78.333vw, 336.832px);
-    transform: translate3d(calc(var(--mi-hero-p, 0) * clamp(106.666px, 33.333vw, 143.332px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
+    transform: translate3d(calc(5% + var(--mi-hero-p, 0) * clamp(106.666px, 33.333vw, 143.332px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
   }
 
   .mi-hero__statue {
