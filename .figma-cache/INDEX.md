@@ -50,3 +50,5 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 | `101:519` | Главная — mobile 360px | `101-519_home-mobile.md` |
 | `101:2447` | Modal — 1920 desktop | `101-2447_modal-1920-user-reference.md` |
 | `101:2450` | Request form — 1920 desktop | `101-2450_request-form-1920-user-reference.md` |
+| `84:609` | Homepage CTA — intro | `84-609_home-cta-intro.md` |
+| `84:863` | Homepage CTA — final | `84-863_home-cta-final.md` |

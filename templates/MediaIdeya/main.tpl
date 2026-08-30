@@ -32,6 +32,7 @@
 
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
+	<link rel="stylesheet" href="{THEME}/css/components/home-cta.css">
 	<link rel="stylesheet" href="{THEME}/css/components/hero.css">
 	<link rel="stylesheet" href="{THEME}/css/components/services.css">
 	<link rel="stylesheet" href="{THEME}/css/components/about.css">
@@ -96,8 +97,11 @@
 
 		</main>
 
+		[available=main]{include file="modules/home-footer.tpl"}[/available]
+		[not-available=main]
 		[available=feedback]{include file="modules/footer-bar.tpl"}[/available]
 		[not-available=feedback]{include file="modules/footer.tpl"}[/not-available]
+		[/not-available]
 	</div>
 	[/not-available]
 
@@ -120,6 +124,7 @@
 	<script src="{THEME}/js/components/phone-mask.js" defer></script>
 	<script src="{THEME}/js/components/request-modal.js" defer></script>
 	[available=main]
+	<script src="{THEME}/js/components/home-cta.js" defer></script>
 	<script src="{THEME}/js/components/faq.js" defer></script>
 	<script src="{THEME}/js/components/articles.js" defer></script>
 	<script src="{THEME}/js/pages/home.js" defer></script>
