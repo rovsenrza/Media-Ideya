@@ -334,75 +334,77 @@
 }
 
 @media (max-width: 991px) {
+  /* Figma 101:520 is a 360 × 800 composition. Scale the entire coordinate
+     system from 320 to 430px instead of freezing its 360px values. */
   .mi-hero {
-    height: 1600px;
+    height: clamp(1422.222px, 444.444vw, 1911.111px);
   }
 
   .mi-hero__pin {
     position: sticky;
     top: 0;
-    height: 800px;
+    height: clamp(711.111px, 222.222vw, 955.556px);
   }
 
   .mi-hero__stage {
-    min-height: 800px;
-    height: 800px;
+    min-height: clamp(711.111px, 222.222vw, 955.556px);
+    height: clamp(711.111px, 222.222vw, 955.556px);
   }
 
   .mi-hero__sky {
-    height: 770px;
+    height: clamp(684.444px, 213.889vw, 919.444px);
   }
 
   .mi-hero__cloud {
-    width: 927px;
-    height: 378px;
+    width: clamp(824px, 257.5vw, 1107.5px);
+    height: clamp(336px, 105vw, 451.5px);
     animation-duration: 28s;
   }
 
-  .mi-hero__cloud--l { left: -447px; top: -9px; }
-  .mi-hero__cloud--r { right: auto; left: -128px; top: 148px; }
+  .mi-hero__cloud--l { left: clamp(-534px, -124.167vw, -397.334px); top: clamp(-10.972px, -2.553vw, -8.17px); }
+  .mi-hero__cloud--r { right: auto; left: clamp(-152.542px, -35.475vw, -113.52px); top: clamp(131.386px, 41.058vw, 176.549px); }
 
   .mi-hero__col--l,
   .mi-hero__col--r {
-    top: -72px;
-    width: 303px;
-    height: 787px;
+    top: clamp(-86px, -20vw, -64px);
+    width: clamp(269.13px, 84.103vw, 361.643px);
+    height: clamp(699.21px, 218.503vw, 939.563px);
   }
 
   .mi-hero__col--l {
-    left: -225px;
-    transform: translate3d(calc(var(--mi-hero-p, 0) * -120px), calc(var(--mi-hero-p, 0) * 36px), 0);
+    left: clamp(-268.75px, -62.5vw, -200px);
+    transform: translate3d(calc(var(--mi-hero-p, 0) * clamp(-143.332px, -33.333vw, -106.666px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
   }
 
   .mi-hero__col--r {
-    left: 282px;
-    transform: translate3d(calc(var(--mi-hero-p, 0) * 120px), calc(var(--mi-hero-p, 0) * 36px), 0);
+    left: clamp(250.666px, 78.333vw, 336.832px);
+    transform: translate3d(calc(var(--mi-hero-p, 0) * clamp(106.666px, 33.333vw, 143.332px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
   }
 
   .mi-hero__statue {
-    top: 278px;
-    width: 391px;
-    height: 481px;
-    transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * -160px), 0);
+    top: clamp(247.11px, 77.222vw, 332.055px);
+    width: clamp(347.555px, 108.611vw, 467.027px);
+    height: clamp(427.555px, 133.611vw, 574.527px);
+    transform: translate3d(-50%, calc(var(--mi-hero-p, 0) * clamp(-191.109px, -44.444vw, -142.221px)), 0);
   }
 
-  .mi-hero__fade-top { height: 96px; }
-  .mi-hero__fade-mid { top: 398px; height: 402px; }
+  .mi-hero__fade-top { height: clamp(85.334px, 26.667vw, 114.668px); }
+  .mi-hero__fade-mid { top: clamp(353.779px, 110.556vw, 475.391px); height: clamp(357.334px, 111.667vw, 480.168px); }
   .mi-hero__fade-bottom { display: none; }
 
   .mi-hero__title {
-    top: 99px;
-    width: calc(100% - 32px);
+    top: clamp(88px, 27.5vw, 118.25px);
+    width: calc(100% - clamp(28.444px, 8.889vw, 38.222px));
     max-width: none;
-    font-size: 32px;
+    font-size: clamp(28.444px, 8.889vw, 38.222px);
     line-height: 1.1;
   }
 
   .mi-hero__scroll {
-    top: 672px;
-    width: 64px;
-    height: 64px;
+    top: clamp(597.334px, 186.667vw, 802.668px);
+    width: clamp(56.889px, 17.778vw, 76.444px);
+    height: clamp(56.889px, 17.778vw, 76.444px);
   }
 
-  .mi-hero__scroll svg { width: 64px; height: 64px; }
+  .mi-hero__scroll svg { width: 100%; height: 100%; }
 }
