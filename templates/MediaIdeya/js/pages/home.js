@@ -250,9 +250,28 @@
     var clientsBox = clients.querySelector('.mi-clients__box');
     var clientsLogos = clients.querySelector('[data-clients-logos]');
     var clientsTick = false;
+    var clientsMobileQuery = window.matchMedia('(max-width: 991px)');
+
+    function unwrapClientRows() {
+      var rows = clientsLogos.querySelectorAll('.mi-clients__row');
+      for (var r = 0; r < rows.length; r++) {
+        while (rows[r].firstChild) {
+          clientsLogos.insertBefore(rows[r].firstChild, rows[r]);
+        }
+        rows[r].remove();
+      }
+    }
 
     function layoutClientRows() {
       if (!clientsLogos) return;
+
+      /* Figma 101:717 has a mobile-specific 2/1 staggered matrix. Its
+         individual logo positions must remain direct children of the grid. */
+      if (clientsMobileQuery.matches) {
+        unwrapClientRows();
+        return;
+      }
+
       var logos = clientsLogos.querySelectorAll('.mi-clients__logo');
       if (!logos.length) return;
       if (clientsLogos.querySelector('.mi-clients__row')) return;
@@ -311,6 +330,7 @@
     }
 
     function onClientsResize() {
+      layoutClientRows();
       measureClients();
       syncClients();
     }
