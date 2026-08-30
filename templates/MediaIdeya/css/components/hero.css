@@ -371,6 +371,10 @@
     height: clamp(699.21px, 218.503vw, 939.563px);
   }
 
+  /* Figma 101:524/101:525 stretch the original column raster to the
+     302.77 × 786.61 layer bounds; `contain` left both columns undersized. */
+  .mi-hero__col img { object-fit: fill; }
+
   .mi-hero__col--l {
     left: clamp(-268.75px, -62.5vw, -200px);
     transform: translate3d(calc(var(--mi-hero-p, 0) * clamp(-143.332px, -33.333vw, -106.666px)), calc(var(--mi-hero-p, 0) * clamp(32px, 10vw, 43px)), 0);
@@ -393,15 +397,15 @@
   .mi-hero__fade-bottom { display: none; }
 
   .mi-hero__title {
-    top: clamp(88px, 27.5vw, 118.25px);
-    width: calc(100% - clamp(28.444px, 8.889vw, 38.222px));
+    top: clamp(85.334px, 26.667vw, 114.668px);
+    width: 78.889%;
     max-width: none;
     font-size: clamp(28.444px, 8.889vw, 38.222px);
     line-height: 1.1;
   }
 
   .mi-hero__scroll {
-    top: clamp(597.334px, 186.667vw, 802.668px);
+    top: clamp(514.667px, 160.833vw, 691.582px);
     width: clamp(56.889px, 17.778vw, 76.444px);
     height: clamp(56.889px, 17.778vw, 76.444px);
   }
