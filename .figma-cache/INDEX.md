@@ -52,3 +52,4 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 | `101:2450` | Request form — 1920 desktop | `101-2450_request-form-1920-user-reference.md` |
 | `84:609` | Homepage CTA — intro | `84-609_home-cta-intro.md` |
 | `84:863` | Homepage CTA — final | `84-863_home-cta-final.md` |
+| `84:617`, `84:619`, `108:2639` | Desktop footer social groups | `84-617_footer-social-desktop.md` |

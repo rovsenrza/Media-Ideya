@@ -6,10 +6,7 @@
 			{custom category="8" template="modules/settings-contacts" limit="1" order="date" sort="asc" cache="no"}
 		</div>
 
-		<div class="mi-footer__social">
-			<span class="mi-footer__label">Следите за нами</span>
-			{custom category="8" template="modules/settings-social" limit="1" order="date" sort="asc" cache="no"}
-		</div>
+		{custom category="8" template="modules/settings-social" limit="1" order="date" sort="asc" cache="no"}
 	</div>
 
 	<div class="mi-footer__legal">
