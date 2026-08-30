@@ -18,6 +18,7 @@
 
 1. Header: `360px` wide with `16px × 12px` padding; 38.64 × 26 logo; request pill and 26px menu icon.
 2. Hero: `360 × 800`. Sky gradient `#8db5d5 → #6398c3`; clouds 30% opacity; statue 391 × 481 at x center / y 278; columns 303 × 787 at x -225 and 282 / y -72; heading at y 99; 64px scroll control at y 672.
+   - Motion: reuse the desktop title-crop, column-drift and statue-rise timeline over the mobile track's exact `800px` interval; initial frame must remain the coordinates above.
 3. Services: Figma node `101:539`, `360 × 800`; 20px top/60px bottom padding, 32px title, 20px gap; cards `328 × 665`, 24px radius. The service media is 232.432 × 200; title/body starts at y224, counter is 24px. All DLE cards remain in the desktop-style sticky stack; the first card is the initial Figma viewport state.
 4. About: `360 × 800`; centered copy and 3 stats in one row; mobile heading 32px.
 5. Clients: `360 × 730`; centered heading, 328px logo grid area.

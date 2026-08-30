@@ -44,6 +44,8 @@
   */
   var hero = document.querySelector('[data-hero-sticky]');
   if (hero && !reduce) {
+    var heroPin = hero.querySelector('.mi-hero__pin');
+    var heroMobileQuery = window.matchMedia('(max-width: 991px)');
     var lines = hero.querySelectorAll('.mi-hero__title-line');
     var LINE_STAGGER = 0.08;
     var LINE_SPAN = 0.16;
@@ -59,6 +61,13 @@
     }
 
     function range() {
+      /* Figma MCP 101:520 is an 800px mobile stage. Its scroll track is
+         deliberately 1600px, so use the stage height (not the browser's
+         variable mobile viewport) for the same title/column/statue timeline
+         used on desktop. */
+      if (heroMobileQuery.matches && heroPin) {
+        return Math.max(hero.offsetHeight - heroPin.offsetHeight, 1);
+      }
       return Math.max(hero.offsetHeight - window.innerHeight, 1);
     }
 
