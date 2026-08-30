@@ -129,7 +129,12 @@
       stackTick = false;
       if (!track || !n) return;
 
-      var range = Math.max(track.offsetHeight - window.innerHeight, 1);
+      /* Desktop pins fill the viewport; the mobile Figma stage has its own
+         responsive height. Measure the actual pin in both cases so each
+         scroll segment advances exactly one stacked card. */
+      var pin = track.querySelector('.mi-services__pin');
+      var pinnedHeight = pin ? pin.offsetHeight : window.innerHeight;
+      var range = Math.max(track.offsetHeight - pinnedHeight, 1);
       var p = clampStack(-track.getBoundingClientRect().top / range, 0, 1);
       var seg = p * steps;
       var i = Math.min(Math.floor(seg), steps - 1);
