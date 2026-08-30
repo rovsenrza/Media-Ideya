@@ -316,7 +316,9 @@
     right: 0;
     left: auto;
     width: 70.864%;
+    max-width: none;
     height: 30.075%;
+    border-radius: clamp(14.415px, 4.505vw, 19.352px);
   }
 
   .mi-service-card__body {
