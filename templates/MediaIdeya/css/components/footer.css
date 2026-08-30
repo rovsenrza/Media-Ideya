@@ -403,6 +403,41 @@
 }
 
 @media (max-width: 991px) {
+  /* Figma MCP 101:765 — the home CTA is a full mobile viewport. */
+  .mi-footer__cta {
+    height: 800px;
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 24px;
+    padding: 120px 16px;
+    background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 117.08%);
+  }
+
+  .mi-footer__hand { display: none; }
+
+  .mi-footer__cta-inner { gap: 24px; }
+
+  .mi-footer__cta-copy {
+    gap: 24px;
+    width: 328px;
+  }
+
+  .mi-footer__cta-title {
+    width: 100%;
+    font-size: 32px;
+    line-height: 1.1;
+    color: #112331;
+    white-space: normal;
+  }
+
+  .mi-footer__cta-text {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #112331;
+  }
+
   .mi-footer__bar { padding: 40px 16px; gap: 40px; }
   .mi-footer__brand { bottom: -6%; font-size: 61.782px; }
   .mi-footer__inner { flex-direction: column; gap: 24px; }

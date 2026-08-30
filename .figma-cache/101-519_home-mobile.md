@@ -1,6 +1,7 @@
 # Главная моб — Figma mobile reference
 
 - Source of truth (user-confirmed): `26q72HBLqm2BrQP1NnVPqy`, node `101:519`.
+- Fetched from Figma MCP: `2026-08-30`.
 - Canvas: `360 × 5554`.
 - This file supplies the mobile reference. Existing desktop references in `xwP9bW8ocVlkXfKa0HwLVf` remain the desktop source and animation implementation source.
 - Use only the raw source assets surfaced by Figma MCP (`rawImages` and exported SVGs); never render an exported Figma preview as a site asset.
