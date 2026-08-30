@@ -45,7 +45,8 @@ html.lenis.lenis-stopped body {
     --mi-fs-section: 32px;
   }
 
-  .is-home .mi-main { overflow: hidden; }
+  /* Sticky home sections (services/cards) must use the document scrollport. */
+  .is-home .mi-main { overflow: visible; }
 
   .is-home .mi-section-title__heading { font-size: 32px; }
 
