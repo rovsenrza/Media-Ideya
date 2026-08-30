@@ -319,6 +319,14 @@
     height: 30.075%;
   }
 
+  /* The mobile Figma fills use their native 232.432 × 200 proportion.
+     Do not crop the left side of a service illustration to fill its slot. */
+  .mi-service-card__media picture,
+  .mi-service-card__media img {
+    object-fit: contain;
+    object-position: right top;
+  }
+
   .mi-service-card__body {
     width: auto;
     max-width: none;

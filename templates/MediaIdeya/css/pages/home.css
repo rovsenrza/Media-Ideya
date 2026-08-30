@@ -48,6 +48,13 @@ html.lenis.lenis-stopped body {
   /* Sticky home sections (services/cards) must use the document scrollport. */
   .is-home .mi-main { overflow: visible; }
 
+  /* Keep decorative overflow (for example, the FAQ glow) out of the
+     document's horizontal scroll area without creating a sticky scrollport. */
+  .is-home .mi-page {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
   .is-home .mi-section-title__heading { font-size: 32px; }
 
 }
