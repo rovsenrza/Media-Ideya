@@ -9,8 +9,8 @@
 - Canvas: `1920 × 960`, background `#112331`.
 - Right figure layer: x `945`, y `-319`, `2082 × 1259`.
 - Left figure layer: x `-499`, y `118`, `1521 × 822`.
-- Both source images fill these layer bounds (`object-fit: fill`); applying `contain` separates the fingertips and is incorrect.
-- The Figma export pins both fingertips to `y=475px`; no horizontal figure drift is permitted before the orb transition.
+- The source images retain their native aspect ratio; stretching the original rasters separates the fingertips vertically.
+- The native-proportion layers are calibrated to the Figma export fingertip axis (`y=475px`).
 - Approved placement adjustment: left source layer `translateX(-5%)`, right source layer `translateX(5%)`.
 - Intro motion: both layers converge to their Figma bounds over `1850ms` before the orb transition.
 - Used only by the homepage CTA transition.
