@@ -23,6 +23,7 @@
 .mi-about__cloud {
   position: absolute;
   display: block;
+  max-width: none;
   opacity: 0.85;
 }
 
