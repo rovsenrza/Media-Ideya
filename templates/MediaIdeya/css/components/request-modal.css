@@ -224,7 +224,9 @@
 
   .mi-request-modal__messenger {
     display: grid;
+    box-sizing: border-box;
     width: 54px;
+    height: 54px;
     min-height: 54px;
     padding: 0;
     border-radius: 50%;
