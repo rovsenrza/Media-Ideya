@@ -1,4 +1,4 @@
-<div class="mi-request-modal" data-request-modal aria-hidden="true">
+<div class="mi-request-modal" data-request-modal data-lenis-prevent aria-hidden="true">
 	<img class="mi-request-modal__background" src="{THEME}/images/modal/background.png" width="1920" height="1561" alt="" aria-hidden="true">
 	<div class="mi-request-modal__backdrop" data-request-modal-close></div>
 	<section class="mi-request-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="mi-request-modal-title">
