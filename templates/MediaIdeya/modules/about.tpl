@@ -17,14 +17,11 @@
 			<img src="{THEME}/images/about/cloud.png" alt="" width="1635" height="666" decoding="async">
 		</picture>
 		<div class="mi-about__colonnade" aria-hidden="true">
-			<picture class="mi-about__colonnade-fill">
+			<picture>
 				<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/3.png" type="image/png">
-				<source srcset="{THEME}/images/about/colonnade-fill.webp 1x, {THEME}/images/about/colonnade-fill@2x.webp 2x" type="image/webp">
-				<img src="{THEME}/images/about/colonnade-fill.png" srcset="{THEME}/images/about/colonnade-fill.png 1x, {THEME}/images/about/colonnade-fill@2x.png 2x" alt="" width="2342" height="1654" loading="lazy" decoding="async">
+				<source srcset="{THEME}/images/about/colonnade.webp 1x, {THEME}/images/about/colonnade@2x.webp 2x" type="image/webp">
+				<img src="{THEME}/images/about/colonnade.png" srcset="{THEME}/images/about/colonnade.png 1x, {THEME}/images/about/colonnade@2x.png 2x" alt="" width="2342" height="1654" loading="lazy" decoding="async">
 			</picture>
-			<div class="mi-about__colonnade-glow">
-				<img src="{THEME}/images/about/glow.svg" alt="" width="1442" height="659" decoding="async">
-			</div>
 		</div>
 	</div>
 

@@ -64,58 +64,19 @@
   transform: translateX(-50%);
   z-index: 2;
   max-width: none;
-  overflow: hidden;
-  -webkit-mask-image: url("../../images/about/colonnade-mask.png");
-  mask-image: url("../../images/about/colonnade-mask.png");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-mode: alpha;
-  mask-mode: alpha;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-  .mi-about__colonnade {
-    -webkit-mask-image: url("../../images/about/colonnade-mask@2x.png");
-    mask-image: url("../../images/about/colonnade-mask@2x.png");
-  }
-}
-
-.mi-about__colonnade-fill,
-.mi-about__colonnade-fill img {
+.mi-about__colonnade picture,
+.mi-about__colonnade img {
   display: block;
   width: 100%;
   height: 100%;
   max-width: none;
 }
 
-.mi-about__colonnade-fill img {
+.mi-about__colonnade img {
   object-fit: cover;
   object-position: center center;
-}
-
-/* Ellipse 10 — inside colonnade mask, Figma 1:124 */
-.mi-about__colonnade-glow {
-  position: absolute;
-  left: calc(600px * var(--mi-s));
-  top: calc(191px * var(--mi-s));
-  width: calc(1142px * var(--mi-s));
-  height: calc(359px * var(--mi-s));
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.mi-about__colonnade-glow img {
-  position: absolute;
-  top: -41.78%;
-  right: -13.13%;
-  bottom: -41.78%;
-  left: -13.13%;
-  width: calc(100% + 26.26%);
-  height: calc(100% + 83.56%);
-  max-width: none;
-  display: block;
 }
 
 .mi-about__inner {
