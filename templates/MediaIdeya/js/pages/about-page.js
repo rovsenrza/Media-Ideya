@@ -332,9 +332,6 @@
   var processScrollLocked = false;
   var processUsesLenisLock = false;
   var processLockWatcherStarted = false;
-  var processHasAdvanced = false;
-  var processAutoAdvancing = false;
-  var lastProcessScrollY = window.pageYOffset;
 
   function preventProcessScroll(event) {
     event.preventDefault();
@@ -586,72 +583,10 @@
       settle(process, processAnimations);
       process.classList.add('is-timeline-complete');
       unlockProcessScroll();
-
-      /* First pass: lift the bowl, then hand the visitor to the next section.
-         Subsequent upward scrolling uses the fixed Figma composition below. */
-      if (!bowl || processHasAdvanced) return;
-      processHasAdvanced = true;
-      processAutoAdvancing = true;
-      var scale = parseFloat(window.getComputedStyle(page).getPropertyValue('--mi-about-s')) || 1;
-      var lift = animate(
-        bowl,
-        [
-          { transform: 'translate3d(0, 0, 0) scale(1)' },
-          { transform: 'translate3d(0, ' + (-320 * scale) + 'px, 0) scale(1.5)' },
-        ],
-        { duration: 1100, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
-      );
-      /* The bowl zoom and transition to reviews are one combined gesture. */
-      var next = process.nextElementSibling;
-      var lenis = window.MI && window.MI.lenis;
-      if (next && lenis) lenis.scrollTo(next, { duration: 1.1, offset: 0 });
-      else if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.setTimeout(function () { processAutoAdvancing = false; }, 1250);
     }, PROCESS_CAPTION_END);
   }
 
   observeOnce(process, 0.18, playProcess);
-
-  window.addEventListener('scroll', function () {
-    var currentScrollY = window.pageYOffset;
-    var isReturning = currentScrollY < lastProcessScrollY;
-    lastProcessScrollY = currentScrollY;
-    if (!processHasAdvanced || !process || processAutoAdvancing || !isReturning) return;
-    /* Returning to this area must show the supplied completed still, not the
-       lifted transition frame or a second autoplay. */
-    var rect = process.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.45 && rect.bottom > window.innerHeight * 0.2) {
-      var returnedBowl = process.querySelector('[data-process-bowl]');
-      if (returnedBowl) {
-        returnedBowl.getAnimations().forEach(function (animation) { animation.cancel(); });
-        returnedBowl.style.transform = 'none';
-      }
-      /* Restore the entire completed Figma composition, not just its bowl. */
-      var returnedHeading = process.querySelector('[data-process-heading]');
-      var returnedPath = process.querySelector('.mi-about-process__path');
-      var returnedGhost = process.querySelector('[data-process-ghost]');
-      var returnedCaption = process.querySelector('[data-process-caption]');
-      var returnedSteps = process.querySelectorAll('[data-process-step]');
-      var restored = [returnedHeading, returnedPath, returnedGhost, returnedCaption];
-      for (var i = 0; i < returnedSteps.length; i++) restored.push(returnedSteps[i]);
-      for (var j = 0; j < restored.length; j++) {
-        if (!restored[j]) continue;
-        restored[j].getAnimations().forEach(function (animation) { animation.cancel(); });
-        restored[j].style.opacity = '1';
-        restored[j].style.transform = 'none';
-        restored[j].style.filter = 'none';
-      }
-      if (returnedCaption) {
-        var words = returnedCaption.querySelectorAll('span');
-        for (var k = 0; k < words.length; k++) {
-          words[k].getAnimations().forEach(function (animation) { animation.cancel(); });
-          words[k].style.opacity = '1';
-          words[k].style.transform = 'none';
-          words[k].style.filter = 'none';
-        }
-      }
-    }
-  }, { passive: true });
 
   window.addEventListener(
     'pagehide',
