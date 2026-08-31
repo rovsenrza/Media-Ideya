@@ -36,14 +36,15 @@
 .mi-about__statue {
   position: absolute;
   z-index: 1;
-  bottom: calc(-110px * var(--mi-s));
-  left: 50%;
+  /* Figma 84:648 composition: the seated figure anchors to the left side
+     of the 1920px canvas; it must not sit beneath the central statistics. */
+  top: 0;
+  left: calc(50% - (830px * var(--mi-s)));
   display: block;
-  width: calc(650px * var(--mi-s));
-  height: calc(687px * var(--mi-s));
+  width: calc(888px * var(--mi-s));
+  height: calc(1007px * var(--mi-s));
   max-width: none;
   pointer-events: none;
-  transform: translateX(-50%);
 }
 
 .mi-about__statue img {

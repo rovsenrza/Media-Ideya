@@ -18,7 +18,7 @@
 		</picture>
 		<picture class="mi-about__statue">
 			<source srcset="{THEME}/images/statuya.webp" type="image/webp">
-			<img src="{THEME}/images/statuya.png" alt="" width="888" height="939" loading="lazy" decoding="async">
+			<img src="{THEME}/images/statuya.png" alt="" width="888" height="1007" loading="lazy" decoding="async">
 		</picture>
 		<div class="mi-about__colonnade" aria-hidden="true">
 			<picture class="mi-about__colonnade-fill">
