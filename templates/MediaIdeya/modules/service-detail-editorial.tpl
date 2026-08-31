@@ -60,6 +60,8 @@
 		</dl>
 	</section>
 
+	<div class="mi-service-detail__mobile-case-anchor mi-service-detail__mobile-case-anchor--formats" data-service-mobile-cases="formats" aria-label="Кейсы"></div>
+
 	<section class="mi-service-detail__section mi-service-detail__benefits" data-service-reveal>
 		<h2>[xfvalue_service_benefits_title]</h2>
 		<ol class="mi-service-detail__benefit-list">
@@ -118,21 +120,24 @@
 		<h2>[xfvalue_service_metrics_title]<br>[xfvalue_service_metrics_subtitle]</h2>
 		<ul>
 			<li>
-				<img src="{THEME}/images/pages/services/arrow.svg" alt="" width="46" height="46" loading="lazy">
+				<img class="mi-service-detail__metric-arrow mi-service-detail__metric-arrow--desktop" src="{THEME}/images/pages/services/arrow.svg" alt="" width="46" height="46" loading="lazy">
+				<img class="mi-service-detail__metric-arrow mi-service-detail__metric-arrow--mobile" src="{THEME}/images/pages/services/metric-arrow-mobile.svg" alt="" width="32" height="32" loading="lazy">
 				<div>
 					<strong>[xfvalue_service_metric_1_title]</strong>
 					<span>[xfvalue_service_metric_1_text]</span>
 				</div>
 			</li>
 			<li>
-				<img src="{THEME}/images/pages/services/arrow.svg" alt="" width="46" height="46" loading="lazy">
+				<img class="mi-service-detail__metric-arrow mi-service-detail__metric-arrow--desktop" src="{THEME}/images/pages/services/arrow.svg" alt="" width="46" height="46" loading="lazy">
+				<img class="mi-service-detail__metric-arrow mi-service-detail__metric-arrow--mobile" src="{THEME}/images/pages/services/metric-arrow-mobile.svg" alt="" width="32" height="32" loading="lazy">
 				<div>
 					<strong>[xfvalue_service_metric_2_title]</strong>
 					<span>[xfvalue_service_metric_2_text]</span>
 				</div>
 			</li>
 			<li>
-				<img src="{THEME}/images/pages/services/arrow.svg" alt="" width="46" height="46" loading="lazy">
+				<img class="mi-service-detail__metric-arrow mi-service-detail__metric-arrow--desktop" src="{THEME}/images/pages/services/arrow.svg" alt="" width="46" height="46" loading="lazy">
+				<img class="mi-service-detail__metric-arrow mi-service-detail__metric-arrow--mobile" src="{THEME}/images/pages/services/metric-arrow-mobile.svg" alt="" width="32" height="32" loading="lazy">
 				<div>
 					<strong>[xfvalue_service_metric_3_title]</strong>
 					<span>[xfvalue_service_metric_3_text]</span>
@@ -140,4 +145,6 @@
 			</li>
 		</ul>
 	</section>
+
+	<div class="mi-service-detail__mobile-case-anchor mi-service-detail__mobile-case-anchor--metrics" data-service-mobile-cases="metrics" aria-label="Кейсы"></div>
 </div>

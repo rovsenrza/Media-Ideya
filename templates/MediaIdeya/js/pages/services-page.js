@@ -34,6 +34,42 @@
     }
   }
 
+  var mobileCasesQuery = window.matchMedia("(max-width: 560px)");
+  var mobileCaseAnchors = stage
+    ? {
+        formats: stage.querySelector('[data-service-mobile-cases="formats"]'),
+        metrics: stage.querySelector('[data-service-mobile-cases="metrics"]')
+      }
+    : null;
+
+  var placeMobileCases = function () {
+    if (!stage || !mobileCaseAnchors || !mobileCaseAnchors.formats || !mobileCaseAnchors.metrics) {
+      return;
+    }
+
+    if (!mobileCasesQuery.matches) {
+      bubbles.forEach(function (bubble) {
+        stage.appendChild(bubble);
+      });
+      return;
+    }
+
+    var formatCases = document.createElement("div");
+    var metricCases = document.createElement("div");
+
+    formatCases.className = "mi-service-detail__mobile-cases";
+    metricCases.className = "mi-service-detail__mobile-cases";
+    mobileCaseAnchors.formats.replaceChildren(formatCases);
+    mobileCaseAnchors.metrics.replaceChildren(metricCases);
+
+    bubbles.forEach(function (bubble, index) {
+      (index < 2 ? formatCases : metricCases).appendChild(bubble);
+    });
+  };
+
+  placeMobileCases();
+  mobileCasesQuery.addEventListener("change", placeMobileCases);
+
   var revealItems = Array.prototype.slice.call(
     page.querySelectorAll("[data-service-reveal]")
   );

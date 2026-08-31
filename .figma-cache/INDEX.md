@@ -51,6 +51,7 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 | `101:542`, `101:549` | Главная — first mobile service card | `101-519_home-mobile.md` |
 | `101:566`, `101:570`, `101:572`, `101:575`, `101:576`, `101:578`–`101:580` | Главная — mobile About | `101-519_home-mobile.md` |
 | `101:717` | Главная — mobile Clients | `101-519_home-mobile.md` |
+| `101:1448`, `101:1589`, `101:1604`, `101:1607`, `101:1643`, `101:1670`, `101:1671`, `101:1673` | Услуги / Product-placement — mobile 360px | `101-1448_services-mobile.md` |
 | `101:2447` | Modal — 1920 desktop | `101-2447_modal-1920-user-reference.md` |
 | `101:2450` | Request form — 1920 desktop | `101-2450_request-form-1920-user-reference.md` |
 | `84:609` | Homepage CTA — intro | `84-609_home-cta-intro.md` |
