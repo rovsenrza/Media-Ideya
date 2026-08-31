@@ -260,7 +260,10 @@
   /* Figma 101:542 is a 328 × 665 card inside the 360 × 800 stage.
      Scale the complete pinned scene together from 320px through 430px. */
   .mi-services {
-    --mi-mobile-stage: clamp(711.111px, 222.222vw, 955.556px);
+    /* Accommodate the longest card's CTA plus its required bottom breathing room. */
+    --mi-mobile-stage: calc(
+      clamp(711.111px, 222.222vw, 955.556px) + clamp(28.444px, 8.889vw, 38.222px)
+    );
     --mi-services-title-h: clamp(31.111px, 9.722vw, 41.806px);
     --mi-services-stick-top: 0px;
     --mi-stack-step: var(--mi-mobile-stage);
