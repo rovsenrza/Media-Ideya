@@ -42,7 +42,10 @@ body.mi-case-open { overflow: hidden; }
   display: grid;
   grid-template-columns: calc(680px * var(--mi-s)) calc(820px * var(--mi-s));
   gap: calc(60px * var(--mi-s));
-  width: 100%;
+  /* Figma 47:121 / 47:710: the popup is a fixed 1720px composition.
+     Keeping it viewport-wide leaves unused space after the 820px right pane. */
+  width: calc(1720px * var(--mi-s));
+  max-width: 100%;
   height: calc(780px * var(--mi-s));
   padding: calc(80px * var(--mi-s));
   border-radius: var(--mi-radius-card);
@@ -334,13 +337,17 @@ body.mi-case-open { overflow: hidden; }
 
 .mi-case-cta > img {
   position: absolute;
-  right: calc(-2px * var(--mi-s));
+  right: 0;
   bottom: 0;
-  width: calc(260px * var(--mi-s));
+  width: calc(201px * var(--mi-s));
   height: calc(395px * var(--mi-s));
   max-width: none;
   object-fit: cover;
-  object-position: left center;
+  object-position: right center;
+  /* Figma 47:715 mirrors the statue so its face enters the CTA from the
+     right edge instead of exposing the source image's empty hair-side crop. */
+  transform: scaleX(-1);
+  transform-origin: right center;
 }
 
 @media (max-width: 991px) {

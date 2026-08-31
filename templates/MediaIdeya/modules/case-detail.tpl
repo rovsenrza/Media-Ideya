@@ -100,7 +100,7 @@
 					[xfgiven_case_cta_text]<p>[xfvalue_case_cta_text]</p>[/xfgiven_case_cta_text]
 					<button class="mi-btn" type="button" data-request-modal-open>Придумать механику для вашего бренда</button>
 				</div>
-				<img src="{THEME}/images/pages/cases/head.png" width="260" height="395" alt="" loading="lazy" decoding="async">
+				<img src="{THEME}/images/pages/cases/head.png" width="201" height="395" alt="" loading="lazy" decoding="async">
 			</aside>
 			[/xfgiven_case_cta_title]
 		</div>
