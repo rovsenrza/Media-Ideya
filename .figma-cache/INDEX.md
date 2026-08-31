@@ -47,7 +47,7 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 
 | Node | Section | File |
 |------|---------|------|
-| `101:519` | Главная — mobile 360px | `101-519_home-mobile.md` |
+| `101:519`, `101:765` | Главная — mobile 360px and CTA final state | `101-519_home-mobile.md` |
 | `101:542`, `101:549` | Главная — first mobile service card | `101-519_home-mobile.md` |
 | `101:566`, `101:570`, `101:572`, `101:575`, `101:576`, `101:578`–`101:580` | Главная — mobile About | `101-519_home-mobile.md` |
 | `101:717` | Главная — mobile Clients | `101-519_home-mobile.md` |
