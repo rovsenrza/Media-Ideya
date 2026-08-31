@@ -12,3 +12,5 @@ Source: `26q72HBLqm2BrQP1NnVPqy`, node `101:1002`.
 - Animations remain driven by the existing about-page script; mobile rules only adapt geometry and typography.
 
 Additional asset references: `101:1015` (gratitude shelves), `101:1040` (process bowl), and `101:1008` (CTA right hand) are 100%-sized, bottom-aligned image layers in Figma. The repository source assets are larger transparent exports, so the gratitude artwork is cover-cropped from the bottom while the bowl remains above the process foreground wash at full opacity. CTA hand layers preserve their source aspect ratio with `object-fit: cover` rather than being stretched.
+
+Hero `101:1116` is a 407.885×417 crop of the original vertical center-statue source. Preserve its aspect ratio and allow its surrounding frame to crop it; never force both image dimensions to 100%, which visibly squashes the statue.
