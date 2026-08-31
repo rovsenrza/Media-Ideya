@@ -251,6 +251,11 @@
   transform: rotateY(180deg);
 }
 
+.mi-case-results__wreath--right {
+  justify-self: end;
+  transform: rotateY(180deg);
+}
+
 .mi-case-results__number b {
   font-size: var(--mi-fs-32);
   font-weight: 300;
@@ -440,7 +445,7 @@
   .mi-case-results__number { width: 53px; }
   .mi-case-results__number img { width: auto; height: auto; }
   .mi-case-results__number .mi-case-results__wreath--mobile { width: 19px; height: 36px; }
-  .mi-case-results__number .mi-case-results__wreath--mobile:last-child { width: 20px; height: 37.5px; justify-self: end; transform: rotateY(180deg); }
+  .mi-case-results__number .mi-case-results__wreath--mobile.mi-case-results__wreath--right { width: 20px; height: 37.5px; justify-self: end; transform: rotateY(180deg); }
   .mi-case-results__number b { font-size: 24px; line-height: 1.2; }
 
   .mi-case-cta {
