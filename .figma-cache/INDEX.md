@@ -60,5 +60,6 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 | `84:863` | Homepage CTA — final | `84-863_home-cta-final.md` |
 | `84:648` | Homepage About — desktop colonnade / statue composition | `84-648_about-desktop-colonnade.md` |
 | `108:2858`, `108:2863`, `101:907`, `101:909`, `101:913` | Contacts — social groups and mobile visual | `108-2858_contact-socials.md` |
+| `101:894`, `101:898`, `101:899`, `101:903`, `101:906`, `101:908`, `101:915`, `101:920`, `101:927`, `101:930`, `101:951` | Contacts — mobile page | `101-894_contact-mobile.md` |
 | `84:617`, `84:619`, `108:2639` | Desktop footer social groups | `84-617_footer-social-desktop.md` |
 | `108:2818` | Footer — mobile 360px | `108-2818_footer-mobile.md` |
