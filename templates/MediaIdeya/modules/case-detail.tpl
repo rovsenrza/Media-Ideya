@@ -1,7 +1,8 @@
 <section class="mi-cases-page" aria-label="{title}">
 	<article class="mi-case-dialog" role="dialog" aria-modal="true" aria-labelledby="mi-case-title">
 		<a class="mi-case-dialog__close" href="{THEME}/../../" aria-label="Закрыть кейс" data-case-close>
-			<img src="{THEME}/images/pages/cases/close.svg" width="36" height="36" alt="">
+			<img class="mi-case-dialog__close-icon mi-case-dialog__close-icon--desktop" src="{THEME}/images/pages/cases/close.svg" width="36" height="36" alt="">
+			<img class="mi-case-dialog__close-icon mi-case-dialog__close-icon--mobile" src="{THEME}/images/pages/cases/close-mobile.svg" width="32" height="32" alt="">
 		</a>
 
 		<div class="mi-case-dialog__media">
@@ -10,7 +11,8 @@
 				[xfgiven_case_hero_alt]<img src="[xfvalue_image_url_case_hero]" width="1443" height="915" alt="[xfvalue_case_hero_alt]" decoding="async" fetchpriority="high">[/xfgiven_case_hero_alt]
 				[xfnotgiven_case_hero_alt]<img src="[xfvalue_image_url_case_hero]" width="1443" height="915" alt="{title}" decoding="async" fetchpriority="high">[/xfnotgiven_case_hero_alt]
 			</div>
-			<img class="mi-case-dialog__dots" src="{THEME}/images/pages/cases/slider-dots.svg" width="80" height="8" alt="" decoding="async">
+			<img class="mi-case-dialog__dots mi-case-dialog__dots--desktop" src="{THEME}/images/pages/cases/slider-dots.svg" width="80" height="8" alt="" decoding="async">
+			<img class="mi-case-dialog__dots mi-case-dialog__dots--mobile" src="{THEME}/images/pages/cases/slider-dots-mobile.svg" width="70" height="6" alt="" decoding="async">
 			[/xfgiven_case_hero]
 		</div>
 
@@ -59,31 +61,31 @@
 				<ol class="mi-case-results">
 					[xfgiven_case_result_1_title]
 					<li>
-						<span class="mi-case-results__number" aria-hidden="true"><img src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><b></b><img src="{THEME}/images/pages/cases/wreath-right.svg" alt=""></span>
+						<span class="mi-case-results__number" aria-hidden="true"><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-left-mobile.svg" alt=""><b></b><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-right.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-right-mobile.svg" alt=""></span>
 						<span><strong>[xfvalue_case_result_1_title]</strong>[xfgiven_case_result_1_text]<small>[xfvalue_case_result_1_text]</small>[/xfgiven_case_result_1_text]</span>
 					</li>
 					[/xfgiven_case_result_1_title]
 					[xfgiven_case_result_2_title]
 					<li>
-						<span class="mi-case-results__number" aria-hidden="true"><img src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><b></b><img src="{THEME}/images/pages/cases/wreath-right.svg" alt=""></span>
+						<span class="mi-case-results__number" aria-hidden="true"><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-left-mobile.svg" alt=""><b></b><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-right.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-right-mobile.svg" alt=""></span>
 						<span><strong>[xfvalue_case_result_2_title]</strong>[xfgiven_case_result_2_text]<small>[xfvalue_case_result_2_text]</small>[/xfgiven_case_result_2_text]</span>
 					</li>
 					[/xfgiven_case_result_2_title]
 					[xfgiven_case_result_3_title]
 					<li>
-						<span class="mi-case-results__number" aria-hidden="true"><img src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><b></b><img src="{THEME}/images/pages/cases/wreath-right.svg" alt=""></span>
+						<span class="mi-case-results__number" aria-hidden="true"><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-left-mobile.svg" alt=""><b></b><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-right.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-right-mobile.svg" alt=""></span>
 						<span><strong>[xfvalue_case_result_3_title]</strong>[xfgiven_case_result_3_text]<small>[xfvalue_case_result_3_text]</small>[/xfgiven_case_result_3_text]</span>
 					</li>
 					[/xfgiven_case_result_3_title]
 					[xfgiven_case_result_4_title]
 					<li>
-						<span class="mi-case-results__number" aria-hidden="true"><img src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><b></b><img src="{THEME}/images/pages/cases/wreath-right.svg" alt=""></span>
+						<span class="mi-case-results__number" aria-hidden="true"><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-left-mobile.svg" alt=""><b></b><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-right.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-right-mobile.svg" alt=""></span>
 						<span><strong>[xfvalue_case_result_4_title]</strong>[xfgiven_case_result_4_text]<small>[xfvalue_case_result_4_text]</small>[/xfgiven_case_result_4_text]</span>
 					</li>
 					[/xfgiven_case_result_4_title]
 					[xfgiven_case_result_5_title]
 					<li>
-						<span class="mi-case-results__number" aria-hidden="true"><img src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><b></b><img src="{THEME}/images/pages/cases/wreath-right.svg" alt=""></span>
+						<span class="mi-case-results__number" aria-hidden="true"><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-left.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-left-mobile.svg" alt=""><b></b><img class="mi-case-results__wreath--desktop" src="{THEME}/images/pages/cases/wreath-right.svg" alt=""><img class="mi-case-results__wreath--mobile" src="{THEME}/images/pages/cases/wreath-right-mobile.svg" alt=""></span>
 						<span><strong>[xfvalue_case_result_5_title]</strong>[xfgiven_case_result_5_text]<small>[xfvalue_case_result_5_text]</small>[/xfgiven_case_result_5_text]</span>
 					</li>
 					[/xfgiven_case_result_5_title]

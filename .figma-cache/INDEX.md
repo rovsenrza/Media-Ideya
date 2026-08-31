@@ -52,6 +52,7 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 | `101:566`, `101:570`, `101:572`, `101:575`, `101:576`, `101:578`–`101:580` | Главная — mobile About | `101-519_home-mobile.md` |
 | `101:717` | Главная — mobile Clients | `101-519_home-mobile.md` |
 | `101:1448`, `101:1589`, `101:1604`, `101:1607`, `101:1643`, `101:1670`, `101:1671`, `101:1673` | Услуги / Product-placement — mobile 360px | `101-1448_services-mobile.md` |
+| `101:1777`, `101:2079`, `101:2096`, `101:2232`, `101:2369` | Кейсы — mobile detail popup | `101-1777_cases-mobile.md` |
 | `101:2447` | Modal — 1920 desktop | `101-2447_modal-1920-user-reference.md` |
 | `101:2450` | Request form — 1920 desktop | `101-2450_request-form-1920-user-reference.md` |
 | `101:2499`, `101:2501` | Request modal — mobile 360px | `101-2499_request-modal-mobile.md` |
