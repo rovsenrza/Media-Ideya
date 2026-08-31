@@ -180,11 +180,11 @@
   }
 
   .mi-request-modal__close-icon--desktop {
-    display: none;
+    display: none !important;
   }
 
   .mi-request-modal__close-icon--mobile {
-    display: block;
+    display: block !important;
     width: 14px !important;
     height: 14px !important;
   }
@@ -232,11 +232,11 @@
 
   .mi-request-modal__messenger > span,
   .mi-request-modal__messenger-icon--desktop {
-    display: none;
+    display: none !important;
   }
 
   .mi-request-modal__messenger-icon--mobile {
-    display: block;
+    display: block !important;
     width: 54px !important;
     height: 54px !important;
     max-width: none;
