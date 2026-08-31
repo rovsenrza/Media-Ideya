@@ -993,12 +993,7 @@
   }
 
   .mi-service-detail__request-column {
-    top: auto;
-    bottom: -60px;
-    left: -130px;
-    width: 306px;
-    height: 520px;
-    opacity: 0.18;
+    display: none;
   }
 
   .mi-service-detail__request-column img {
