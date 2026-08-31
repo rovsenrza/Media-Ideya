@@ -368,7 +368,7 @@
 
   .mi-case-dialog__cover {
     width: 100%;
-    height: calc((100vw - 40px) * 400 / 680);
+    height: calc(58.823529vw - 23.529412px);
     aspect-ratio: auto;
     border-radius: 16px;
   }
@@ -408,10 +408,11 @@
 
   .mi-case-flow li {
     min-height: 0;
+    max-width: calc(100% - 30px);
     padding: 4px 8px;
     font-size: 14px;
     line-height: 1.5;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .mi-case-flow li:not(:last-child) { margin-right: 30px; }
