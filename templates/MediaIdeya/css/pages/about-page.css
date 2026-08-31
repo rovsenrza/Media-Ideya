@@ -524,12 +524,14 @@ html:not(.mi-js) .mi-about-team__role:nth-child(2) {
 
 .mi-about-process__bowl {
   position: absolute;
-  z-index: 2;
+  /* In the Figma layer order the bowl sits above the lower wash. */
+  z-index: 4;
   left: calc(503px * var(--mi-about-s));
   top: calc(553px * var(--mi-about-s));
   width: calc(914px * var(--mi-about-s));
   height: calc(724px * var(--mi-about-s));
   overflow: hidden;
+  opacity: 1;
   transform-origin: 50% 58%;
   will-change: opacity, transform, filter;
 }
@@ -1216,7 +1218,8 @@ html.mi-process-scroll-locked body {
     top: 172px;
     width: 100%;
     height: 435px;
-    object-position: center top;
+    object-fit: cover;
+    object-position: center bottom;
   }
 
   .mi-about-gratitude__heading {
@@ -1263,6 +1266,8 @@ html.mi-process-scroll-locked body {
     top: 40px;
     width: 600px;
     height: 163px;
+    object-fit: cover;
+    object-position: center;
     opacity: 1;
     clip-path: inset(0 50% 0 0);
     transform: none;
@@ -1274,6 +1279,8 @@ html.mi-process-scroll-locked body {
     top: 40px;
     width: 600px;
     height: 163px;
+    object-fit: cover;
+    object-position: center;
     opacity: 1;
     clip-path: inset(0 0 0 50%);
     transform: none;
