@@ -260,10 +260,7 @@
   /* Figma 101:542 is a 328 × 665 card inside the 360 × 800 stage.
      Scale the complete pinned scene together from 320px through 430px. */
   .mi-services {
-    /* Accommodate the longest card's CTA plus its required bottom breathing room. */
-    --mi-mobile-stage: calc(
-      clamp(711.111px, 222.222vw, 955.556px) + clamp(28.444px, 8.889vw, 38.222px)
-    );
+    --mi-mobile-stage: clamp(711.111px, 222.222vw, 955.556px);
     --mi-services-title-h: clamp(31.111px, 9.722vw, 41.806px);
     --mi-services-stick-top: 0px;
     --mi-stack-step: var(--mi-mobile-stage);
@@ -284,6 +281,7 @@
     height: var(--mi-mobile-stage);
     gap: clamp(17.778px, 5.556vw, 23.889px);
     padding: clamp(17.778px, 5.556vw, 23.889px) 0 clamp(53.333px, 16.667vw, 71.667px);
+    padding-bottom: 30px;
     overflow: hidden;
   }
 
@@ -346,6 +344,8 @@
   .mi-service-card__text,
   .mi-service-card__list,
   .mi-service-card__details ul { font-size: clamp(12.444px, 3.889vw, 16.722px); }
+
+  .mi-service-card__text { margin-bottom: 12px; }
 
   .mi-service-card__count { top: clamp(208px, 65vw, 279.5px); right: 7.317%; font-size: clamp(21.333px, 6.667vw, 28.667px); line-height: 1.2; color: var(--mi-color-blue); }
 
