@@ -72,7 +72,7 @@
 .mi-about-hero::before {
   top: 0;
   height: calc(213px * var(--mi-about-s));
-  background: linear-gradient(180deg, #4a7ca3 0%, rgba(74, 124, 163, 0) 100%);
+  background: linear-gradient(180deg, #4a7ca3 0%, rgba(150, 187, 217, 0) 100%);
 }
 
 .mi-about-hero::after {
@@ -537,7 +537,8 @@ html:not(.mi-js) .mi-about-team__role:nth-child(2) {
 .mi-about-process__bowl img {
   width: 100%;
   max-width: none;
-  height: auto;
+  height: 100%;
+  object-position: bottom;
 }
 
 .mi-js .mi-about-process:not(.is-composed) .mi-about-process__title,
@@ -892,14 +893,14 @@ html.mi-process-scroll-locked body {
   }
 
   .mi-about-hero::before {
-    height: 180px;
+    height: 149px;
   }
 
   .mi-about-hero::after {
     top: 486px;
     bottom: auto;
     height: 314px;
-    background: linear-gradient(to top, rgba(237, 245, 253, 0) 0%, rgba(237, 245, 253, 0.6) 27.588%, #edf5fd 61.306%);
+    background: linear-gradient(to bottom, rgba(237, 245, 253, 0) 0%, rgba(237, 245, 253, 0.6) 27.588%, #edf5fd 61.306%);
   }
 
   .mi-about-breadcrumb {
@@ -945,7 +946,6 @@ html.mi-process-scroll-locked body {
   .mi-about-hero__statue img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     object-position: bottom;
   }
 
@@ -1110,18 +1110,20 @@ html.mi-process-scroll-locked body {
   .mi-about-process__step:nth-child(6) { top: 449px; }
 
   .mi-about-process__caption {
-    left: 36px;
+    left: 50%;
     top: 503px;
     width: 289px;
+    margin-left: -144.5px;
     font-size: 24px;
     line-height: 1.2;
   }
 
   .mi-about-process__bowl {
-    left: 0;
+    left: 50%;
     top: 526px;
     width: 360px;
     height: 274px;
+    margin-left: -180px;
   }
 
   .mi-about-reviews {
@@ -1214,7 +1216,6 @@ html.mi-process-scroll-locked body {
     top: 172px;
     width: 100%;
     height: 435px;
-    object-fit: cover;
     object-position: center top;
   }
 
@@ -1261,13 +1262,21 @@ html.mi-process-scroll-locked body {
     left: -120px;
     top: 40px;
     width: 600px;
+    height: 163px;
     opacity: 1;
-    clip-path: none;
-    transform: translateX(-50%);
+    clip-path: inset(0 50% 0 0);
+    transform: none;
   }
 
   .mi-about-cta__hand--right {
-    display: none;
+    display: block;
+    left: -94px;
+    top: 40px;
+    width: 600px;
+    height: 163px;
+    opacity: 1;
+    clip-path: inset(0 0 0 50%);
+    transform: none;
   }
 
   .mi-about-cta__title,
