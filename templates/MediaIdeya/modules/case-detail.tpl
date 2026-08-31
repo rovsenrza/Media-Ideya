@@ -1,4 +1,4 @@
-<section class="mi-cases-page" aria-label="{title}">
+<section class="mi-cases-page mi-case-modal" data-case-modal data-case-url="{full-link}" hidden aria-label="{title}">
 	<article class="mi-case-dialog" role="dialog" aria-modal="true" aria-labelledby="mi-case-title">
 		<a class="mi-case-dialog__close" href="{THEME}/../../" aria-label="Закрыть кейс" data-case-close>
 			<img class="mi-case-dialog__close-icon mi-case-dialog__close-icon--desktop" src="{THEME}/images/pages/cases/close.svg" width="36" height="36" alt="">

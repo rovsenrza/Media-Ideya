@@ -29,6 +29,7 @@
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/available]
 	[static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/static]
 	[category=2]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/category]
+	<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css">
 
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
@@ -52,7 +53,6 @@
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/pages/contact-page.css">[/available]
 	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css">[/static]
 	[static=uslugi]<link rel="stylesheet" href="{THEME}/css/pages/services-page.css">[/static]
-	[category=2]<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css">[/category]
 </head>
 <body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available][available=feedback] is-contact-page[/available][static=o-kompanii] is-about-page[/static][static=uslugi] is-services-page[/static][category=2] is-cases-page[/category]">
 
@@ -116,6 +116,9 @@
 	[/available]
 
 	{AJAX}
+	[not-category=2]
+	{custom category="2" template="modules/case-detail" limit="20" order="date" sort="desc" cache="no"}
+	[/not-category]
 	{include file="modules/request-modal.tpl"}
 
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
@@ -134,6 +137,6 @@
 	[available=feedback]<script src="{THEME}/js/pages/contact-page.js" defer></script>[/available]
 	[static=o-kompanii]<script src="{THEME}/js/pages/about-page.js" defer></script>[/static]
 	[static=uslugi]<script src="{THEME}/js/pages/services-page.js" defer></script>[/static]
-	[category=2]<script src="{THEME}/js/pages/cases-page.js" defer></script>[/category]
+	<script src="{THEME}/js/pages/cases-page.js" defer></script>
 </body>
 </html>

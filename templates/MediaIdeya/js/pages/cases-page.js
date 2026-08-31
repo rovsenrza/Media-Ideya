@@ -1,28 +1,50 @@
 (function () {
   'use strict';
 
-  var panel = document.querySelector('[data-case-scroll]');
-  if (!panel) return;
+  var dialogs = Array.prototype.slice.call(document.querySelectorAll('[data-case-modal]'));
+  var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-case-open]'));
+  if (!dialogs.length && !triggers.length) return;
 
-  /* The case panel scrolls only in response to the visitor's input. */
-  panel.addEventListener('wheel', function (event) {
-    event.stopPropagation();
-  }, { passive: true });
-
-  var close = document.querySelector('[data-case-close]');
-  if (close) {
-    close.addEventListener('click', function (event) {
-      var referrerIsLocal = false;
-      try {
-        referrerIsLocal = document.referrer && new URL(document.referrer).origin === window.location.origin;
-      } catch (urlError) {
-        referrerIsLocal = false;
-      }
-
-      if (referrerIsLocal && history.length > 1) {
-        event.preventDefault();
-        history.back();
-      }
-    });
+  function pathOf(value) {
+    try { return new URL(value, window.location.href).pathname.replace(/\/+$/, '') || '/'; } catch (error) { return value; }
   }
+
+  function closeDialog(dialog) {
+    if (!dialog) return;
+    dialog.hidden = true;
+    dialog.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('mi-case-open');
+  }
+
+  function openDialog(url) {
+    var targetPath = pathOf(url);
+    var dialog = dialogs.find(function (item) { return pathOf(item.getAttribute('data-case-url')) === targetPath; });
+    if (!dialog) return false;
+    dialogs.forEach(closeDialog);
+    dialog.hidden = false;
+    dialog.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mi-case-open');
+    var panel = dialog.querySelector('[data-case-scroll]');
+    if (panel) panel.scrollTop = 0;
+    return true;
+  }
+
+  triggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function (event) {
+      if (openDialog(trigger.href || trigger.getAttribute('href'))) event.preventDefault();
+    });
+  });
+
+  dialogs.forEach(function (dialog) {
+    var panel = dialog.querySelector('[data-case-scroll]');
+    if (panel) panel.addEventListener('wheel', function (event) { event.stopPropagation(); }, { passive: true });
+    var close = dialog.querySelector('[data-case-close]');
+    if (close) close.addEventListener('click', function (event) { event.preventDefault(); closeDialog(dialog); });
+    dialog.addEventListener('click', function (event) { if (event.target === dialog) closeDialog(dialog); });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    dialogs.forEach(function (dialog) { if (!dialog.hidden) closeDialog(dialog); });
+  });
 })();

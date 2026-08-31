@@ -2,6 +2,42 @@
   display: none;
 }
 
+body.mi-case-open { overflow: hidden; }
+
+.mi-cases-page.mi-case-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 24px;
+  background: rgba(17, 35, 49, 0.78);
+  color: var(--mi-color-surface-dark);
+}
+
+.mi-cases-page.mi-case-modal[hidden] { display: none; }
+
+.mi-cases-index {
+  width: min(1720px, calc(100% - 2 * var(--mi-gutter)));
+  margin: 0 auto;
+  padding-block: calc(80px * var(--mi-s));
+}
+
+.mi-cases-index h1 { margin-bottom: calc(40px * var(--mi-s)); font-size: var(--mi-fs-64); }
+.mi-cases-index__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(24px * var(--mi-s)); }
+.mi-case-index-card { overflow: hidden; border-radius: var(--mi-radius-card); background: var(--mi-color-surface-soft); }
+.mi-case-index-card__link { display: flex; flex-direction: column; height: 100%; color: var(--mi-color-text); }
+.mi-case-index-card__link > img { width: 100%; aspect-ratio: 680 / 400; object-fit: cover; }
+.mi-case-index-card__body { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 24px; }
+.mi-case-index-card__body span { color: var(--mi-color-blue); }
+.mi-case-index-card__body strong { font-size: var(--mi-fs-24); }
+.mi-case-index-card__body em { margin-top: auto; color: var(--mi-color-blue); font-style: normal; }
+
 .mi-cases-page {
   display: flex;
   justify-content: center;
@@ -332,6 +368,12 @@
     min-height: calc(100svh - var(--mi-header-height));
     padding: 10px;
   }
+
+  .mi-cases-page.mi-case-modal { align-items: flex-start; padding: 60px 10px 10px; background: rgba(17, 35, 49, 0.88); overflow: hidden; }
+  .mi-cases-index { width: calc(100% - 20px); padding-block: 32px; }
+  .mi-cases-index h1 { margin-bottom: 20px; font-size: 32px; }
+  .mi-cases-index__grid { grid-template-columns: 1fr; gap: 16px; }
+  .mi-case-index-card__body { padding: 16px; }
 
   .mi-case-dialog {
     display: flex;
