@@ -1,7 +1,7 @@
 # Кейсы — mobile popup
 
 - Source: `26q72HBLqm2BrQP1NnVPqy`, nodes `101:1777`, `101:2096`, `101:2079`, `101:2232`, `101:2369`.
-- Reference viewport: `360px`; dialog is `340 × 680px` at `x:10`, after the 50px mobile header.
+- Reference viewport: `360px`; dialog is `340 × 680px` at `x:10`, after the compact 50px mobile header.
 - Dialog: `#edf5fd`, radius `24px`, padding `10px`, vertical gap `16px`; close control is `32px` at top/right `10px/20px`.
 - Media: `320 × 188.235px` (`680:400`) cover, `16px` radius; centred pagination is `70 × 6px`, 10px below the cover.
 - Detail body scrolls inside the dialog. Its content has 6px side/bottom inset; headings are 18px, body 14px/1.5, brand 18px and case title 24px.

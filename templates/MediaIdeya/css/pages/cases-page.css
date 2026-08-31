@@ -316,6 +316,13 @@
 }
 
 @media (max-width: 991px) {
+  .is-cases-page { --mi-header-height: 50px; }
+
+  .is-cases-page .mi-header__inner { padding: 12px 16px; }
+  .is-cases-page .mi-logo { flex: 0 0 38.64px; width: 38.64px; height: 26px; }
+  .is-cases-page .mi-logo img { width: 38.64px; height: 26px; }
+  .is-cases-page .mi-btn--header { min-height: 30px; padding: 6px 12px; font-size: 6.67px; }
+
   .mi-cases-page {
     min-height: calc(100svh - var(--mi-header-height));
     padding: 10px;
@@ -361,8 +368,8 @@
 
   .mi-case-dialog__cover {
     width: 100%;
-    height: auto;
-    aspect-ratio: 680 / 400;
+    height: calc((100vw - 40px) * 400 / 680);
+    aspect-ratio: auto;
     border-radius: 16px;
   }
 
