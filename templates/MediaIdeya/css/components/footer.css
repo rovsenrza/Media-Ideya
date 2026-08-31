@@ -166,7 +166,7 @@
 
 .mi-footer__mobile-head,
 .mi-footer__social-icon--mobile {
-  display: none;
+  display: none !important;
 }
 
 .mi-footer__contacts {

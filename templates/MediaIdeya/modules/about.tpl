@@ -16,6 +16,10 @@
 			<source srcset="{THEME}/images/about/cloud.webp" type="image/webp">
 			<img src="{THEME}/images/about/cloud.png" alt="" width="1635" height="666" decoding="async">
 		</picture>
+		<picture class="mi-about__statue">
+			<source srcset="{THEME}/images/statuya.webp" type="image/webp">
+			<img src="{THEME}/images/statuya.png" alt="" width="888" height="939" loading="lazy" decoding="async">
+		</picture>
 		<div class="mi-about__colonnade" aria-hidden="true">
 			<picture class="mi-about__colonnade-fill">
 				<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/3.png" type="image/png">
