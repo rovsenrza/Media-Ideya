@@ -65,7 +65,7 @@
 
 .mi-request-modal__close-icon--mobile,
 .mi-request-modal__messenger-icon--mobile {
-  display: none;
+  display: none !important;
 }
 
 .mi-request-modal__copy {
