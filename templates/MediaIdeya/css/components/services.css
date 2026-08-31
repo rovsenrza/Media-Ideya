@@ -331,7 +331,14 @@
     padding: clamp(208px, 65vw, 279.5px) 7.317% 7.317%;
   }
 
-  .mi-service-card__title { font-size: clamp(24.889px, 7.778vw, 33.444px); }
+  .mi-service-card__title {
+    box-sizing: border-box;
+    width: 100%;
+    /* Keep the fixed top-right pagination outside every service title,
+       including the final long title. */
+    padding-right: 22%;
+    font-size: clamp(24.889px, 7.778vw, 33.444px);
+  }
   .mi-service-card__content { gap: clamp(8.889px, 2.778vw, 11.944px); margin-top: 0; }
   .mi-service-card__text,
   .mi-service-card__list,
