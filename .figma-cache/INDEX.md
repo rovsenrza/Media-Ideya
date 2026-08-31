@@ -63,3 +63,4 @@ Legacy file keys: `kjgO8zApNk7weuAFgIdCPb`, `Bt4qOjgEAEywy7uJCnEQsP`, `vZBU6EVsQ
 | `101:894`, `101:898`, `101:899`, `101:903`, `101:906`, `101:908`, `101:915`, `101:920`, `101:927`, `101:930`, `101:951` | Contacts — mobile page | `101-894_contact-mobile.md` |
 | `84:617`, `84:619`, `108:2639` | Desktop footer social groups | `84-617_footer-social-desktop.md` |
 | `108:2818` | Footer — mobile 360px | `108-2818_footer-mobile.md` |
+| `108:2738` | Footer — unified component | `108-2738_footer-unified.md` |

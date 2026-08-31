@@ -1,4 +1,7 @@
-.is-cases-page .mi-footer {
+/* Cases uses the same shared footer bar as every inner page. Only the
+   page-specific CTA is omitted; the footer contacts/social/legal sections
+   remain available and consistent across routes. */
+.is-cases-page .mi-footer__cta {
   display: none;
 }
 
