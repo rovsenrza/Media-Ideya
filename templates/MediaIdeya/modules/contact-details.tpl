@@ -20,11 +20,29 @@
 		</div>
 		[/xfgiven_footer_email]
 		<div class="mi-contact-detail mi-contact-detail--social">
-			<span class="mi-contact-detail__label">Соц.сети</span>
-			<div class="mi-contact-detail__social-links">
-				[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"><img src="{THEME}/images/icons/telegram.svg" width="78" height="78" alt=""></a>[/xfgiven_contact_telegram_url]
-				[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"><img src="{THEME}/images/icons/whatsapp.svg" width="78" height="78" alt=""></a>[/xfgiven_contact_whatsapp_url]
-				<a class="mi-contact-detail__social-link" href="https://vk.com/mediaideya" aria-label="ВКонтакте" rel="noopener noreferrer"><img src="{THEME}/images/icons/vk.svg" width="78" height="78" alt=""></a>
+			<div class="mi-contact-detail__social-groups" aria-label="Социальные сети">
+				<div class="mi-contact-detail__social-group mi-contact-detail__social-group--message">
+					<span class="mi-contact-detail__label">Напишите нам</span>
+					<div class="mi-contact-detail__social-links mi-contact-detail__social-links--desktop">
+						[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"><img src="{THEME}/images/pages/contact/social-telegram-desktop.svg" width="78" height="78" alt=""></a>[/xfgiven_contact_telegram_url]
+						[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"><img src="{THEME}/images/pages/contact/social-whatsapp-desktop.svg" width="78" height="78" alt=""></a>[/xfgiven_contact_whatsapp_url]
+					</div>
+				</div>
+				<div class="mi-contact-detail__social-group mi-contact-detail__social-group--follow">
+					<span class="mi-contact-detail__label">Следите за нами</span>
+					<div class="mi-contact-detail__social-links mi-contact-detail__social-links--desktop">
+						<a class="mi-contact-detail__social-link" href="https://vk.com/mediaideya" aria-label="ВКонтакте" rel="noopener noreferrer"><img src="{THEME}/images/pages/contact/social-vk-desktop.svg" width="78" height="78" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="mi-contact-detail__social-group mi-contact-detail__social-group--mobile">
+				<span class="mi-contact-detail__label">Соц.сети</span>
+				<div class="mi-contact-detail__social-links mi-contact-detail__social-links--mobile">
+					<img src="{THEME}/images/pages/contact/socials-mobile.svg" width="176" height="48" alt="" aria-hidden="true">
+					[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"></a>[/xfgiven_contact_telegram_url]
+					[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"></a>[/xfgiven_contact_whatsapp_url]
+					<a class="mi-contact-detail__social-link" href="https://vk.com/mediaideya" aria-label="ВКонтакте" rel="noopener noreferrer"></a>
+				</div>
 			</div>
 		</div>
 	</div>
