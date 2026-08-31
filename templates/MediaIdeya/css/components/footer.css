@@ -449,10 +449,10 @@
   .mi-footer__mobile-logo img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
   .mi-footer__mobile-nav { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 10px 0; }
   .mi-footer__mobile-nav a { color: #fff; font-size: 14px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
-  .mi-footer__contacts { flex-direction: column; gap: 20px; }
+  .mi-footer__contacts { width: 100%; flex-direction: column; gap: 20px; }
   .mi-footer__col { gap: 10px; }
   .mi-footer__col p,
-  .mi-footer__col a { font-size: 14px; }
+  .mi-footer__col a { font-size: 14px; white-space: nowrap; }
   .mi-footer__label { font-size: 12px; }
   .mi-footer__social { width: 100%; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 0; }
   .mi-footer__social-group { gap: 10px; }
