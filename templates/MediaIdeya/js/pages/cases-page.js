@@ -19,11 +19,16 @@
   function openDialog(url) {
     var targetPath = pathOf(url);
     var dialog = dialogs.find(function (item) { return pathOf(item.getAttribute('data-case-url')) === targetPath; });
+    if (!dialog && /\/keysy\/?$/.test(targetPath)) dialog = dialogs[0];
     if (!dialog) return false;
     dialogs.forEach(closeDialog);
     dialog.hidden = false;
     dialog.setAttribute('aria-hidden', 'false');
     document.body.classList.add('mi-case-open');
+    var header = document.querySelector('.mi-header');
+    var menuToggle = document.querySelector('[data-mobile-menu-toggle]');
+    if (header) header.classList.remove('is-menu-open');
+    if (menuToggle) { menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.setAttribute('aria-label', 'Открыть меню'); }
     var panel = dialog.querySelector('[data-case-scroll]');
     if (panel) panel.scrollTop = 0;
     return true;
