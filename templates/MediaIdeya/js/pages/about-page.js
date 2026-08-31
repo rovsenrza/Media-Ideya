@@ -419,7 +419,6 @@
     var processAnimations = [];
     var heading = process.querySelector('[data-process-heading]');
     var path = process.querySelector('.mi-about-process__path');
-    var ghost = process.querySelector('[data-process-ghost]');
     var steps = process.querySelectorAll('[data-process-step]');
     var caption = process.querySelector('[data-process-caption]');
     var bowl = process.querySelector('[data-process-bowl]');
@@ -455,38 +454,6 @@
           delay: 830,
           easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
           fill: 'both',
-        }
-      )
-    );
-
-    processAnimations.push(
-      animate(
-        ghost,
-        [
-          { opacity: 0, transform: 'translate3d(0, 34px, 0) scale(0.84)', filter: 'blur(12px)' },
-          { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', filter: 'blur(0)' },
-        ],
-        {
-          duration: 470,
-          delay: 830,
-          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          fill: 'both',
-        }
-      )
-    );
-
-    processAnimations.push(
-      animate(
-        ghost,
-        [
-          { opacity: 1, transform: 'scale(1)', filter: 'blur(0)' },
-          { opacity: 0, transform: 'scale(0.24)', filter: 'blur(14px)' },
-        ],
-        {
-          duration: PROCESS_COLLAPSE_END - PROCESS_COLLAPSE_START,
-          delay: PROCESS_COLLAPSE_START,
-          easing: 'cubic-bezier(0.55, 0, 0.45, 1)',
-          fill: 'forwards',
         }
       )
     );

@@ -545,7 +545,6 @@ html:not(.mi-js) .mi-about-team__role:nth-child(2) {
 
 .mi-js .mi-about-process:not(.is-composed) .mi-about-process__title,
 .mi-js .mi-about-process:not(.is-composed) .mi-about-process__path,
-.mi-js .mi-about-process:not(.is-composed) .mi-about-process__ghost,
 .mi-js .mi-about-process:not(.is-composed) .mi-about-process__step,
 .mi-js .mi-about-process:not(.is-composed) .mi-about-process__caption {
   opacity: 0;
@@ -569,10 +568,12 @@ html.mi-process-scroll-locked body {
   overflow: hidden;
 }
 
-.mi-about-process.is-composed .mi-about-process__ghost,
+.mi-about-process__ghost,
 .mi-about-process.is-composed .mi-about-process__step,
 .mi-about-process.is-composed .mi-about-process__caption {
-  opacity: 0;
+  opacity: 1;
+  transform: none;
+  filter: none;
 }
 
 /* Reviews — 47:885 */
