@@ -526,7 +526,8 @@
     left: 234px;
     width: 258px;
     height: 227px;
-    opacity: 0.16;
+    /* The Figma mobile contact frame shows the wreath at full contrast. */
+    opacity: 1;
     object-fit: cover;
     object-position: bottom;
   }
