@@ -39,9 +39,9 @@
 				<span class="mi-contact-detail__label">Соц.сети</span>
 				<div class="mi-contact-detail__social-links mi-contact-detail__social-links--mobile">
 					<img src="{THEME}/images/pages/contact/socials-mobile.svg" width="176" height="48" alt="" aria-hidden="true">
-					[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"></a>[/xfgiven_contact_telegram_url]
-					[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"></a>[/xfgiven_contact_whatsapp_url]
-					<a class="mi-contact-detail__social-link" href="https://vk.com/mediaideya" aria-label="ВКонтакте" rel="noopener noreferrer"></a>
+					[xfgiven_contact_telegram_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_telegram_url]" aria-label="Telegram" rel="noopener noreferrer"><img src="{THEME}/images/pages/contact/social-telegram-desktop.svg" width="48" height="48" alt=""></a>[/xfgiven_contact_telegram_url]
+					[xfgiven_contact_whatsapp_url]<a class="mi-contact-detail__social-link" href="[xfvalue_contact_whatsapp_url]" aria-label="WhatsApp" rel="noopener noreferrer"><img src="{THEME}/images/pages/contact/social-whatsapp-desktop.svg" width="48" height="48" alt=""></a>[/xfgiven_contact_whatsapp_url]
+					<a class="mi-contact-detail__social-link" href="https://vk.com/mediaideya" aria-label="ВКонтакте" rel="noopener noreferrer"><img src="{THEME}/images/pages/contact/social-vk-desktop.svg" width="48" height="48" alt=""></a>
 				</div>
 			</div>
 		</div>
