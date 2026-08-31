@@ -1379,6 +1379,164 @@ html.mi-process-scroll-locked body {
 
 }
 
+/* The mobile Figma source is a 360px canvas. Scale its complete composition
+   through the 320–430px range so artwork and its copy retain one shared axis. */
+@media (max-width: 479px) {
+  .mi-about-hero { height: 222.2222vw; }
+  .mi-about-hero::before { height: 41.3889vw; }
+  .mi-about-hero::after { top: 135vw; height: 87.2222vw; }
+  .mi-about-hero__title {
+    left: 4.7222vw;
+    top: 41.3889vw;
+    width: 90.8333vw;
+    font-size: 8.8889vw;
+  }
+  .mi-about-hero__cloud--left { left: -150vw; top: 20.8333vw; width: 223.0556vw; }
+  .mi-about-hero__cloud--right { left: 20.5556vw; top: 37.5vw; width: 213.6111vw; }
+  .mi-about-hero__cloud--bottom { left: -127.7778vw; top: 56.9444vw; width: 394.1667vw; }
+  .mi-about-hero__statue--center {
+    left: -6.6667vw;
+    top: 79.1667vw;
+    width: 113.3333vw;
+    height: 115.8333vw;
+  }
+  .mi-about-hero__statue--left {
+    left: -69.7222vw;
+    top: 86.1111vw;
+    width: 119.7222vw;
+    height: 108.8889vw;
+  }
+  .mi-about-hero__statue--right {
+    left: 54.4444vw;
+    top: 86.1111vw;
+    width: 118.6111vw;
+    height: 108.8889vw;
+  }
+
+  .mi-about-team,
+  .mi-about-team__canvas { min-height: 186.3889vw; }
+  .mi-about-team { height: 186.3889vw; }
+  .mi-about-team__canvas { padding: 11.1111vw 4.4444vw 22.2222vw; }
+  .mi-about-team__title { font-size: 7.7778vw; }
+  .mi-about-team__lead { margin-top: 4.4444vw; font-size: 3.8889vw; }
+  .mi-about-team__stage { height: 66.9444vw; margin-top: 11.1111vw; }
+  .mi-about-team__role { width: 70vw; height: 66.9444vw; }
+  .mi-about-team__role[data-state="next"],
+  html:not(.mi-js) .mi-about-team__role:nth-child(2),
+  .mi-about-team__role[data-state="previous"] { top: 19.4444vw; }
+  .mi-about-team__role-media { width: 61.1111vw; height: 38.8889vw; }
+  .mi-about-team__role[data-state="active"] .mi-about-team__role-copy { top: 44.4444vw; }
+  .mi-about-team__role h3 { font-size: 6.6667vw; }
+  .mi-about-team__role p { margin-top: 2.7778vw; font-size: 3.8889vw; }
+
+  .mi-about-process { height: 222.2222vw; }
+  .mi-about-process::before { top: 107.7778vw; height: 114.4444vw; }
+  .mi-about-process__title {
+    left: 4.4444vw;
+    top: 19.4444vw;
+    width: 91.1111vw;
+    font-size: 7.7778vw;
+  }
+  .mi-about-process__path { left: -44.4444vw; top: 56.9444vw; width: 188.8889vw; height: 150vw; }
+  .mi-about-process__ghost {
+    left: 9.4444vw;
+    top: 126.3889vw;
+    width: 81.1111vw;
+    height: 38.8889vw;
+    font-size: 33.3333vw;
+  }
+  .mi-about-process__step {
+    left: calc(50% - 19.1667vw) !important;
+    width: 38.3333vw;
+    height: 10.2778vw;
+    gap: 1.1111vw;
+    font-size: 5vw;
+  }
+  .mi-about-process__step img { width: 5.5556vw; height: 10.2778vw; }
+  .mi-about-process__step:nth-child(1) { top: 45.5556vw; }
+  .mi-about-process__step:nth-child(2) { top: 61.3889vw; }
+  .mi-about-process__step:nth-child(3) { top: 77.2222vw; }
+  .mi-about-process__step:nth-child(4) { top: 93.0556vw; }
+  .mi-about-process__step:nth-child(5) { top: 108.8889vw; }
+  .mi-about-process__step:nth-child(6) { top: 124.7222vw; }
+  .mi-about-process__caption {
+    top: 139.7222vw;
+    width: 80.2778vw;
+    margin-left: -40.1389vw;
+    font-size: 6.6667vw;
+  }
+  .mi-about-process__bowl {
+    left: 0;
+    top: 146.1111vw;
+    width: 100vw;
+    height: 76.1111vw;
+    margin-left: 0;
+  }
+
+  .mi-about-reviews { height: 196.3889vw; }
+  .mi-about-reviews__canvas { padding: 16.6667vw 4.4444vw 22.2222vw; }
+  .mi-about-reviews__title { width: 91.1111vw; font-size: 7.7778vw; }
+  .mi-about-reviews__list {
+    grid-auto-columns: 85.5556vw;
+    gap: 2.7778vw;
+    width: calc(100vw - 4.4444vw);
+    margin-top: 5.5556vw;
+  }
+  .mi-about-reviews__card { height: 122.7778vw; border-radius: 11.1111vw; }
+  .mi-about-reviews__media { flex-basis: 52.7778vw; }
+  .mi-about-reviews__body { padding: 6.6667vw; }
+  .mi-about-reviews__quote,
+  .mi-about-reviews__person strong { font-size: 3.8889vw; }
+  .mi-about-reviews__meta { font-size: 3.3333vw; }
+
+  .mi-about-gratitude,
+  .mi-about-gratitude__canvas { min-height: 180.5556vw; }
+  .mi-about-gratitude { height: 180.5556vw; }
+  .mi-about-gratitude::before { top: 47.7778vw; height: 26.6667vw; }
+  .mi-about-gratitude::after { height: 15.5556vw; }
+  .mi-about-gratitude__canvas { padding: 16.6667vw 4.4444vw 22.2222vw; }
+  .mi-about-gratitude__shelves { top: 47.7778vw; height: 120.8333vw; }
+  .mi-about-gratitude__title { font-size: 7.7778vw; }
+  .mi-about-gratitude__heading p { margin-top: 4.4444vw; font-size: 3.3333vw; }
+  .mi-about-gratitude__letters {
+    left: 8.5764vw;
+    top: 73.3333vw;
+    grid-template-columns: repeat(2, 31.6667vw);
+    grid-auto-rows: 13.6111vw;
+    gap: 8.0556vw 19.7222vw;
+    width: 83.0556vw;
+  }
+  .mi-about-gratitude__letters button { width: 31.6667vw; height: 13.6111vw; border-radius: 2.2222vw; }
+
+  .mi-about-cta { height: 157.5vw; }
+  .mi-about-cta__hand--left {
+    left: -33.3333vw;
+    top: 11.1111vw;
+    width: 166.6667vw;
+    height: 45.2778vw;
+  }
+  .mi-about-cta__hand--right {
+    left: -26.1111vw;
+    top: 11.1111vw;
+    width: 166.6667vw;
+    height: 45.2778vw;
+  }
+  .mi-about-cta__title,
+  .mi-about-cta__subtitle,
+  .mi-about-cta__lead,
+  .mi-about-cta__button { left: 4.4444vw; width: 91.1111vw; }
+  .mi-about-cta__title { top: 64.7222vw; font-size: 7.7778vw; }
+  .mi-about-cta__subtitle { top: 78.8889vw; font-size: 6.6667vw; }
+  .mi-about-cta__lead { left: 17.5vw; top: 100.5556vw; width: 65vw; font-size: 3.8889vw; }
+  .mi-about-cta__button {
+    left: 25.5556vw;
+    top: 120.5556vw;
+    width: 48.8889vw;
+    min-height: 14.7222vw;
+    font-size: 3.8889vw;
+  }
+}
+
 /* Stable alternatives: all content remains available without motion. */
 
 .mi-about-page.is-reduced-motion .mi-about-hero__title [data-about-hero-word],
