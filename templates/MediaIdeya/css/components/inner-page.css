@@ -183,6 +183,20 @@
     gap: 28px;
   }
 
+  .mi-footer__contacts .mi-footer__col {
+    width: 100%;
+  }
+
+  .mi-footer__contacts .mi-footer__col:first-child p {
+    white-space: nowrap;
+  }
+
+  .mi-footer--bar .mi-footer__brand,
+  .is-about-page .mi-footer__brand,
+  .is-services-page .mi-footer__brand {
+    bottom: -53px;
+  }
+
   .mi-footer--bar .mi-footer__social {
     align-items: flex-start;
   }
