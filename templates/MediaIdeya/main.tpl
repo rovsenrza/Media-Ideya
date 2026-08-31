@@ -35,7 +35,7 @@
 	<link rel="stylesheet" href="{THEME}/css/components/home-cta.css">
 	<link rel="stylesheet" href="{THEME}/css/components/hero.css">
 	<link rel="stylesheet" href="{THEME}/css/components/services.css">
-	<link rel="stylesheet" href="{THEME}/css/components/about.css">
+	<link rel="stylesheet" href="{THEME}/css/components/about.css?v=20260831-2">
 	<link rel="stylesheet" href="{THEME}/css/components/clients.css">
 	<link rel="stylesheet" href="{THEME}/css/components/faq.css">
 	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
