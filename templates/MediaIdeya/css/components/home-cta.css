@@ -149,19 +149,40 @@
 
 @media (max-width: 991px) {
   .mi-home-cta {
-    min-height: 800px;
-    background: linear-gradient(180deg, #edf5fd 0%, #85b0d2 117.08%);
+    /* The mobile CTA keeps the desktop sequence: dark figure scene,
+       horizontal convergence, orb transition, then the Figma 101:765 end state. */
+    --mi-home-cta-motion-s: clamp(0.833333, calc(100vw / 360px), 1.194444);
+    min-height: calc(800px * var(--mi-home-cta-motion-s));
+    background: #112331;
   }
 
-  .mi-home-cta__scene { display: none; }
-  .mi-home-cta__wash { display: none; }
+  .mi-home-cta__figure--left {
+    top: calc(101px * var(--mi-home-cta-motion-s));
+    left: calc(50% - ((960px + 499px) * var(--mi-home-cta-motion-s)));
+    width: calc(1521px * var(--mi-home-cta-motion-s));
+  }
+
+  .mi-home-cta__figure--right {
+    top: calc(-395px * var(--mi-home-cta-motion-s));
+    left: calc(50% - ((960px - 945px) * var(--mi-home-cta-motion-s)));
+    width: calc(2082px * var(--mi-home-cta-motion-s));
+  }
+
+  .mi-home-cta__flare {
+    top: calc(294px * var(--mi-home-cta-motion-s));
+    width: calc(352px * var(--mi-home-cta-motion-s));
+    height: calc(352px * var(--mi-home-cta-motion-s));
+  }
+
+  .mi-home-cta__orb {
+    top: calc(444px * var(--mi-home-cta-motion-s));
+    width: calc(52px * var(--mi-home-cta-motion-s));
+    height: calc(52px * var(--mi-home-cta-motion-s));
+  }
 
   .mi-home-cta__content {
     gap: 24px;
     padding: 120px 16px;
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 
   .mi-home-cta__copy { gap: 24px; width: 328px; }

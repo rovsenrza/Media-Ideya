@@ -5,7 +5,7 @@
 			<div class="mi-service-card__content">
 				<div class="mi-service-card__text">{short-story}</div>
 				<div class="mi-service-card__details">{full-story}</div>
-				<a class="mi-btn mi-btn--icon" href="{full-link}">
+				<a class="mi-btn mi-btn--icon" href="{THEME}/../../uslugi.html">
 					Узнать подробнее
 					<img class="mi-btn__icon" src="{THEME}/images/icons/arrow-up-right.svg" alt="" width="24" height="24" decoding="async">
 				</a>

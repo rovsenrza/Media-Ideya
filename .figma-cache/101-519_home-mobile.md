@@ -29,7 +29,7 @@
 5. Clients (`101:717`): `360 × 730`; heading starts y60 with 32px centered title and 14px subtitle; logo area begins y158. Logos are 122×56 / 32px radius and appear as a 2/1/2/1/2/1/2 staggered matrix (left/right at x16/222, centre at x119), y positions 158,226,294,362,429,496,564.
 6. FAQ: 16px gutter, 20px gaps; cards use 20px padding/radius; question is 18px.
 7. Articles: first horizontal card `308px` wide; image `308 × 185`, 24px radius.
-8. CTA: `360 × 800`, centered copy and request button. Footer: 16px horizontal padding, 40px vertical padding.
+8. CTA: `360 × 800`, centered copy and request button. Footer: 16px horizontal padding, 40px vertical padding. Node `101:765` final state: `#EDF5FD → #85B0D2` vertical gradient, centered 328px copy, 32px / 1.1 heading, 18px / 1.3 text and 24px gap; request button is 14px with `16px 32px` padding and a 100px radius. The mobile CTA runs the same pre-final figure/orb sequence as the desktop CTA before showing this final state.
 
 ## Asset
 

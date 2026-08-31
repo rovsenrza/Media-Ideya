@@ -5,13 +5,12 @@
   if (!cta) return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var mobile = window.matchMedia('(max-width: 991px)').matches;
 
   function activate() {
     cta.classList.add('is-active');
   }
 
-  if (reduce || mobile) {
+  if (reduce) {
     activate();
   } else if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(
