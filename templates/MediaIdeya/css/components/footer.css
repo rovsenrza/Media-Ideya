@@ -444,7 +444,9 @@
   .mi-footer__bar { padding: 40px 16px; gap: 40px; }
   .mi-footer__brand { bottom: -53px; font-size: 61.782px; line-height: 1.1; }
   .mi-footer__inner { flex-direction: column; gap: 24px; }
-  .mi-footer__mobile-head { display: flex; width: 100%; flex-direction: column; align-items: center; gap: 24px; }
+  /* Base rule intentionally hides mobile-only elements with !important;
+     restore the Figma mobile footer header at this breakpoint. */
+  .mi-footer__mobile-head { display: flex !important; width: 100%; flex-direction: column; align-items: center; gap: 24px; }
   .mi-footer__mobile-logo { display: block; width: 38.639px; height: 26px; line-height: 0; }
   .mi-footer__mobile-logo img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
   .mi-footer__mobile-nav { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 10px 0; }
