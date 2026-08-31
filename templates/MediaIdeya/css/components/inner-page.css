@@ -183,7 +183,7 @@
     gap: 28px;
   }
 
-  .mi-footer__contacts .mi-footer__col {
+  .mi-footer__contacts .mi-footer__col:nth-child(n) {
     width: 100%;
   }
 
