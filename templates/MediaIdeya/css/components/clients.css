@@ -244,10 +244,13 @@
     --mi-clients-box-h: 462px;
     --mi-clients-travel: 730px;
   }
-  .mi-clients__track { height: calc(730px + var(--mi-clients-travel)) !important; }
+  /* Figma 101:717 is a static 2/1 partner matrix on mobile. It has no
+     logo overflow to scrub, so a desktop-style pinned travel interval would
+     trap the page in an empty 730px scroll range. */
+  .mi-clients__track { height: 730px !important; }
   .mi-clients__pin {
-    position: sticky;
-    top: 0;
+    position: relative;
+    top: auto;
     height: 730px;
     min-height: 0;
     padding: 60px 16px;
