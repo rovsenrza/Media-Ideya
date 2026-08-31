@@ -19,8 +19,8 @@
 		<div class="mi-about__colonnade" aria-hidden="true">
 			<picture>
 				<source media="(max-width: 991px)" srcset="{THEME}/images/about/mobile-source/3.png" type="image/png">
-				<source srcset="{THEME}/images/about/colonnade.webp" type="image/webp">
-				<img src="{THEME}/images/about/colonnade.png" alt="" width="1024" height="724" loading="lazy" decoding="async">
+				<source srcset="{THEME}/images/about/colonnade.webp?v=20260831-3" type="image/webp">
+				<img src="{THEME}/images/about/colonnade.png?v=20260831-3" alt="" width="1024" height="724" loading="lazy" decoding="async">
 			</picture>
 		</div>
 	</div>
