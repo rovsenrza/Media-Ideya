@@ -343,9 +343,11 @@ body.mi-case-open { overflow: hidden; }
   height: calc(395px * var(--mi-s));
   max-width: none;
   object-fit: cover;
-  object-position: right center;
+  /* `head.png` has a transparent canvas around the bust. This crop selects
+     its face (rather than the transparent far-right edge) before mirroring. */
+  object-position: 58% center;
   /* Figma 47:715 mirrors the statue so its face enters the CTA from the
-     right edge instead of exposing the source image's empty hair-side crop. */
+     right edge. */
   transform: scaleX(-1);
   transform-origin: right center;
 }
