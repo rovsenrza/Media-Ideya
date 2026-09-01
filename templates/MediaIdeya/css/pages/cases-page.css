@@ -337,7 +337,7 @@ body.mi-case-open { overflow: hidden; }
 
 .mi-case-cta > img {
   position: absolute;
-  right: 0;
+  right: calc(127px * var(--mi-s));
   bottom: 0;
   width: calc(201px * var(--mi-s));
   height: calc(395px * var(--mi-s));
