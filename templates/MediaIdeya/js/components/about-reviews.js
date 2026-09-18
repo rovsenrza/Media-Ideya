@@ -8,6 +8,10 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var swiper = null;
 
+  slider.addEventListener('dragstart', function (event) {
+    event.preventDefault();
+  });
+
   /* Mirrors about-page.css: 10px gap ≥480px, 2.7778vw below. */
   function gap() {
     return window.innerWidth <= 479 ? Math.round(window.innerWidth * 0.027778) : 10;

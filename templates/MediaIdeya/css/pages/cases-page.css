@@ -103,6 +103,11 @@ body.mi-case-open { overflow: hidden; }
   align-items: stretch;
 }
 
+.mi-case-dialog__gallery-track img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .mi-case-dialog__cover {
   position: relative;
   flex: 0 0 100%;

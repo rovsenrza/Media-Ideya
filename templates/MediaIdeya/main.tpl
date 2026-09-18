@@ -31,7 +31,7 @@
 	[static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/static]
 	[category=2]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/category]
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css">
-	<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css?v=20260918-2">
+	<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css?v=20260919-1">
 
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
@@ -41,7 +41,7 @@
 	<link rel="stylesheet" href="{THEME}/css/components/about.css?v=20260831-2">
 	<link rel="stylesheet" href="{THEME}/css/components/clients.css">
 	<link rel="stylesheet" href="{THEME}/css/components/faq.css">
-	<link rel="stylesheet" href="{THEME}/css/components/articles.css?v=20260918-1">
+	<link rel="stylesheet" href="{THEME}/css/components/articles.css?v=20260919-1">
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
 	[available=showfull][not-category=2]<link rel="stylesheet" href="{THEME}/css/pages/article.css?v=20260918-2">[/not-category][/available]
@@ -51,7 +51,7 @@
 	[not-category=2,13]<link rel="stylesheet" href="{THEME}/css/pages/catalog.css?v=20260918-1">[/not-category]
 	[/available]
 	[available=cat][category=13]
-	<link rel="stylesheet" href="{THEME}/css/components/statue-banner.css?v=20260919-1">
+	<link rel="stylesheet" href="{THEME}/css/components/statue-banner.css?v=20260919-2">
 	<link rel="stylesheet" href="{THEME}/css/pages/charity-page.css?v=20260918-2">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.css">
 	<link rel="stylesheet" href="{THEME}/css/components/lightbox.css?v=20260918-1">
@@ -66,7 +66,7 @@
 	[/category][/available]
 	[available=static][not-static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/not-static][/available]
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/pages/contact-page.css">[/available]
-	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css?v=20260919-1">[/static]
+	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css?v=20260919-2">[/static]
 	[static=uslugi]<link rel="stylesheet" href="{THEME}/css/pages/services-page.css?v=20260914-4">[/static]
 </head>
 	<body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available][available=cat|search|lastnews|tags|favorites] is-catalog[/available][available=feedback] is-contact-page[/available][static=o-kompanii] is-about-page[/static][static=uslugi] is-services-page[/static][category=2] is-cases-page[/category][available=cat][category=13] is-charity-page[/category][/available]">
@@ -161,7 +161,7 @@
 	[available=main]
 	<script src="{THEME}/js/components/home-cta.js" defer></script>
 	<script src="{THEME}/js/components/faq.js" defer></script>
-	<script src="{THEME}/js/components/articles.js?v=20260918-1" defer></script>
+	<script src="{THEME}/js/components/articles.js?v=20260919-1" defer></script>
 	<script src="{THEME}/js/pages/home.js?v=20260909-1" defer></script>
 	[/available]
 	[available=showfull]<script src="{THEME}/js/pages/article.js" defer></script>[/available]
@@ -169,7 +169,7 @@
 	[available=feedback]<script src="{THEME}/js/pages/contact-page.js" defer></script>[/available]
 	[static=o-kompanii]
 	<script src="{THEME}/js/pages/about-page.js?v=20260910-1" defer></script>
-	<script src="{THEME}/js/components/about-reviews.js?v=20260919-1" defer></script>
+	<script src="{THEME}/js/components/about-reviews.js?v=20260919-2" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.umd.js" defer data-fancybox-src></script>
 	<script src="{THEME}/js/components/lightbox.js?v=20260918-1" defer></script>
 	[/static]
@@ -182,6 +182,6 @@
 	<script src="{THEME}/js/components/lightbox.js?v=20260918-1" defer></script>
 	[/category][/available]
 	[static=uslugi]<script src="{THEME}/js/pages/services-page.js?v=20260914-3" defer></script>[/static]
-	<script src="{THEME}/js/pages/cases-page.js?v=20260918-1" defer></script>
+	<script src="{THEME}/js/pages/cases-page.js?v=20260919-1" defer></script>
 </body>
 </html>

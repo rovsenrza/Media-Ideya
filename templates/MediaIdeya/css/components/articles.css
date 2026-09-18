@@ -37,6 +37,12 @@
   align-items: stretch;
 }
 
+.mi-articles__track a,
+.mi-articles__track img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .mi-article-card {
   display: flex;
   flex-direction: column;

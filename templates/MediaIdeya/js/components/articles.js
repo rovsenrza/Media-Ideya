@@ -20,6 +20,12 @@
     return window.innerWidth <= 991 ? 16 : Math.round(100 * scale());
   }
 
+  /* Cards are links: without this a mouse drag starts native link drag-and-drop
+     in desktop Chrome and Swiper never receives the gesture. */
+  rail.addEventListener('dragstart', function (event) {
+    event.preventDefault();
+  });
+
   var swiper = new window.Swiper(rail, {
     slidesPerView: 'auto',
     spaceBetween: gap(),

@@ -685,6 +685,11 @@ html.mi-process-scroll-locked body {
   flex-shrink: 0;
 }
 
+.mi-about-reviews__card img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .mi-about-reviews__card {
   position: relative;
   display: flex;

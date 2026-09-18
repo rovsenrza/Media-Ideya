@@ -249,7 +249,7 @@
     bottom: auto;
     height: 314px;
     background: linear-gradient(
-      to top,
+      to bottom,
       transparent 0%,
       color-mix(in srgb, var(--mi-sb-fade) 60%, transparent) 27.588%,
       var(--mi-sb-fade) 61.306%

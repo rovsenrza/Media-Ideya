@@ -21,6 +21,7 @@
     if (!gallery || typeof window.Swiper !== 'function') return;
     if (gallery.mediaIdeyaSwiper) { gallery.mediaIdeyaSwiper.update(); gallery.mediaIdeyaSwiper.slideTo(0, 0); return; }
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    gallery.addEventListener('dragstart', function (event) { event.preventDefault(); });
     gallery.mediaIdeyaSwiper = new window.Swiper(gallery, {
       slidesPerView: 1,
       spaceBetween: 0,
