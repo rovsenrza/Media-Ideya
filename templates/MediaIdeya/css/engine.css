@@ -9,3 +9,7 @@
 #dle-content .editor {
   max-width: 100%;
 }
+
+.box {
+  display: none;
+}
