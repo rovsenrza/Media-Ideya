@@ -25,12 +25,13 @@
 	<link rel="stylesheet" href="{THEME}/css/components/request-modal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/reveal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/card.css">
-	<link rel="stylesheet" href="{THEME}/css/components/footer.css?v=20260908-2">
+	<link rel="stylesheet" href="{THEME}/css/components/footer.css?v=20260918-1">
 	<link rel="stylesheet" href="{THEME}/css/engine.css">
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/available]
 	[static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/static]
 	[category=2]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/category]
-	<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css">
+	<link rel="stylesheet" href="{THEME}/css/pages/cases-page.css?v=20260918-2">
 
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
@@ -40,15 +41,14 @@
 	<link rel="stylesheet" href="{THEME}/css/components/about.css?v=20260831-2">
 	<link rel="stylesheet" href="{THEME}/css/components/clients.css">
 	<link rel="stylesheet" href="{THEME}/css/components/faq.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css">
 	<link rel="stylesheet" href="{THEME}/css/components/articles.css?v=20260918-1">
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
-	[available=showfull][not-category=2]<link rel="stylesheet" href="{THEME}/css/pages/article.css?v=20260918-1">[/not-category][/available]
+	[available=showfull][not-category=2]<link rel="stylesheet" href="{THEME}/css/pages/article.css?v=20260918-2">[/not-category][/available]
 	{* DLE does not nest [not-category] blocks — keep each one flat *}
 	[available=cat|search|lastnews|tags|favorites]
 	[not-category=2]<link rel="stylesheet" href="{THEME}/css/components/articles.css">[/not-category]
-	[not-category=2,13]<link rel="stylesheet" href="{THEME}/css/pages/catalog.css?v=20260908-1">[/not-category]
+	[not-category=2,13]<link rel="stylesheet" href="{THEME}/css/pages/catalog.css?v=20260918-1">[/not-category]
 	[/available]
 	[available=cat][category=13]
 	<link rel="stylesheet" href="{THEME}/css/components/statue-banner.css?v=20260918-3">
@@ -153,6 +153,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js" defer></script>
 	<script src="{THEME}/js/components/preloader.js?v=20260911-1" defer></script>
 	<script src="{THEME}/js/main.js" defer></script>
 	<script src="{THEME}/js/components/phone-mask.js" defer></script>
@@ -160,7 +161,6 @@
 	[available=main]
 	<script src="{THEME}/js/components/home-cta.js" defer></script>
 	<script src="{THEME}/js/components/faq.js" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js" defer></script>
 	<script src="{THEME}/js/components/articles.js?v=20260918-1" defer></script>
 	<script src="{THEME}/js/pages/home.js?v=20260909-1" defer></script>
 	[/available]
@@ -181,6 +181,6 @@
 	<script src="{THEME}/js/components/lightbox.js?v=20260918-1" defer></script>
 	[/category][/available]
 	[static=uslugi]<script src="{THEME}/js/pages/services-page.js?v=20260914-3" defer></script>[/static]
-	<script src="{THEME}/js/pages/cases-page.js" defer></script>
+	<script src="{THEME}/js/pages/cases-page.js?v=20260918-1" defer></script>
 </body>
 </html>

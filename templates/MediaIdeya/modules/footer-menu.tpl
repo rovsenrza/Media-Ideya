@@ -1,0 +1,4 @@
+<a href="{THEME}/../../uslugi.html">Услуги</a>
+<a href="{THEME}/../../stat-i/">Статьи</a>
+<a href="{THEME}/../../o-kompanii.html">О компании</a>
+<a href="{THEME}/../../contact">Контакты</a>

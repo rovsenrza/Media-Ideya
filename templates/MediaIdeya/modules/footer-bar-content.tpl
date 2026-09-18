@@ -7,7 +7,7 @@
 				<img src="{THEME}/images/footer/logo-mobile.png" alt="Media Ideya" width="39" height="26" loading="lazy" decoding="async">
 			</a>
 			<nav class="mi-footer__mobile-nav" aria-label="Навигация в подвале">
-				{include file="modules/topmenu.tpl"}
+				{include file="modules/footer-menu.tpl"}
 			</nav>
 		</div>
 

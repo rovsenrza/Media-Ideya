@@ -191,9 +191,22 @@
   color: #fff;
 }
 
+.mi-footer__inn {
+  display: block;
+  margin-top: -4px;
+  font-size: var(--mi-fs-16);
+  line-height: 1.5;
+  color: #fff;
+}
+
 .mi-footer__mail {
   text-decoration: underline;
   text-underline-position: from-font;
+}
+
+.mi-footer__phone,
+.mi-footer__mail {
+  white-space: nowrap;
 }
 
 .mi-footer__label {
@@ -355,6 +368,14 @@
     transform 0.55s var(--mi-ease);
   transition-delay: 480ms;
 }
+.mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__col:nth-child(4) {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--mi-ease),
+    transform 0.55s var(--mi-ease);
+  transition-delay: 580ms;
+}
 
 .mi-js .mi-footer[data-aos="footer"].aos-animate .mi-footer__social {
   opacity: 1;
@@ -447,15 +468,16 @@
   /* Base rule intentionally hides mobile-only elements with !important;
      restore the Figma mobile footer header at this breakpoint. */
   .mi-footer__mobile-head { display: flex !important; width: 100%; flex-direction: column; align-items: center; gap: 24px; }
-  .mi-footer__mobile-logo { display: block; width: 38.639px; height: 26px; line-height: 0; }
+  .mi-footer__mobile-logo { display: block; width: 48.639px; height: 36px; line-height: 0; }
   .mi-footer__mobile-logo img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
-  .mi-footer__mobile-nav { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 10px 0; }
+  .mi-footer__mobile-nav { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 4px; padding: 10px 0; }
   .mi-footer__mobile-nav a { color: #fff; font-size: 14px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
   .mi-footer__contacts { width: 100%; flex-direction: column; gap: 20px; }
   .mi-footer__col { gap: 10px; }
   .mi-footer__col p,
   .mi-footer__col a { font-size: 14px; white-space: nowrap; }
   .mi-footer__label { font-size: 12px; }
+  .mi-footer__inn { font-size: 14px; }
   .mi-footer__social { width: 100%; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 0; }
   .mi-footer__social-group { gap: 10px; }
   .mi-footer__social-links { width: 112px; height: 48px; }

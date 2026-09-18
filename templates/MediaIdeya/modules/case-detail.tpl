@@ -7,12 +7,35 @@
 
 		<div class="mi-case-dialog__media">
 			[xfgiven_case_hero]
-			<div class="mi-case-dialog__cover">
-				[xfgiven_case_hero_alt]<img src="[xfvalue_image_url_case_hero]" width="1443" height="915" alt="[xfvalue_case_hero_alt]" decoding="async" fetchpriority="high">[/xfgiven_case_hero_alt]
-				[xfnotgiven_case_hero_alt]<img src="[xfvalue_image_url_case_hero]" width="1443" height="915" alt="{title}" decoding="async" fetchpriority="high">[/xfnotgiven_case_hero_alt]
+			<div class="mi-case-dialog__gallery swiper" data-case-swiper data-lenis-prevent-touch aria-label="Галерея кейса">
+				<div class="mi-case-dialog__gallery-track swiper-wrapper">
+					<div class="mi-case-dialog__cover swiper-slide">
+						[xfgiven_case_hero_alt]<img src="[xfvalue_image_url_case_hero]" width="1443" height="915" alt="[xfvalue_case_hero_alt]" loading="lazy" decoding="async">[/xfgiven_case_hero_alt]
+						[xfnotgiven_case_hero_alt]<img src="[xfvalue_image_url_case_hero]" width="1443" height="915" alt="{title}" loading="lazy" decoding="async">[/xfnotgiven_case_hero_alt]
+					</div>
+					[xfgiven_case_slide_2]
+					<div class="mi-case-dialog__cover swiper-slide">
+						<img src="[xfvalue_image_url_case_slide_2]" width="1443" height="915" alt="" loading="lazy" decoding="async">
+					</div>
+					[/xfgiven_case_slide_2]
+					[xfgiven_case_slide_3]
+					<div class="mi-case-dialog__cover swiper-slide">
+						<img src="[xfvalue_image_url_case_slide_3]" width="1443" height="915" alt="" loading="lazy" decoding="async">
+					</div>
+					[/xfgiven_case_slide_3]
+					[xfgiven_case_slide_4]
+					<div class="mi-case-dialog__cover swiper-slide">
+						<img src="[xfvalue_image_url_case_slide_4]" width="1443" height="915" alt="" loading="lazy" decoding="async">
+					</div>
+					[/xfgiven_case_slide_4]
+					[xfgiven_case_slide_5]
+					<div class="mi-case-dialog__cover swiper-slide">
+						<img src="[xfvalue_image_url_case_slide_5]" width="1443" height="915" alt="" loading="lazy" decoding="async">
+					</div>
+					[/xfgiven_case_slide_5]
+				</div>
 			</div>
-			<img class="mi-case-dialog__dots mi-case-dialog__dots--desktop" src="{THEME}/images/pages/cases/slider-dots.svg" width="80" height="8" alt="" decoding="async">
-			<img class="mi-case-dialog__dots mi-case-dialog__dots--mobile" src="{THEME}/images/pages/cases/slider-dots-mobile.svg" width="70" height="6" alt="" decoding="async">
+			<div class="mi-case-dialog__dots swiper-pagination" data-case-pagination></div>
 			[/xfgiven_case_hero]
 		</div>
 
@@ -100,7 +123,7 @@
 					[xfgiven_case_cta_text]<p>[xfvalue_case_cta_text]</p>[/xfgiven_case_cta_text]
 					<button class="mi-btn" type="button" data-request-modal-open>Придумать механику для вашего бренда</button>
 				</div>
-				<img src="{THEME}/images/pages/cases/head.png" width="201" height="395" alt="" loading="lazy" decoding="async">
+				<img src="{THEME}/images/pages/cases/head.webp" width="201" height="395" alt="" loading="lazy" decoding="async">
 			</aside>
 			[/xfgiven_case_cta_title]
 		</div>

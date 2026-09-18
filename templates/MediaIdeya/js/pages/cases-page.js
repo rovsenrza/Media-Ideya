@@ -16,6 +16,24 @@
     document.body.classList.remove('mi-case-open');
   }
 
+  function initGallery(dialog) {
+    var gallery = dialog.querySelector('[data-case-swiper]');
+    if (!gallery || typeof window.Swiper !== 'function') return;
+    if (gallery.mediaIdeyaSwiper) { gallery.mediaIdeyaSwiper.update(); gallery.mediaIdeyaSwiper.slideTo(0, 0); return; }
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    gallery.mediaIdeyaSwiper = new window.Swiper(gallery, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: reduce ? 0 : 500,
+      grabCursor: true,
+      watchOverflow: true,
+      keyboard: { enabled: !reduce, onlyInViewport: true },
+      pagination: { el: dialog.querySelector('[data-case-pagination]'), clickable: true },
+      preventClicks: true,
+      preventClicksPropagation: true
+    });
+  }
+
   function openDialog(url) {
     var targetPath = pathOf(url);
     var dialog = dialogs.find(function (item) { return pathOf(item.getAttribute('data-case-url')) === targetPath; });
@@ -31,6 +49,7 @@
     if (menuToggle) { menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.setAttribute('aria-label', 'Открыть меню'); }
     var panel = dialog.querySelector('[data-case-scroll]');
     if (panel) panel.scrollTop = 0;
+    initGallery(dialog);
     return true;
   }
 
