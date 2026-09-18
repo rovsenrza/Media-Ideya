@@ -2,116 +2,56 @@
   'use strict';
 
   var rail = document.querySelector('[data-articles-swiper]');
-  if (!rail) return;
-
-  var track = rail.querySelector('[data-articles-track]');
-  if (!track) return;
+  if (!rail || typeof window.Swiper !== 'function') return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dragging = false;
-  var activePointer = null;
-  var startX = 0;
-  var startScroll = 0;
-  var moved = false;
 
-  function canScroll() {
-    return track.scrollWidth > track.clientWidth + 1;
+  /* Mirrors articles.css: gap = 40px * --mi-s on desktop, 10px on mobile;
+     trailing offset = right gutter so the last card never touches the edge. */
+  function scale() {
+    return Math.min(1, window.innerWidth / 1920);
   }
 
-  track.addEventListener(
-    'wheel',
-    function (event) {
-      if (!canScroll()) return;
-      /* Preserve vertical wheel scrolling for the page. The rail only owns
-         deliberate horizontal trackpad gestures; mouse drag remains available. */
-      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+  function gap() {
+    return window.innerWidth <= 991 ? 10 : Math.round(40 * scale());
+  }
 
-      event.preventDefault();
-      track.scrollLeft += event.deltaX;
+  function offsetAfter() {
+    return window.innerWidth <= 991 ? 16 : Math.round(100 * scale());
+  }
+
+  var swiper = new window.Swiper(rail, {
+    slidesPerView: 'auto',
+    spaceBetween: gap(),
+    slidesOffsetAfter: offsetAfter(),
+    speed: reduce ? 0 : 500,
+    grabCursor: true,
+    watchOverflow: true,
+    freeMode: {
+      enabled: true,
+      sticky: false,
+      momentum: !reduce,
+      momentumRatio: 0.6,
+      momentumBounce: false
     },
-    { passive: false }
-  );
-
-  track.addEventListener(
-    'pointerdown',
-    function (event) {
-      if (event.button !== 0 || event.pointerType !== 'mouse') return;
-      if (!canScroll()) return;
-      /* A card remains a link. Starting a press on an interactive element must
-         never turn it into a rail drag or swallow its click. */
-      if (event.target.closest('a, button, input, textarea, select, label')) return;
-
-      dragging = true;
-      moved = false;
-      activePointer = event.pointerId;
-      startX = event.clientX;
-      startScroll = track.scrollLeft;
-      track.classList.add('is-dragging');
-      track.setPointerCapture(activePointer);
+    mousewheel: {
+      forceToAxis: true,
+      releaseOnEdges: true
     },
-    false
-  );
-
-  track.addEventListener(
-    'pointermove',
-    function (event) {
-      if (!dragging || event.pointerId !== activePointer) return;
-
-      var dx = event.clientX - startX;
-      if (Math.abs(dx) > 4) {
-        moved = true;
-        event.preventDefault();
-        track.scrollLeft = startScroll - dx;
+    keyboard: {
+      enabled: !reduce,
+      onlyInViewport: true
+    },
+    preventClicks: true,
+    preventClicksPropagation: true,
+    on: {
+      resize: function (instance) {
+        instance.params.spaceBetween = gap();
+        instance.params.slidesOffsetAfter = offsetAfter();
+        instance.update();
       }
-    },
-    { passive: false }
-  );
-
-  function endDrag(event) {
-    if (!dragging || event.pointerId !== activePointer) return;
-
-    dragging = false;
-    activePointer = null;
-    track.classList.remove('is-dragging');
-
-    if (track.hasPointerCapture(event.pointerId)) {
-      track.releasePointerCapture(event.pointerId);
     }
-
-    if (moved) {
-      window.requestAnimationFrame(function () {
-        moved = false;
-      });
-    }
-  }
-
-  track.addEventListener('pointerup', endDrag);
-  track.addEventListener('pointercancel', endDrag);
-
-  track.addEventListener(
-    'click',
-    function (event) {
-      if (!moved) return;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    },
-    false
-  );
-
-  track.addEventListener('dragstart', function (event) {
-    event.preventDefault();
   });
 
-  if (!reduce) {
-    track.addEventListener('keydown', function (event) {
-      var step = track.clientWidth * 0.6;
-      if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        track.scrollBy({ left: step, behavior: 'smooth' });
-      } else if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        track.scrollBy({ left: -step, behavior: 'smooth' });
-      }
-    });
-  }
+  rail.mediaIdeyaSwiper = swiper;
 })();

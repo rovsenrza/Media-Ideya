@@ -17,47 +17,24 @@
   margin-bottom: var(--mi-space-gap-md);
 }
 
-/* Left = container; right = viewport edge (Figma card peek) */
+/* Left = container; right = viewport edge (Figma card peek).
+   Swiper owns the rail: slide gap / trailing offset live in articles.js. */
 .mi-articles__rail {
   margin-left: var(--mi-gutter);
   width: calc(100vw - var(--mi-gutter));
   max-width: none;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.mi-articles__rail:focus-visible {
+  outline: 2px solid var(--mi-color-blue);
+  outline-offset: 4px;
 }
 
 .mi-articles__track {
   display: flex;
-  gap: calc(40px * var(--mi-s));
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  /* The grab rail must remain exactly where the visitor releases it. */
-  scroll-snap-type: none;
-  scroll-padding-inline: 0;
-  padding-right: var(--mi-gutter);
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.mi-articles__track::-webkit-scrollbar {
-  display: none;
-}
-
-.mi-articles__track.is-dragging {
-  cursor: grabbing;
-}
-
-.mi-articles__track.is-dragging,
-.mi-articles__track.is-dragging * {
-  cursor: grabbing;
-  user-select: none;
-}
-
-
-.mi-articles__track:focus-visible {
-  outline: 2px solid var(--mi-color-blue);
-  outline-offset: 4px;
+  align-items: stretch;
 }
 
 .mi-article-card {
@@ -68,7 +45,7 @@
   width: calc(546.667px * var(--mi-s));
   min-width: calc(546.667px * var(--mi-s));
   max-width: none;
-  scroll-snap-align: start;
+  height: auto;
 }
 
 .mi-article-card__media {
@@ -201,7 +178,6 @@
   .mi-articles__head-wrap { padding-inline: 16px; margin-bottom: 20px; }
   .mi-articles__label { display: none; }
   .mi-articles__heading { font-size: 32px; }
-  .mi-articles__track { gap: 10px; padding-right: 16px; }
   .mi-article-card__media { border-radius: 24px; aspect-ratio: 308 / 185; }
   .mi-article-card__body { gap: 10px; padding-inline: 10px; }
   .mi-article-card__meta { font-size: 12px; }
@@ -221,7 +197,8 @@
     transition: none !important;
   }
 
-  .mi-articles__track {
+  .mi-articles__rail,
+  .mi-articles__rail .swiper-wrapper {
     cursor: auto;
   }
 }

@@ -6,8 +6,8 @@
 		</header>
 	</div>
 
-	<div class="mi-articles__rail" data-articles-swiper>
-		<div class="mi-articles__track" data-articles-track data-lenis-prevent-touch tabindex="0" role="region" aria-label="Карусель статей">
+	<div class="mi-articles__rail swiper" data-articles-swiper data-lenis-prevent-touch tabindex="0" role="region" aria-label="Карусель статей">
+		<div class="mi-articles__track swiper-wrapper" data-articles-track>
 			{custom category="1" template="modules/article-card" limit="4" order="date" sort="desc" cache="no"}
 		</div>
 	</div>

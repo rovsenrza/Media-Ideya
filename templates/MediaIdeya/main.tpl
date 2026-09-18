@@ -21,10 +21,11 @@
 	<link rel="stylesheet" href="{THEME}/css/components/header.css">
 	<link rel="stylesheet" href="{THEME}/css/components/section-title.css">
 	<link rel="stylesheet" href="{THEME}/css/components/project-contact.css">
+	<link rel="stylesheet" href="{THEME}/css/components/preloader.css?v=20260911-6">
 	<link rel="stylesheet" href="{THEME}/css/components/request-modal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/reveal.css">
 	<link rel="stylesheet" href="{THEME}/css/components/card.css">
-	<link rel="stylesheet" href="{THEME}/css/components/footer.css">
+	<link rel="stylesheet" href="{THEME}/css/components/footer.css?v=20260908-2">
 	<link rel="stylesheet" href="{THEME}/css/engine.css">
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/available]
 	[static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/components/inner-page.css">[/static]
@@ -34,27 +35,42 @@
 	{* Page-specific CSS — yalnız lazım olan yüklənir *}
 	[available=main]
 	<link rel="stylesheet" href="{THEME}/css/components/home-cta.css">
-	<link rel="stylesheet" href="{THEME}/css/components/hero.css">
+	<link rel="stylesheet" href="{THEME}/css/components/hero.css?v=20260908-2">
 	<link rel="stylesheet" href="{THEME}/css/components/services.css">
 	<link rel="stylesheet" href="{THEME}/css/components/about.css?v=20260831-2">
 	<link rel="stylesheet" href="{THEME}/css/components/clients.css">
 	<link rel="stylesheet" href="{THEME}/css/components/faq.css">
-	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css">
+	<link rel="stylesheet" href="{THEME}/css/components/articles.css?v=20260918-1">
 	<link rel="stylesheet" href="{THEME}/css/pages/home.css">
 	[/available]
-	[available=cat|showfull][not-category=2]<link rel="stylesheet" href="{THEME}/css/pages/article.css">[/not-category][/available]
+	[available=showfull][not-category=2]<link rel="stylesheet" href="{THEME}/css/pages/article.css?v=20260918-1">[/not-category][/available]
+	{* DLE does not nest [not-category] blocks — keep each one flat *}
 	[available=cat|search|lastnews|tags|favorites]
-	[not-category=2]
-	<link rel="stylesheet" href="{THEME}/css/components/articles.css">
-	<link rel="stylesheet" href="{THEME}/css/pages/catalog.css">
-	[/not-category]
+	[not-category=2]<link rel="stylesheet" href="{THEME}/css/components/articles.css">[/not-category]
+	[not-category=2,13]<link rel="stylesheet" href="{THEME}/css/pages/catalog.css?v=20260908-1">[/not-category]
 	[/available]
+	[available=cat][category=13]
+	<link rel="stylesheet" href="{THEME}/css/components/statue-banner.css?v=20260918-3">
+	<link rel="stylesheet" href="{THEME}/css/pages/charity-page.css?v=20260918-2">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.css">
+	<link rel="stylesheet" href="{THEME}/css/components/lightbox.css?v=20260918-1">
+	[/category][/available]
+	[static=o-kompanii]
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.css">
+	<link rel="stylesheet" href="{THEME}/css/components/lightbox.css?v=20260918-1">
+	[/static]
+	[available=showfull][category=13]
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.css">
+	<link rel="stylesheet" href="{THEME}/css/components/lightbox.css?v=20260918-1">
+	[/category][/available]
 	[available=static][not-static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/not-static][/available]
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/pages/contact-page.css">[/available]
-	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css">[/static]
-	[static=uslugi]<link rel="stylesheet" href="{THEME}/css/pages/services-page.css">[/static]
+	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css?v=20260918-2">[/static]
+	[static=uslugi]<link rel="stylesheet" href="{THEME}/css/pages/services-page.css?v=20260914-4">[/static]
 </head>
-<body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available][available=feedback] is-contact-page[/available][static=o-kompanii] is-about-page[/static][static=uslugi] is-services-page[/static][category=2] is-cases-page[/category]">
+	<body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available][available=cat|search|lastnews|tags|favorites] is-catalog[/available][available=feedback] is-contact-page[/available][static=o-kompanii] is-about-page[/static][static=uslugi] is-services-page[/static][category=2] is-cases-page[/category][available=cat][category=13] is-charity-page[/category][/available]">
+	{include file="modules/preloader.tpl"}
 
 	[not-available=lostpassword|register]
 	<div class="mi-page">
@@ -73,7 +89,7 @@
 			{info}
 			[not-available=main]
 			[page-title]
-			[not-category=2]
+			[not-category=2,13]
 			<div class="mi-page-head">
 				<h1 class="mi-page-head__title">{page-title}</h1>
 				{page-description}
@@ -84,7 +100,21 @@
 			[category=2]
 			{include file="modules/page-cases.tpl"}
 			[/category]
-			[not-category=2]
+			[category=13]
+			{include file="modules/page-charity.tpl"}
+			[/category]
+			[not-category=2,13]
+			<div class="mi-catalog-page__hero">
+				<div class="mi-catalog-page__hero-inner">
+					<nav class="mi-catalog-page__breadcrumb" aria-label="Хлебные крошки">
+						<a href="{THEME}/../../">Главная</a>
+						<span aria-hidden="true">/</span>
+						<span aria-current="page">Статьи</span>
+					</nav>
+					<h1 class="mi-catalog-page__title">Статьи</h1>
+					<p class="mi-catalog-page__lead">Идеи, наблюдения и практические подходы к брендингу, маркетингу и digital.</p>
+				</div>
+			</div>
 			<div class="mi-catalog">
 				<div class="mi-catalog__grid">{content}</div>
 			</div>
@@ -123,20 +153,34 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+	<script src="{THEME}/js/components/preloader.js?v=20260911-1" defer></script>
 	<script src="{THEME}/js/main.js" defer></script>
 	<script src="{THEME}/js/components/phone-mask.js" defer></script>
 	<script src="{THEME}/js/components/request-modal.js" defer></script>
 	[available=main]
 	<script src="{THEME}/js/components/home-cta.js" defer></script>
 	<script src="{THEME}/js/components/faq.js" defer></script>
-	<script src="{THEME}/js/components/articles.js" defer></script>
-	<script src="{THEME}/js/pages/home.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js" defer></script>
+	<script src="{THEME}/js/components/articles.js?v=20260918-1" defer></script>
+	<script src="{THEME}/js/pages/home.js?v=20260909-1" defer></script>
 	[/available]
 	[available=showfull]<script src="{THEME}/js/pages/article.js" defer></script>[/available]
 	[available=static][not-static=o-kompanii,uslugi]<script src="{THEME}/js/pages/static.js" defer></script>[/not-static][/available]
 	[available=feedback]<script src="{THEME}/js/pages/contact-page.js" defer></script>[/available]
-	[static=o-kompanii]<script src="{THEME}/js/pages/about-page.js" defer></script>[/static]
-	[static=uslugi]<script src="{THEME}/js/pages/services-page.js" defer></script>[/static]
+	[static=o-kompanii]
+	<script src="{THEME}/js/pages/about-page.js?v=20260910-1" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.umd.js" defer data-fancybox-src></script>
+	<script src="{THEME}/js/components/lightbox.js?v=20260918-1" defer></script>
+	[/static]
+	[available=showfull][category=13]
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.umd.js" defer data-fancybox-src></script>
+	<script src="{THEME}/js/components/lightbox.js?v=20260918-1" defer></script>
+	[/category][/available]
+	[available=cat][category=13]
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.umd.js" defer data-fancybox-src></script>
+	<script src="{THEME}/js/components/lightbox.js?v=20260918-1" defer></script>
+	[/category][/available]
+	[static=uslugi]<script src="{THEME}/js/pages/services-page.js?v=20260914-3" defer></script>[/static]
 	<script src="{THEME}/js/pages/cases-page.js" defer></script>
 </body>
 </html>
