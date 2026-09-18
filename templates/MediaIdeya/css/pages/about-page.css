@@ -77,8 +77,15 @@
 
 .mi-about-hero::after {
   bottom: 0;
-  height: calc(449px * var(--mi-about-s));
-  background: linear-gradient(180deg, rgba(237, 245, 253, 0) 0%, #edf5fd 100%);
+  /* Starts 40px earlier to retain the soft overlap after the statue offset. */
+  height: calc(489px * var(--mi-about-s));
+  /* Figma 47:909 — preserves the soft fade over the lower statue edges. */
+  background: linear-gradient(
+    to bottom,
+    rgba(237, 245, 253, 0) 0%,
+    rgba(237, 245, 253, 0.6) 43.096%,
+    #edf5fd 85.768%
+  );
 }
 
 .mi-about-hero__world {
@@ -139,21 +146,25 @@
 
 .mi-about-hero__statue--left {
   left: calc(-84px * var(--mi-about-s));
-  top: calc(457px * var(--mi-about-s));
+  top: calc(417px * var(--mi-about-s));
   width: calc(757px * var(--mi-about-s));
   height: calc(688px * var(--mi-about-s));
 }
 
+.mi-about-hero__statue--left img {
+  transform: rotateY(180deg);
+}
+
 .mi-about-hero__statue--center {
   left: calc(602px * var(--mi-about-s));
-  top: calc(413px * var(--mi-about-s));
+  top: calc(373px * var(--mi-about-s));
   width: calc(716px * var(--mi-about-s));
   height: calc(732px * var(--mi-about-s));
 }
 
 .mi-about-hero__statue--right {
   left: calc(1248px * var(--mi-about-s));
-  top: calc(457px * var(--mi-about-s));
+  top: calc(417px * var(--mi-about-s));
   width: calc(749px * var(--mi-about-s));
   height: calc(688px * var(--mi-about-s));
 }
@@ -185,7 +196,7 @@
   position: absolute;
   z-index: 7;
   left: calc(512px * var(--mi-about-s));
-  top: calc(208px * var(--mi-about-s));
+  top: calc(188px * var(--mi-about-s));
   width: calc(897px * var(--mi-about-s));
   font-size: calc(88px * var(--mi-about-s));
   font-weight: 500;
@@ -254,6 +265,59 @@
 .mi-about-team__stage {
   position: absolute;
   inset: calc(440px * var(--mi-about-s)) 0 0;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mi-about-team__stage,
+.mi-about-team__stage img,
+.mi-about-team__stage a {
+  -webkit-user-drag: none;
+}
+
+.mi-about-team__role-media img {
+  pointer-events: none;
+}
+
+.mi-about-team__controls {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: calc(34px * var(--mi-about-s));
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: calc(16px * var(--mi-about-s));
+}
+
+.mi-about-team__control {
+  display: grid;
+  width: calc(64px * var(--mi-about-s));
+  height: calc(64px * var(--mi-about-s));
+  place-items: center;
+  border: 1px solid rgba(38, 74, 101, 0.42);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--mi-color-brand);
+  cursor: pointer;
+  pointer-events: auto;
+  font: inherit;
+  font-size: calc(28px * var(--mi-about-s));
+  line-height: 1;
+  transition: background var(--mi-duration) var(--mi-ease), color var(--mi-duration) var(--mi-ease), transform var(--mi-duration) var(--mi-ease);
+}
+
+.mi-about-team__control:hover,
+.mi-about-team__control:focus-visible {
+  background: var(--mi-color-brand);
+  color: var(--mi-color-inverse);
+  transform: translateY(-3px);
+}
+
+.mi-about-team__control:focus-visible {
+  outline: 2px solid var(--mi-color-blue);
+  outline-offset: 4px;
 }
 
 .mi-about-team__role {
@@ -381,8 +445,8 @@ html:not(.mi-js) .mi-about-team__role:nth-child(2) {
 .mi-about-process::before {
   content: "";
   position: absolute;
-  /* Figma 47:883 — a foreground fade over the lower part of the bowl. */
-  z-index: 3;
+  /* Figma 47:883 — desktop bottom-gradient layer. */
+  z-index: 5;
   left: 0;
   right: 0;
   top: calc(745px * var(--mi-about-s));
@@ -569,11 +633,17 @@ html.mi-process-scroll-locked body {
 }
 
 .mi-about-process__ghost,
-.mi-about-process.is-composed .mi-about-process__step,
 .mi-about-process.is-composed .mi-about-process__caption {
   opacity: 1;
   transform: none;
   filter: none;
+}
+
+/* Steps collapse into the bowl during the timeline and must stay there afterwards. */
+.mi-js .mi-about-process.is-composed .mi-about-process__step {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Reviews — 47:885 */
@@ -595,6 +665,12 @@ html.mi-process-scroll-locked body {
   letter-spacing: -0.025em;
 }
 
+/* Desktop: the wrapper is transparent so the grid keeps its absolute Figma position;
+   ≤991px it becomes the Swiper container (about-reviews.js). */
+.mi-about-reviews__slider {
+  display: contents;
+}
+
 .mi-about-reviews__list {
   position: absolute;
   left: calc(100px * var(--mi-about-s));
@@ -602,6 +678,11 @@ html.mi-process-scroll-locked body {
   display: grid;
   grid-template-columns: repeat(4, calc(400px * var(--mi-about-s)));
   gap: calc(40px * var(--mi-about-s));
+  transform: none;
+}
+
+.mi-about-reviews__card.swiper-slide {
+  flex-shrink: 0;
 }
 
 .mi-about-reviews__card {
@@ -751,7 +832,7 @@ html.mi-process-scroll-locked body {
   width: calc(1395.315px * var(--mi-about-s));
 }
 
-.mi-about-gratitude__letters button {
+.mi-about-gratitude__letters .mi-about-gratitude__letter {
   position: relative;
   isolation: isolate;
   display: block;
@@ -775,9 +856,18 @@ html.mi-process-scroll-locked body {
   transition: opacity 0.2s ease;
 }
 
-.mi-about-gratitude__letters button:hover .mi-about-gratitude__letter-overlay,
-.mi-about-gratitude__letters button:focus-visible .mi-about-gratitude__letter-overlay {
+.mi-about-gratitude__letters .mi-about-gratitude__letter:hover .mi-about-gratitude__letter-overlay,
+.mi-about-gratitude__letters .mi-about-gratitude__letter:focus-visible .mi-about-gratitude__letter-overlay {
   opacity: 1;
+}
+
+/* Scroll without a scan — no inner page, nothing to open. */
+.mi-about-gratitude__letters .mi-about-gratitude__letter--static {
+  cursor: default;
+}
+
+.mi-about-gratitude__letters .mi-about-gratitude__letter--static:hover .mi-about-gratitude__letter-overlay {
+  opacity: 0;
 }
 
 .mi-about-gratitude__letters img {
@@ -1012,6 +1102,19 @@ html.mi-process-scroll-locked body {
     margin-top: 40px;
   }
 
+  .mi-about-team__controls {
+    right: 16px;
+    bottom: 24px;
+    left: 16px;
+    gap: 12px;
+  }
+
+  .mi-about-team__control {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
   .mi-about-team__role {
     left: 50%;
     top: 0;
@@ -1065,8 +1168,16 @@ html.mi-process-scroll-locked body {
   }
 
   .mi-about-process::before {
-    top: 388px;
-    height: 412px;
+    bottom: 0 !important;
+    height: 300px !important;
+    top: unset !important;
+    /* Mobile process foreground wash. */
+    background: linear-gradient(
+      to bottom,
+      rgba(17, 35, 49, 0) 0%,
+      rgba(17, 35, 49, 0.7) 47.755%,
+      #112331 89.803%
+    ) !important;
   }
 
   .mi-about-process__title {
@@ -1149,33 +1260,34 @@ html.mi-process-scroll-locked body {
     line-height: 1.1;
   }
 
+  .mi-about-reviews__slider {
+    display: block;
+    position: relative;
+    width: calc(100vw - 16px);
+    margin-top: 20px;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
   .mi-about-reviews__list {
     position: relative;
     left: auto;
     top: auto;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: none;
-    grid-auto-columns: 308px;
-    gap: 10px;
-    width: calc(100vw - 16px);
-    margin-top: 20px;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
-    scrollbar-width: none;
-  }
-
-  .mi-about-reviews__list::-webkit-scrollbar {
-    display: none;
+    display: flex;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: content-box;
+    transition-property: transform;
   }
 
   .mi-about-reviews__card {
-    width: 100%;
+    width: 308px;
     height: 442px;
     aspect-ratio: auto;
     border-radius: 40px;
-    scroll-snap-align: start;
   }
 
   .mi-about-reviews__media {
@@ -1203,10 +1315,22 @@ html.mi-process-scroll-locked body {
   .mi-about-gratitude::before {
     top: 172px;
     height: 96px;
+    background: linear-gradient(
+      to top,
+      rgba(17, 35, 49, 0) 0%,
+      rgba(17, 35, 49, 0.7) 53.739%,
+      #112331 100%
+    );
   }
 
   .mi-about-gratitude::after {
     height: 56px;
+    background: linear-gradient(
+      to bottom,
+      rgba(17, 35, 49, 0) 0%,
+      rgba(17, 35, 49, 0.7) 53.739%,
+      #112331 100%
+    );
   }
 
   .mi-about-gratitude__canvas {
@@ -1221,7 +1345,7 @@ html.mi-process-scroll-locked body {
     width: 100%;
     height: 435px;
     object-fit: cover;
-    object-position: center bottom;
+    object-position: center top;
   }
 
   .mi-about-gratitude__heading {
@@ -1231,7 +1355,7 @@ html.mi-process-scroll-locked body {
   }
 
   .mi-about-gratitude__title {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.1;
   }
 
@@ -1253,10 +1377,14 @@ html.mi-process-scroll-locked body {
     margin: 0;
   }
 
-  .mi-about-gratitude__letters button {
+  .mi-about-gratitude__letters .mi-about-gratitude__letter {
     width: 114px;
     height: 49px;
     border-radius: 8px;
+  }
+
+  .mi-about-gratitude__letters li:nth-child(n + 9) {
+    display: none;
   }
 
   .mi-about-cta {
@@ -1411,15 +1539,15 @@ html.mi-process-scroll-locked body {
   }
   .mi-about-hero__statue--left {
     left: -69.7222vw;
-    top: 86.1111vw;
+    top: 72.1111vw;
     width: 119.7222vw;
-    height: 108.8889vw;
+    height: 122.8889vw;
   }
   .mi-about-hero__statue--right {
     left: 54.4444vw;
-    top: 86.1111vw;
+    top: 72.1111vw;
     width: 118.6111vw;
-    height: 108.8889vw;
+    height: 122.8889vw;
   }
 
   .mi-about-team,
@@ -1446,7 +1574,14 @@ html.mi-process-scroll-locked body {
     width: 91.1111vw;
     font-size: 7.7778vw;
   }
-  .mi-about-process__path { left: -44.4444vw; top: 56.9444vw; width: 188.8889vw; height: 150vw; }
+  .mi-about-process__path {
+    left: 50%;
+    top: 56.9444vw;
+    width: 188.8889vw;
+    height: 150vw;
+    max-width: none;
+    transform: translateX(-50%) !important;
+  }
   .mi-about-process__ghost {
     left: 9.4444vw;
     top: 126.3889vw;
@@ -1485,13 +1620,11 @@ html.mi-process-scroll-locked body {
   .mi-about-reviews { height: 196.3889vw; }
   .mi-about-reviews__canvas { padding: 16.6667vw 4.4444vw 22.2222vw; }
   .mi-about-reviews__title { width: 91.1111vw; font-size: 7.7778vw; }
-  .mi-about-reviews__list {
-    grid-auto-columns: 85.5556vw;
-    gap: 2.7778vw;
+  .mi-about-reviews__slider {
     width: calc(100vw - 4.4444vw);
     margin-top: 5.5556vw;
   }
-  .mi-about-reviews__card { height: 122.7778vw; border-radius: 11.1111vw; }
+  .mi-about-reviews__card { width: 85.5556vw; height: 122.7778vw; border-radius: 11.1111vw; }
   .mi-about-reviews__media { flex-basis: 52.7778vw; }
   .mi-about-reviews__body { padding: 6.6667vw; }
   .mi-about-reviews__quote,
@@ -1505,7 +1638,7 @@ html.mi-process-scroll-locked body {
   .mi-about-gratitude::after { height: 15.5556vw; }
   .mi-about-gratitude__canvas { padding: 16.6667vw 4.4444vw 22.2222vw; }
   .mi-about-gratitude__shelves { top: 47.7778vw; height: 120.8333vw; }
-  .mi-about-gratitude__title { font-size: 7.7778vw; }
+  .mi-about-gratitude__title { font-size: 8.8889vw; }
   .mi-about-gratitude__heading p { margin-top: 4.4444vw; font-size: 3.3333vw; }
   .mi-about-gratitude__letters {
     left: 8.5764vw;
@@ -1515,7 +1648,7 @@ html.mi-process-scroll-locked body {
     gap: 8.0556vw 19.7222vw;
     width: 83.0556vw;
   }
-  .mi-about-gratitude__letters button { width: 31.6667vw; height: 13.6111vw; border-radius: 2.2222vw; }
+  .mi-about-gratitude__letters .mi-about-gratitude__letter { width: 31.6667vw; height: 13.6111vw; border-radius: 2.2222vw; }
 
   .mi-about-cta { height: 157.5vw; }
   .mi-about-cta__hand--left {
@@ -1660,12 +1793,12 @@ html.mi-process-scroll-locked body {
 
 @media (prefers-reduced-motion: reduce) {
   .mi-about-team__role,
-  .mi-about-gratitude__letters button {
+  .mi-about-gratitude__letters .mi-about-gratitude__letter {
     transition: none !important;
   }
 
-  .mi-about-gratitude__letters button:hover,
-  .mi-about-gratitude__letters button:focus-visible {
+  .mi-about-gratitude__letters .mi-about-gratitude__letter:hover,
+  .mi-about-gratitude__letters .mi-about-gratitude__letter:focus-visible {
     transform: none;
   }
 }

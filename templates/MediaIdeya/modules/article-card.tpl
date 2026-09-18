@@ -1,5 +1,5 @@
 <article class="mi-article-card swiper-slide">
-	<div class="mi-article-card__media">
+	<a class="mi-article-card__media" href="{full-link}">
 		[xfgiven_image]
 		<img src="[xfvalue_thumb_url_image]" alt="{title}" width="547" height="329" loading="lazy" decoding="async" draggable="false">
 		[/xfgiven_image]
@@ -9,7 +9,7 @@
 			<img src="{THEME}/images/articles/card.png" alt="{title}" width="547" height="329" loading="lazy" decoding="async" draggable="false">
 		</picture>
 		[/xfnotgiven_image]
-	</div>
+	</a>
 	<div class="mi-article-card__body">
 		<div class="mi-article-card__meta">
 			[tags]
@@ -18,7 +18,7 @@
 			<time datetime="{date=Y-m-d}">[day-news]{date=d.m.Y}[/day-news]</time>
 		</div>
 		<h3 class="mi-article-card__title">
-			<span>{title}</span>
+			<a href="{full-link}">{title}</a>
 		</h3>
 	</div>
 </article>

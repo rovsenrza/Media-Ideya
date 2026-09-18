@@ -1,0 +1,339 @@
+/* Statue banner — inner-page hero with clouds and five emperors.
+   Frame, gradients and type mirror the About hero; the world (clouds + statues)
+   follows Figma 138:1145 (1920 canvas, group 138:1152 at -256/191).
+   The title is a single centred line and the bottom fades into the page. */
+
+.mi-statue-banner {
+  --mi-sb-s: var(--mi-s);
+  --mi-sb-canvas: calc(1920px * var(--mi-sb-s));
+  --mi-sb-fade: var(--mi-color-surface-soft);
+  position: relative;
+  width: 100%;
+  height: calc(1145px * var(--mi-sb-s));
+  margin-top: calc(-1 * var(--mi-header-height));
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--mi-color-inverse);
+  background: linear-gradient(180deg, #8db5d5 0%, #abd3f3 100%);
+}
+
+.mi-statue-banner::before,
+.mi-statue-banner::after {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.mi-statue-banner::before {
+  top: 0;
+  height: calc(213px * var(--mi-sb-s));
+  background: linear-gradient(180deg, #4a7ca3 0%, rgba(150, 187, 217, 0) 100%);
+}
+
+.mi-statue-banner::after {
+  bottom: 0;
+  height: calc(489px * var(--mi-sb-s));
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--mi-sb-fade) 60%, transparent) 43.096%,
+    var(--mi-sb-fade) 85.768%
+  );
+}
+
+.mi-statue-banner__canvas {
+  position: relative;
+  width: var(--mi-sb-canvas);
+  height: 100%;
+  margin-inline: auto;
+}
+
+.mi-statue-banner__world {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Clouds — Humo_Legend_15 (138:1149 fill, 138:1150 cropped to its right 60.3%) */
+.mi-statue-banner__cloud {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mi-statue-banner__cloud--a {
+  left: calc(-17px * var(--mi-sb-s));
+  top: calc(-92px * var(--mi-sb-s));
+  width: calc(2272.79px * var(--mi-sb-s));
+  height: calc(1278.44px * var(--mi-sb-s));
+}
+
+.mi-statue-banner__cloud-crop {
+  position: absolute;
+  left: calc(-563px * var(--mi-sb-s));
+  top: calc(-49px * var(--mi-sb-s));
+  width: calc(1523px * var(--mi-sb-s));
+  height: calc(1420px * var(--mi-sb-s));
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mi-statue-banner__cloud--b {
+  left: calc(-1001.6px * var(--mi-sb-s));
+  top: 0;
+  width: calc(2524.7px * var(--mi-sb-s));
+  height: 100%;
+}
+
+.mi-statue-banner__statues {
+  position: absolute;
+  inset: 0;
+}
+
+.mi-statue-banner__statue {
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;
+  transform-origin: 50% 100%;
+}
+
+.mi-statue-banner__statue img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+/* Five emperors — Figma boxes translated into frame coordinates; z-order as in the group */
+.mi-statue-banner__statue--trajan {
+  z-index: 2;
+  left: calc(-256px * var(--mi-sb-s));
+  top: calc(191px * var(--mi-sb-s));
+  width: calc(872px * var(--mi-sb-s));
+  height: calc(1460px * var(--mi-sb-s));
+}
+
+.mi-statue-banner__statue--antoninus {
+  z-index: 3;
+  left: calc(1337px * var(--mi-sb-s));
+  top: calc(303px * var(--mi-sb-s));
+  width: calc(762px * var(--mi-sb-s));
+  height: calc(1364px * var(--mi-sb-s));
+}
+
+.mi-statue-banner__statue--hadrian {
+  z-index: 4;
+  left: calc(202px * var(--mi-sb-s));
+  top: calc(308px * var(--mi-sb-s));
+  width: calc(726px * var(--mi-sb-s));
+  height: calc(1299px * var(--mi-sb-s));
+}
+
+.mi-statue-banner__statue--nerva {
+  z-index: 5;
+  left: calc(1047px * var(--mi-sb-s));
+  top: calc(298px * var(--mi-sb-s));
+  width: calc(681px * var(--mi-sb-s));
+  height: calc(1330px * var(--mi-sb-s));
+}
+
+.mi-statue-banner__statue--marcus {
+  z-index: 6;
+  left: calc(573px * var(--mi-sb-s));
+  top: calc(275px * var(--mi-sb-s));
+  width: calc(768px * var(--mi-sb-s));
+  height: calc(1376px * var(--mi-sb-s));
+}
+
+.mi-statue-banner__breadcrumb {
+  position: absolute;
+  z-index: 8;
+  left: calc(100px * var(--mi-sb-s));
+  top: calc(84px * var(--mi-sb-s));
+  display: flex;
+  align-items: center;
+  gap: calc(16px * var(--mi-sb-s));
+  height: calc(24px * var(--mi-sb-s));
+  font-size: calc(16px * var(--mi-sb-s));
+  font-weight: 300;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.mi-statue-banner__breadcrumb a {
+  opacity: 0.6;
+  transition: opacity var(--mi-duration) var(--mi-ease);
+}
+
+.mi-statue-banner__breadcrumb a:hover {
+  opacity: 1;
+}
+
+.mi-statue-banner__title {
+  position: absolute;
+  z-index: 7;
+  left: 0;
+  top: calc(214px * var(--mi-sb-s));
+  width: 100%;
+  padding-inline: calc(100px * var(--mi-sb-s));
+  font-size: calc(88px * var(--mi-sb-s));
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: #fff;
+}
+
+/* Entrance — same choreography as the About hero (about-page.js playHero):
+   the title settles from a blur, the centre emperor rises first, the flanks follow
+   after the preloader has cleared. */
+@keyframes mi-statue-banner-title {
+  from { opacity: 0; filter: blur(9px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+@keyframes mi-statue-banner-rise-center {
+  from { opacity: 0; transform: translate3d(0, calc(112px * var(--mi-sb-s)), 0) scale(0.86); filter: blur(7px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+
+@keyframes mi-statue-banner-rise-left {
+  from { opacity: 0; transform: translate3d(calc(-112px * var(--mi-sb-s)), calc(74px * var(--mi-sb-s)), 0) scale(0.92); filter: blur(5px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+
+@keyframes mi-statue-banner-rise-right {
+  from { opacity: 0; transform: translate3d(calc(112px * var(--mi-sb-s)), calc(74px * var(--mi-sb-s)), 0) scale(0.92); filter: blur(5px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+
+.mi-js .mi-statue-banner__title {
+  animation: mi-statue-banner-title 530ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+.mi-js .mi-statue-banner__statue {
+  will-change: opacity, transform, filter;
+  animation: mi-statue-banner-rise-left 800ms cubic-bezier(0.16, 1, 0.3, 1) 2200ms both;
+}
+
+.mi-js .mi-statue-banner__statue--marcus {
+  animation-name: mi-statue-banner-rise-center;
+  animation-delay: 1400ms;
+}
+
+.mi-js .mi-statue-banner__statue--nerva,
+.mi-js .mi-statue-banner__statue--antoninus {
+  animation-name: mi-statue-banner-rise-right;
+}
+
+@media (max-width: 991px) {
+  .mi-statue-banner {
+    --mi-sb-s: 1;
+    height: 800px;
+  }
+
+  .mi-statue-banner__canvas {
+    width: 100%;
+  }
+
+  .mi-statue-banner::before {
+    height: 149px;
+  }
+
+  .mi-statue-banner::after {
+    top: 486px;
+    bottom: auto;
+    height: 314px;
+    background: linear-gradient(
+      to top,
+      transparent 0%,
+      color-mix(in srgb, var(--mi-sb-fade) 60%, transparent) 27.588%,
+      var(--mi-sb-fade) 61.306%
+    );
+  }
+
+  .mi-statue-banner__breadcrumb {
+    left: 0;
+    top: 50px;
+    gap: 10px;
+    height: 48px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    font-size: 12px;
+  }
+
+  .mi-statue-banner__title {
+    top: 149px;
+    padding-inline: 16px;
+    font-size: 32px;
+  }
+
+  .mi-statue-banner__cloud--a {
+    left: -120px;
+    top: 120px;
+    width: 780px;
+    height: auto;
+    opacity: 0.9;
+  }
+
+  .mi-statue-banner__cloud-crop {
+    left: -260px;
+    top: 200px;
+    width: 720px;
+    height: 400px;
+  }
+
+  .mi-statue-banner__cloud--b {
+    left: -470px;
+    width: 1190px;
+    height: auto;
+  }
+
+  /* Mobile composition: Marcus centred, Hadrian/Nerva flanking inside the viewport,
+     Trajan/Antoninus only enter on wider phones and tablets. */
+  .mi-statue-banner__statue--marcus {
+    left: calc(50% - 125px);
+    top: 300px;
+    width: 250px;
+    height: 450px;
+  }
+
+  .mi-statue-banner__statue--hadrian {
+    left: calc(50% - 250px);
+    top: 345px;
+    width: 215px;
+    height: 400px;
+  }
+
+  .mi-statue-banner__statue--nerva {
+    left: calc(50% + 45px);
+    top: 350px;
+    width: 200px;
+    height: 395px;
+  }
+
+  .mi-statue-banner__statue--trajan {
+    left: calc(50% - 400px);
+    top: 335px;
+    width: 235px;
+    height: 400px;
+  }
+
+  .mi-statue-banner__statue--antoninus {
+    left: calc(50% + 190px);
+    top: 340px;
+    width: 220px;
+    height: 400px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-js .mi-statue-banner__statue,
+  .mi-js .mi-statue-banner__title {
+    animation: none;
+  }
+}

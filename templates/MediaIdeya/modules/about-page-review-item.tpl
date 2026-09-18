@@ -1,4 +1,4 @@
-<li class="mi-about-reviews__card">
+<li class="mi-about-reviews__card swiper-slide">
 	<span class="mi-about-sr-only">Отзыв клиента[xfgiven_about_review_author]: [xfvalue_about_review_author][/xfgiven_about_review_author]</span>
 	[xfgiven_about_review_image]
 	<div class="mi-about-reviews__media">
