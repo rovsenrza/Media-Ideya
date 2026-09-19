@@ -1,11 +1,11 @@
 {
     "schema_version": 2,
-    "commit": "48e34b199ed2854c6bbe85e8b7105330e9669245",
-    "indexed_at": "2026-09-19T06:33:50Z",
-    "project": "mediaideya",
-    "nodes": 49871,
-    "edges": 106748,
-    "original_size": 84606976,
-    "compressed_size": 9435161,
-    "compression_level": 9
+    "commit": "de062af1de382b0903a279a9e2260567dc0e5840",
+    "indexed_at": "2026-09-19T06:36:19Z",
+    "project": "Applications-MAMP-htdocs-mediaideya",
+    "nodes": 49870,
+    "edges": 106747,
+    "original_size": 136183808,
+    "compressed_size": 13861087,
+    "compression_level": 3
 }

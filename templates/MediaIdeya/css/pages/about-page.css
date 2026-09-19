@@ -657,9 +657,18 @@ html.mi-process-scroll-locked body {
 /* Link to /blagotvoritelnost/ under the card grid */
 .mi-about-reviews__cta {
   position: absolute;
-  left: calc(100px * var(--mi-about-s));
+  left: 50%;
   top: calc(988px * var(--mi-about-s));
+  transform: translateX(-50%);
   text-decoration: none;
+}
+
+.mi-about-reviews__cta:hover {
+  transform: translateX(-50%) translateY(calc(-2px * var(--mi-about-s)));
+}
+
+.mi-about-reviews__cta:active {
+  transform: translateX(-50%) scale(0.98);
 }
 
 .mi-about-reviews__canvas {
@@ -685,11 +694,13 @@ html.mi-process-scroll-locked body {
 
 .mi-about-reviews__list {
   position: absolute;
-  left: calc(100px * var(--mi-about-s));
+  left: 0;
   top: calc(374px * var(--mi-about-s));
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(4, calc(400px * var(--mi-about-s)));
   gap: calc(40px * var(--mi-about-s));
+  width: 100%;
   transform: none;
 }
 
@@ -1230,6 +1241,15 @@ html.mi-process-scroll-locked body {
   .mi-about-reviews__cta {
     position: static;
     margin-top: 20px;
+    transform: none;
+  }
+
+  .mi-about-reviews__cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .mi-about-reviews__cta:active {
+    transform: scale(0.98);
   }
 
   .mi-about-reviews__canvas {
