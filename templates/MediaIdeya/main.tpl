@@ -48,11 +48,11 @@
 	{* DLE does not nest [not-category] blocks — keep each one flat *}
 	[available=cat|search|lastnews|tags|favorites]
 	[not-category=2]<link rel="stylesheet" href="{THEME}/css/components/articles.css">[/not-category]
-	[not-category=2,13]<link rel="stylesheet" href="{THEME}/css/pages/catalog.css?v=20260918-1">[/not-category]
+	[not-category=2,13]<link rel="stylesheet" href="{THEME}/css/pages/catalog.css?v=20260919-1">[/not-category]
 	[/available]
 	[available=cat][category=13]
-	<link rel="stylesheet" href="{THEME}/css/components/statue-banner.css?v=20260919-2">
-	<link rel="stylesheet" href="{THEME}/css/pages/charity-page.css?v=20260918-2">
+	<link rel="stylesheet" href="{THEME}/css/components/statue-banner.css?v=20260919-4">
+	<link rel="stylesheet" href="{THEME}/css/pages/charity-page.css?v=20260919-1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.15/dist/fancybox/fancybox.css">
 	<link rel="stylesheet" href="{THEME}/css/components/lightbox.css?v=20260918-1">
 	[/category][/available]
@@ -66,7 +66,7 @@
 	[/category][/available]
 	[available=static][not-static=o-kompanii,uslugi]<link rel="stylesheet" href="{THEME}/css/pages/static.css">[/not-static][/available]
 	[available=feedback]<link rel="stylesheet" href="{THEME}/css/pages/contact-page.css">[/available]
-	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css?v=20260919-5">[/static]
+	[static=o-kompanii]<link rel="stylesheet" href="{THEME}/css/pages/about-page.css?v=20260919-6">[/static]
 	[static=uslugi]<link rel="stylesheet" href="{THEME}/css/pages/services-page.css?v=20260914-4">[/static]
 </head>
 	<body class="mi-body[available=main] is-home[/available][available=showfull] is-article[/available][available=static] is-static[/available][available=cat|search|lastnews|tags|favorites] is-catalog[/available][available=feedback] is-contact-page[/available][static=o-kompanii] is-about-page[/static][static=uslugi] is-services-page[/static][category=2] is-cases-page[/category][available=cat][category=13] is-charity-page[/category][/available]">
@@ -103,7 +103,9 @@
 			[category=13]
 			{include file="modules/page-charity.tpl"}
 			[/category]
-			[not-category=2,13]
+			{* Blog: /stat-i/ (category 1) lists its rubrics; a rubric page lists its posts.
+			   DLE does not nest [not-category] blocks — each variant is a flat block. *}
+			[category=1]
 			<div class="mi-catalog-page__hero">
 				<div class="mi-catalog-page__hero-inner">
 					<nav class="mi-catalog-page__breadcrumb" aria-label="Хлебные крошки">
@@ -113,6 +115,22 @@
 					</nav>
 					<h1 class="mi-catalog-page__title">Статьи</h1>
 					<p class="mi-catalog-page__lead">Идеи, наблюдения и практические подходы к брендингу, маркетингу и digital.</p>
+				</div>
+			</div>
+			<div class="mi-catalog">
+				<div class="mi-catalog__grid mi-catalog__grid--rubrics">{catmenu id="1" subcat="only" template="modules/blog-category-card"}</div>
+			</div>
+			[/category]
+			[not-category=1,2,13]
+			<div class="mi-catalog-page__hero">
+				<div class="mi-catalog-page__hero-inner">
+					<nav class="mi-catalog-page__breadcrumb" aria-label="Хлебные крошки">
+						<a href="{THEME}/../../">Главная</a>
+						<span aria-hidden="true">/</span>
+						<a href="{THEME}/../../stat-i/">Статьи</a>
+						<span class="mi-catalog-page__crumb-current" aria-current="page">{catmenu id="1" subcat="only" template="modules/blog-category-name"}</span>
+					</nav>
+					<h1 class="mi-catalog-page__title"><span class="mi-catalog-page__rubric">{catmenu id="1" subcat="only" template="modules/blog-category-name"}</span><span class="mi-catalog-page__fallback">Статьи</span></h1>
 				</div>
 			</div>
 			<div class="mi-catalog">

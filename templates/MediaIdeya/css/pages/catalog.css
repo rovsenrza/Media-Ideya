@@ -49,6 +49,19 @@
   letter-spacing: -0.045em;
 }
 
+/* Rubric pages: the H1 is the rubric name; search/tags pages (no rubric) fall back to «Статьи». */
+.mi-catalog-page__rubric:empty + .mi-catalog-page__fallback {
+  display: inline;
+}
+
+.mi-catalog-page__fallback {
+  display: none;
+}
+
+.mi-catalog-page__crumb-current:empty {
+  display: none;
+}
+
 .mi-catalog-page__lead {
   max-width: calc(700px * var(--mi-s));
   margin: calc(28px * var(--mi-s)) 0 0;

@@ -244,15 +244,17 @@
     height: 149px;
   }
 
+  /* Longer, softer ramp than Figma's 314px band: the short one read as a hard edge. */
   .mi-statue-banner::after {
-    top: 486px;
+    top: 400px;
     bottom: auto;
-    height: 314px;
+    height: 400px;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      color-mix(in srgb, var(--mi-sb-fade) 60%, transparent) 27.588%,
-      var(--mi-sb-fade) 61.306%
+      color-mix(in srgb, var(--mi-sb-fade) 25%, transparent) 25%,
+      color-mix(in srgb, var(--mi-sb-fade) 70%, transparent) 55%,
+      var(--mi-sb-fade) 80%
     );
   }
 
@@ -280,11 +282,12 @@
     opacity: 0.9;
   }
 
+  /* Crop reaches the banner bottom: a shorter box left a hard edge above the fade. */
   .mi-statue-banner__cloud-crop {
     left: -260px;
     top: 200px;
     width: 720px;
-    height: 400px;
+    height: 600px;
   }
 
   .mi-statue-banner__cloud--b {

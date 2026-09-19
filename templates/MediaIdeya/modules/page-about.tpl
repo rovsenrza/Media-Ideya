@@ -51,8 +51,8 @@
 		<div class="mi-about-reviews__canvas">
 			{custom category="6" template="modules/about-page-reviews-heading" limit="1" order="date" sort="asc" cache="no"}
 			<div class="mi-about-reviews__slider" data-reviews-swiper data-lenis-prevent-touch>
-				<ul class="mi-about-reviews__list" aria-label="Отзывы клиентов">
-					{custom category="11" template="modules/about-page-review-item" limit="4" order="date" sort="asc" cache="no"}
+				<ul class="mi-about-reviews__list" aria-label="Благотворительные проекты">
+					{custom category="11" template="modules/charity-card" limit="4" order="date" sort="asc" cache="no"}
 				</ul>
 			</div>
 			<a class="mi-btn mi-about-reviews__cta" href="{THEME}/../../blagotvoritelnost/">Принят участи в помощи нуждающихся</a>
@@ -74,8 +74,14 @@
 
 	<section class="mi-about-cta" aria-labelledby="mi-about-cta-title">
 		<div class="mi-about-cta__canvas">
-			<img class="mi-about-cta__hand mi-about-cta__hand--left" src="{THEME}/images/pages/about/hands.webp" width="1408" height="768" alt="" loading="lazy" decoding="async" aria-hidden="true">
-			<img class="mi-about-cta__hand mi-about-cta__hand--right" src="{THEME}/images/pages/about/hands.webp" width="1408" height="768" alt="" loading="lazy" decoding="async" aria-hidden="true">
+			{* Each hand is the half of hands.webp shown through an overflow-hidden box —
+			   clip-path on <img> was dropped by iOS Safari. *}
+			<div class="mi-about-cta__hand mi-about-cta__hand--left" aria-hidden="true">
+				<img src="{THEME}/images/pages/about/hands.webp" width="1408" height="768" alt="" decoding="async">
+			</div>
+			<div class="mi-about-cta__hand mi-about-cta__hand--right" aria-hidden="true">
+				<img src="{THEME}/images/pages/about/hands.webp" width="1408" height="768" alt="" decoding="async">
+			</div>
 			{custom category="6" template="modules/about-page-cta" limit="1" order="date" sort="asc" cache="no"}
 		</div>
 	</section>

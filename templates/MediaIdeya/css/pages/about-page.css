@@ -677,9 +677,11 @@ html.mi-process-scroll-locked body {
 
 .mi-about-reviews__title {
   position: absolute;
-  left: calc(100px * var(--mi-about-s));
+  left: 0;
+  right: 0;
   top: calc(120px * var(--mi-about-s));
   width: calc(1341px * var(--mi-about-s));
+  margin-inline: auto;
   font-size: calc(88px * var(--mi-about-s));
   font-weight: 500;
   line-height: 1.1;
@@ -727,11 +729,21 @@ html.mi-process-scroll-locked body {
 
 /* Card is the photo — no text body */
 .mi-about-reviews__media {
+  display: block;
   flex: 1 1 auto;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background: var(--mi-color-surface-soft);
+  cursor: zoom-in;
+}
+
+.mi-about-reviews__media img {
+  transition: transform 0.6s var(--mi-ease);
+}
+
+.mi-about-reviews__card:hover .mi-about-reviews__media img {
+  transform: scale(1.03);
 }
 
 .mi-about-reviews__media img {
@@ -885,27 +897,43 @@ html.mi-process-scroll-locked body {
   background: var(--mi-color-surface-dark);
 }
 
+/* Hands: each box shows one half of hands.webp (1408×768) through overflow: hidden.
+   clip-path on <img> did not render in iOS Safari. */
 .mi-about-cta__hand {
   position: absolute;
   z-index: 0;
-  max-width: none;
-  height: auto;
+  overflow: hidden;
   pointer-events: none;
   user-select: none;
+}
+
+.mi-about-cta__hand img {
+  display: block;
+  max-width: none;
+  height: auto;
 }
 
 .mi-about-cta__hand--left {
   left: calc(-182px * var(--mi-about-s));
   top: calc(-118px * var(--mi-about-s));
+  width: calc(630px * var(--mi-about-s));
+  height: calc(687.3px * var(--mi-about-s));
+}
+
+.mi-about-cta__hand--left img {
   width: calc(1260px * var(--mi-about-s));
-  clip-path: inset(0 50% 0 0);
 }
 
 .mi-about-cta__hand--right {
-  left: calc(762px * var(--mi-about-s));
+  left: calc(1472px * var(--mi-about-s));
   top: calc(-132px * var(--mi-about-s));
+  width: calc(710px * var(--mi-about-s));
+  height: calc(774.5px * var(--mi-about-s));
+}
+
+.mi-about-cta__hand--right img {
   width: calc(1420px * var(--mi-about-s));
-  clip-path: inset(0 0 0 50%);
+  margin-left: calc(-710px * var(--mi-about-s));
 }
 
 .mi-about-cta__content {
@@ -1260,8 +1288,10 @@ html.mi-process-scroll-locked body {
   .mi-about-reviews__title {
     position: relative;
     left: auto;
+    right: auto;
     top: auto;
     width: 328px;
+    margin-inline: auto;
     font-size: 28px;
     line-height: 1.1;
   }
@@ -1280,6 +1310,7 @@ html.mi-process-scroll-locked body {
     left: auto;
     top: auto;
     display: flex;
+    justify-content: flex-start;
     gap: 0;
     width: 100%;
     margin: 0;
@@ -1383,26 +1414,27 @@ html.mi-process-scroll-locked body {
   .mi-about-cta__hand--left {
     left: -120px;
     top: 40px;
-    width: 600px;
+    width: 300px;
     height: 163px;
-    object-fit: cover;
-    object-position: center;
-    opacity: 1;
-    clip-path: inset(0 50% 0 0);
-    transform: none;
   }
 
   .mi-about-cta__hand--right {
-    display: block;
-    left: -94px;
+    left: 206px;
     top: 40px;
+    width: 300px;
+    height: 163px;
+  }
+
+  .mi-about-cta__hand img {
     width: 600px;
     height: 163px;
+    margin-left: 0;
     object-fit: cover;
     object-position: center;
-    opacity: 1;
-    clip-path: inset(0 0 0 50%);
-    transform: none;
+  }
+
+  .mi-about-cta__hand--right img {
+    margin-left: -300px;
   }
 
   .mi-about-cta__title,
@@ -1639,15 +1671,17 @@ html.mi-process-scroll-locked body {
   .mi-about-cta__hand--left {
     left: -33.3333vw;
     top: 11.1111vw;
-    width: 166.6667vw;
+    width: 83.3333vw;
     height: 45.2778vw;
   }
   .mi-about-cta__hand--right {
-    left: -26.1111vw;
+    left: 57.2222vw;
     top: 11.1111vw;
-    width: 166.6667vw;
+    width: 83.3333vw;
     height: 45.2778vw;
   }
+  .mi-about-cta__hand img { width: 166.6667vw; height: 45.2778vw; }
+  .mi-about-cta__hand--right img { margin-left: -83.3333vw; }
   .mi-about-cta__title,
   .mi-about-cta__subtitle,
   .mi-about-cta__lead,
