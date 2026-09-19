@@ -55,7 +55,7 @@
 					{custom category="11" template="modules/about-page-review-item" limit="4" order="date" sort="asc" cache="no"}
 				</ul>
 			</div>
-			<a class="mi-btn mi-about-reviews__cta" href="{THEME}/../../blagotvoritelnost/">Смотреть все проекты</a>
+			<a class="mi-btn mi-about-reviews__cta" href="{THEME}/../../blagotvoritelnost/">Принят участи в помощи нуждающихся</a>
 		</div>
 	</section>
 
