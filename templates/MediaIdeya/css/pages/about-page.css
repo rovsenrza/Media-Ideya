@@ -649,9 +649,17 @@ html.mi-process-scroll-locked body {
 /* Reviews — 47:885 */
 
 .mi-about-reviews {
-  height: calc(1028px * var(--mi-about-s));
+  height: calc(1146px * var(--mi-about-s));
   color: #fff;
   background: var(--mi-color-surface-dark);
+}
+
+/* Link to /blagotvoritelnost/ under the card grid */
+.mi-about-reviews__cta {
+  position: absolute;
+  left: calc(100px * var(--mi-about-s));
+  top: calc(988px * var(--mi-about-s));
+  text-decoration: none;
 }
 
 .mi-about-reviews__title {
@@ -713,6 +721,12 @@ html.mi-process-scroll-locked body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.mi-about-reviews__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .mi-about-reviews__body {
@@ -1247,8 +1261,13 @@ html.mi-process-scroll-locked body {
   }
 
   .mi-about-reviews {
-    height: 707px;
+    height: 780px;
     min-height: 0;
+  }
+
+  .mi-about-reviews__cta {
+    position: static;
+    margin-top: 20px;
   }
 
   .mi-about-reviews__canvas {
@@ -1622,7 +1641,8 @@ html.mi-process-scroll-locked body {
     margin-left: 0;
   }
 
-  .mi-about-reviews { height: 196.3889vw; }
+  .mi-about-reviews { height: 216.6667vw; }
+  .mi-about-reviews__cta { margin-top: 5.5556vw; }
   .mi-about-reviews__canvas { padding: 16.6667vw 4.4444vw 22.2222vw; }
   .mi-about-reviews__title { width: 91.1111vw; font-size: 7.7778vw; }
   .mi-about-reviews__slider {

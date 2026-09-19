@@ -1,1 +1,1 @@
-<h2 class="mi-about-reviews__title" id="mi-about-reviews-title">[xfvalue_about_reviews_title]</h2>
+<h2 class="mi-about-reviews__title" id="mi-about-reviews-title">[xfgiven_about_reviews_title][xfvalue_about_reviews_title][/xfgiven_about_reviews_title][xfnotgiven_about_reviews_title]Благотворительность[/xfnotgiven_about_reviews_title]</h2>
