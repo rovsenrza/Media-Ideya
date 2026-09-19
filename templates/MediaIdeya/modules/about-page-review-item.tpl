@@ -13,14 +13,4 @@
 		</picture>
 	</div>
 	[/xfnotgiven_about_review_image]
-	<div class="mi-about-reviews__body">
-		<div class="mi-about-reviews__quote">{short-story}</div>
-		<div class="mi-about-reviews__person">
-			[xfgiven_about_review_author]<strong>[xfvalue_about_review_author]</strong>[/xfgiven_about_review_author]
-			<div class="mi-about-reviews__meta">
-				[xfgiven_about_review_role]<span>[xfvalue_about_review_role]</span>[/xfgiven_about_review_role]
-				[xfgiven_about_review_company]<span>[xfvalue_about_review_company]</span>[/xfgiven_about_review_company]
-			</div>
-		</div>
-	</div>
 </li>

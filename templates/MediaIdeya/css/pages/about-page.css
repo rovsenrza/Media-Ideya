@@ -662,6 +662,10 @@ html.mi-process-scroll-locked body {
   text-decoration: none;
 }
 
+.mi-about-reviews__canvas {
+  text-align: center;
+}
+
 .mi-about-reviews__title {
   position: absolute;
   left: calc(100px * var(--mi-about-s));
@@ -710,9 +714,11 @@ html.mi-process-scroll-locked body {
   background: #fff;
 }
 
+/* Card is the photo — no text body */
 .mi-about-reviews__media {
-  flex: 0 0 calc(250px * var(--mi-about-s));
+  flex: 1 1 auto;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   background: var(--mi-color-surface-soft);
 }
@@ -727,50 +733,6 @@ html.mi-process-scroll-locked body {
   display: block;
   width: 100%;
   height: 100%;
-}
-
-.mi-about-reviews__body {
-  display: flex;
-  min-height: 0;
-  flex: 1 1 auto;
-  flex-direction: column;
-  padding: calc(36px * var(--mi-about-s));
-}
-
-.mi-about-reviews__quote {
-  font-size: calc(20px * var(--mi-about-s));
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-.mi-about-reviews__quote > :first-child {
-  margin-top: 0;
-}
-
-.mi-about-reviews__quote > :last-child {
-  margin-bottom: 0;
-}
-
-.mi-about-reviews__person {
-  display: flex;
-  flex-direction: column;
-  gap: calc(6px * var(--mi-about-s));
-  margin-top: auto;
-}
-
-.mi-about-reviews__person strong {
-  font-size: calc(20px * var(--mi-about-s));
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-.mi-about-reviews__meta {
-  display: flex;
-  flex-direction: column;
-  font-size: calc(16px * var(--mi-about-s));
-  font-weight: 300;
-  line-height: 1.4;
-  color: rgba(17, 35, 49, 0.66);
 }
 
 /* Gratitude — 47:811 */
@@ -1314,23 +1276,6 @@ html.mi-process-scroll-locked body {
     border-radius: 40px;
   }
 
-  .mi-about-reviews__media {
-    flex-basis: 190px;
-  }
-
-  .mi-about-reviews__body {
-    padding: 24px;
-  }
-
-  .mi-about-reviews__quote,
-  .mi-about-reviews__person strong {
-    font-size: 14px;
-  }
-
-  .mi-about-reviews__meta {
-    font-size: 12px;
-  }
-
   .mi-about-gratitude {
     height: 650px;
     min-height: 0;
@@ -1650,11 +1595,6 @@ html.mi-process-scroll-locked body {
     margin-top: 5.5556vw;
   }
   .mi-about-reviews__card { width: 85.5556vw; height: 122.7778vw; border-radius: 11.1111vw; }
-  .mi-about-reviews__media { flex-basis: 52.7778vw; }
-  .mi-about-reviews__body { padding: 6.6667vw; }
-  .mi-about-reviews__quote,
-  .mi-about-reviews__person strong { font-size: 3.8889vw; }
-  .mi-about-reviews__meta { font-size: 3.3333vw; }
 
   .mi-about-gratitude,
   .mi-about-gratitude__canvas { min-height: 180.5556vw; }
